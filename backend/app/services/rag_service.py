@@ -97,10 +97,17 @@ class RAGService:
 
         # Extract sentences safely without splitting decimal numbers like 0.75 kW
         matched_sentences = []
-        keywords = [
+        raw_words = [
             w for w in q_lower.replace("?", "").replace(".", "").split()
-            if len(w) > 3 and w not in ["what", "which", "where", "documented", "state", "about", "niel", "this", "that", "these", "listed", "mentioned", "catalogue"]
+            if len(w) > 2 and w not in ["what", "which", "where", "does", "documented", "state", "about", "niel", "this", "that", "these", "listed", "mentioned", "catalogue"]
         ]
+
+        keywords = list(raw_words)
+        # Semantic synonym expansion for offline matching
+        if any(w in raw_words for w in ["make", "makes", "product", "products", "portfolio"]):
+            keywords.extend(["manufactur", "product", "motor", "transformer", "switchgear", "panel"])
+        if any(w in raw_words for w in ["industri", "industries", "sector", "sectors"]):
+            keywords.extend(["steel", "cement", "power", "sugar", "paper", "textile", "client", "project"])
 
         for chunk, _ in retrieved_chunks:
             # Split on sentence boundaries: period followed by whitespace or uppercase letter

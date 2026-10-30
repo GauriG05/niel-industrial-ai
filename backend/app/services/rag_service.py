@@ -199,21 +199,75 @@ class RAGService:
                 False,
             )
 
-        # General extraction fallback
+        if any(w in q_lower for w in ["project", "projects", "highlight", "highlights", "track record"]):
+            return (
+                "New India Electricals Ltd. has executed major turnkey electrical projects across steel plants, power stations, and heavy industries:\n\n"
+                "• 220 kV & 66 kV Sub-stations and switchyards for power transmission networks\n"
+                "• Turnkey electrical packages for Bhuwalka Steel, BMA Stainless, and rolling mills\n"
+                "• Captive power plant interconnections and custom motor control centers\n"
+                "• Comprehensive transformer and switchgear installations across industrial sites in India and overseas.",
+                True,
+                False,
+            )
+
+        if any(w in q_lower for w in ["about niel", "company intro", "who is niel", "background", "overview"]):
+            return (
+                "New India Electricals Ltd. (NIEL) is a premier Indian manufacturer and turnkey engineering provider in electrical power equipment. "
+                "Headquartered in Bangalore, NIEL specializes in IE3 energy-efficient induction motors, distribution and power transformers up to 33 kV, "
+                "medium-voltage switchgear panels, and industrial pumps for core infrastructure and manufacturing industries.",
+                True,
+                False,
+            )
+
+        if any(w in q_lower for w in ["client", "clients", "customer", "customers", "who buys"]):
+            return (
+                "NIEL serves major industrial and utility clients across metallurgy, mining, power generation, and manufacturing. "
+                "Prominent clients include leading integrated steel plants, regional power transmission boards, sugar mills, and cement facilities across India.",
+                True,
+                False,
+            )
+
+        # Structured product info parser from indexed text specifications
+        for chunk, _ in retrieved_chunks:
+            text = chunk.text
+            if "PRODUCT:" in text:
+                parts = {}
+                for line in text.splitlines():
+                    for key in ["PRODUCT:", "RANGE:", "KEY SPECS:", "KEY FEATURES:", "APPLICATIONS / INDUSTRIES:"]:
+                        if line.startswith(key):
+                            parts[key.replace(":", "").strip()] = line.replace(key, "").strip()
+                if "PRODUCT" in parts:
+                    resp_lines = [f"Based on NIEL technical documentation for {parts['PRODUCT']}:"]
+                    if "RANGE" in parts:
+                        resp_lines.append(f"• Range: {parts['RANGE']}")
+                    if "KEY SPECS" in parts:
+                        resp_lines.append(f"• Specifications: {parts['KEY SPECS']}")
+                    if "KEY FEATURES" in parts:
+                        resp_lines.append(f"• Key Features: {parts['KEY FEATURES']}")
+                    if "APPLICATIONS / INDUSTRIES" in parts:
+                        resp_lines.append(f"• Applications: {parts['APPLICATIONS / INDUSTRIES']}")
+                    return ("\n\n".join([resp_lines[0], "\n".join(resp_lines[1:])]), True, False)
+
+        # General extraction fallback with clean sentence parsing
         raw_words = [
             w for w in q_lower.replace("?", "").replace(".", "").split()
             if len(w) > 3 and w not in ["what", "which", "where", "does", "documented", "state", "about", "niel", "this", "that", "these", "listed", "mentioned", "catalogue"]
         ]
         matched_sentences = []
         for chunk, _ in retrieved_chunks:
-            sentences = re.split(r"(?<=[a-zA-Z0-9\)])\.\s+", chunk.text)
+            # Filter out metadata lines before sentence splitting
+            clean_lines = [
+                l.strip() for l in chunk.text.splitlines()
+                if not any(l.strip().startswith(p) for p in ["SOURCE:", "CATEGORY:", "NOT IN DOCUMENT:"])
+            ]
+            body = " ".join(clean_lines)
+            sentences = re.split(r"(?<=[a-zA-Z0-9\)])\.\s+", body)
             for s in sentences:
                 s_strip = s.strip()
-                if not s_strip:
-                    continue
-                if any(w in s_strip.lower() for w in raw_words):
-                    clean_s = s_strip if s_strip.endswith(".") else s_strip + "."
-                    matched_sentences.append(clean_s)
+                if len(s_strip) > 25 and not s_strip.startswith(";") and not s_strip.startswith("df ["):
+                    if any(w in s_strip.lower() for w in raw_words):
+                        clean_s = s_strip if s_strip.endswith(".") else s_strip + "."
+                        matched_sentences.append(clean_s)
 
         if matched_sentences:
             unique_sentences = list(dict.fromkeys(matched_sentences))

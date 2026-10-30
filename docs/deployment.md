@@ -48,3 +48,4 @@ npm install
 npm run build
 ```
 Deploy the generated `frontend/dist/` contents to an Nginx webroot or Cloudflare Pages.
+

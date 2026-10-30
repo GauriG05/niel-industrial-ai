@@ -47,3 +47,4 @@ flowchart TD
 2. **Deterministic SHA-256 Deduplication**: Eliminates duplicate vector embeddings, saving API spend.
 3. **Negative Constraint Engineering**: Enforces strict abstention on unindexed pricing or commercial claims to prevent industrial hallucinations.
 4. **Backend-Only Secret Isolation**: The client never receives or stores OpenAI keys or admin credentials.
+

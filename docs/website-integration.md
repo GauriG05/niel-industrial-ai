@@ -52,3 +52,4 @@ ALLOWED_ORIGINS=https://newindiaelectricals.com,https://www.newindiaelectricals.
 ```
 
 This ensures only requests originating from NIEL's verified domains can query `/api/v1/chat`.
+

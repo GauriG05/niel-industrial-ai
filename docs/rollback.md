@@ -26,3 +26,4 @@ If malicious activity, quota exhaustion, or an unexpected spike in queries is de
 3. The server remains online, but all new LLM queries are immediately blocked with a polite maintenance notice:
    *"The AI Assistant is temporarily paused by system administration. Please try again later."*
 4. Zero additional tokens will be consumed on your OpenAI account.
+

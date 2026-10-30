@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str = Field(default="", description="Secret OpenAI API key")
     OPENAI_MODEL: str = Field(default="gpt-4o-mini", description="Configurable OpenAI Chat Model")
     OPENAI_EMBEDDING_MODEL: str = Field(default="text-embedding-3-small", description="Configurable Embedding Model")
+    OPENAI_BASE_URL: Union[str, None] = Field(default=None, description="Optional custom base URL for OpenAI-compatible providers like Gemini, Groq, OpenRouter, or Ollama")
 
     # Storage Paths (resolved to absolute paths relative to project root)
     DATA_DIR: Path = Field(default=PROJECT_ROOT / "data", description="Base data directory")

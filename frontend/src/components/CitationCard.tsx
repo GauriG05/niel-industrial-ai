@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
+import { FileText, ChevronDown, ChevronUp } from 'lucide-react';
 import { Citation } from '../types';
 
 interface CitationCardProps {
@@ -8,6 +8,7 @@ interface CitationCardProps {
 
 export const CitationCard: React.FC<CitationCardProps> = ({ citation }) => {
   const [expanded, setExpanded] = useState(false);
+  const displayFilename = citation.source_filename.replace(/\.txt$/i, '.pdf');
 
   return (
     <div className="niel-citation-pill">
@@ -15,22 +16,19 @@ export const CitationCard: React.FC<CitationCardProps> = ({ citation }) => {
         type="button"
         className="niel-citation-btn"
         onClick={() => setExpanded(!expanded)}
-        title="View source context"
+        title="View document source"
       >
-        <BookOpen size={14} className="niel-citation-icon" />
-        <span className="niel-citation-title">{citation.source_filename}</span>
+        <FileText size={14} className="niel-citation-icon" />
+        <span className="niel-citation-title">{displayFilename}</span>
         <span className="niel-citation-badge">Page {citation.page_number}</span>
         {expanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
       </button>
 
       {expanded && (
         <div className="niel-citation-content">
-          <p className="niel-citation-chunk">
-            <strong>Chunk Ref:</strong> <code>{citation.chunk_id}</code>
-          </p>
           {citation.quote_snippet && (
             <blockquote className="niel-citation-quote">
-              "{citation.quote_snippet}"
+              "{citation.quote_snippet.replace(/\*\*/g, '')}"
             </blockquote>
           )}
         </div>

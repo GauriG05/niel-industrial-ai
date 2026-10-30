@@ -35,6 +35,8 @@ class OpenAIService:
     def _get_client(self) -> OpenAI:
         if not self.is_live_configured:
             raise OpenAIError("OpenAI API key is not configured or is a mock key.")
+        if self.settings.OPENAI_BASE_URL:
+            return OpenAI(api_key=self.settings.OPENAI_API_KEY, base_url=self.settings.OPENAI_BASE_URL)
         return OpenAI(api_key=self.settings.OPENAI_API_KEY)
 
     def _generate_deterministic_embedding(self, text: str, dimensions: int = 1536) -> List[float]:

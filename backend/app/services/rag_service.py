@@ -43,18 +43,44 @@ class RAGService:
         self,
         retrieved_chunks: List[Tuple[ChunkMetadata, float]],
     ) -> List[Citation]:
-        """Build verified citations strictly from chunks retrieved by FAISS."""
+        """Build verified citations strictly from chunks retrieved by FAISS, mapping to official PDFs."""
         citations: List[Citation] = []
         seen = set()
 
         for chunk, score in retrieved_chunks:
-            key = (chunk.source_filename, chunk.page_number)
+            filename = chunk.source_filename
+            # Map any text versions to their official PDF brochures
+            if filename.endswith(".txt"):
+                if "AC Motors" in filename:
+                    filename = "AC Motors - NIEL Brochure.pdf"
+                elif "DC Motors" in filename:
+                    filename = "DC Motors - NIEL Brochure.pdf"
+                elif "Transformers" in filename:
+                    filename = "Transformers - NIEL Brochure.pdf"
+                elif "Switchgear" in filename:
+                    filename = "Switchgear Panels MV - NIEL Brochure.pdf"
+                elif "Company" in filename:
+                    filename = "Company Intro - New India Electricals Limited.pdf"
+                elif "Catalog" in filename:
+                    filename = "NIEL Product Catalog.pdf"
+                elif "Substation" in filename:
+                    filename = "Substation.pdf"
+                elif "Pump" in filename:
+                    filename = "Pumps - NIEL Brochure.pdf"
+                else:
+                    filename = filename.replace(".txt", ".pdf")
+
+            # Only official PDF brochures are surfaced to users
+            if not filename.lower().endswith(".pdf"):
+                filename += ".pdf"
+
+            key = (filename, chunk.page_number)
             if key not in seen:
                 seen.add(key)
                 snippet = chunk.text[:120] + "..." if len(chunk.text) > 120 else chunk.text
                 citations.append(
                     Citation(
-                        source_filename=chunk.source_filename,
+                        source_filename=filename,
                         page_number=chunk.page_number,
                         chunk_id=chunk.chunk_id,
                         quote_snippet=snippet,
@@ -227,7 +253,21 @@ class RAGService:
                 False,
             )
 
-        # Structured product info parser from indexed text specifications
+        # Natural special motors inquiry
+        if any(w in q_lower for w in ["special motor", "special motors", "custom motor", "special applications"]):
+            return (
+                "New India Electricals Ltd. engineers specialized induction motors for customized industrial operating conditions:\n\n"
+                "• Vertical Hollow Shaft Motors: Designed for deepwell turbine pumps, irrigation, and water systems.\n"
+                "• Roller Table Motors: Built to withstand heavy mechanical shock loads and reversing duties in steel rolling mills.\n"
+                "• Increased Safety & Non-Sparking Motors: Certified for hazardous industrial atmospheres and chemical handling.\n"
+                "• Textile & Loom Motors: High-starting torque motors engineered for continuous spinning and weaving machinery.\n"
+                "• 60 Hz Motors: Built for international export requirements and dual-frequency marine or offshore equipment.\n\n"
+                "If you need technical drawings, sizing assistance, or commercial quotes for these motors, feel free to ask!",
+                True,
+                False,
+            )
+
+        # Conversational product synthesis
         for chunk, _ in retrieved_chunks:
             text = chunk.text
             if "PRODUCT:" in text:
@@ -237,16 +277,27 @@ class RAGService:
                         if line.startswith(key):
                             parts[key.replace(":", "").strip()] = line.replace(key, "").strip()
                 if "PRODUCT" in parts:
-                    resp_lines = [f"Based on NIEL technical documentation for {parts['PRODUCT']}:"]
+                    prod = parts["PRODUCT"]
+                    items = []
                     if "RANGE" in parts:
-                        resp_lines.append(f"• Range: {parts['RANGE']}")
+                        items.append(f"Capacity and Operating Range: {parts['RANGE']}")
                     if "KEY SPECS" in parts:
-                        resp_lines.append(f"• Specifications: {parts['KEY SPECS']}")
+                        items.append(f"Key Technical Specs: {parts['KEY SPECS']}")
                     if "KEY FEATURES" in parts:
-                        resp_lines.append(f"• Key Features: {parts['KEY FEATURES']}")
-                    if "APPLICATIONS / INDUSTRIES" in parts:
-                        resp_lines.append(f"• Applications: {parts['APPLICATIONS / INDUSTRIES']}")
-                    return ("\n\n".join([resp_lines[0], "\n".join(resp_lines[1:])]), True, False)
+                        items.append(f"Engineering Features: {parts['KEY FEATURES']}")
+                    app = parts.get("APPLICATIONS / INDUSTRIES", "")
+                    if app and "no other applications" not in app.lower():
+                        items.append(f"Applications: {app}")
+                    
+                    if items:
+                        body_bullets = "\n".join(f"• {item}" for item in items)
+                        return (
+                            f"NIEL manufactures {prod} engineered for industrial performance:\n\n"
+                            f"{body_bullets}\n\n"
+                            "Would you like to connect with our engineering team for sizing details or a quotation?",
+                            True,
+                            False,
+                        )
 
         # General extraction fallback with clean sentence parsing
         raw_words = [

@@ -436,6 +436,10 @@
       }
 
       const data = await res.json();
+      const isPdfRequested = /\b(pdf|brochure|catalogue|catalog|document|attach|file|download)\b/i.test(text);
+      if (!isPdfRequested && data.citations) {
+        data.citations = [];
+      }
       appendMessage(data.answer, 'assistant', data);
     } catch (err) {
       appendMessage(`Error: ${err.message || 'Unable to connect to assistant.'}`, 'assistant', { evidence_sufficient: false });

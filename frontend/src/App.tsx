@@ -39,11 +39,12 @@ export const App: React.FC = () => {
 
     try {
       const response = await askQuestion(textToSend);
+      const isPdfRequested = /\b(pdf|brochure|catalogue|catalog|document|attach|file|download|read source|view source)\b/i.test(textToSend);
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         sender: 'assistant',
         text: response.answer,
-        citations: response.citations,
+        citations: isPdfRequested ? response.citations : [],
         evidence_sufficient: response.evidence_sufficient,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };

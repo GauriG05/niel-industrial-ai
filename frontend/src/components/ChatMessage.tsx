@@ -1,5 +1,5 @@
-import React from 'react';
-import { Bot, User, AlertCircle, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { FileText, CheckCircle2 } from 'lucide-react';
 import { Message } from '../types';
 import { CitationCard } from './CitationCard';
 
@@ -9,47 +9,53 @@ interface ChatMessageProps {
 
 export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   const isUser = message.sender === 'user';
+  const [showSources, setShowSources] = useState(false);
 
   return (
     <div className={`niel-msg-row ${isUser ? 'niel-msg-user' : 'niel-msg-assistant'}`}>
-      <div className="niel-msg-avatar">
-        {isUser ? <User size={18} /> : <Bot size={18} />}
-      </div>
-
       <div className="niel-msg-bubble-container">
         <div className={`niel-msg-bubble ${message.isError ? 'niel-msg-error' : ''}`}>
-          <div className="niel-msg-header">
-            <span className="niel-msg-sender">{isUser ? 'You' : 'NIEL Assistant'}</span>
-            <span className="niel-msg-time">{message.timestamp}</span>
-          </div>
-
           <div className="niel-msg-text">
             {message.text.split('\n').map((line, i) => (
-              <p key={i}>{line}</p>
+              <p key={i} style={{ marginBottom: line ? '6px' : '0' }}>{line}</p>
             ))}
           </div>
 
-          {/* Insufficient Evidence Warning Notice */}
-          {!isUser && message.evidence_sufficient === false && !message.isError && (
-            <div className="niel-notice-insufficient">
-              <AlertCircle size={14} className="niel-notice-icon" />
-              <span>Unverified / Absent in indexed documentation. Commercial or unconfirmed specification.</span>
-            </div>
-          )}
-
-          {/* Verified Evidence Badge */}
+          {/* Verified Evidence Footer (Discreet, clean, professional) */}
           {!isUser && message.evidence_sufficient === true && (
-            <div className="niel-notice-verified">
-              <CheckCircle2 size={13} className="niel-verified-icon" />
-              <span>Grounded in authorized NIEL technical catalogue</span>
+            <div className="niel-msg-footer-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '8px', paddingTop: '4px' }}>
+              <div className="niel-notice-verified">
+                <CheckCircle2 size={13} className="niel-verified-icon" />
+                <span>Verified NIEL Specification</span>
+              </div>
+              {message.citations && message.citations.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setShowSources(!showSources)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#6b7280',
+                    fontSize: '11px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    textDecoration: 'underline'
+                  }}
+                  title="Click to view reference document"
+                >
+                  <FileText size={12} />
+                  <span>{showSources ? 'Hide PDF' : 'View PDF Source'}</span>
+                </button>
+              )}
             </div>
           )}
         </div>
 
-        {/* Source Citations */}
-        {!isUser && message.citations && message.citations.length > 0 && (
+        {/* Citations/PDFs rendered ONLY when user clicks 'View PDF Source' */}
+        {!isUser && showSources && message.citations && message.citations.length > 0 && (
           <div className="niel-citations-section">
-            <span className="niel-citations-label">Sources & Citations:</span>
             <div className="niel-citations-list">
               {message.citations.map((citation, idx) => (
                 <CitationCard key={idx} citation={citation} />
@@ -61,4 +67,3 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
     </div>
   );
 };
-

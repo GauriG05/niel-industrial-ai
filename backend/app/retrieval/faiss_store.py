@@ -16,10 +16,15 @@ logger = logging.getLogger(__name__)
 class FAISSStore:
     """Manages local FAISS vector indexing with metadata persistence."""
 
-    def __init__(self, dimension: int = 1536):
+    def __init__(self, dimension: int = 1536, index_dir: Optional[Path] = None):
         self.settings = get_settings()
         self.dimension = dimension
-        self.index_dir = self.settings.INDEX_DIR
+        if index_dir is not None:
+            self.index_dir = index_dir
+        elif self.settings.ENVIRONMENT == "test":
+            self.index_dir = self.settings.DATA_DIR / "test_index"
+        else:
+            self.index_dir = self.settings.INDEX_DIR
         self.index_file = self.index_dir / "faiss.index"
         self.meta_file = self.index_dir / "metadata.json"
 
@@ -168,9 +173,11 @@ class FAISSStore:
 _faiss_store_instance: Optional[FAISSStore] = None
 
 
-def get_faiss_store() -> FAISSStore:
-    """Singleton accessor for FAISS vector store."""
+def get_faiss_store(index_dir: Optional[Path] = None) -> FAISSStore:
+    """Singleton accessor for FAISS vector store. If index_dir is provided, returns an instance bound to that dir."""
     global _faiss_store_instance
+    if index_dir is not None:
+        return FAISSStore(index_dir=index_dir)
     if _faiss_store_instance is None:
         _faiss_store_instance = FAISSStore()
     return _faiss_store_instance

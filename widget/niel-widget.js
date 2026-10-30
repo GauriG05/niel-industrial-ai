@@ -392,15 +392,20 @@
 
     if (sender === 'assistant' && data) {
       if (data.evidence_sufficient === true) {
-        html += `<div class="niel-verified">✓ Grounded in authorized NIEL catalogue</div>`;
+        html += `<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+          <span class="niel-verified">✓ Verified NIEL Specification</span>
+          ${data.citations && data.citations.length > 0 ? `<button type="button" class="niel-view-pdf-btn" style="background:none;border:none;color:#6b7280;font-size:11px;cursor:pointer;text-decoration:underline;">View PDF Source</button>` : ''}
+        </div>`;
       } else if (data.evidence_sufficient === false) {
         html += `<div class="niel-unverified">⚠️ Unverified in indexed catalogue.</div>`;
       }
 
       if (data.citations && data.citations.length > 0) {
+        html += `<div class="niel-citations-drawer" style="display:none; margin-top:6px;">`;
         data.citations.forEach((c) => {
           html += `<div class="niel-citation-item">📄 ${c.source_filename} (Page ${c.page_number})</div>`;
         });
+        html += `</div>`;
       }
     }
 
@@ -447,6 +452,18 @@
     const pill = e.target.closest('.niel-pill');
     if (pill && pill.dataset.q) {
       handleSubmit(pill.dataset.q);
+      return;
+    }
+
+    const pdfBtn = e.target.closest('.niel-view-pdf-btn');
+    if (pdfBtn) {
+      const msg = pdfBtn.closest('.niel-msg');
+      const drawer = msg?.querySelector('.niel-citations-drawer');
+      if (drawer) {
+        const isHidden = drawer.style.display === 'none';
+        drawer.style.display = isHidden ? 'block' : 'none';
+        pdfBtn.textContent = isHidden ? 'Hide PDF' : 'View PDF Source';
+      }
     }
   });
 })();

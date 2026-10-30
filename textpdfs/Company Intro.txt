@@ -1,0 +1,96 @@
+SOURCE: Company_Intro_-_New_India_Electricals_Limited.pdf
+
+COMPANY OVERVIEW:
+New India Electricals Limited, established in 1969 and based in Bengaluru, India, describes itself as a leading electrical equipment manufacturer and exporter with over 55 years of service to heavy industry (mining, steel, cement, power & utility) across Africa, Asia and the Middle East.
+It exports to more than 45 countries and has been awarded Star Export House status by the Indian Ministry of Commerce and Industry.
+Primary focus: the mining industry, steel mills and utility companies, apart from other large industrial sectors.
+Stated competitive advantages: cost optimization (experience competing with Chinese manufacturers while maintaining superior quality), immediate availability (over 4,000 motors in stock), established brand partnerships, and one-stop electrical solutions (consolidated procurement; for priority customers, purchasing partner for ancillary accessories and non-electrical items).
+Company details on every page: Tel +91 80 42434343, 22235434; Fax +91 80 22226666; Site www.newindiaelectricals.com; CIN U85110KA1994PLC015512; Power House # 18, J.C. Road, Bangalore 560 002, INDIA.
+
+PRODUCTS & SERVICES:
+- Switchgear & Control Panels (LV/MV): custom-designed panels for motor and pump control systems, manufactured at the ABB Licensed System House facility with full type-testing capabilities
+- Motors & Drive Systems: complete range of AC/DC motors (220V/380V/500V/550V/3300V), including energy-efficient options and specialized heavy-duty motors for harsh environments
+- Transformers & Transmission Systems: power and distribution transformers for industrial and utility applications, including step-down transformers for various voltage requirements
+- Pumps: industrial pumps for dewatering, slurry handling and process applications for mining, steel, cement and water utility operations
+- Substation Equipment: complete substation solutions including CT/PT, power factor correction and protection systems
+- Others: Consultation & Design, Power Management Systems, Turnkey Power & Substations Systems up to 230 kV
+- Also mentioned: cables (under One-Stop Electrical Solutions: "From switchgear to cables, motors to transformers")
+- Portfolio page lists individual PDF catalogs: AC Motors, DC Motors, Pumps, Transformers, Panels & Switchgear, Substations
+- Other content links: customer slideshow video, office & factory tour, customer testimonial
+
+CUSTOMERS / SECTORS SERVED:
+Sectors: mining, steel, cement, power & utility, water utility, other large industrial sectors.
+Export countries named (list ends with "etc."): Malawi, Zambia, Mozambique, Tanzania, Uganda, Nigeria, South Africa, Egypt, U.A.E., Oman, Bangladesh, Nepal, Myanmar, Sri Lanka, Ghana.
+Valued customers as listed (numbering as printed; descriptions are the PDF's):
+Africa
+1. ZESCO (Zambia) - state-owned utility managing Zambia's electricity generation, transmission and distribution
+2. Konkola Copper Mines PLC (Zambia) - one of Africa's largest copper mining companies
+3. Benin Electricity Distribution Company (Nigeria) - major Nigerian power distribution utility serving 4 states
+4. Motisun Group (Tanzania) - diversified African conglomerate with steel, cement, plastics and real estate
+5. Shayona Cement Corporation (Malawi) - Malawi's largest local cement manufacturer
+6. B5 Plus (Ghana) - West Africa's leading steel manufacturing and trading company
+Middle East
+7. Qatar Steel (Qatar) - first integrated steel producer in the Gulf, major regional supplier
+8. Saudi National Steel (Saudi Arabia) - leading rebar producer for Gulf construction
+9. Welspun Middle East (Saudi Arabia) - manufacturer of large-diameter pipes for oil & gas pipelines
+10. Watania Steel (Saudi Arabia) - Riyadh-based producer of billets and rebars for construction
+11. Sohar Steel Group (Oman) - integrated steel producer in Sohar supplying rebars and billets
+South Asia (numbering jumps from 11 to 17 as printed)
+17. BSRM (Bangladesh) - Bangladesh's largest and most advanced steel re-rolling company
+18. PHP Family (Bangladesh) - conglomerate with steel, float glass and power divisions
+19. Ambe Steels (Nepal) - leading TMT steel producer in Nepal
+20. Abyssinia Integrated Steel (Ethiopia) - East Africa's largest steel producer, serving the regional market (listed under South Asia as printed)
+India - Large Industrial / Steel Producers (numbered 1 to 9)
+1. ITC Limited - diversified conglomerate (FMCG, hotels, agribusiness)
+2. Essar Steel (ArcelorMittal Nippon Steel India) - major integrated flat steel producer
+3. Kalyani Steel Ltd. - alloy & special steels for auto and engineering
+4. Shyam Metalics & Energy Ltd. - integrated steel & ferroalloy producer
+5. Kirloskar Ferrous Industries Ltd. - pig iron & automotive castings
+6. Real Ispat & Power Ltd. - Raipur-based fully integrated steelmaker
+7. Mahamaya Steel Industries Ltd. - Raipur-based structural steel producer
+8. Prakash Industries Ltd. - steel, PVC pipes, & power generation
+9. Sarda Energy & Minerals Ltd. - mining, steel, & power generation
+
+KEY PROJECTS / REFERENCES:
+- "We have executed projects of up to 230 kV" (transformers & transmission); turnkey power & substation systems up to 230 kV
+- No individual projects are named. The customer list above is the only reference material.
+
+LOCATIONS & FACILITIES:
+- Company headquarters: Bangalore, India (Power House # 18, J.C. Road, Bangalore 560 002)
+- Other locations in India: Mumbai, Raipur
+- Africa headquarters: Malawi
+- Switchgear manufacturing: one facility near Bengaluru (Karnataka, India); capacity 50 switchgear panels per month
+- Motor manufacturing: strategic partnerships with large-scale manufacturers in India and China (no own motor plant stated)
+- Warehouses: three stocking warehouses around Bangalore; over 4,000 motors of various sizes ready for immediate shipment
+- Team: over 70 trained technicians, engineers and administrators
+- Geographic reach: exports to more than 45 countries across Africa, Asia and the Middle East
+- Contact: Shreyansh Desai, Director - International Business; +91 9741307999; sdesai@newindiaelectricals.com; website newindiaelectricals.com
+
+CERTIFICATIONS & TESTING:
+- ISO Certified (standard and certificate details not given)
+- ABB Licensed & Certified; Licensed ABB System House (ABB has certified the factory and directs customers to it)
+- Star Export House status, Indian Ministry of Commerce and Industry
+- Comprehensive type-testing, over-voltage testing and other certifications maintained (per Manufacturing page)
+- Type tests conducted at globally accredited test labs such as CPRI & ERDA:
+  3.3 - 11kV Panels:
+  - Lightning Impulse Withstand Voltage Test - 11kV Indoor In/Out Panel
+  - Short Time Withstand & Peak Current Withstand Test on Main Busbar - 12kV, 630A HT Panel
+  - Continuous Current Test on Main Circuit - 12kV, 630A HT Panel
+  - Internal Arc Fault Test (Busbar Side) - 11kV VD4 Switchgear Panel
+  - Internal Arc Fault Test on Busbar Chamber - Indoor Switchgear Cubicle (40kA for 1 sec)
+  - IP4X Test - 11kV, 630A, 26.3kA VCB Type Test Panel
+  - Dielectric Test on Auxiliary & Control Circuit - 11kV, 630A, 26.3kA VCB
+  33kV Panels:
+  - IP4X Test - 33kV Indoor VCB Panel
+  - Lightning Impulse Voltage Test - 36kV Indoor VCB Panel
+  - Short Time Withstand & Peak Current Withstand Test on Main Circuit - 36kV, 1250A Coupled Panels
+  - Continuous Current Test on Main Circuit - 36kV, 1250A VCB Panel (Two panels coupled)
+
+PARTNERS / COMPONENT BRANDS:
+Authorized dealers and distributors for: WEG; Siemens; ABB (Licensed ABB System House with certified manufacturing); Transformers & Rectifiers India; other brands KSB, Kirloskar Brothers Limited, Crompton Greaves.
+(WEG logo is visible on the motor photo on the cover page.)
+
+NOT IN DOCUMENT:
+Revenue, turnover or financials; ownership and management beyond the one named director; technical specifications, ratings or model ranges for motors, pumps, transformers and panels (only referenced via separate catalogs); ISO standard number/year or certificate details; names of specific projects; delivery lead times, warranty and after-sales terms; URLs for the linked catalogs, video, tour and testimonial (shown only as link text); number of employees beyond the "over 70" team.
+
+PAGES READ: 8

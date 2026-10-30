@@ -1,0 +1,112 @@
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Company profile and services (Our Products page and In a NUTSHELL)
+CATEGORY: other
+KEY SPECS: Serving since 54 years; Exporting to 45 Countries; 50,000 sq ft of fully equipped Motor warehouse space; ABB Licensed - 30,000 sft Medium Voltage & Low Voltage Panel assembly unit; In house fully equipped Pump assembly unit; also printed on cover page: "50+ years of trust"
+KEY FEATURES: Star Export House for more than 10 years; India's Largest Stockist; Substations; Turnkey projects; Design Consultancy; Partner logos shown: SIEMENS, ABB, Power+, marathon, Transformers & Rectifiers (India) Ltd; one script logo [unclear] (appears on motors and pumps pages)
+NOT IN DOCUMENT: product ratings; certifications; QR codes (3 per page: "A Glimpse of Infrastructure", "New India's Global Customers", "New India's Product Range & Application") link to content not in this PDF
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Motors (overview: AC | DC | Rolling Mill | Roller Table)
+CATEGORY: motors
+KEY SPECS: AC; DC; Rolling Mill; Roller Table
+KEY FEATURES: Full complement of motors offered: from a High Voltage 10MW Mill Main Drive motor to 1MW DC Mill Stand motor; Shear Motors; Fan Drive - Squirrel Cage TEFC motors; Roller table motors; Pump drive / Water complex SPDP motors
+APPLICATIONS / INDUSTRIES: All STEEL and Power plant applications
+NOT IN DOCUMENT: ratings (see individual blocks); standards & certifications
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Pumps (overview: Centrifugal | Gear | Fire Fighting)
+CATEGORY: pumps
+KEY SPECS: Centrifugal; Gear; Fire Fighting
+KEY FEATURES: In house fully equipped Pump assembly unit
+APPLICATIONS / INDUSTRIES: Fire Fighting
+NOT IN DOCUMENT: ratings (see individual blocks); standards & certifications
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Transformers (overview)
+CATEGORY: transformers
+KEY SPECS: Official Partner: Transformers & Rectifiers (India) Ltd
+KEY FEATURES: Manufactured with specific Low- Loss & High Efficiency designs; alliances made with mature manufacturers to ensure the right quality
+NOT IN DOCUMENT: ratings (see transformer blocks); standards & certifications
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Panels (overview: Low & Medium Voltage Panels up to 33kV)
+CATEGORY: switchgear
+RANGE: Low & Medium Voltage Panels up to 33kV
+KEY SPECS: Licensed ABB House
+KEY FEATURES: Licensed ABB House; ABB Licensed - 30,000 sft Medium Voltage & Low Voltage Panel assembly unit
+NOT IN DOCUMENT: ratings (see panel blocks); applications; certifications
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: THREE PHASE INDUCTION MOTORS
+CATEGORY: motors
+RANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V
+KEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class "F"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611
+NOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: AC MOTORS - CAGE ROTOR
+CATEGORY: motors
+RANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV
+KEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class "F"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611
+NOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: ROLLER TABLE MOTORS
+CATEGORY: motors
+RANGE: Range 0.37 to 37 kW; Voltage 380 & 415 Volts
+KEY SPECS: RPM 1500/1000/750; Insulation Class "F"; Mounting Horizontal/Vertical Flange; Enclosure IP 55; Cooling IC 01/411/511/611
+NOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Horizontal Multistage Pump, SERIES : RKB
+CATEGORY: pumps
+RANGE: Delivery Size up to 200 mm; Capacity up to 850 m³ /hr; Head up to 850 metres; Temperature (-) 40°C to 140°C
+KEY SPECS: Delivery Size up to 200 mm; Capacity up to 850 m³ /hr; Head up to 850 metres; Temperature (-) 40°C to 140°C
+KEY FEATURES: Gland packed/Mechanical Seal; Suction flange can be directed left or right; Enclosed impellers; Also available in Vertical Execution
+APPLICATIONS / INDUSTRIES: Fire-fighting; Booster Service; Mine Dewatering; Boiler feed; Sprinkler Irrigation
+NOT IN DOCUMENT: power rating; voltage; efficiency figures; IP class; standards & certifications
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: DISTRIBUTION TRANSFORMERS
+CATEGORY: transformers
+RANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV
+KEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound
+KEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards; Standard fittings as per IS 2026 / IEC 76
+STANDARDS & CERTIFICATIONS: Standard fittings as per IS 2026 / IEC 76; painting as per IS / IEC standards
+NOT IN DOCUMENT: kVA / MVA rating; efficiency figures ("High Efficiency" is stated without numbers); impedance; certifications / type tests; applications / industries
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: POWER TRANSFORMERS
+CATEGORY: transformers
+RANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV
+KEY SPECS: Off-circuit tap changer to provide + 5% to - + 7.5% (as printed) & + 5% to - 10% taps in steps of 2.5%; On-load tap changer to provide + 5% to - 15% taps in steps of 1.25%; Class A, uniform / non-uniform insulated; Vector group Dyn 11, YNd 11, YNyn 0; Continuous duty, double copper wound
+KEY FEATURES: Both HV & LV side outdoor bushings or cable boxes; Cooling radiators / fans; Buchholz relay with alarm and trip contact with shut off valves; Oil temperature indicator with alarm and trip contact; Magnetic oil level gauge with alarm contact; Marshalling box, cooler control unit and neutral current transformer
+STANDARDS & CERTIFICATIONS: Painting as per IS/IEC standards; standard fittings as per IS / IEC standards
+NOT IN DOCUMENT: kVA / MVA rating; efficiency figures ("High Efficiency" is stated without numbers); impedance; certifications / type tests; applications / industries
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: FURNACE TRANSFORMERS
+CATEGORY: transformers
+RANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV
+KEY SPECS: Off-circuit tap changer to provide + 5% to - + 7.5% (as printed) & + 5% to - 10% taps in steps of 2.5%; On-load tap changer to provide +5% to - 15% taps in steps of 1.25%; Class A, uniform / non-uniform insulated; Vector group Dyn 11, YNd 11, Dd0y11; Continuous duty, double copper wound; Lamination CRGO M3 to M5 type; electrolytic grade 99.9% pure copper
+KEY FEATURES: Designed for induction furnace, arc furnace & submerged arc furnace application; Magnetic circuit - lamination CRGO M3 to M5 type; Electric circuit - electrolytic grade 99.9% pure copper with transposition in LV coil; Dielectric circuits - Electric grade press paper, boards and mineral oil; Natural air cooling ONAN & additional fans for ONAF cooling; High current transformers provided with OFW cooling
+APPLICATIONS / INDUSTRIES: Induction furnace, arc furnace & submerged arc furnace
+STANDARDS & CERTIFICATIONS: Painting as per IS / IEC standards; standard fittings as per IS / IEC standards
+NOT IN DOCUMENT: kVA / MVA rating; efficiency figures ("High Efficiency" is stated without numbers); impedance; certifications / type tests
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Low Voltage Panels
+CATEGORY: switchgear
+KEY SPECS: Product range: Power control center panel {PCC}; Motor control center panel {MCC}; Drive panels {VFD}; Soft starter; Marshalling panel; ARC duct; Control & Relay panel; Neutral Grounding resistors system; Automatic power factor corrections panel; Fire fighting Panel; Alternatives current distribution board{ACDB} (as printed)
+APPLICATIONS / INDUSTRIES: Utilities, Contractors, Industry users, OEMs and Projects (power supply & distribution networks, standardized or customized)
+NOT IN DOCUMENT: voltage / current ratings, IP class, standards & certifications specific to LV panels
+
+SOURCE: NIEL Product Catalog.pdf
+PRODUCT: Medium Voltage Panels
+CATEGORY: switchgear
+RANGE: 3.3KV - 11KV 630A(upto 3000A) VCB indoor & outdoor Kiosk; 33KV 630A(upto 1250A) VCB indoor & outdoor Kiosk
+KEY SPECS: Ingress Protection( IP) - 33KV ., 36/70/170 kVpk, upto IP55 (as printed, [unclear]); Vaccuum circuit breaker rating : 630- 3150 A; Short circuit current rating upto - 40KA; Insulation level - 11KV , 12/28/75 kVpk
+KEY FEATURES: Vacuum circuit breaker (VCB); indoor & outdoor Kiosk versions; CPRI Type tested panel; short circuit test; temperature rise test; lightning impact test (listed under the Panels page's shared Features heading)
+APPLICATIONS / INDUSTRIES: Transformer protection; Motor Protection; Generator Protection; Line Protection (listed under the Panels page's shared Applications heading); Utilities, Contractors, Industry users, OEMs and Projects
+STANDARDS & CERTIFICATIONS: Applicable standard IEC 62271 - 200 standard; CPRI Type tested panel : Short circuit test, Temperature rise test, Lightning impact test
+NOT IN DOCUMENT: efficiency figures; test certificate numbers

@@ -1,0 +1,49 @@
+SOURCE: Substation.pdf
+PRODUCT: Substation Solutions (turnkey substation design & construction services)
+CATEGORY: substation
+RANGE: Turnkey substation design & construction services up to 400 kv
+KEY SPECS: TURNKEY basis upto 400 kv; typical 132KV layout and 33KV layout (drawing shown, labels [unclear]); Products expertise listed: Power transformers, Breakers, Isolators, Lighting Arrestors, CVT, CT, PT, ACSR Conductors, Connectors, Medium Voltage panels, Control panels, Protective Relay & Power Management systems, Battery & Chargers, Capacitor Systems & etc.
+KEY FEATURES: Full Engineering Design and project implementation services; Application engineering and detailed electrical system design; Project management, scheduling, tracking, construction management and site supervision; Engineer, procure, construct (EPC) package & utility coordination; Packaged electrical control houses; Field engineering and repair services
+APPLICATIONS / INDUSTRIES: Diagram labels: Generation, Transmission, Distribution, Utilization, Residential, Industrial; plants and factories. Recently executed projects for: First Aluminium Ltd; Shri Bajarang Power & Ispat Ltd; MFW Industries Co Ltd; Ispat Godavari Ltd; Hera Alloys Ltd; Aloke Ferro Alloys Ltd; Super Mega Engineers Ltd; Jain Carbide & Chemicals Ltd; Recogen Ltd; Singhal Enterprises Pvt Ltd; Parameshwari Projects Ltd; Kenmetal India Ltd; Purti Sahakar Karkana Ltd; Vandana Ispat Ltd; Jindal Power & Steel Ltd.; Nirani Cements Ltd. Projects executed in: Bangaladesh, Bhutan, Ghand, Indonesia, Kuwait, Malaysia, Malta, Myanmar, Nepal, Nigeria, Srilanka, Philiphines, UAE, Zambia (as printed). Product partner logos shown: ABB, AREVA, SIEMENS, ALSTOM, Crompton Greaves, Power+; two logos [unclear]
+NOT IN DOCUMENT: certifications; transformer / breaker / other equipment ratings; efficiency figures
+
+SOURCE: Substation.pdf
+PRODUCT: Power+ V (VCB Panels Indoor Type upto 12 KV)
+CATEGORY: switchgear
+RANGE: Voltage upto 12 KV
+KEY SPECS: VCB Panels Indoor Type upto 12 KV
+KEY FEATURES: Manufactured in-house at New India Group's Medium Voltage panel manufacturing facility, described as "state-of-art" and "as an ABB System House"
+NOT IN DOCUMENT: current rating, short-circuit rating, IP class, standards & certifications, applications / industries
+
+SOURCE: Substation.pdf
+PRODUCT: Power+ F (SF6 Panels Indoor type upto 12KV)
+CATEGORY: switchgear
+RANGE: Voltage upto 12KV
+KEY SPECS: SF6 Panels Indoor type upto 12KV
+KEY FEATURES: Manufactured in-house at New India Group's Medium Voltage panel manufacturing facility, described as "state-of-art" and "as an ABB System House"
+NOT IN DOCUMENT: current rating, short-circuit rating, IP class, standards & certifications, applications / industries
+
+SOURCE: Substation.pdf
+PRODUCT: Power+ M (HT Motor Starter Panels)
+CATEGORY: switchgear
+KEY SPECS: HT Motor Starter Panels
+KEY FEATURES: Manufactured in-house at New India Group's Medium Voltage panel manufacturing facility, described as "state-of-art" and "as an ABB System House"
+NOT IN DOCUMENT: current rating, short-circuit rating, IP class, standards & certifications, applications / industries, voltage range
+
+SOURCE: Substation.pdf
+PRODUCT: Power+ VO (VCB Panels Outdoor type upto 12KV)
+CATEGORY: switchgear
+RANGE: Voltage upto 12KV
+KEY SPECS: VCB Panels Outdoor type upto 12KV
+KEY FEATURES: Manufactured in-house at New India Group's Medium Voltage panel manufacturing facility, described as "state-of-art" and "as an ABB System House"
+NOT IN DOCUMENT: current rating, short-circuit rating, IP class, standards & certifications, applications / industries
+
+SOURCE: Substation.pdf
+PRODUCT: Power+ F3 (SF6 Panels Indoor type upto 36KV)
+CATEGORY: switchgear
+RANGE: Voltage upto 36KV
+KEY SPECS: SF6 Panels Indoor type upto 36KV
+KEY FEATURES: Manufactured in-house at New India Group's Medium Voltage panel manufacturing facility, described as "state-of-art" and "as an ABB System House"
+NOT IN DOCUMENT: current rating, short-circuit rating, IP class, standards & certifications, applications / industries
+
+PAGES READ: 4

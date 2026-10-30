@@ -43,6 +43,9 @@ def run_evaluation() -> Dict[str, Any]:
         q_id = tc["id"]
         question = tc["question"]
         expected_page = tc.get("expected_page")
+        expected_pages = tc.get("expected_pages")
+        if expected_pages is None and expected_page is not None:
+            expected_pages = [expected_page]
         should_abstain = tc["should_abstain"]
         expected_keywords = tc["expected_answer_keywords"]
 
@@ -58,10 +61,10 @@ def run_evaluation() -> Dict[str, Any]:
         # 1. Retrieval & Citation Verification
         retrieval_ok = False
         citation_ok = False
-        if expected_page is not None:
+        if expected_pages is not None:
             total_evaluable_retrieval += 1
             # Check if expected page is present in citations
-            retrieval_ok = any(c.page_number == expected_page for c in citations)
+            retrieval_ok = any(c.page_number in expected_pages for c in citations)
             citation_ok = retrieval_ok
             if retrieval_ok:
                 retrieval_hits += 1

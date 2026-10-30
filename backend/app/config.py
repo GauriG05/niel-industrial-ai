@@ -7,6 +7,9 @@ from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+
+
 class Settings(BaseSettings):
     """Application settings loaded from environment or .env file."""
 
@@ -21,10 +24,10 @@ class Settings(BaseSettings):
     OPENAI_MODEL: str = Field(default="gpt-4o-mini", description="Configurable OpenAI Chat Model")
     OPENAI_EMBEDDING_MODEL: str = Field(default="text-embedding-3-small", description="Configurable Embedding Model")
 
-    # Storage Paths
-    DATA_DIR: Path = Field(default=Path("./data"), description="Base data directory")
-    INDEX_DIR: Path = Field(default=Path("./data/index"), description="FAISS index and metadata directory")
-    DOCS_DIR: Path = Field(default=Path("./data/docs"), description="PDF files storage directory")
+    # Storage Paths (resolved to absolute paths relative to project root)
+    DATA_DIR: Path = Field(default=PROJECT_ROOT / "data", description="Base data directory")
+    INDEX_DIR: Path = Field(default=PROJECT_ROOT / "data" / "index", description="FAISS index and metadata directory")
+    DOCS_DIR: Path = Field(default=PROJECT_ROOT / "data" / "docs", description="PDF files storage directory")
 
     # Security & Admin Access
     ADMIN_API_KEY: str = Field(default="dev-admin-key", description="Secret token for document ingestion and management")

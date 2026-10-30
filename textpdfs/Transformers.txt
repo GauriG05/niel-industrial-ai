@@ -1,0 +1,51 @@
+SOURCE: Transformers_-_NIEL_Brochure.pdf
+PRODUCT: Distribution Transformers
+CATEGORY: transformers
+RANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)
+KEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound
+KEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option; comes fitted with standard accessories as a ready to install unit (additional accessories on request)
+APPLICATIONS / INDUSTRIES: Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated
+STANDARDS & CERTIFICATIONS: Standard fittings as per IS 2026 / IEC 76; specifications conform to relevant IS / BS & IEC Standards; painting as per IS / IEC standards
+NOT IN DOCUMENT: kVA rating; efficiency/losses; cooling type; IP class; type-test or certification details; item-specific applications
+
+SOURCE: Transformers_-_NIEL_Brochure.pdf
+PRODUCT: Power Transformers
+CATEGORY: transformers
+RANGE: 11 kV, 22kV and 33kV, 66kV & 111kV, 3 Phase, 50 Hz (MVA not stated; "111kV" as printed)
+KEY SPECS: 3Phase, 50 Hz; Off-circuit tap changer ± 5% to - ± 7.5% & ± 5% to - 10% taps in steps of 2.5% [plus/minus symbols as printed, partly unclear]; On-load tap changer + 5% to - 15% taps in steps of 1.25%; Class A, uniform / non-uniform insulated; Vector group Dyn 11, YNd 11, YNyn 0; Continuous duty, double copper wound
+KEY FEATURES: Both HV & LV side outdoor bushings or cable boxes; cooling radiators / fans; Buchholz relay with alarm and trip contact with shut off valves; oil temperature indicator with alarm and trip contact; magnetic oil level gauge with alarm contact; marshalling box (printed "Mashalling") for oil temperature and winding temperature indicators, plus cooler control unit and neutral current transformer
+APPLICATIONS / INDUSTRIES: Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated
+STANDARDS & CERTIFICATIONS: Standard fittings as per IS / IEC standard df [last word unclear]; painting as per IS/IEC standards; specifications conform to relevant IS / BS & IEC Standards
+NOT IN DOCUMENT: MVA rating; efficiency/losses; cooling class designation; IP class; type-test or certification details; item-specific applications
+
+SOURCE: Transformers_-_NIEL_Brochure.pdf
+PRODUCT: Furnace Transformers
+CATEGORY: transformers
+RANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (rating not stated)
+KEY SPECS: Off-circuit tap changer ± 5% to - ± 7.5% & + 5% to - 10% taps in steps of 2.5% [symbols as printed]; On-load tap changer +5% to - 15% taps in steps of 1.25%; Class A, uniform / non-uniform insulated; Vector group Dyn 11, YNd 11, Dd0y11; Continuous duty, double copper wound; Magnetic circuit lamination CRGO M3 to M5 type; electrolytic grade 99.9% pure copper; cooling ONAN, ONAF (with additional fans), OFW for high current transformers
+KEY FEATURES: Designed for induction furnace, arc furnace & submerged arc furnace application; transposition in LV coil for current sharing in parallel conductors; dielectric of electric grade press paper, boards and mineral oil; cooling ducts radially & axially for smooth oil flow; radiator cooling banks for ONAN; both HV & LV side outdoor bushings / cable box / bus ducts / bus bar risers
+APPLICATIONS / INDUSTRIES: Induction furnace, arc furnace and submerged arc furnace applications
+STANDARDS & CERTIFICATIONS: Painting as per IS / IEC standards; standard fittings as per IS / IEC standards; specifications conform to relevant IS / BS & IEC Standards
+NOT IN DOCUMENT: MVA/current rating; efficiency/losses; IP class; type-test or certification details
+
+SOURCE: Transformers_-_NIEL_Brochure.pdf
+PRODUCT: Cast Resin (Dry Type) Transformers
+CATEGORY: transformers
+RANGE: 11 kV / 433 V, 3 Phase, 50 Hz (kVA not stated)
+KEY SPECS: Cast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz; Off circuit tap links + 5% in steps of 2.5%; Class F and H insulation; HV Delta connected, LV Star Connected with Dyn 11 vector group; Duty cycle continuous; Enclosure IP 23 to IP 33 and as per customer specifications
+KEY FEATURES: Natural air cooling and forced air cooling; winding copper duly resin casted; cable boxes on HV and LV; painting shades as per IS and IEC standards; enclosure per customer specification possible; ready to install with standard accessories
+APPLICATIONS / INDUSTRIES: Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated
+STANDARDS & CERTIFICATIONS: Painting shades as per IS and IEC standards; specifications conform to relevant IS / BS & IEC Standards
+NOT IN DOCUMENT: kVA rating; efficiency/losses; type-test or certification details; item-specific applications
+
+SOURCE: Transformers_-_NIEL_Brochure.pdf
+PRODUCT: Containerised Secondary Substations (CSS)
+CATEGORY: substation
+RANGE: Houses distribution transformers up to 1250 KVA / 24 KV
+KEY SPECS: Degree of protection standard IP23D per IEC 60529; also stated "Meets IP53 / IP23"; optional IP54 door by including gaskets and excluding door ventilation openings; natural ventilation cooling; transformer oil-insulated hermetically sealed or oil-insulated with oil conservator; MV switchgear ABB SafeRing (Ring Main Unit) / SafePlus, sealed stainless steel tank, gas-insulated; LV switchboard built with ABB T products [partly unclear]; drawing shows dimensions 2100, 2000, 2950, 2850, 2100 mm (which is length/width/height not explicitly labelled; "ALL DIMENSIONS ARE IN mm")
+KEY FEATURES: Prefabricated unit with distribution transformer, MV switchgear, LV switchboard and connections; three compartments (MV switchgear, LV switchboard, transformer), operable from inside or outside; compartmentalized construction prevents accidental entry to energized areas; tailored configuration, customer-specific number of LV feeders; low power loss and low noise transformer; easy to install, delivery ready for commissioning
+APPLICATIONS / INDUSTRIES: High density, urban centres (stated as typical locations)
+STANDARDS & CERTIFICATIONS: Designed in accordance with IEC 61330; design conforms to IEC 62271 - 202; IP degrees per IEC 60529; type-tested equipment used for personal safety
+NOT IN DOCUMENT: Exact enclosure dimensions per model; efficiency/loss figures; MV switchgear ratings (kV/kA); LV switchboard ratings; weight; item-specific certification details
+
+PAGES READ: 4

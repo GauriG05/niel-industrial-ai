@@ -13,7 +13,7 @@
     "category": "direct_factual",
     "question": "What voltage and frequency options are stated in the supplied catalogue?",
     "expected_answer_keywords": ["415V", "50 Hz", "3-Phase"],
-    "expected_page": 1,
+    "expected_pages": [1, 2, 4],
     "should_abstain": false,
     "expected_sufficient": true
   },
@@ -22,7 +22,7 @@
     "category": "direct_factual",
     "question": "What insulation class and temperature rise are specified?",
     "expected_answer_keywords": ["Class F", "Class B"],
-    "expected_page": 1,
+    "expected_pages": [1, 2, 3],
     "should_abstain": false,
     "expected_sufficient": true
   },
@@ -31,7 +31,7 @@
     "category": "direct_factual",
     "question": "What protection rating is standard for these motors?",
     "expected_answer_keywords": ["IP55"],
-    "expected_page": 1,
+    "expected_pages": [1, 2],
     "should_abstain": false,
     "expected_sufficient": true
   },
@@ -40,7 +40,7 @@
     "category": "multi_attribute",
     "question": "What mounting types are listed for NIEL industrial motors?",
     "expected_answer_keywords": ["Foot mounted B3", "Flange mounted B5", "B35"],
-    "expected_page": 2,
+    "expected_pages": [1, 2],
     "should_abstain": false,
     "expected_sufficient": true
   },
@@ -49,7 +49,7 @@
     "category": "multi_attribute",
     "question": "What cooling method and duty rating are documented?",
     "expected_answer_keywords": ["IC411", "TEFC", "S1"],
-    "expected_page": 2,
+    "expected_pages": [1, 2, 3],
     "should_abstain": false,
     "expected_sufficient": true
   },

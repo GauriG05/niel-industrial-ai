@@ -28,6 +28,7 @@ RULES:
 3. GROUNDEDNESS: Only state facts supported by the evidence. If a specification, price, or product is not in the evidence, state clearly: "This specification is not documented in the available NIEL technical documentation."
 4. NO COMMERCIAL SPECULATION: Never invent prices, delivery dates, or stock availability. Advise contacting NIEL sales for commercial quotes.
 5. CITATIONS: Include source document and page number only if asked, or mention discreetly at the end.
+6. NO ASTERISKS: Never use markdown bold asterisks (**) anywhere in your reply. Use clean, plain text.
 """
 
 
@@ -77,11 +78,11 @@ class RAGService:
         if any(w in q_lower for w in ["what do you need for a quote", "request a quote", "need for a quote", "rfq requirements", "how to quote"]):
             return (
                 "To generate an authorized technical quotation, our sales engineering team requires:\n\n"
-                "1. **Equipment Category**: (e.g., IE3 Induction Motor, Power Transformer, MV Switchgear Panel, or Industrial Pump)\n"
-                "2. **Primary Operating Specs**: Power rating (kW/HP) or capacity (kVA/MVA), operating voltage (415V, 11kV, 33kV), and frequency (50 Hz)\n"
-                "3. **Duty & Environment**: Ambient temperature, mounting type (B3/B5/B35), duty cycle (S1), or fluid details for pumps\n"
-                "4. **Project Scope**: Delivery destination, required quantity, and single-line diagram (SLD) if applicable\n\n"
-                "You can email your technical requirements to **sales@newindiaelectricals.com** or call our office at **+91 80 42434343**.",
+                "1. Equipment Category: (e.g., IE3 Induction Motor, Power Transformer, MV Switchgear Panel, or Industrial Pump)\n"
+                "2. Primary Operating Specs: Power rating (kW/HP) or capacity (kVA/MVA), operating voltage (415V, 11kV, 33kV), and frequency (50 Hz)\n"
+                "3. Duty & Environment: Ambient temperature, mounting type (B3/B5/B35), duty cycle (S1), or fluid details for pumps\n"
+                "4. Project Scope: Delivery destination, required quantity, and single-line diagram (SLD) if applicable\n\n"
+                "You can email your technical requirements to sales@newindiaelectricals.com or call our office at +91 80 42434343.",
                 True,
                 False,
             )
@@ -89,11 +90,11 @@ class RAGService:
         if any(w in q_lower for w in ["talk to sales", "contact sales", "phone number", "reach us", "office address"]):
             return (
                 "You can contact the New India Electricals Ltd. sales and engineering team directly:\n\n"
-                "• **Head Office**: 1st Floor, Power House, #18, JC Road, Bangalore, Karnataka, India\n"
-                "• **Phone**: +91 80 42434343\n"
-                "• **Email**: sales@newindiaelectricals.com\n"
-                "• **Business Hours**: Monday – Saturday, 9:30 AM to 6:00 PM\n"
-                "• **Website**: [newindiaelectricals.com](https://newindiaelectricals.com/)",
+                "• Head Office: 1st Floor, Power House, #18, JC Road, Bangalore, Karnataka, India\n"
+                "• Phone: +91 80 42434343\n"
+                "• Email: sales@newindiaelectricals.com\n"
+                "• Business Hours: Monday – Saturday, 9:30 AM to 6:00 PM\n"
+                "• Website: https://newindiaelectricals.com/",
                 True,
                 False,
             )
@@ -128,11 +129,11 @@ class RAGService:
         if any(w in q_lower for w in ["what does niel make", "products", "portfolio", "what niel make"]):
             return (
                 "New India Electricals Ltd. (NIEL) manufactures and engineers a wide range of industrial electrical equipment, including:\n\n"
-                "• **Three-Phase AC & DC Induction Motors**: From 0.75 kW up to 315 kW in IE3 energy efficiency.\n"
-                "• **Distribution & Power Transformers**: Oil-insulated and dry-type units up to 1250 kVA and 33 kV.\n"
-                "• **Switchgear & Control Panels**: Medium-voltage (MV) panels, motor control centers (MCC), and power distribution boards.\n"
-                "• **Industrial Pumps**: Monoblock, open-well, self-priming, and vacuum pumps up to 275 m³/hr.\n"
-                "• **Substation Engineering**: Compact secondary substations (CSS) and turnkey industrial power systems.",
+                "• Three-Phase AC & DC Induction Motors: From 0.75 kW up to 315 kW in IE3 energy efficiency.\n"
+                "• Distribution & Power Transformers: Oil-insulated and dry-type units up to 1250 kVA and 33 kV.\n"
+                "• Switchgear & Control Panels: Medium-voltage (MV) panels, motor control centers (MCC), and power distribution boards.\n"
+                "• Industrial Pumps: Monoblock, open-well, self-priming, and vacuum pumps up to 275 m³/hr.\n"
+                "• Substation Engineering: Compact secondary substations (CSS) and turnkey industrial power systems.",
                 True,
                 False,
             )
@@ -140,12 +141,12 @@ class RAGService:
         if any(w in q_lower for w in ["pump", "pumps", "monoblock", "submersible", "vacuum pump"]):
             return (
                 "NIEL supplies an extensive range of industrial and utility pumps documented in the official pump portfolio:\n\n"
-                "• **End Suction Monoblock Pumps (GMCT / KDS+ / KDT+ / KS+)**: Capacity up to 260 m³/hr, head up to 102 m, power 0.37 kW to 22 kW.\n"
-                "• **Open Well Submersible Pumps (KOS+)**: Discharge up to 115 m³/hr, head up to 64 m, power 0.37 kW to 11 kW, 200–440V.\n"
-                "• **End Suction Process Pumps (KH / KHDT+)**: Capacity up to 68 m³/hr, head up to 104 m, power 0.25 kW to 15 kW.\n"
-                "• **Self-Priming Non-Clog Pumps (SP / SPM)**: Capacity up to 275 m³/hr, head up to 34 m, power 0.75 kW to 19.5 kW for sewage and slurry.\n"
-                "• **Vacuum Pumps (KV / DV)**: Vacuum up to 650 mm Hg, airflow up to 162 m³/hr, power 0.75 kW to 7.5 kW for industrial drying.\n"
-                "• **Borewell Submersible (Champion) & Vertical Multistage (IL)**: Heads up to 220–249 m with wetted parts in SS304/SS316.",
+                "• End Suction Monoblock Pumps (GMCT / KDS+ / KDT+ / KS+): Capacity up to 260 m³/hr, head up to 102 m, power 0.37 kW to 22 kW.\n"
+                "• Open Well Submersible Pumps (KOS+): Discharge up to 115 m³/hr, head up to 64 m, power 0.37 kW to 11 kW, 200–440V.\n"
+                "• End Suction Process Pumps (KH / KHDT+): Capacity up to 68 m³/hr, head up to 104 m, power 0.25 kW to 15 kW.\n"
+                "• Self-Priming Non-Clog Pumps (SP / SPM): Capacity up to 275 m³/hr, head up to 34 m, power 0.75 kW to 19.5 kW for sewage and slurry.\n"
+                "• Vacuum Pumps (KV / DV): Vacuum up to 650 mm Hg, airflow up to 162 m³/hr, power 0.75 kW to 7.5 kW for industrial drying.\n"
+                "• Borewell Submersible (Champion) & Vertical Multistage (IL): Heads up to 220–249 m with wetted parts in SS304/SS316.",
                 True,
                 False,
             )
@@ -153,10 +154,10 @@ class RAGService:
         if any(w in q_lower for w in ["transformer", "transformers"]):
             return (
                 "NIEL designs and manufactures Distribution and Power Transformers with the following key specifications:\n\n"
-                "• **Capacity & Voltage**: Ratings up to 1250 kVA in 11 kV, 22 kV, and 33 kV three-phase 50 Hz configurations.\n"
-                "• **Tap Changers**: Off-circuit tap changers (+5% to -10%) and On-load tap changers (+7% to -21% in 1.75% steps).\n"
-                "• **Insulation & Duty**: Class A insulation, continuous S1 duty, Vector group Dyn 11, with copper or aluminium winding.\n"
-                "• **Standards**: Fully compliant with IS 2026 and IEC 76 standards.",
+                "• Capacity & Voltage: Ratings up to 1250 kVA in 11 kV, 22 kV, and 33 kV three-phase 50 Hz configurations.\n"
+                "• Tap Changers: Off-circuit tap changers (+5% to -10%) and On-load tap changers (+7% to -21% in 1.75% steps).\n"
+                "• Insulation & Duty: Class A insulation, continuous S1 duty, Vector group Dyn 11, with copper or aluminium winding.\n"
+                "• Standards: Fully compliant with IS 2026 and IEC 76 standards.",
                 True,
                 False,
             )
@@ -172,10 +173,10 @@ class RAGService:
         if any(w in q_lower for w in ["industries", "industry", "sector", "steel", "clients"]):
             return (
                 "NIEL supplies electrical solutions to core heavy industries across India and overseas, including:\n\n"
-                "• **Steel & Metal Processing** (e.g., Bhuwalka Steel Industries, BMA Stainless)\n"
-                "• **Power Generation & Distribution Sub-stations**\n"
-                "• **Cement & Mining Plants**\n"
-                "• **Sugar Mills & Paper Manufacturing Facilities**",
+                "• Steel & Metal Processing (e.g., Bhuwalka Steel Industries, BMA Stainless)\n"
+                "• Power Generation & Distribution Sub-stations\n"
+                "• Cement & Mining Plants\n"
+                "• Sugar Mills & Paper Manufacturing Facilities",
                 True,
                 False,
             )
@@ -183,17 +184,17 @@ class RAGService:
         if any(w in q_lower for w in ["mounting", "cooling", "insulation", "voltage", "frequency", "protection", "duty"]):
             return (
                 "NIEL industrial motors feature:\n\n"
-                "• **Voltage & Frequency**: 415V, 50 Hz, 3-Phase AC supply.\n"
-                "• **Mounting Types**: Foot mounted B3, Flange mounted B5, and Foot-cum-flange B35.\n"
-                "• **Protection & Cooling**: IP55 protection, Totally Enclosed Fan Cooled (TEFC - IC411).\n"
-                "• **Insulation & Duty**: Class F insulation with Class B temperature rise limit for continuous S1 duty.",
+                "• Voltage & Frequency: 415V, 50 Hz, 3-Phase AC supply.\n"
+                "• Mounting Types: Foot mounted B3, Flange mounted B5, and Foot-cum-flange B35.\n"
+                "• Protection & Cooling: IP55 protection, Totally Enclosed Fan Cooled (TEFC - IC411).\n"
+                "• Insulation & Duty: Class F insulation with Class B temperature rise limit for continuous S1 duty.",
                 True,
                 False,
             )
 
         if any(w in q_lower for w in ["power", "kw", "hp", "capacity", "rating", "ratings"]):
             return (
-                "NIEL Three-Phase Induction Motors (NIEL-IM-Series) are documented from **0.75 kW to 315 kW** in IE3 Premium Efficiency, "
+                "NIEL Three-Phase Induction Motors (NIEL-IM-Series) are documented from 0.75 kW to 315 kW in IE3 Premium Efficiency, "
                 "rated for 415V, 3-Phase, 50 Hz industrial power supply.",
                 True,
                 False,
@@ -286,6 +287,7 @@ class RAGService:
                 question=question,
                 retrieved_chunks=retrieved_chunks,
             )
+            answer_text = answer_text.replace("**", "")
             return ChatResponse(
                 answer=answer_text,
                 citations=valid_citations if sufficient else [],
@@ -320,7 +322,7 @@ class RAGService:
                     {"role": "user", "content": user_prompt},
                 ],
             )
-            answer_text = completion.choices[0].message.content or ""
+            answer_text = (completion.choices[0].message.content or "").replace("**", "")
             
             p_tokens = completion.usage.prompt_tokens if completion.usage else 0
             c_tokens = completion.usage.completion_tokens if completion.usage else 0

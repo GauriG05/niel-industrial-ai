@@ -388,7 +388,8 @@
     const msg = document.createElement('div');
     msg.className = `niel-msg niel-msg-${sender}`;
 
-    let html = `<p>${text.replace(/\\n/g, '<br/>')}</p>`;
+    const cleanText = text.replace(/\*\*/g, '');
+    let html = `<p>${cleanText.replace(/\n/g, '<br/>')}</p>`;
 
     if (sender === 'assistant' && data) {
       if (data.evidence_sufficient === true) {

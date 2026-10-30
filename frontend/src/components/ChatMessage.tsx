@@ -16,9 +16,14 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
       <div className="niel-msg-bubble-container">
         <div className={`niel-msg-bubble ${message.isError ? 'niel-msg-error' : ''}`}>
           <div className="niel-msg-text">
-            {message.text.split('\n').map((line, i) => (
-              <p key={i} style={{ marginBottom: line ? '6px' : '0' }}>{line}</p>
-            ))}
+            {message.text.split('\n').map((line, i) => {
+              const cleanLine = line.replace(/\*\*/g, '');
+              return (
+                <p key={i} style={{ marginBottom: cleanLine ? '6px' : '0' }}>
+                  {cleanLine}
+                </p>
+              );
+            })}
           </div>
 
           {/* Verified Evidence Footer (Discreet, clean, professional) */}

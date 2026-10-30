@@ -1,10 +1,10 @@
-/* NIEL Industrial Intelligence AI - Exact Brand & UI Match */
+/* NIEL Industrial Intelligence AI - Exact Brand & UI Match with Website 'Enquire Now' Style Side-Tab */
 
 :root {
   --niel-yellow: #f59e0b;
   --niel-yellow-hover: #d97706;
   --niel-green: #22c55e;
-  --niel-bg: #9ca3af;
+  --niel-bg: #4b5563;
   --niel-white: #ffffff;
   --niel-dark: #1f2937;
   --niel-gray-text: #4b5563;
@@ -23,8 +23,8 @@
 body {
   font-family: var(--niel-font);
   background-color: var(--niel-bg);
-  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
   color: var(--niel-dark);
   line-height: 1.5;
   display: flex;
@@ -32,6 +32,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 /* Master Viewport Container */
@@ -44,6 +45,45 @@ body {
   justify-content: center;
 }
 
+/* Vertical Side Tab (Matching the NIEL official "Enquire Now" tab on the right edge) */
+.niel-side-tab-launcher {
+  position: fixed;
+  right: 0;
+  top: 48%;
+  transform: translateY(-50%);
+  background-color: var(--niel-yellow);
+  color: #000000;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  padding: 16px 8px;
+  cursor: pointer;
+  box-shadow: -3px 4px 14px rgba(0, 0, 0, 0.25);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s;
+}
+
+.niel-side-tab-launcher:hover {
+  background-color: var(--niel-yellow-hover);
+  transform: translateY(-50%) translateX(-2px);
+}
+
+.niel-side-tab-launcher.active {
+  box-shadow: -4px 6px 18px rgba(245, 158, 11, 0.45);
+}
+
+.niel-side-tab-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
 /* The Main Floating Dialog Card */
 .niel-dialog-card {
   width: 100%;
@@ -51,12 +91,12 @@ body {
   max-height: 85vh;
   background: var(--niel-white);
   border-radius: 20px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  animation: nielPopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: nielPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 10;
 }
 
@@ -466,8 +506,5 @@ body {
     max-height: 100vh;
     border-radius: 0;
     max-width: 100%;
-  }
-  .niel-floating-launcher {
-    display: none;
   }
 }

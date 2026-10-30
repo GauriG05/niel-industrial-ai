@@ -3,147 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New India Electricals Ltd. - Integration Test Simulation</title>
-  <!-- Simulating Host Website CSS (Bootstrap / Custom Styles) -->
+  <title>New India Electricals Ltd. - Official Integration Simulation</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f6f9;
-      color: #333;
-    }
-    header {
-      background: #002244;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: #0b1329;
       color: #ffffff;
-      padding: 16px 40px;
+      overflow-x: hidden;
+    }
+    /* Top Bar */
+    .top-bar {
+      background: #111a36;
+      color: #d1d5db;
+      padding: 8px 40px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .top-bar a { color: #f59e0b; text-decoration: none; }
+
+    /* Navigation */
+    header {
+      background: #ffffff;
+      color: #1f2937;
+      padding: 14px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    .logo {
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 0.5px;
+      color: #111827;
+      letter-spacing: -0.5px;
     }
+    .logo-container img { height: 32px; }
     nav a {
-      color: #ffffff;
+      color: #374151;
       text-decoration: none;
-      margin-left: 20px;
+      margin: 0 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    nav a:hover { color: #f59e0b; }
+    .reach-us {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      color: #111827;
       font-size: 14px;
     }
+
+    /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #003366, #001a33);
-      color: white;
-      padding: 80px 40px;
-      text-align: center;
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 80px;
+      background: linear-gradient(rgba(11, 19, 41, 0.75), rgba(11, 19, 41, 0.85)),
+                  url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80') center/cover;
     }
     .hero h1 {
-      font-size: 38px;
-      margin-bottom: 16px;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 800px;
+      margin-bottom: 20px;
+      border-bottom: 4px solid #f59e0b;
+      padding-bottom: 16px;
+      display: inline-block;
     }
     .hero p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto 30px auto;
-      opacity: 0.9;
+      font-size: 20px;
+      max-width: 680px;
+      color: #e5e7eb;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .product-card {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
-    .product-card h3 {
-      color: #003366;
-      margin-top: 0;
-    }
-    .badge {
-      display: inline-block;
-      background: #e0f2fe;
-      color: #0284c7;
-      padding: 4px 8px;
+    .hero-btn {
+      background: #f59e0b;
+      color: #000000;
+      font-weight: 700;
+      border: none;
+      padding: 14px 28px;
       border-radius: 4px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 12px;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 24px;
-      margin-top: 60px;
-      font-size: 13px;
+
+    /* Floating WhatsApp Pill */
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      background: #25d366;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 999;
     }
   </style>
 </head>
 <body>
 
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div>📍 Office: 1st Floor, Power House, #18, JC Road, Bangalore • ⏰ Mon-Sat: 9:30 am - 6:00 pm</div>
+    <div>Follow Us: in • fb • yt</div>
+  </div>
+
+  <!-- Header -->
   <header>
-    <div class="logo">NEW INDIA ELECTRICALS LTD.</div>
+    <div class="logo-container">
+      <img src="../frontend/public/niel-logo.jpg" alt="NIEL Logo" />
+      <span><strong>new india</strong> electricals</span>
+    </div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Motors & Pumps</a>
-      <a href="#">Transformers</a>
-      <a href="#">Switchgear</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Blog</a>
+      <a href="#">Stock Inventory</a>
       <a href="#">Contact Us</a>
     </nav>
+    <div class="reach-us">
+      📞 Reach Us: +91 80 42434343
+    </div>
   </header>
 
+  <!-- Hero Banner matching exact website image -->
   <div class="hero">
-    <h1>Industrial Electrical Intelligence</h1>
-    <p>Engineered for high performance, reliability, and continuous duty in harsh industrial environments across India.</p>
+    <h1>Engineering Excellence Globally</h1>
+    <p>Enabling stability and operational continuity through reliable equipment, experienced people and a standardised system.</p>
+    <button class="hero-btn">KNOW MORE ➔</button>
   </div>
 
-  <div class="container">
-    <h2>Featured Industrial Portfolios</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <span class="badge">Standard Efficiency</span>
-        <h3>Three Phase Induction Motors</h3>
-        <p>IE3 premium efficiency cast-iron motors spanning 0.75 kW to 315 kW with IP55 protection rating and Class F insulation.</p>
-      </div>
-      <div class="product-card">
-        <span class="badge">Industrial Fluid</span>
-        <h3>Submersible & Dewatering Pumps</h3>
-        <p>Engineered for effluent treatment, mining dewatering, and municipal wastewater applications.</p>
-      </div>
-      <div class="product-card">
-        <span class="badge">Power Distribution</span>
-        <h3>Distribution & Power Transformers</h3>
-        <p>Oil-immersed and dry-type transformers compliant with national and international standard specifications.</p>
-      </div>
-    </div>
+  <!-- WhatsApp Simulation -->
+  <div class="whatsapp-float" title="WhatsApp Us">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
   </div>
-
-  <footer>
-    &copy; 2026 New India Electricals Ltd. All rights reserved. • Simulated Elementor Integration Sandbox
-  </footer>
 
   <!-- ========================================================================= -->
-  <!-- NIEL AI CHATBOT WIDGET INTEGRATION SNIPPET (Option A: Shadow DOM Embed)  -->
+  <!-- NIEL AI CHATBOT WIDGET INTEGRATION (Vertical Edge Tab matching "Enquire Now") -->
   <!-- ========================================================================= -->
   <script>
     window.NIEL_AI_CONFIG = {
       apiBase: 'http://127.0.0.1:8000',
-      title: 'NIEL Industrial Assistant',
-      subtitle: 'Official Datasheet AI',
-      position: 'bottom-right'
+      tabText: 'Ask NIEL AI',
+      brandColor: '#f59e0b'
     };
   </script>
   <script src="../widget/niel-widget.js"></script>
 
 </body>
 </html>
-

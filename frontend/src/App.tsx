@@ -13,6 +13,7 @@ export const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [adminOpen, setAdminOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const chatBottomRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -69,117 +70,129 @@ export const App: React.FC = () => {
 
   return (
     <div className="niel-viewport-container">
+      {/* Pinned Vertical Side Tab matching website's "Enquire Now" tab */}
+      <button
+        type="button"
+        className={`niel-side-tab-launcher ${isOpen ? 'active' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+        title="Ask NIEL AI Assistant"
+      >
+        <span className="niel-side-tab-text">Ask NIEL AI</span>
+      </button>
+
       {/* The Floating Modal Dialog Box matching exact screenshot */}
-      <div className="niel-dialog-card">
-        {/* Header */}
-        <div className="niel-dialog-header">
-          <div className="niel-header-brand-column">
-            <div className="niel-header-logo-row">
-              <img
-                src={logoImg}
-                alt="NIEL Logo"
-                className="niel-official-logo"
+      {isOpen && (
+        <div className="niel-dialog-card">
+          {/* Header */}
+          <div className="niel-dialog-header">
+            <div className="niel-header-brand-column">
+              <div className="niel-header-logo-row">
+                <img
+                  src={logoImg}
+                  alt="NIEL Logo"
+                  className="niel-official-logo"
+                />
+                <span className="niel-header-text">
+                  <span className="niel-text-bold">new india</span>{' '}
+                  <span className="niel-text-light">electricals</span>
+                </span>
+              </div>
+              <div className="niel-header-status-row">
+                <span className="niel-green-dot"></span>
+                <span className="niel-status-caption">Product & sales support</span>
+              </div>
+            </div>
+
+            <div className="niel-header-actions-group">
+              <button
+                type="button"
+                className="niel-action-icon-btn"
+                onClick={() => setAdminOpen(true)}
+                title="Manage Technical Documents"
+              >
+                <Shield size={16} />
+              </button>
+              <button
+                type="button"
+                className="niel-action-icon-btn"
+                onClick={handleReset}
+                title="Reset conversation"
+              >
+                <RotateCcw size={16} />
+              </button>
+              <button
+                type="button"
+                className="niel-action-icon-btn niel-close-x"
+                onClick={() => setIsOpen(false)}
+                title="Close chat"
+              >
+                <X size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* Conversation Stream */}
+          <div className="niel-dialog-body">
+            {/* Welcoming bubble matching exact screenshot text */}
+            <div className="niel-greeting-bubble">
+              <p>
+                I'm NIEL Assistant. I can help you explore our electrical products,
+                understand specifications, and connect you with our team. What can I
+                help you with today?
+              </p>
+            </div>
+
+            {/* Quick Action Pills matching exact screenshot */}
+            <ExamplePrompts onSelectPrompt={(p) => handleSend(p)} disabled={loading} />
+
+            {/* Chat History Messages */}
+            {messages.map((msg) => (
+              <ChatMessage key={msg.id} message={msg} />
+            ))}
+
+            {/* Typing Indicator */}
+            {loading && (
+              <div className="niel-typing-bubble">
+                <span className="niel-dot"></span>
+                <span className="niel-dot"></span>
+                <span className="niel-dot"></span>
+              </div>
+            )}
+
+            <div ref={chatBottomRef} />
+          </div>
+
+          {/* Input Box matching yellow border & yellow send button */}
+          <form
+            className="niel-dialog-footer"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSend();
+            }}
+          >
+            <div className="niel-input-gold-container">
+              <input
+                type="text"
+                className="niel-gold-input"
+                placeholder="Type your question..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                maxLength={500}
+                disabled={loading}
+                autoFocus
               />
-              <span className="niel-header-text">
-                <span className="niel-text-bold">new india</span>{' '}
-                <span className="niel-text-light">electricals</span>
-              </span>
+              <button
+                type="submit"
+                className="niel-gold-send-btn"
+                disabled={!input.trim() || loading}
+                aria-label="Send message"
+              >
+                <Send size={16} color="#000000" />
+              </button>
             </div>
-            <div className="niel-header-status-row">
-              <span className="niel-green-dot"></span>
-              <span className="niel-status-caption">Product & sales support</span>
-            </div>
-          </div>
-
-          <div className="niel-header-actions-group">
-            <button
-              type="button"
-              className="niel-action-icon-btn"
-              onClick={() => setAdminOpen(true)}
-              title="Manage Technical Documents"
-            >
-              <Shield size={16} />
-            </button>
-            <button
-              type="button"
-              className="niel-action-icon-btn"
-              onClick={handleReset}
-              title="Reset conversation"
-            >
-              <RotateCcw size={16} />
-            </button>
-            <button
-              type="button"
-              className="niel-action-icon-btn niel-close-x"
-              onClick={handleReset}
-              title="Clear"
-            >
-              <X size={20} />
-            </button>
-          </div>
+          </form>
         </div>
-
-        {/* Conversation Stream */}
-        <div className="niel-dialog-body">
-          {/* Welcoming bubble matching exact screenshot text */}
-          <div className="niel-greeting-bubble">
-            <p>
-              I'm NIEL Assistant. I can help you explore our electrical products,
-              understand specifications, and connect you with our team. What can I
-              help you with today?
-            </p>
-          </div>
-
-          {/* Quick Action Pills matching exact screenshot */}
-          <ExamplePrompts onSelectPrompt={(p) => handleSend(p)} disabled={loading} />
-
-          {/* Chat History Messages */}
-          {messages.map((msg) => (
-            <ChatMessage key={msg.id} message={msg} />
-          ))}
-
-          {/* Typing Indicator */}
-          {loading && (
-            <div className="niel-typing-bubble">
-              <span className="niel-dot"></span>
-              <span className="niel-dot"></span>
-              <span className="niel-dot"></span>
-            </div>
-          )}
-
-          <div ref={chatBottomRef} />
-        </div>
-
-        {/* Input Box matching yellow border & yellow send button */}
-        <form
-          className="niel-dialog-footer"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSend();
-          }}
-        >
-          <div className="niel-input-gold-container">
-            <input
-              type="text"
-              className="niel-gold-input"
-              placeholder="Type your question..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              maxLength={500}
-              disabled={loading}
-              autoFocus
-            />
-            <button
-              type="submit"
-              className="niel-gold-send-btn"
-              disabled={!input.trim() || loading}
-              aria-label="Send message"
-            >
-              <Send size={16} color="#000000" />
-            </button>
-          </div>
-        </form>
-      </div>
+      )}
 
       {/* Admin Document Management Modal */}
       <AdminModal isOpen={adminOpen} onClose={() => setAdminOpen(false)} />

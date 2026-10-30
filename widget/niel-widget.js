@@ -1,6 +1,7 @@
 /**
  * NIEL Industrial Intelligence AI - Embeddable Chat Widget
- * Pixel-perfect match for New India Electricals Ltd. brand identity.
+ * Pixel-perfect match for New India Electricals Ltd. website.
+ * Features the signature vertical yellow side-tab ("Ask NIEL AI") matching the "Enquire Now" tab.
  */
 
 (function () {
@@ -11,10 +12,10 @@
 
   const DEFAULT_CONFIG = {
     apiBase: 'http://127.0.0.1:8000',
+    tabText: 'Ask NIEL AI',
     brandName: 'new india electricals',
     subTitle: 'Product & sales support',
     brandColor: '#f59e0b',
-    position: 'bottom-right',
   };
 
   const config = Object.assign({}, DEFAULT_CONFIG, window.NIEL_AI_CONFIG || {});
@@ -37,66 +38,75 @@
       font-size: 14px;
       line-height: 1.5;
       z-index: 999999;
-      position: fixed;
-      ${config.position === 'bottom-left' ? 'left: 24px;' : 'right: 24px;'}
-      bottom: 24px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Launcher Button (Yellow brand icon) */
-    .niel-launcher {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid var(--brand-yellow);
+    /* Vertical Side Tab Launcher matching "Enquire Now" */
+    .niel-side-tab {
+      position: fixed;
+      right: 0;
+      top: 48%;
+      transform: translateY(-50%);
+      background-color: var(--brand-yellow);
+      color: #000000;
+      border: none;
+      border-radius: 6px 0 0 6px;
+      padding: 18px 8px;
       cursor: pointer;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      box-shadow: -3px 4px 14px rgba(0, 0, 0, 0.25);
+      z-index: 999999;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s;
     }
 
-    .niel-launcher:hover {
-      transform: scale(1.08);
+    .niel-side-tab:hover {
+      background-color: var(--brand-yellow-hover);
+      transform: translateY(-50%) translateX(-2px);
     }
 
-    .niel-launcher svg {
-      width: 30px;
-      height: 30px;
+    .niel-side-tab-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+      text-transform: uppercase;
     }
 
-    /* Floating Panel */
+    /* Floating Dialog Card */
     .niel-panel {
-      position: absolute;
-      ${config.position === 'bottom-left' ? 'left: 0;' : 'right: 0;'}
-      bottom: 72px;
-      width: 440px;
-      height: 580px;
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      width: 480px;
+      height: 600px;
       max-width: calc(100vw - 36px);
-      max-height: calc(100vh - 90px);
+      max-height: calc(100vh - 60px);
       background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.26);
       display: none;
       flex-direction: column;
       overflow: hidden;
       border: 1px solid rgba(0, 0, 0, 0.08);
-      animation: nielSlideIn 0.22s ease-out;
+      animation: nielPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 999998;
     }
 
     .niel-panel.open { display: flex; }
 
-    @keyframes nielSlideIn {
-      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    @keyframes nielPopIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.97); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* Header */
     .niel-header {
-      padding: 16px 20px 12px 20px;
+      padding: 18px 22px 14px 22px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -108,9 +118,9 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       color: #111827;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
     }
 
     .niel-brand-title strong { font-weight: 700; }
@@ -122,6 +132,7 @@
       font-size: 0.78rem;
       color: var(--text-muted);
       margin-top: 2px;
+      margin-left: 2px;
     }
 
     .niel-status-dot {
@@ -139,61 +150,63 @@
       cursor: pointer;
       padding: 4px;
       display: flex;
+      border-radius: 4px;
     }
-    .niel-close-btn:hover { color: #ef4444; }
+    .niel-close-btn:hover { color: #ef4444; background: #fef2f2; }
 
     /* Conversation Body */
     .niel-messages {
       flex: 1;
       overflow-y: auto;
-      padding: 18px 20px;
+      padding: 20px 22px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       background: #ffffff;
     }
 
     .niel-greeting {
       border: 1px solid var(--border-gray);
-      border-radius: 14px;
-      padding: 14px 18px;
-      font-size: 13.5px;
+      border-radius: 16px;
+      padding: 16px 20px;
+      font-size: 0.94rem;
       color: #374151;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* Action Pills */
     .niel-pills-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin: 2px 0 6px 0;
+      gap: 8px;
     }
 
     .niel-pill {
       background: #ffffff;
       border: 1px solid #d1d5db;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 9999px;
-      font-size: 12px;
+      font-size: 13px;
       color: #374151;
       cursor: pointer;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
     .niel-pill:hover {
       background: #f9fafb;
       border-color: #9ca3af;
       color: #111827;
+      transform: translateY(-1px);
     }
 
     /* Messages */
     .niel-msg {
       max-width: 88%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 13px;
-      line-height: 1.5;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      line-height: 1.55;
     }
 
     .niel-msg-user {
@@ -242,7 +255,7 @@
 
     /* Input Bar with Yellow outline & yellow send button */
     .niel-footer {
-      padding: 14px 20px 18px 20px;
+      padding: 14px 22px 20px 22px;
       background: #ffffff;
     }
 
@@ -250,9 +263,14 @@
       display: flex;
       align-items: center;
       border: 2px solid var(--brand-yellow);
-      border-radius: 12px;
-      padding: 3px 5px 3px 14px;
+      border-radius: 14px;
+      padding: 3px 5px 3px 16px;
       background: #ffffff;
+      transition: box-shadow 0.2s;
+    }
+
+    .niel-input-box:focus-within {
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
     }
 
     .niel-input {
@@ -263,31 +281,42 @@
       font-family: inherit;
       color: #111827;
       background: transparent;
+      padding: 8px 0;
     }
 
     .niel-send-btn {
-      width: 34px;
-      height: 34px;
+      width: 38px;
+      height: 38px;
       background: var(--brand-yellow);
       color: #000000;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.15s, transform 0.1s;
     }
 
-    .niel-send-btn:hover { background: var(--brand-yellow-hover); }
+    .niel-send-btn:hover {
+      background: var(--brand-yellow-hover);
+      transform: scale(1.04);
+    }
   `;
 
   const template = `
     <style>${styles}</style>
+
+    <!-- Side-Tab Launcher matching "Enquire Now" -->
+    <button type="button" class="niel-side-tab" id="sideTabBtn" aria-label="Open NIEL AI Assistant">
+      <span class="niel-side-tab-text">${config.tabText}</span>
+    </button>
+
     <div class="niel-panel" id="panel">
       <div class="niel-header">
         <div>
           <div class="niel-brand-title">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C12 7.5 15.5 4 19 6C20.5 7.5 20.5 11 16 12M12 12C8 14 4.5 16.5 4 20C4.5 21.5 8 21.5 12 17M12 12C10 7.5 6.5 4.5 3 5C2 6.5 3.5 10 8 12" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2.5" fill="#f59e0b"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12C12 7.5 15.5 4 19 6C20.5 7.5 20.5 11 16 12M12 12C8 14 4.5 16.5 4 20C4.5 21.5 8 21.5 12 17M12 12C10 7.5 6.5 4.5 3 5C2 6.5 3.5 10 8 12" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2.5" fill="#f59e0b"/></svg>
             <span><strong>new india</strong> electricals</span>
           </div>
           <div class="niel-status-line">
@@ -296,7 +325,7 @@
           </div>
         </div>
         <button type="button" class="niel-close-btn" id="closeBtn" aria-label="Close">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
 
@@ -328,16 +357,12 @@
         </div>
       </form>
     </div>
-
-    <button type="button" class="niel-launcher" id="launcherBtn" aria-label="Open NIEL Assistant">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 12C12 7.5 15.5 4 19 6C20.5 7.5 20.5 11 16 12M12 12C8 14 4.5 16.5 4 20C4.5 21.5 8 21.5 12 17M12 12C10 7.5 6.5 4.5 3 5C2 6.5 3.5 10 8 12" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2.5" fill="#f59e0b"/></svg>
-    </button>
   `;
 
   shadow.innerHTML = template;
 
   const panel = shadow.getElementById('panel');
-  const launcherBtn = shadow.getElementById('launcherBtn');
+  const sideTabBtn = shadow.getElementById('sideTabBtn');
   const closeBtn = shadow.getElementById('closeBtn');
   const chatForm = shadow.getElementById('chatForm');
   const chatInput = shadow.getElementById('chatInput');
@@ -356,7 +381,7 @@
     }
   }
 
-  launcherBtn.addEventListener('click', () => togglePanel());
+  sideTabBtn.addEventListener('click', () => togglePanel());
   closeBtn.addEventListener('click', () => togglePanel(false));
 
   function appendMessage(text, sender, data) {

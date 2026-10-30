@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New India Electricals Ltd. - Integration Test Simulation</title>
+  <!-- Simulating Host Website CSS (Bootstrap / Custom Styles) -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: #002244;
+      color: #ffffff;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #003366, #001a33);
+      color: white;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .product-card h3 {
+      color: #003366;
+      margin-top: 0;
+    }
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0284c7;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 24px;
+      margin-top: 60px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">NEW INDIA ELECTRICALS LTD.</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Motors & Pumps</a>
+      <a href="#">Transformers</a>
+      <a href="#">Switchgear</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Industrial Electrical Intelligence</h1>
+    <p>Engineered for high performance, reliability, and continuous duty in harsh industrial environments across India.</p>
+  </div>
+
+  <div class="container">
+    <h2>Featured Industrial Portfolios</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="badge">Standard Efficiency</span>
+        <h3>Three Phase Induction Motors</h3>
+        <p>IE3 premium efficiency cast-iron motors spanning 0.75 kW to 315 kW with IP55 protection rating and Class F insulation.</p>
+      </div>
+      <div class="product-card">
+        <span class="badge">Industrial Fluid</span>
+        <h3>Submersible & Dewatering Pumps</h3>
+        <p>Engineered for effluent treatment, mining dewatering, and municipal wastewater applications.</p>
+      </div>
+      <div class="product-card">
+        <span class="badge">Power Distribution</span>
+        <h3>Distribution & Power Transformers</h3>
+        <p>Oil-immersed and dry-type transformers compliant with national and international standard specifications.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 New India Electricals Ltd. All rights reserved. • Simulated Elementor Integration Sandbox
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- NIEL AI CHATBOT WIDGET INTEGRATION SNIPPET (Option A: Shadow DOM Embed)  -->
+  <!-- ========================================================================= -->
+  <script>
+    window.NIEL_AI_CONFIG = {
+      apiBase: 'http://127.0.0.1:8000',
+      title: 'NIEL Industrial Assistant',
+      subtitle: 'Official Datasheet AI',
+      position: 'bottom-right'
+    };
+  </script>
+  <script src="../widget/niel-widget.js"></script>
+
+</body>
+</html>

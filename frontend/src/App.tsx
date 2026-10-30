@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, Shield, RotateCcw } from 'lucide-react';
+import { Send, X } from 'lucide-react';
 import { Message } from './types';
 import { askQuestion } from './services/api';
 import { ChatMessage } from './components/ChatMessage';
 import { ExamplePrompts } from './components/ExamplePrompts';
-import { AdminModal } from './components/AdminModal';
 import logoImg from './assets/niel-logo.jpg';
 import './App.css';
 
@@ -12,7 +11,6 @@ export const App: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [adminOpen, setAdminOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const chatBottomRef = useRef<HTMLDivElement>(null);
 
@@ -64,10 +62,6 @@ export const App: React.FC = () => {
     }
   };
 
-  const handleReset = () => {
-    setMessages([]);
-  };
-
   return (
     <div className="niel-viewport-container">
       {/* Pinned Vertical Side Tab matching website's "Enquire Now" tab */}
@@ -83,7 +77,7 @@ export const App: React.FC = () => {
       {/* The Floating Modal Dialog Box matching exact screenshot */}
       {isOpen && (
         <div className="niel-dialog-card">
-          {/* Header */}
+          {/* Header matching exact mockup */}
           <div className="niel-dialog-header">
             <div className="niel-header-brand-column">
               <div className="niel-header-logo-row">
@@ -103,23 +97,8 @@ export const App: React.FC = () => {
               </div>
             </div>
 
+            {/* Only the clean X close button */}
             <div className="niel-header-actions-group">
-              <button
-                type="button"
-                className="niel-action-icon-btn"
-                onClick={() => setAdminOpen(true)}
-                title="Manage Technical Documents"
-              >
-                <Shield size={16} />
-              </button>
-              <button
-                type="button"
-                className="niel-action-icon-btn"
-                onClick={handleReset}
-                title="Reset conversation"
-              >
-                <RotateCcw size={16} />
-              </button>
               <button
                 type="button"
                 className="niel-action-icon-btn niel-close-x"
@@ -193,9 +172,6 @@ export const App: React.FC = () => {
           </form>
         </div>
       )}
-
-      {/* Admin Document Management Modal */}
-      <AdminModal isOpen={adminOpen} onClose={() => setAdminOpen(false)} />
     </div>
   );
 };

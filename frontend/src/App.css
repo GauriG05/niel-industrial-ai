@@ -426,35 +426,6 @@ body {
   cursor: not-allowed;
 }
 
-/* Floating Circular Launcher Button */
-.niel-floating-launcher {
-  position: absolute;
-  right: -24px;
-  bottom: 120px;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--niel-yellow);
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-  transition: transform 0.2s;
-}
-
-.niel-floating-launcher:hover {
-  transform: scale(1.08);
-}
-
-.niel-launcher-icon {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-
 /* Typing Indicator */
 .niel-typing-bubble {
   display: inline-flex;

@@ -3,7 +3,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from backend.app.config import Settings, get_settings
 from backend.app.schemas.chat import ChatRequest, ChatResponse
-from backend.app.services.rag_service import get_rag_service
+from backend.app.agent.orchestrator import get_agent_orchestrator
 from backend.app.security.rate_limiter import rate_limit_guard
 
 router = APIRouter(prefix="/chat", tags=["Chat"])
@@ -15,8 +15,9 @@ def ask_question(
     settings: Settings = Depends(get_settings),
 ):
     """
-    Submit a technical question to the NIEL Industrial Intelligence Assistant.
-    Answers are strictly grounded in indexed product documents with verifiable citations.
+    Submit a customer question to the NIEL Agentic AI Customer Support System.
+    The agent classifies intent, executes appropriate support/sales tools,
+    and returns answers strictly grounded in indexed product documents.
     """
     clean_question = request.question.strip()
     if len(clean_question) > settings.MAX_QUESTION_LENGTH:
@@ -25,12 +26,13 @@ def ask_question(
             detail=f"Question exceeds maximum allowed length of {settings.MAX_QUESTION_LENGTH} characters.",
         )
 
-    rag_service = get_rag_service()
-    response = rag_service.answer_question(
+    orchestrator = get_agent_orchestrator()
+    response = orchestrator.handle_request(
         question=clean_question,
         top_k=request.top_k or settings.MAX_RETRIEVAL_CHUNKS,
         conversation_history=request.conversation_history,
         session_id=request.session_id,
+        customer_id=request.customer_id,
     )
     return response
 

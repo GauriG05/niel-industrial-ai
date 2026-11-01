@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, UserCheck } from 'lucide-react';
+import { Send, X, UserCheck, Shield } from 'lucide-react';
 import { Message, ChatTurn } from './types';
 import { askQuestion } from './services/api';
 import { ChatMessage } from './components/ChatMessage';
 import { ExamplePrompts } from './components/ExamplePrompts';
+import { AdminModal } from './components/AdminModal';
 import logoImg from './assets/niel-logo.jpg';
 import './App.css';
 
@@ -22,6 +23,7 @@ export const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [humanActive, setHumanActive] = useState(false);
   const [wsConnected, setWsConnected] = useState(false);
 
@@ -226,7 +228,7 @@ export const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Header actions: Escalate button + close X */}
+            {/* Header actions: Escalate button + Admin Dashboard + close X */}
             <div className="niel-header-actions-group">
               {!humanActive && (
                 <button
@@ -240,6 +242,14 @@ export const App: React.FC = () => {
                   <span>Talk to a human</span>
                 </button>
               )}
+              <button
+                type="button"
+                className="niel-action-icon-btn"
+                onClick={() => setIsAdminOpen(true)}
+                title="Support & Admin Dashboard"
+              >
+                <Shield size={16} />
+              </button>
               <button
                 type="button"
                 className="niel-action-icon-btn niel-close-x"
@@ -313,6 +323,9 @@ export const App: React.FC = () => {
           </form>
         </div>
       )}
+
+      {/* Agent & Support Operations Dashboard Modal */}
+      <AdminModal isOpen={isAdminOpen} onClose={() => setIsAdminOpen(false)} />
     </div>
   );
 };

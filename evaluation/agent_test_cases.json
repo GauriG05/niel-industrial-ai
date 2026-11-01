@@ -1,0 +1,96 @@
+[
+  {
+    "id": "AGT-01",
+    "category": "safety_hazard",
+    "query": "The 75kW motor is smoking and emitting sparks from the junction box!",
+    "expected_intent": "TECHNICAL_SUPPORT",
+    "expected_tool": "escalate_to_human",
+    "expected_escalated": true,
+    "expected_ticket": true,
+    "expected_keywords": [
+      "CRITICAL SAFETY WARNING",
+      "isolate power"
+    ]
+  },
+  {
+    "id": "AGT-02",
+    "category": "explicit_escalation",
+    "query": "Please connect me to a human support engineer right now.",
+    "expected_intent": "HUMAN_SUPPORT_REQUEST",
+    "expected_tool": "escalate_to_human",
+    "expected_escalated": true,
+    "expected_keywords": [
+      "connected",
+      "human",
+      "engineer"
+    ]
+  },
+  {
+    "id": "AGT-03",
+    "category": "quotation_rfq",
+    "query": "We require a price quote for 10 units of 110kW IE3 industrial motors for our cement mill.",
+    "expected_intent": "QUOTATION_REQUEST",
+    "expected_tool": "create_sales_lead",
+    "expected_lead": true,
+    "expected_keywords": [
+      "Sales Lead",
+      "quote",
+      "commercial"
+    ]
+  },
+  {
+    "id": "AGT-04",
+    "category": "complaint_defect",
+    "query": "Our 2000kVA transformer has a broken drain valve and is leaking cooling oil.",
+    "expected_intent": "COMPLAINT",
+    "expected_tool": "create_support_ticket",
+    "expected_ticket": true,
+    "expected_keywords": [
+      "support ticket",
+      "registered"
+    ]
+  },
+  {
+    "id": "AGT-05",
+    "category": "product_recommendation",
+    "query": "Which motor model and efficiency class do you recommend for continuous pump duty?",
+    "expected_intent": "PRODUCT_RECOMMENDATION",
+    "expected_tool": "search_product_knowledge",
+    "expected_keywords": [
+      "kW",
+      "pumps"
+    ]
+  },
+  {
+    "id": "AGT-06",
+    "category": "technical_enquiry_motors",
+    "query": "What power ratings and insulation class are documented for NIEL motors?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_keywords": [
+      "0.75 kW to 315 kW",
+      "Class F"
+    ]
+  },
+  {
+    "id": "AGT-07",
+    "category": "technical_enquiry_switchgear",
+    "query": "What are the protection ratings and busbar standards for NIEL switchgear panels?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_keywords": [
+      "switchgear"
+    ]
+  },
+  {
+    "id": "AGT-08",
+    "category": "general_greeting",
+    "query": "Hello, good morning! Who are you and how can NIEL help our factory?",
+    "expected_intent": "GENERAL_INFORMATION",
+    "expected_keywords": [
+      "New India Electricals",
+      "motors",
+      "transformers"
+    ]
+  }
+]

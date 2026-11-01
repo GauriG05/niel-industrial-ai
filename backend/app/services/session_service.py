@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 from sqlalchemy.orm import Session
-from backend.app.db.models import ChatMessage, ChatSession
+from backend.app.db.models import ChatMessage, ChatSession, Customer
 from backend.app.db.session import SessionLocal
 
 logger = logging.getLogger(__name__)
@@ -22,7 +22,7 @@ class SessionService:
     def _get_db(self) -> Session:
         return self.session_factory()
 
-    def create_session(self, session_id: Optional[str] = None) -> str:
+    def create_session(self, session_id: Optional[str] = None, customer_id: Optional[str] = None) -> str:
         """Create a new session record and return the session ID."""
         sid = session_id or str(uuid.uuid4())
         with self._get_db() as db:
@@ -30,14 +30,18 @@ class SessionService:
             if not existing:
                 chat_session = ChatSession(
                     id=sid,
+                    customer_id=customer_id,
                     created_at=datetime.now(timezone.utc),
                     human_active=False,
                 )
                 db.add(chat_session)
                 db.commit()
+            elif customer_id and not existing.customer_id:
+                existing.customer_id = customer_id
+                db.commit()
         return sid
 
-    def get_or_create(self, session_id: Optional[str] = None) -> ChatSession:
+    def get_or_create(self, session_id: Optional[str] = None, customer_id: Optional[str] = None) -> ChatSession:
         """Retrieve an existing session or initialize a new one."""
         sid = session_id or str(uuid.uuid4())
         with self._get_db() as db:
@@ -45,13 +49,34 @@ class SessionService:
             if not session:
                 session = ChatSession(
                     id=sid,
+                    customer_id=customer_id,
                     created_at=datetime.now(timezone.utc),
                     human_active=False,
                 )
                 db.add(session)
                 db.commit()
                 db.refresh(session)
+            elif customer_id and not session.customer_id:
+                session.customer_id = customer_id
+                db.commit()
+                db.refresh(session)
             return session
+
+    def link_customer_to_session(self, session_id: str, customer_id: str) -> bool:
+        """Link an existing session to a specific customer profile."""
+        with self._get_db() as db:
+            session = db.query(ChatSession).filter_by(id=session_id).first()
+            if not session:
+                return False
+            session.customer_id = customer_id
+            db.commit()
+            return True
+
+    def get_session_customer_id(self, session_id: str) -> Optional[str]:
+        """Get the customer_id associated with a session, if any."""
+        with self._get_db() as db:
+            session = db.query(ChatSession).filter_by(id=session_id).first()
+            return session.customer_id if session else None
 
     def add_message(
         self,

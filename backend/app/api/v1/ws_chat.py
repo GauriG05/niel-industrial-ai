@@ -6,6 +6,7 @@ from typing import Dict, List, Optional
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
 from backend.app.config import get_settings
+from backend.app.agent.orchestrator import get_agent_orchestrator
 from backend.app.services.rag_service import get_rag_service
 from backend.app.services.session_service import get_session_service
 
@@ -164,8 +165,9 @@ async def websocket_chat_endpoint(websocket: WebSocket, session_id: str):
                 })
                 continue
 
-            # AI handles message via grounded RAG pipeline
-            response = rag_service.answer_question(
+            # AI handles message via Agent Orchestrator
+            orchestrator = get_agent_orchestrator()
+            response = orchestrator.handle_request(
                 question=question,
                 session_id=session_id,
             )
@@ -177,7 +179,10 @@ async def websocket_chat_endpoint(websocket: WebSocket, session_id: str):
                 "evidence_sufficient": response.evidence_sufficient,
                 "clarification_needed": response.clarification_needed,
                 "request_id": response.request_id,
-                "human_active": False,
+                "human_active": response.escalated or False,
+                "ticket_id": response.ticket_id,
+                "lead_id": response.lead_id,
+                "intent": response.intent,
             })
 
     except WebSocketDisconnect:

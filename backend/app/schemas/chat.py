@@ -44,6 +44,10 @@ class ChatRequest(BaseModel):
         default=None,
         description="Optional server-side session identifier for persistent conversation memory."
     )
+    customer_id: Optional[str] = Field(
+        default=None,
+        description="Optional customer profile ID for personalized memory and history."
+    )
 
     @field_validator("conversation_history", mode="before")
     @classmethod
@@ -99,4 +103,9 @@ class ChatResponse(BaseModel):
     clarification_needed: bool = Field(default=False, description="True if query is ambiguous")
     request_id: str = Field(..., description="Unique identifier for traceability")
     usage: Optional[UsageMetadata] = Field(default=None, description="Usage and cost tracking")
+    intent: Optional[str] = Field(default=None, description="Classified customer intent")
+    tool_calls: Optional[List[dict]] = Field(default=None, description="Tools executed by the agent")
+    ticket_id: Optional[str] = Field(default=None, description="Support ticket tracking ID if created")
+    lead_id: Optional[int] = Field(default=None, description="Sales lead ID if registered")
+    escalated: Optional[bool] = Field(default=None, description="Whether conversation was escalated to human agent")
 

@@ -81,3 +81,79 @@ export async function deleteDocument(docId: string, adminKey: string): Promise<a
   return response.json();
 }
 
+export async function listTickets(adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/tickets`, {
+    headers: { 'X-Admin-Key': adminKey },
+  });
+  if (!response.ok) throw new Error('Failed to fetch tickets');
+  return response.json();
+}
+
+export async function resolveTicket(ticketId: string, adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/tickets/${encodeURIComponent(ticketId)}/resolve`, {
+    method: 'POST',
+    headers: { 'X-Admin-Key': adminKey },
+  });
+  if (!response.ok) throw new Error('Failed to resolve ticket');
+  return response.json();
+}
+
+export async function listLeads(adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/leads`, {
+    headers: { 'X-Admin-Key': adminKey },
+  });
+  if (!response.ok) throw new Error('Failed to fetch leads');
+  return response.json();
+}
+
+export async function updateLeadStatus(leadId: number, status: string, adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/leads/${leadId}/status`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Admin-Key': adminKey,
+    },
+    body: JSON.stringify({ status }),
+  });
+  if (!response.ok) throw new Error('Failed to update lead status');
+  return response.json();
+}
+
+export async function listCustomers(adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/customers`, {
+    headers: { 'X-Admin-Key': adminKey },
+  });
+  if (!response.ok) throw new Error('Failed to fetch customers');
+  return response.json();
+}
+
+export async function listEscalations(adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/escalations`, {
+    headers: { 'X-Admin-Key': adminKey },
+  });
+  if (!response.ok) throw new Error('Failed to fetch escalations');
+  return response.json();
+}
+
+export async function replyToEscalation(sessionId: string, content: string, adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/escalations/${sessionId}/reply`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Admin-Key': adminKey,
+    },
+    body: JSON.stringify({ content }),
+  });
+  if (!response.ok) throw new Error('Failed to send agent reply');
+  return response.json();
+}
+
+export async function resolveEscalation(sessionId: string, adminKey: string) {
+  const response = await fetch(`${API_BASE}/api/v1/escalations/${sessionId}/resolve`, {
+    method: 'POST',
+    headers: { 'X-Admin-Key': adminKey },
+  });
+  if (!response.ok) throw new Error('Failed to resolve escalation');
+  return response.json();
+}
+

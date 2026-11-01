@@ -1,22 +1,21 @@
-# NIEL Industrial Intelligence AI & Agentic Customer Support System
-> Production-Ready Enterprise Agentic AI & Retrieval-Augmented Generation (RAG) System for New India Electricals Ltd. (NIEL).
+# Industrial Intelligence AI & Agentic Customer Support System
+> Production-Ready Enterprise Agentic AI & Retrieval-Augmented Generation (RAG) System for Industrial Equipment & Engineering Operations.
 
-[![Repo](https://img.shields.io/badge/GitHub-GauriG05%2Fniel--industrial--ai-blue.svg)](https://github.com/GauriG05/niel-industrial-ai)
-[![Branch](https://img.shields.io/badge/Branch-master-blue.svg)](https://github.com/GauriG05/niel-industrial-ai/tree/master)
-[![Tests](https://img.shields.io/badge/pytest-78%20passed-brightgreen.svg)]()
+[![Build & Tests](https://img.shields.io/badge/pytest-78%20passed-brightgreen.svg)]()
 [![RAG Benchmark](https://img.shields.io/badge/RAG%20Accuracy-100%25-blue.svg)]()
 [![Agent Benchmark](https://img.shields.io/badge/Agent%20Benchmark-100%25-brightgreen.svg)]()
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)]()
 [![React](https://img.shields.io/badge/React-18+-61DAFB.svg)]()
 [![FAISS](https://img.shields.io/badge/FAISS-Local%20Vector%20Store-orange.svg)]()
+[![Branch](https://img.shields.io/badge/Branch-master-blue.svg)]()
 
 ---
 
 ## 1. Project Overview
 
-The **NIEL Industrial Intelligence AI** is an end-to-end, enterprise-grade **Agentic Customer Support & Technical Intelligence Platform** engineered specifically for New India Electricals Ltd. (NIEL).
+The **Industrial Intelligence AI** is an enterprise-grade **Agentic Customer Support & Technical Intelligence Platform** engineered for industrial electrical equipment and manufacturing operations.
 
-The system serves as an autonomous industrial co-pilot capable of understanding nuanced technical queries, retrieving exact equipment specifications from authentic company literature, maintaining multi-turn conversational context, directly serving official downloadable PDF brochures, qualifying B2B sales leads, generating formal support tickets, and providing dynamic WhatsApp escalation to live human engineering staff.
+The system serves as an autonomous industrial co-pilot capable of understanding technical engineering queries, retrieving equipment specifications from authentic technical literature, maintaining multi-turn conversational context, directly serving official downloadable PDF brochures, qualifying B2B sales leads, generating formal support tickets, and providing dynamic WhatsApp escalation to live technical support staff.
 
 ### Supported Industrial Equipment Lines
 * **AC Motors**: Cage Rotor (0.37 kW to 20,000 kW), Wound Rotor (7.5 kW to 20,000 kW), Flameproof (0.37 kW to 350 kW), Crane Duty (0.37 kW to 1,000 kW), Brake Motors (0.18 kW to 20 kW), AC Mill Duty (110 kW to 2,000 kW), and custom engineered motors.
@@ -62,12 +61,12 @@ The system serves as an autonomous industrial co-pilot capable of understanding 
                        |    12-Category Structured Datastore   |
                        | - 12 Verified JSON Knowledge Bases    |
                        | - Zero-Hallucination Unverified Catalog|
-                       | - 11 Authentic NIEL PDF Catalogues    |
+                       | - Official Catalogues & Documents     |
                        +---------------------------------------+
 ```
 
 ### 1. 12-Category Structured Knowledge Base (`data/knowledge_base/`)
-Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractions in `textpdfs/`, and official engineering specifications:
+Structured JSON records compiled from technical datasheets, document extractions in `textpdfs/`, and official engineering specifications:
 1. `ac_motors.json`
 2. `dc_motors.json`
 3. `pumps_and_valves.json`
@@ -81,18 +80,30 @@ Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractio
 11. `faqs.json`
 12. `troubleshooting_and_installation.json`
 
-* **Source Registry** (`source_registry.json`): Hashes and catalogs all 12 PDFs, 8 text extractions, page counts, and coverage.
+* **Source Registry** (`source_registry.json`): Hashes and catalogs all technical documents, extractions, page counts, and coverage.
 * **Unverified Fields Catalog**: Per zero-hallucination policy, missing technical parameters (e.g., custom frame efficiency curves, transformer short-circuit duration) are explicitly cataloged in each product's `unverified_fields` array.
 
 ### 2. Official PDF Brochure Chat Attachments
 * Direct attachments of official **PDF Brochure Cards** when customers inquire about products, specifications, or datasheets.
 * Backend serves genuine documents via `/pdfs/{filename}` mounted directly from `PDFs/`.
-* One-click **View PDF ↗** opens or downloads authentic brochures (e.g. `AC Motors - NIEL Brochure.pdf`, `Transformers - NIEL Brochure.pdf`, `Pumps - NIEL Brochure.pdf`).
+* One-click **View PDF ↗** opens or downloads authentic brochures:
+  - `AC Motors - NIEL Brochure.pdf`
+  - `DC Motors - NIEL Brochure.pdf`
+  - `Transformers - NIEL Brochure.pdf`
+  - `Switchgear Panels MV - NIEL Brochure.pdf`
+  - `Pumps - NIEL Brochure.pdf`
+  - `Substation.pdf`
+  - `NIEL Product Catalog.pdf`
+  - `Company Intro - New India Electricals Limited.pdf`
+  - `Key Customer List.pdf`
+  - `NIEL - STEEL.pdf`
+  - `NIEL GROUP PROJECTS HIGHLIGHTS- FINAL.pdf`
+  - `NIEL Recent Power Projects.pdf`
 
-### 3. WhatsApp Click-to-Chat Human Support (+91 97413 07999)
-* When a customer requests a human engineer or clicks **Talk to a human**, the assistant opens WhatsApp Web or the WhatsApp mobile app pre-filled with their context:
+### 3. WhatsApp Click-to-Chat Human Support Escalation
+* When a customer requests a human engineer or clicks **Talk to a human**, the assistant formats their session context and triggers a WhatsApp click-to-chat action:
   ```text
-  Hello NIEL Team,
+  Hello Support Team,
 
   I would like human support assistance regarding an inquiry on your website:
 
@@ -113,11 +124,11 @@ Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractio
 5. `SALES_ENQUIRY` — Procurement and distributor inquiries
 6. `COMPLAINT` — Defect reports, breakdowns, and warranty issues
 7. `ORDER_DELIVERY_ENQUIRY` — Lead times and shipment status
-8. `GENERAL_INFORMATION` — Company credentials, plants, greetings
+8. `GENERAL_INFORMATION` — Company credentials, facilities, greetings
 9. `HUMAN_SUPPORT_REQUEST` — Explicit requests for human assistance
 
 ### 5. Reusable Agent Tools (`backend/app/agent/tools.py`)
-* `search_product_knowledge`: Vector search across official PDF datasheets and catalogues with category filtering.
+* `search_product_knowledge`: Vector search across official datasheets and catalogues with category filtering.
 * `get_customer_profile`: Access company profile, contact details, and equipment preferences.
 * `get_customer_history`: Retrieve recent tickets, enquiries, and active leads.
 * `save_customer_information`: Update profile details and consented preferences.
@@ -163,8 +174,8 @@ niel-industrial-ai/
 ├── data/
 │   ├── knowledge_base/       # 12 structured JSON equipment databases
 │   └── index/                # FAISS vector index files (.gitkeep)
-├── PDFs/                     # 11 Official NIEL Catalogues & Brochures (served via /pdfs)
-├── textpdfs/                 # Extracted raw text references
+├── PDFs/                     # 11 Official Catalogues & Brochures (served via /pdfs)
+├── textpdfs/                 # Extracted text references
 ├── evaluation/               # RAG & Agent evaluation scripts & test cases
 ├── deploy/                   # Production Nginx reverse-proxy template
 ├── docker-compose.yml        # Multi-container orchestration
@@ -204,7 +215,7 @@ niel-industrial-ai/
 
 ```powershell
 # 1. Clone repository
-git clone https://github.com/GauriG05/niel-industrial-ai.git
+git clone <repository-url>
 cd niel-industrial-ai
 
 # 2. Create and activate Python virtual environment
@@ -216,7 +227,7 @@ pip install -r backend/requirements.txt
 
 # 4. Configure environment variables
 cp .env.example .env
-# Edit .env and insert your OPENAI_API_KEY
+# Edit .env and insert your configuration and API keys
 
 # 5. Run automated tests
 pytest backend/tests -v
@@ -256,7 +267,7 @@ docker compose down
 
 ## 6. Embeddable Widget Integration (WordPress / HTML)
 
-To embed the NIEL AI widget on any website (including WordPress, Elementor, Webflow, or static HTML), add this single script tag before the closing `</body>` tag:
+To embed the AI assistant widget on any website (including WordPress, Elementor, Webflow, or static HTML), add this script tag before the closing `</body>` tag:
 
 ```html
 <script 
@@ -266,20 +277,20 @@ To embed the NIEL AI widget on any website (including WordPress, Elementor, Webf
 </script>
 ```
 
-To test the widget locally inside an authentic webpage layout, open `demo/integration-test.html` in your browser.
+To test the widget locally inside a webpage layout, open `demo/integration-test.html` in your browser.
 
 ---
 
 ## 7. Verified Benchmark Results
 
-* **Pytest Test Suite**: `78 / 78 passed` (100% pass rate in ~8.5s)
-* **Baseline RAG Accuracy** (`evaluation/evaluate.py`): `100.0%` (10/10 passed, 80.09ms avg latency)
-* **Agentic AI Benchmark** (`evaluation/evaluate_agent.py`): `100.0%` (8/8 scenarios passed, 30.70ms avg latency)
+* **Pytest Test Suite**: `78 / 78 passed` (100% pass rate)
+* **Baseline RAG Accuracy** (`evaluation/evaluate.py`): `100.0%` (10/10 passed)
+* **Agentic AI Benchmark** (`evaluation/evaluate_agent.py`): `100.0%` (8/8 scenarios passed)
 * **TypeScript Bundler**: `tsc && vite build` completes with 0 errors.
 
 ---
 
 ## 8. License
 
-Copyright © 2026 New India Electricals Ltd. All rights reserved.
-Developed for New India Electricals Ltd. (NIEL).
+Copyright © 2026. All rights reserved.
+Licensed for enterprise deployment.

@@ -1,0 +1,115 @@
+{
+  "category": "Gearboxes and Brake Motors",
+  "category_description": "Mechanical speed reduction gearboxes, geared motors, and fail-safe electromagnetic brake motors.",
+  "products": [
+    {
+      "id": "gear-worm-speed-reducers",
+      "product_name": "Worm Gear Boxes (Worm Speed Reducers)",
+      "category": "Gearboxes and Brake Motors",
+      "description": "Right-angle worm gear speed reducers offering high reduction ratios in a compact footprint with universal mounting adaptability.",
+      "specifications": {
+        "input_power_range": "0.25 kW to 140 kW",
+        "reduction_ratios": "5:1 to 4900:1 (single and double reduction)",
+        "center_distances_sizes": "1 5/8 inch to 14 inches center distance",
+        "mounting": "Universal foot and flange mounting"
+      },
+      "features": ["Modular universal housing", "High shock load absorption", "Smooth and quiet tooth engagement"],
+      "applications": ["Conveyors", "Material elevators", "Agitators", "Industrial packaging machinery"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 2, "section": "Worm Gear Box"}
+      ],
+      "unverified_fields": ["Thermal power rating without cooling fans"]
+    },
+    {
+      "id": "gear-helical-geared-motors",
+      "product_name": "Helical Geared Motors",
+      "category": "Gearboxes and Brake Motors",
+      "description": "Integral co-axial helical geared motors designed for high mechanical efficiency, long service life, and permanent lubrication.",
+      "specifications": {
+        "power_range": "0.4 kW to 50 kW",
+        "output_speed_range": "0.25 to 280 RPM",
+        "gear_type": "Case-carburized ground helical gears",
+        "standards": "AGMA Class I, II, III"
+      },
+      "features": [
+        "Permanently lubricated gear housing",
+        "High mechanical efficiency (>95% per stage)",
+        "Available with standard AC induction motors, flameproof motors, or fail-safe brake motors"
+      ],
+      "applications": ["Automated assembly lines", "Mixers", "Wastewater clarifiers", "Heavy duty belt feeders"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 2, "section": "Geared Motors"}
+      ],
+      "unverified_fields": ["Exact gear ratio step table"]
+    },
+    {
+      "id": "gear-helical-shaft-mounted",
+      "product_name": "Helical Shaft Mounted Drives (SMSR)",
+      "category": "Gearboxes and Brake Motors",
+      "description": "Shaft-mounted helical speed reducers mounted directly onto the driven machine shaft, eliminating baseplates and flexible couplings.",
+      "specifications": {
+        "standard_sizes": "Seven standard frame sizes",
+        "reduction_ratios": ["5:1", "13:1", "20:1"],
+        "efficiency": "98% mechanical efficiency per gear stage"
+      },
+      "features": [
+        "Direct shaft mounting with adjustable torque arm",
+        "Case-carburized and profile ground helical gears",
+        "Heavy-duty double-lip oil seals preventing lubricant leakage and contaminant ingress"
+      ],
+      "applications": ["Quarry and mining belt conveyors", "Bucket elevators", "Grain handling silos"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 2, "section": "Helical Shaft Mounted Drives"}
+      ],
+      "unverified_fields": ["Maximum input kW limit for size 7"]
+    },
+    {
+      "id": "gear-cycloidal-drives",
+      "product_name": "Cycloidal Speed Reducers",
+      "category": "Gearboxes and Brake Motors",
+      "description": "Extreme shock-load cycloidal speed reducers utilizing rolling contact discs instead of tooth shear, with high reduction in a single stage.",
+      "specifications": {
+        "input_power_range": "0.18 kW to 75 kW",
+        "reduction_ratios": "9:1 to 43,645:1",
+        "single_stage_efficiency": ">92% efficiency in single reduction stage",
+        "mounting": "Foot / Flange mounting"
+      },
+      "features": [
+        "Continuous rolling contact with up to 70% of teeth sharing the load simultaneously",
+        "Withstands momentary shock overloads up to 500% of nominal rating without breakage",
+        "Compact circular housing with symmetrical weight distribution"
+      ],
+      "applications": ["Mining thickeners and clarifiers", "Chemical reactors", "Rotary kiln feeders"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 2, "section": "Cycloidal Drives"}
+      ],
+      "unverified_fields": ["Lubricant oil viscosity ISO VG code"]
+    },
+    {
+      "id": "motors-brake-integral",
+      "product_name": "Integral Electromagnetic Brake Motors",
+      "category": "Gearboxes and Brake Motors",
+      "description": "Three-phase electric motors with integrated fail-safe electromagnetic disc brakes for rapid deceleration and mechanical position holding.",
+      "specifications": {
+        "power_range": "0.18 kW to 20 kW",
+        "voltage_ratings": ["380V", "415V, 50 Hz"],
+        "synchronous_rpm": ["1500", "1000", "750"],
+        "insulation_class": "Class F",
+        "enclosure_ip": "IP55",
+        "cooling": "IC411 (TEFC)",
+        "brake_coil_types": ["AC Brake Coil", "DC Brake Coil with integral rectifier"]
+      },
+      "features": [
+        "Fail-safe spring-operated disc brake automatically engages when coil power is de-energized",
+        "Manual brake release lever for emergency load lowering or maintenance positioning",
+        "Replaceable non-asbestos high-friction brake lining"
+      ],
+      "applications": ["Overhead cranes and hoists", "Goods and passenger elevators", "Textile looms", "Automated machine tool indexing tables"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "Brake Motors"}
+      ],
+      "unverified_fields": ["Braking torque in Nm per motor frame size"]
+    }
+  ]
+}
+

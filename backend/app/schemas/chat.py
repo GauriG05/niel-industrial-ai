@@ -87,6 +87,14 @@ class Citation(BaseModel):
     quote_snippet: Optional[str] = Field(default="", description="Explanatory excerpt or topic")
 
 
+class PdfAttachment(BaseModel):
+    """Official PDF document attachment for product details."""
+    filename: str = Field(..., description="PDF document filename")
+    page: Optional[int] = Field(default=1, description="Page number")
+    url: str = Field(..., description="URL to view/download the PDF")
+    title: Optional[str] = Field(default="", description="Human-readable title")
+
+
 class UsageMetadata(BaseModel):
     """Token and estimated cost metrics for the request."""
     prompt_tokens: int = Field(default=0)
@@ -99,6 +107,7 @@ class ChatResponse(BaseModel):
     """Structured response from NIEL Industrial Intelligence Assistant."""
     answer: str = Field(..., description="Grounded, factual answer or honest abstention")
     citations: List[Citation] = Field(default_factory=list, description="Verified source citations")
+    pdf_attachments: Optional[List[PdfAttachment]] = Field(default_factory=list, description="Official PDF brochure attachments")
     evidence_sufficient: bool = Field(..., description="True if answer is backed by indexed evidence")
     clarification_needed: bool = Field(default=False, description="True if query is ambiguous")
     request_id: str = Field(..., description="Unique identifier for traceability")

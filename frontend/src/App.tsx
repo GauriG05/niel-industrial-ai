@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, UserCheck, Shield } from 'lucide-react';
+import { Send, X, UserCheck } from 'lucide-react';
 import { Message, ChatTurn } from './types';
 import { askQuestion } from './services/api';
 import { ChatMessage } from './components/ChatMessage';
 import { ExamplePrompts } from './components/ExamplePrompts';
-import { AdminModal } from './components/AdminModal';
+import { openWhatsAppChat, generateWhatsAppUrl } from './utils/whatsapp';
 import logoImg from './assets/niel-logo.jpg';
 import './App.css';
 
@@ -23,7 +23,6 @@ export const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [humanActive, setHumanActive] = useState(false);
   const [wsConnected, setWsConnected] = useState(false);
 
@@ -38,7 +37,7 @@ export const App: React.FC = () => {
     scrollToBottom();
   }, [messages, loading]);
 
-  // Establish persistent WebSocket connection for realtime two-way dialogue
+  // Establish persistent WebSocket connection for realtime dialogue
   useEffect(() => {
     const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     const wsUrl = `${proto}//${window.location.host}/ws/chat/${sessionId}`;
@@ -63,6 +62,7 @@ export const App: React.FC = () => {
             sender: 'assistant',
             text: data.answer,
             citations: data.citations || [],
+            pdf_attachments: data.pdf_attachments || [],
             evidence_sufficient: data.evidence_sufficient,
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
@@ -70,10 +70,11 @@ export const App: React.FC = () => {
         } else if (data.type === 'escalated') {
           setLoading(false);
           setHumanActive(true);
+          const waUrl = generateWhatsAppUrl(messages, sessionId);
           const alertMessage: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'assistant',
-            text: data.answer || 'Your conversation has been routed to a human support engineer.',
+            text: `${data.answer || 'Your conversation has been routed to human support.'}\n\nYou can connect directly with our engineering team on WhatsApp (+91 97413 07999):\n${waUrl}`,
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
           setMessages((prev) => [...prev, alertMessage]);
@@ -127,10 +128,25 @@ export const App: React.FC = () => {
   }, [sessionId]);
 
   const handleEscalate = () => {
+    // Generate pre-filled WhatsApp link with contextual summary or fallback
+    const waUrl = openWhatsAppChat(messages, sessionId);
+
     if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-      setLoading(true);
       wsRef.current.send(JSON.stringify({ action: 'escalate' }));
     }
+
+    const hasHistory = messages.some((m) => m.sender === 'user' && m.text.trim());
+    const infoText = hasHistory
+      ? `Connecting you with our support engineer on WhatsApp (+91 97413 07999) with your inquiry pre-filled.\n\nPlease tap "Send" in WhatsApp to start chatting. If WhatsApp did not open automatically, click here:\n${waUrl}`
+      : `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\nIf WhatsApp did not open automatically, click here to connect:\n${waUrl}`;
+
+    const infoMsg: Message = {
+      id: (Date.now() + 1).toString(),
+      sender: 'assistant',
+      text: infoText,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    };
+    setMessages((prev) => [...prev, infoMsg]);
   };
 
   const handleSend = async (queryText?: string) => {
@@ -163,12 +179,12 @@ export const App: React.FC = () => {
           }));
 
         const response = await askQuestion(textToSend, 5, priorTurns, sessionId);
-        const isPdfRequested = /\b(pdf|brochure|catalogue|catalog|document|attach|file|download|read source|view source)\b/i.test(textToSend);
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
           sender: 'assistant',
           text: response.answer,
-          citations: isPdfRequested ? response.citations : [],
+          citations: response.citations || [],
+          pdf_attachments: response.pdf_attachments || [],
           evidence_sufficient: response.evidence_sufficient,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         };
@@ -200,10 +216,10 @@ export const App: React.FC = () => {
         <span className="niel-side-tab-text">Ask NIEL AI</span>
       </button>
 
-      {/* The Floating Modal Dialog Box matching exact screenshot */}
+      {/* The Floating Modal Dialog Box */}
       {isOpen && (
         <div className="niel-dialog-card">
-          {/* Header matching exact mockup */}
+          {/* Header */}
           <div className="niel-dialog-header">
             <div className="niel-header-brand-column">
               <div className="niel-header-logo-row">
@@ -228,27 +244,17 @@ export const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Header actions: Escalate button + Admin Dashboard + close X */}
+            {/* Header actions: Talk to human WhatsApp button + close X */}
             <div className="niel-header-actions-group">
-              {!humanActive && (
-                <button
-                  type="button"
-                  className="niel-escalate-btn"
-                  onClick={handleEscalate}
-                  disabled={loading}
-                  title="Request human support engineer"
-                >
-                  <UserCheck size={12} />
-                  <span>Talk to a human</span>
-                </button>
-              )}
               <button
                 type="button"
-                className="niel-action-icon-btn"
-                onClick={() => setIsAdminOpen(true)}
-                title="Support & Admin Dashboard"
+                className="niel-escalate-btn"
+                onClick={handleEscalate}
+                disabled={loading}
+                title="Connect with human support on WhatsApp (+91 97413 07999)"
               >
-                <Shield size={16} />
+                <UserCheck size={12} />
+                <span>Talk to a human</span>
               </button>
               <button
                 type="button"
@@ -263,7 +269,7 @@ export const App: React.FC = () => {
 
           {/* Conversation Stream */}
           <div className="niel-dialog-body">
-            {/* Welcoming bubble matching exact screenshot text */}
+            {/* Welcoming bubble */}
             <div className="niel-greeting-bubble">
               <p>
                 I'm NIEL Assistant. I can help you explore our electrical products,
@@ -272,7 +278,7 @@ export const App: React.FC = () => {
               </p>
             </div>
 
-            {/* Quick Action Pills matching exact screenshot */}
+            {/* Quick Action Pills */}
             <ExamplePrompts onSelectPrompt={(p) => handleSend(p)} disabled={loading} />
 
             {/* Chat History Messages */}
@@ -323,9 +329,6 @@ export const App: React.FC = () => {
           </form>
         </div>
       )}
-
-      {/* Agent & Support Operations Dashboard Modal */}
-      <AdminModal isOpen={isAdminOpen} onClose={() => setIsAdminOpen(false)} />
     </div>
   );
 };

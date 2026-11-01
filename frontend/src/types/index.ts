@@ -10,6 +10,13 @@ export interface Citation {
   quote_snippet?: string;
 }
 
+export interface PdfAttachment {
+  filename: string;
+  page?: number;
+  url: string;
+  title?: string;
+}
+
 export interface UsageMetadata {
   prompt_tokens: number;
   completion_tokens: number;
@@ -20,6 +27,7 @@ export interface UsageMetadata {
 export interface ChatResponse {
   answer: string;
   citations: Citation[];
+  pdf_attachments?: PdfAttachment[];
   evidence_sufficient: boolean;
   clarification_needed: boolean;
   request_id: string;
@@ -31,6 +39,7 @@ export interface Message {
   sender: 'user' | 'assistant' | 'agent';
   text: string;
   citations?: Citation[];
+  pdf_attachments?: PdfAttachment[];
   evidence_sufficient?: boolean;
   timestamp: string;
   isError?: boolean;
@@ -49,53 +58,4 @@ export interface DocumentListResponse {
   total_documents: number;
   total_chunks: number;
   documents: DocumentSummary[];
-}
-
-export interface SupportTicket {
-  id: string;
-  customer_id?: string;
-  session_id?: string;
-  product_category: string;
-  issue_description: string;
-  severity: string;
-  status: string;
-  created_at: string;
-  resolved_at?: string;
-}
-
-export interface SalesLead {
-  id: number;
-  customer_id?: string;
-  session_id?: string;
-  product_interest: string;
-  requirement_details?: string;
-  required_quantity?: number;
-  location?: string;
-  status: string;
-  priority: string;
-  created_at: string;
-}
-
-export interface CustomerProfile {
-  customer_id: string;
-  name?: string;
-  email?: string;
-  phone?: string;
-  company?: string;
-  industry?: string;
-  interests?: string[];
-  preferences?: Record<string, any>;
-  has_consented: boolean;
-  open_tickets_count: number;
-  recent_tickets: any[];
-  recent_leads: any[];
-}
-
-export interface EscalatedSession {
-  session_id: string;
-  created_at: string;
-  escalated_at: string;
-  human_active: boolean;
-  last_message?: string;
-  last_message_role?: string;
 }

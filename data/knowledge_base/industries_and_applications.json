@@ -1,0 +1,97 @@
+{
+  "category": "Industries and Applications",
+  "category_description": "Industry sector solutions, operational environments, and verified customer references served by New India Electricals Limited.",
+  "sectors": [
+    {
+      "industry_name": "Steel & Metal Processing",
+      "overview": "Comprehensive electrical drive, power transformation, and distribution packages engineered for severe mechanical vibration, heat, and cyclical shock loads in steelmaking.",
+      "supplied_equipment": [
+        "High-voltage AC and DC Mill Main Drives up to 10 MW",
+        "DC Mill Stand Motors up to 1 MW",
+        "Roller Table Direct Drive Motors with high thermal resistance",
+        "Flying Shear and Runout Table Motors",
+        "Electric Arc Furnace and Submerged Arc Furnace Transformers",
+        "Medium Voltage Vacuum Switchgear Panels (Power+ V)"
+      ],
+      "key_verified_clients": [
+        "Essar Steel (ArcelorMittal Nippon Steel India)",
+        "Jindal Power & Steel Ltd.",
+        "Kalyani Steel Ltd.",
+        "Shyam Metalics & Energy Ltd.",
+        "Kirloskar Ferrous Industries Ltd.",
+        "Real Ispat & Power Ltd.",
+        "Bhuwalka Steel Industries",
+        "BSRM (Bangladesh)",
+        "Qatar Steel (Qatar)",
+        "Saudi National Steel (Saudi Arabia)",
+        "Watania Steel (Saudi Arabia)",
+        "Sohar Steel Group (Oman)",
+        "B5 Plus (Ghana)",
+        "Abyssinia Integrated Steel (Ethiopia)"
+      ]
+    },
+    {
+      "industry_name": "Mining & Mineral Processing",
+      "overview": "Explosion-proof, flameproof, and high starting torque power packages for open-cast and underground mineral extraction.",
+      "supplied_equipment": [
+        "Flameproof Motors (Gas Groups I, IIA, IIB) for conveyors and pumps",
+        "Wound Rotor Slipring Motors for heavy ball mills and SAG mills",
+        "Horizontal Multistage RKB Pumps and Self-Priming Non-Clog Pumps for mine dewatering",
+        "Containerised Secondary Substations (CSS) for quick outdoor deployment"
+      ],
+      "key_verified_clients": [
+        "Konkola Copper Mines PLC (Zambia)",
+        "Sarda Energy & Minerals Ltd. (India)"
+      ]
+    },
+    {
+      "industry_name": "Cement Manufacturing",
+      "overview": "High-efficiency continuous S1 duty motors, heavy gearboxes, and captive substation solutions operating in dusty, high-ambient environments.",
+      "supplied_equipment": [
+        "High-voltage Cage and Slipring Motors for clinker raw mills and ball mills",
+        "Cycloidal Drives and Helical Shaft Mounted Reducers for heavy bucket elevators and conveyors",
+        "Distribution & Power Transformers",
+        "Medium Voltage Switchgear Panels"
+      ],
+      "key_verified_clients": [
+        "Shayona Cement Corporation (Malawi)",
+        "Motisun Group (Tanzania)",
+        "Nirani Cements Ltd. (India)"
+      ]
+    },
+    {
+      "industry_name": "Power Generation & Utilities",
+      "overview": "Grid transmission and distribution equipment for regional and national electricity boards.",
+      "supplied_equipment": [
+        "Distribution Transformers (11kV, 22kV, 33kV)",
+        "Power Transformers up to 111kV with on-load tap changers",
+        "Turnkey outdoor switchyards and substations up to 400kV",
+        "Outdoor Kiosk Circuit Breakers (Power+ VO & FO)"
+      ],
+      "key_verified_clients": [
+        "ZESCO (Zambia State Electricity Corporation)",
+        "Benin Electricity Distribution Company (Nigeria)"
+      ]
+    },
+    {
+      "industry_name": "Sugar, Paper & Process Plants",
+      "overview": "Continuous utility pumping, turbine-driven mill motors, and automated motor control centers.",
+      "supplied_equipment": [
+        "AC Mill Duty Motors and Slipring Motors",
+        "Stainless Steel Multistage Boiler Feed Pumps (IL Series)",
+        "Liquid Ring Vacuum Pumps (KV/DV Series) for evaporation and distillation",
+        "PCC and MCC Motor Control Center Panels"
+      ],
+      "key_verified_clients": [
+        "Purti Sahakar Karkana Ltd.",
+        "ITC Limited"
+      ]
+    }
+  ],
+  "source_references": [
+    {"source_filename": "Company Intro - New India Electricals Limited.pdf", "page_number": 3, "section": "Customers / Sectors Served"},
+    {"source_filename": "NIEL - STEEL.pdf", "page_number": 1, "section": "Steel Industry Solutions"},
+    {"source_filename": "Key Customer List.pdf", "page_number": 1, "section": "Customer Directory"}
+  ]
+}
+

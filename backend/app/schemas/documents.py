@@ -14,6 +14,8 @@ class ChunkMetadata(BaseModel):
     chunk_index: int = Field(..., description="Zero-indexed sequence number of the chunk")
     text: str = Field(..., description="The chunk text payload")
     char_count: int = Field(..., description="Character length of chunk text")
+    category: Optional[str] = Field(default=None, description="Product or knowledge category")
+    heading: Optional[str] = Field(default=None, description="Section heading or table context")
 
 
 class DocumentSummary(BaseModel):

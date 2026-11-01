@@ -416,21 +416,36 @@
     let html = `<p>${cleanText.replace(/\n/g, '<br/>')}</p>`;
 
     if (sender === 'assistant' && data) {
-      if (data.evidence_sufficient === true) {
-        html += `<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
-          <span class="niel-verified">✓ Verified NIEL Specification</span>
-          ${data.citations && data.citations.length > 0 ? `<button type="button" class="niel-view-pdf-btn" style="background:none;border:none;color:#6b7280;font-size:11px;cursor:pointer;text-decoration:underline;">View PDF Source</button>` : ''}
-        </div>`;
-      } else if (data.evidence_sufficient === false) {
-        html += `<div class="niel-unverified">⚠️ Unverified in indexed catalogue.</div>`;
-      }
+      const rawPdfs = data.pdf_attachments || (data.citations || []).map(function(c) {
+        var fname = c.source_filename.replace(/\.txt$/i, '.pdf');
+        return {
+          filename: fname,
+          page: c.page_number,
+          url: config.apiBase + '/pdfs/' + encodeURIComponent(fname) + '#page=' + c.page_number
+        };
+      });
 
-      if (data.citations && data.citations.length > 0) {
-        html += `<div class="niel-citations-drawer" style="display:none; margin-top:6px;">`;
-        data.citations.forEach((c) => {
-          html += `<div class="niel-citation-item">📄 ${c.source_filename} (Page ${c.page_number})</div>`;
+      var seen = {};
+      var uniquePdfs = [];
+      rawPdfs.forEach(function(p) {
+        if (!seen[p.filename]) {
+          seen[p.filename] = true;
+          uniquePdfs.push(p);
+        }
+      });
+
+      if (uniquePdfs.length > 0) {
+        html += '<div style="margin-top:10px; padding-top:8px; border-top:1px dashed #e5e7eb;">';
+        html += '<div style="font-size:11px; font-weight:700; color:#6b7280; text-transform:uppercase; margin-bottom:6px;">Official Product Documentation</div>';
+        uniquePdfs.forEach(function(p) {
+          var pdfUrl = p.url.indexOf('http') === 0 ? p.url : (config.apiBase + p.url);
+          html += '<a href="' + pdfUrl + '" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:8px; background:#fdfaf3; border:1px solid #fde68a; border-radius:6px; padding:6px 10px; text-decoration:none; color:#1f2937; margin-bottom:4px; font-size:12px;">';
+          html += '<span style="font-size:15px;">📄</span>';
+          html += '<span style="flex:1; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + p.filename + '</span>';
+          html += '<span style="font-size:11px; color:#b45309; background:#fef3c7; padding:2px 6px; border-radius:4px; font-weight:600;">View PDF ↗</span>';
+          html += '</a>';
         });
-        html += `</div>`;
+        html += '</div>';
       }
     }
 
@@ -486,22 +501,32 @@
     handleSubmit();
   });
 
+  function openWhatsApp(history) {
+    var userMsgs = (history || []).filter(function(h) { return h.role === 'user' && h.content.trim(); });
+    var msgText = '';
+    if (userMsgs.length === 0) {
+      msgText = 'Hello NIEL Team, I would like to connect with your support team. Please assist me.';
+    } else {
+      var first = userMsgs[0].content;
+      var latest = userMsgs[userMsgs.length - 1].content;
+      msgText = 'Hello NIEL Team,\n\nI would like human support assistance regarding an inquiry on your website:\n\n• Customer Query: ' + first + '\n• Unresolved Issue / Request: ' + latest + '\n\nPlease connect me with a support engineer.';
+    }
+    var url = 'https://wa.me/919741307999?text=' + encodeURIComponent(msgText);
+    window.open(url, '_blank', 'noopener,noreferrer');
+    return url;
+  }
+
   messagesContainer.addEventListener('click', (e) => {
     const pill = e.target.closest('.niel-pill');
     if (pill && pill.dataset.q) {
+      if (pill.dataset.q === 'Talk to sales') {
+        var waUrl = openWhatsApp(conversationHistory);
+        appendMessage('Connecting you directly with NIEL Sales & Support on WhatsApp (+91 97413 07999). Tap "Send" in WhatsApp to chat: ' + waUrl, 'assistant');
+        return;
+      }
       handleSubmit(pill.dataset.q);
       return;
     }
-
-    const pdfBtn = e.target.closest('.niel-view-pdf-btn');
-    if (pdfBtn) {
-      const msg = pdfBtn.closest('.niel-msg');
-      const drawer = msg?.querySelector('.niel-citations-drawer');
-      if (drawer) {
-        const isHidden = drawer.style.display === 'none';
-        drawer.style.display = isHidden ? 'block' : 'none';
-        pdfBtn.textContent = isHidden ? 'Hide PDF' : 'View PDF Source';
-      }
-    }
+  });
   });
 })();

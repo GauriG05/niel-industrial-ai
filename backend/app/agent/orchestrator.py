@@ -234,6 +234,7 @@ class AgentOrchestrator:
             return ChatResponse(
                 answer=final_answer,
                 citations=rag_resp.citations,
+                pdf_attachments=rag_resp.pdf_attachments,
                 evidence_sufficient=rag_resp.evidence_sufficient,
                 clarification_needed=rag_resp.clarification_needed,
                 request_id=request_id,
@@ -281,6 +282,7 @@ class AgentOrchestrator:
         return ChatResponse(
             answer=rag_resp.answer,
             citations=rag_resp.citations,
+            pdf_attachments=rag_resp.pdf_attachments,
             evidence_sufficient=rag_resp.evidence_sufficient,
             clarification_needed=rag_resp.clarification_needed,
             request_id=request_id,

@@ -1,0 +1,140 @@
+{
+  "category": "AC Motors",
+  "category_description": "Three-phase low voltage and high voltage AC induction motors engineered for continuous heavy industrial duty.",
+  "products": [
+    {
+      "id": "ac-cage-rotor",
+      "product_name": "AC Motors - Cage Rotor (Squirrel Cage Induction Motors)",
+      "category": "AC Motors",
+      "description": "Industrial three-phase squirrel cage induction motors designed for high reliability, robust thermal endurance, and continuous duty in harsh operating conditions.",
+      "specifications": {
+        "power_range": "0.37 kW to 20,000 kW (up to 20 MW)",
+        "voltage_ratings": ["380V", "415V", "3.3kV", "6.6kV", "11kV"],
+        "frequency": "50 Hz (60 Hz available on request)",
+        "synchronous_rpm": ["3000", "1500", "1000", "750", "600"],
+        "insulation_class": "Class F with Class B temperature rise limit",
+        "enclosure_ip": ["IP22", "IP55"],
+        "cooling_types": ["IC01", "IC411 (TEFC)", "IC511", "IC611"],
+        "mounting_types": ["Horizontal Foot B3", "Vertical Flange B5", "Foot-cum-Flange B35"]
+      },
+      "applications": ["Centrifugal pumps", "Industrial exhaust fans", "Air compressors", "Belt conveyors", "Crushers", "Machine tools"],
+      "configurations": ["Standard induction cage", "Totally Enclosed Fan Cooled (TEFC)"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "AC Motors - Cage Rotor"},
+        {"source_filename": "NIEL Product Catalog.pdf", "page_number": 3, "section": "AC MOTORS - CAGE ROTOR"}
+      ],
+      "unverified_fields": ["Efficiency percentage per frame size (IE2/IE3/IE4 values)", "Exact frame dimensions per kW rating"]
+    },
+    {
+      "id": "ac-wound-rotor",
+      "product_name": "AC Motors - Wound Rotor (Slipring Induction Motors)",
+      "category": "AC Motors",
+      "description": "Heavy industrial slipring wound rotor induction motors offering high starting torque with low starting current, specifically tailored for high-inertia loads and speed regulation.",
+      "specifications": {
+        "power_range": "7.5 kW to 20,000 kW",
+        "voltage_ratings": ["380V", "415V", "3.3kV", "6.6kV"],
+        "frequency": "50 Hz",
+        "synchronous_rpm": ["1500", "1000", "750", "600"],
+        "insulation_class": "Class F",
+        "enclosure_ip": ["IP22", "IP55"],
+        "cooling_types": ["IC01", "IC411", "IC511", "IC611"],
+        "mounting_types": ["Horizontal Foot B3"],
+        "duty_cycle": "S1 (Continuous duty)"
+      },
+      "applications": ["Ball mills and SAG mills in cement and mining", "Heavy mine hoists", "Crushers", "Material handling cranes"],
+      "configurations": ["Slipring brushgear with external rotor resistance starter"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "AC Motors - Wound Rotor"}
+      ],
+      "unverified_fields": ["Rotor open-circuit voltage per frame", "Rotor current ratings"]
+    },
+    {
+      "id": "ac-flameproof",
+      "product_name": "Flameproof Motors (Hazardous Area Motors)",
+      "category": "AC Motors",
+      "description": "Explosion-proof and flameproof induction motors built to prevent internal sparks or thermal arcs from igniting external hazardous atmospheres.",
+      "specifications": {
+        "power_range": "0.37 kW to 350 kW",
+        "voltage_ratings": ["380V", "415V"],
+        "frequency": "50 Hz",
+        "synchronous_rpm": ["3000", "1500", "1000", "750"],
+        "insulation_class": "Class F",
+        "enclosure_ip": "IP55",
+        "cooling_types": ["IC411"],
+        "hazardous_gas_groups": ["Gas Group I (Mining)", "Gas Group IIA", "Gas Group IIB"],
+        "mounting_types": ["Horizontal Foot B3", "Vertical Flange B5"]
+      },
+      "applications": ["Chemical processing plants", "Petrochemical refineries", "LPG/CNG bottling plants", "Coal mining conveyors and pumps"],
+      "configurations": ["Cast iron flameproof enclosure with labyrinth flame paths"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "Flame Proof Motors"}
+      ],
+      "unverified_fields": ["Temperature class (T1-T4) details", "Specific statutory certification numbers (PESO/ATEX/DGMS)"]
+    },
+    {
+      "id": "ac-crane-duty",
+      "product_name": "Crane Duty Motors",
+      "category": "AC Motors",
+      "description": "High starting torque intermittent duty motors built to withstand frequent starts, stops, and reversals under heavy cyclical loading.",
+      "specifications": {
+        "power_range": "0.37 kW to 1000 kW",
+        "duty_cycle": ["S3", "S4", "S5"],
+        "cyclic_duration_factor": ["25%", "40%", "60%", "100% CDF"],
+        "starts_per_hour": ["6", "150", "300 starts/hr"],
+        "rotor_types": ["Squirrel Cage", "Slipring"],
+        "insulation_class": "Class F",
+        "enclosure_ip": "IP55",
+        "cooling_types": ["IC411"]
+      },
+      "applications": ["Overhead EOT Cranes", "Gantry Cranes", "Hoists", "Winches", "Lifts"],
+      "configurations": ["Cage or slipring design with heavy-duty shaft and high pull-out torque"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "Crane Duty Motors"}
+      ],
+      "unverified_fields": ["Nominal operating voltage", "Mounting frame codes"]
+    },
+    {
+      "id": "ac-mill-duty",
+      "product_name": "AC Mill Duty Motors",
+      "category": "AC Motors",
+      "description": "Ruggedized mill motors engineered for extreme thermal gradients, vibration, and continuous heavy shock loads in steel rolling mills.",
+      "specifications": {
+        "power_range": "110 kW to 2000 kW",
+        "voltage_ratings": ["415V", "3.3kV", "6.6kV"],
+        "synchronous_rpm": ["1000", "750", "600"],
+        "insulation_class": "Class F",
+        "enclosure_ip": "IP23",
+        "cooling_types": ["IC01"],
+        "mounting_types": ["Horizontal Foot B3"]
+      },
+      "applications": ["Steel rolling mills", "Hot strip mills", "Bar and rod mills", "Sugar cane crushers", "Cement raw mills"],
+      "configurations": ["Heavy welded steel or ribbed cast iron housing with high transient overload capacity"],
+      "source_references": [
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 2, "section": "AC Mill Duty Motors"}
+      ],
+      "unverified_fields": ["Efficiency numbers", "Frame dimensional charts"]
+    },
+    {
+      "id": "ac-roller-table",
+      "product_name": "Roller Table Motors",
+      "category": "AC Motors",
+      "description": "Low-speed high-torque motors directly coupled to steel mill runout and transfer roller tables, built to withstand rapid reversing and thermal radiation.",
+      "specifications": {
+        "power_range": "0.37 kW to 37 kW",
+        "voltage_ratings": ["380V", "415V"],
+        "synchronous_rpm": ["1500", "1000", "750"],
+        "insulation_class": "Class F",
+        "enclosure_ip": "IP55",
+        "cooling_types": ["IC01", "IC411", "IC511", "IC611"],
+        "mounting_types": ["Horizontal Foot B3", "Vertical Flange B5"]
+      },
+      "applications": ["Steel mill roller tables", "Continuous casting runout tables", "Billet transfer lines"],
+      "configurations": ["Direct drive with special thermal barriers and shock-absorbing shafts"],
+      "source_references": [
+        {"source_filename": "NIEL Product Catalog.pdf", "page_number": 4, "section": "ROLLER TABLE MOTORS"}
+      ],
+      "unverified_fields": ["Starting torque multiplier", "Maximum ambient temperature rating"]
+    }
+  ]
+}
+

@@ -1,0 +1,40 @@
+{
+  "category": "Company Information",
+  "category_description": "Corporate identity, leadership, heritage, credentials, facilities, and contact information for New India Electricals Limited.",
+  "company_profile": {
+    "legal_name": "New India Electricals Limited (NIEL)",
+    "brand_name": "New India Electricals",
+    "year_established": 1969,
+    "years_of_experience": "Over 55 years of service in heavy electrical engineering",
+    "corporate_identity_number_cin": "U85110KA1994PLC015512",
+    "status": "Public Limited Company",
+    "export_credentials": "Star Export House recognized by the Ministry of Commerce & Industry, Government of India for over 10 consecutive years",
+    "global_footprint": "Exporting to more than 45 countries across Africa, Middle East, and Asia",
+    "headquarters_address": "Power House # 18, J.C. Road, Bangalore - 560 002, Karnataka, India",
+    "contact_numbers": ["+91 80 42434343", "+91 80 22235434"],
+    "fax_number": "+91 80 22226666",
+    "official_email": "sales@newindiaelectricals.com",
+    "official_website": "https://newindiaelectricals.com/",
+    "regional_branches": ["Mumbai, Maharashtra", "Raipur, Chhattisgarh"],
+    "manufacturing_and_warehousing_infrastructure": [
+      "50,000 sq ft central motor warehouse with over 4,000 motors maintained in active stock for rapid dispatch",
+      "30,000 sq ft state-of-the-art Medium Voltage (MV) & Low Voltage (LV) panel manufacturing and assembly plant operating as an official ABB Licensed System House",
+      "Dedicated in-house pump assembly, mechanical fitment, and hydraulic testing facility",
+      "Comprehensive electrical testing laboratory with CPRI-certified type test compliance"
+    ],
+    "strategic_alliances_and_partnerships": [
+      "ABB (Official Licensed System House for MV/LV Panels)",
+      "Siemens",
+      "Crompton Greaves (CG)",
+      "Transformers & Rectifiers (India) Ltd (TRIL)",
+      "Power+",
+      "Marathon Electric"
+    ]
+  },
+  "source_references": [
+    {"source_filename": "Company Intro - New India Electricals Limited.pdf", "page_number": 1, "section": "Company Overview"},
+    {"source_filename": "NIEL Product Catalog.pdf", "page_number": 1, "section": "In a NUTSHELL"}
+  ],
+  "unverified_fields": ["Total number of employees / workforce headcount", "Annual turnover in INR"]
+}
+

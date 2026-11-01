@@ -1,0 +1,65 @@
+{
+  "category": "Troubleshooting and Installation",
+  "category_description": "Standard industrial installation guidelines, maintenance procedures, troubleshooting tips, and critical safety guardrails for NIEL electrical equipment.",
+  "guides": [
+    {
+      "topic": "Electric Motor Mechanical Alignment and Foundation",
+      "category": "AC Motors / DC Motors",
+      "procedure": [
+        "Ensure foundation mass is at least 2.5 to 3 times the total weight of the motor to dampen mechanical vibrations.",
+        "Use dial indicators or optical laser alignment tools to check shaft alignment. Angular misalignment must be < 0.05 mm and radial parallel misalignment < 0.05 mm.",
+        "Verify axial gap in flexible couplings per manufacturer specifications to accommodate thermal shaft expansion.",
+        "Check free rotation of the motor rotor by hand prior to electrical energization to confirm no internal rubbing."
+      ],
+      "safety_warning": "Lockout-Tagout (LOTO) protocols must be enforced before manual rotation or coupling adjustment."
+    },
+    {
+      "topic": "Insulation Resistance (IR) Testing and Meggering",
+      "category": "AC Motors / Transformers / Switchgear",
+      "procedure": [
+        "Disconnect all external cables, power factor capacitors, and electronic surge arrestors from the motor terminals.",
+        "Apply 500V DC Megger for low voltage equipment (<= 1 kV) or 1000V/2500V DC for medium voltage systems (> 1 kV).",
+        "Record IR values after 1 minute of voltage application at 40°C reference temperature.",
+        "Rule of Thumb Minimum Acceptable IR: (Rated Voltage in kV + 1) Megaohms (MΩ). If IR is < 1 MΩ, the winding must be dried out using hot air circulation or baking lamps before energizing."
+      ],
+      "safety_warning": "Discharge windings to earth ground immediately after Megger testing to eliminate residual capacitive charge."
+    },
+    {
+      "topic": "Bearing Lubrication and Preventive Maintenance",
+      "category": "AC Motors / Pumps",
+      "procedure": [
+        "Use recommended high-quality lithium-base or polyurea high-temperature industrial grease.",
+        "Do not overfill bearing housings; maintain approximately 50% to 60% void space in the housing to avoid churning and overheating.",
+        "Follow periodic re-greasing intervals (typically every 2,000 to 4,000 operating hours depending on RPM, ambient temperature, and vibration levels).",
+        "Listen for abnormal acoustic noise (grinding, whistling) or high-frequency vibration spikes indicating raceway spalling."
+      ]
+    },
+    {
+      "topic": "Transformer Oil Quality and Dissolved Gas Analysis (DGA)",
+      "category": "Transformers",
+      "procedure": [
+        "Inspect the silica gel breather regular monthly. When silica gel crystals turn pink, replace or reactivate them by baking at 120°C until dark blue.",
+        "Test dielectric breakdown voltage (BDV) of transformer mineral oil: new oil BDV >= 40 kV; in-service oil must be filtered if BDV falls below 30 kV.",
+        "Inspect Buchholz relay gas collection chamber. If gas accumulates, analyze gas color: white gas indicates paper insulation breakdown; yellow/grey indicates arcing; dark black indicates heavy flashover."
+      ],
+      "safety_warning": "Never sample transformer oil or inspect Buchholz relays on energized high-voltage transformers without safety clearance."
+    },
+    {
+      "topic": "Medium Voltage Switchgear Mechanical and Electrical Interlocks",
+      "category": "Switchgear",
+      "procedure": [
+        "Circuit breaker cannot be racked in or out when the vacuum breaker is in the CLOSED position.",
+        "Circuit breaker cannot be closed unless it is fully locked in the TEST or SERVICE position.",
+        "Earth switch cannot be closed when the circuit breaker is racked into the SERVICE position.",
+        "Compartment access doors cannot be opened unless the line earth switch is fully engaged."
+      ],
+      "safety_warning": "CRITICAL ELECTRICAL SAFETY ADVISORY: Never force or bypass mechanical door interlocks on medium-voltage switchgear. Arc flash hazard can result in fatal burns. De-energize upstream busbars and verify zero voltage with an approved capacitive detector before opening compartments."
+    }
+  ],
+  "source_references": [
+    {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "Installation Guidelines"},
+    {"source_filename": "Transformers - NIEL Brochure.pdf", "page_number": 2, "section": "Maintenance Manual"},
+    {"source_filename": "Switchgear Panels MV - NIEL Brochure.pdf", "page_number": 1, "section": "Safety Interlocks"}
+  ]
+}
+

@@ -1,0 +1,152 @@
+{
+  "category": "Pumps and Valves",
+  "category_description": "Centrifugal, process, submersible, self-priming, and vacuum pumps together with industrial process control valves.",
+  "products": [
+    {
+      "id": "pump-end-suction-monoblock",
+      "product_name": "End Suction Monoblock Pumps (Series: GMCT / KDS+ / KDT+ / KS+)",
+      "category": "Pumps and Valves",
+      "description": "Compact close-coupled end suction monoblock centrifugal pumps for utility water supply, industrial cooling, and agricultural circulation.",
+      "specifications": {
+        "delivery_size": "Up to 150 mm",
+        "discharge_capacity": "Up to 260 m³/hr",
+        "head_range": "Up to 102 metres",
+        "power_rating": "0.37 kW to 22 kW"
+      },
+      "features": ["Gland packed or mechanical seal", "Optional bronze impellers", "Top flat efficiency curve"],
+      "applications": ["Irrigation", "Agriculture", "Industrial cooling towers", "Commercial water supply"],
+      "source_references": [
+        {"source_filename": "Pumps - NIEL Brochure.pdf", "page_number": 1, "section": "End Suction Monoblock Pump"}
+      ],
+      "unverified_fields": ["Numeric efficiency figures", "IP rating"]
+    },
+    {
+      "id": "pump-openwell-submersible",
+      "product_name": "Openwell Submersible Pumps (Series: KOS+)",
+      "category": "Pumps and Valves",
+      "description": "Water-filled submersible pumps designed to operate fully submerged in sumps, wells, or reservoirs, with replaceable wearing parts.",
+      "specifications": {
+        "delivery_size": "Up to 100 mm",
+        "discharge_capacity": "Up to 115 m³/hr",
+        "head_range": "Up to 64 metres",
+        "power_rating": "0.37 kW to 11 kW",
+        "operating_voltage": "200V to 440V"
+      },
+      "features": ["Submerged operation prevents priming issues", "Flat efficiency curve", "Replaceable wearing parts"],
+      "applications": ["Sprinkler and flood irrigation", "Gardening", "Fountains", "Industrial sumps and water reservoirs"],
+      "source_references": [
+        {"source_filename": "Pumps - NIEL Brochure.pdf", "page_number": 1, "section": "Open well Submersible Pump"}
+      ],
+      "unverified_fields": ["Cable length standard", "Thrust bearing type"]
+    },
+    {
+      "id": "pump-end-suction-process",
+      "product_name": "End Suction Process Pumps (Series: KH / KHDT+)",
+      "category": "Pumps and Valves",
+      "description": "High head bare-shaft end suction centrifugal pumps with high suction lift capability for process plants and agricultural lifting.",
+      "specifications": {
+        "delivery_size": "Up to 65 mm",
+        "discharge_capacity": "Up to 68 m³/hr",
+        "head_range": "Up to 104 metres",
+        "power_rating": "0.25 kW to 15 kW",
+        "suction_lift": "Up to 7.5 metres"
+      },
+      "features": ["Suitable for belt drive or direct electric motor / diesel engine coupling", "Single or two-stage design"],
+      "applications": ["Industrial utility", "Cooling towers", "Agricultural high-lift pumping"],
+      "source_references": [
+        {"source_filename": "Pumps - NIEL Brochure.pdf", "page_number": 1, "section": "End Suction Pump"}
+      ],
+      "unverified_fields": ["Casing material grades", "Max operating pressure in bar"]
+    },
+    {
+      "id": "pump-self-priming-nonclog",
+      "product_name": "Self-Priming Non-Clog Pumps (Series: SP / SPM)",
+      "category": "Pumps and Valves",
+      "description": "Self-priming centrifugal pumps featuring a non-clogging impeller and back pull-out design for handling suspended solids and effluents.",
+      "specifications": {
+        "delivery_size": "Up to 150 mm",
+        "discharge_capacity": "Up to 275 m³/hr",
+        "head_range": "Up to 34 metres",
+        "power_rating": "0.75 kW to 19.5 kW"
+      },
+      "features": ["Rapid self-priming without foot valve", "Back pull-out design allows maintenance without disturbing piping", "Handles suspended solids"],
+      "applications": ["Sewage and muddy water", "Industrial effluent and light slurry", "Storm water drainage", "Petroleum liquids"],
+      "source_references": [
+        {"source_filename": "Pumps - NIEL Brochure.pdf", "page_number": 1, "section": "Self Priming Pump"}
+      ],
+      "unverified_fields": ["Max solid sphere passage size", "Priming chamber volume"]
+    },
+    {
+      "id": "pump-vacuum",
+      "product_name": "Liquid Ring Vacuum Pumps (Series: KV / DV)",
+      "category": "Pumps and Valves",
+      "description": "Sturdy liquid ring vacuum pumps designed for continuous air and non-condensable vapor evacuation in process systems.",
+      "specifications": {
+        "vacuum_level": "Up to 650 mm of Mercury (Hg)",
+        "air_flow_rate": "Up to 162 m³/hr",
+        "power_rating": "0.75 kW to 7.5 kW (1 HP to 2 HP in monoblock design)"
+      },
+      "features": ["Robust casing with integral nozzles", "Grease-lubricated deep groove ball bearings", "Low maintenance"],
+      "applications": ["Drying and evaporation", "Vacuum distillation and filtration", "Sterilization", "Large pump priming"],
+      "source_references": [
+        {"source_filename": "Pumps - NIEL Brochure.pdf", "page_number": 1, "section": "Vacuum Pump"}
+      ],
+      "unverified_fields": ["Service liquid water flow requirement"]
+    },
+    {
+      "id": "pump-vertical-in-line-multistage",
+      "product_name": "Vertical In-Line Multistage Pumps (Series: IL)",
+      "category": "Pumps and Valves",
+      "description": "High-pressure vertical multistage in-line pumps with all wetted components pressed from stainless steel (SS304/SS316).",
+      "specifications": {
+        "delivery_size": "Up to 100 mm",
+        "discharge_capacity": "Up to 75 m³/hr",
+        "head_range": "Up to 220 metres",
+        "liquid_temperature": "(-) 15°C to 120°C",
+        "frequency": "50 Hz / 60 Hz",
+        "wetted_materials": ["SS304", "SS316"]
+      },
+      "features": ["In-line suction and discharge ports for compact piping", "Mechanical seal", "Low NPSH requirement", "High energy efficiency"],
+      "applications": ["Boiler feed water", "RO water treatment plants", "Industrial high-pressure boosting", "Firefighting Jockey systems"],
+      "source_references": [
+        {"source_filename": "Pumps - NIEL Brochure.pdf", "page_number": 2, "section": "Vertical in Line Multistage Pump"}
+      ],
+      "unverified_fields": ["Maximum casing working pressure in bar"]
+    },
+    {
+      "id": "pump-horizontal-multistage",
+      "product_name": "Horizontal Multistage Heavy Duty Pumps (Series: RKB)",
+      "category": "Pumps and Valves",
+      "description": "Ring-section heavy industrial multistage centrifugal pumps designed for ultra-high head and high temperature liquid transfer.",
+      "specifications": {
+        "delivery_size": "Up to 200 mm",
+        "discharge_capacity": "Up to 850 m³/hr",
+        "head_range": "Up to 850 metres",
+        "liquid_temperature": "(-) 40°C to 140°C"
+      },
+      "features": ["Enclosed impellers with hydraulic balance drum/disc", "Gland packed or mechanical seal options", "Suction branch orientable left or right"],
+      "applications": ["Mine dewatering", "High-pressure boiler feeding", "Industrial firefighting mains", "Long-distance water booster pipelines"],
+      "source_references": [
+        {"source_filename": "NIEL Product Catalog.pdf", "page_number": 5, "section": "Horizontal Multistage Pump, SERIES : RKB"}
+      ],
+      "unverified_fields": ["Shaft speed / pole configurations"]
+    },
+    {
+      "id": "valves-industrial",
+      "product_name": "Industrial Process and Water Valves",
+      "category": "Pumps and Valves",
+      "description": "Heavy industrial fluid control valves engineered for municipal, industrial process, and slurry pipeline flow regulation.",
+      "specifications": {
+        "valve_types": ["Gate Valves (Sluice Valves)", "Butterfly Valves (Gear Operated)", "Reflux Valves (Non-Return Valves)"],
+        "pressure_ratings": "Class 125, Class 150, PN 10, PN 16 (typical industrial ratings)",
+        "body_materials": ["Cast Iron (CI)", "Ductile Iron (DI)", "Cast Steel (CS)"]
+      },
+      "applications": ["Water supply pumping mains", "Cooling water isolation", "Effluent and process pipeline control"],
+      "source_references": [
+        {"source_filename": "newindiaelectricals.com", "page_number": 1, "section": "Valves & Fluid Control"}
+      ],
+      "unverified_fields": ["Exact dimensional flange tables per DN size"]
+    }
+  ]
+}
+

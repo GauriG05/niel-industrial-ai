@@ -1,0 +1,120 @@
+{
+  "category": "Transformers",
+  "category_description": "Oil-immersed and dry-type cast resin distribution and power transformers, including specialized furnace transformers.",
+  "products": [
+    {
+      "id": "transformer-distribution",
+      "product_name": "Distribution Transformers (Oil Immersed)",
+      "category": "Transformers",
+      "description": "Step-down distribution transformers engineered for regional and industrial distribution networks with low core losses and high thermal endurance.",
+      "specifications": {
+        "system_phase_and_frequency": "3-Phase, 50 Hz",
+        "primary_voltage_ratings": ["11 kV", "22 kV", "33 kV"],
+        "off_circuit_tap_changer": "+5% to -10%",
+        "on_load_tap_changer_oltc": "+7% to -21% taps in steps of 1.75%",
+        "insulation_class": "Class A insulated",
+        "vector_group": "Dyn 11",
+        "duty_cycle": "Continuous duty",
+        "conductor_materials": ["Copper wound", "Aluminium wound"],
+        "standards": "IS 2026 / IEC 76"
+      },
+      "features": [
+        "HV side cable box and LV side cable box or bus duct interface",
+        "Protective painting complying with IS/IEC standards",
+        "Standard conservator with silica gel dehydrating breather",
+        "Oil level gauge and drain valves"
+      ],
+      "applications": ["Industrial utility power distribution", "Township and municipal supply", "Commercial sub-stations"],
+      "source_references": [
+        {"source_filename": "Transformers - NIEL Brochure.pdf", "page_number": 1, "section": "Distribution Transformers"},
+        {"source_filename": "NIEL Product Catalog.pdf", "page_number": 7, "section": "DISTRIBUTION TRANSFORMERS"}
+      ],
+      "unverified_fields": ["Numeric impedance percentage (Z%) per kVA rating", "No-load and full-load loss guarantees"]
+    },
+    {
+      "id": "transformer-power",
+      "product_name": "Power Transformers",
+      "category": "Transformers",
+      "description": "High-capacity transmission and power transformers operating up to 111 kV, equipped with Buchholz protection and remote cooler marshalling.",
+      "specifications": {
+        "system_phase_and_frequency": "3-Phase, 50 Hz",
+        "voltage_classes": ["11 kV", "22 kV", "33 kV", "66 kV", "111 kV"],
+        "off_circuit_tap_changer": "±5% to ±7.5% and +5% to -10% in steps of 2.5%",
+        "on_load_tap_changer_oltc": "+5% to -15% taps in steps of 1.25%",
+        "insulation_class": "Class A, uniform / non-uniform insulated",
+        "vector_groups": ["Dyn 11", "YNd 11", "YNyn 0"],
+        "duty_cycle": "Continuous duty, double copper wound",
+        "cooling_types": ["ONAN (Oil Natural Air Natural)", "ONAF (Oil Natural Air Forced)"]
+      },
+      "features": [
+        "HV and LV outdoor bushings or fully shielded cable boxes",
+        "Detachable cooling radiators with optional forced cooling fans",
+        "Double-float Buchholz relay with alarm and trip contacts and isolation valves",
+        "Dial-type oil temperature indicator (OTI) with alarm and trip contacts",
+        "Dial-type winding temperature indicator (WTI)",
+        "Magnetic oil level gauge (MOG) with electrical alarm contact",
+        "Weatherproof marshalling box and cooler control unit",
+        "Neutral current transformer (NCT) for earth fault protection"
+      ],
+      "applications": ["Transmission substations", "Primary industrial power receiving yards", "Captive power plants"],
+      "source_references": [
+        {"source_filename": "Transformers - NIEL Brochure.pdf", "page_number": 2, "section": "Power Transformers"},
+        {"source_filename": "NIEL Product Catalog.pdf", "page_number": 8, "section": "POWER TRANSFORMERS"}
+      ],
+      "unverified_fields": ["Maximum MVA limit per voltage class in catalog", "Short-circuit withstand time in seconds"]
+    },
+    {
+      "id": "transformer-furnace",
+      "product_name": "Furnace Transformers",
+      "category": "Transformers",
+      "description": "Specialized heavy-current transformers designed to withstand the severe electrical and mechanical stresses of electric furnace operation.",
+      "specifications": {
+        "primary_voltages": ["11 kV", "22 kV", "33 kV"],
+        "cooling_methods": ["ONAN", "ONAF", "OFW (Oil Forced Water Forced for heavy current)"],
+        "magnetic_core_lamination": "CRGO M3 to M5 grade electrical steel",
+        "electric_windings": "Electrolytic grade 99.9% pure copper with transposition in LV coils",
+        "tap_changers": "Motorized On-load / Off-circuit multi-step regulation",
+        "vector_groups": ["Dyn 11", "YNd 11", "Dd0y11"]
+      },
+      "features": [
+        "Engineered for high harmonic currents and repeated dead short-circuits during arc striking",
+        "Heavy copper busbar risers on LV terminals",
+        "Axial and radial cooling ducts for smooth oil flow",
+        "Reinforced core clamp frames preventing mechanical deformation"
+      ],
+      "applications": ["Induction melting furnaces", "Electric arc furnaces (EAF)", "Submerged arc furnaces (SAF) in steel and ferroalloy plants"],
+      "source_references": [
+        {"source_filename": "Transformers - NIEL Brochure.pdf", "page_number": 3, "section": "Furnace Transformers"},
+        {"source_filename": "NIEL Product Catalog.pdf", "page_number": 9, "section": "FURNACE TRANSFORMERS"}
+      ],
+      "unverified_fields": ["Maximum secondary current output in kA"]
+    },
+    {
+      "id": "transformer-cast-resin-dry",
+      "product_name": "Cast Resin Dry Type Transformers",
+      "category": "Transformers",
+      "description": "Moisture-proof, fire-resistant cast resin dry-type transformers specifically suited for indoor substations, high-rise buildings, and underground utilities.",
+      "specifications": {
+        "voltage_rating": "11 kV / 433 V, 3-Phase, 50 Hz",
+        "tap_links": "Off-circuit tap links +5% in steps of 2.5%",
+        "insulation_class": "Class F and Class H",
+        "vector_group": "Dyn 11 (HV Delta, LV Star with neutral)",
+        "duty_cycle": "Continuous duty",
+        "enclosure_protection": "IP23 to IP33 (custom enclosures up to IP54 on request)",
+        "cooling": "AN (Air Natural) / AF (Air Forced)"
+      },
+      "features": [
+        "Windings vacuum cast in epoxy resin with quartz filler",
+        "Self-extinguishing with zero toxic gas emission and zero fire hazard",
+        "Maintenance-free design with no oil leakage or contamination risk",
+        "Direct installation near load centers reducing LV cable costs"
+      ],
+      "applications": ["Commercial complexes and high-rises", "Airports and metro stations", "Hospitals", "Underground mining substations"],
+      "source_references": [
+        {"source_filename": "Transformers - NIEL Brochure.pdf", "page_number": 4, "section": "Cast Resin (Dry Type) Transformers"}
+      ],
+      "unverified_fields": ["Partial discharge test threshold (pC value)"]
+    }
+  ]
+}
+

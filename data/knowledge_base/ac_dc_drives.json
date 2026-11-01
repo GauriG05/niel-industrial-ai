@@ -1,0 +1,54 @@
+{
+  "category": "AC/DC Drives",
+  "category_description": "Variable frequency AC drives, medium-voltage converters, and thyristor DC drive systems for precision speed and torque control.",
+  "products": [
+    {
+      "id": "drive-lv-ac",
+      "product_name": "Low Voltage AC Variable Frequency Drives (VFD)",
+      "category": "AC/DC Drives",
+      "description": "Industrial low-voltage AC drives featuring ABB technology for energy-saving speed modulation, soft acceleration, and process automation.",
+      "specifications": {
+        "supported_series": ["ABB ACS150", "ABB ACS310", "ABB ACS355", "ABB ACS550", "ABB ACS800", "ABB ACS850"],
+        "voltage_range": "380V to 480V, 3-Phase, 50/60 Hz",
+        "power_range": "0.37 kW up to 500 kW in standard cubicle configurations",
+        "control_modes": ["Scalar (V/f) Control", "Sensorless Vector Control", "Direct Torque Control (DTC)"]
+      },
+      "features": [
+        "Built-in EMC filters and swinging chokes for harmonic reduction",
+        "Modbus, Profibus, and Ethernet industrial communication interfaces",
+        "Integrated PID process controllers and pump/fan macro profiles",
+        "Dynamic braking chopper options for regenerative deceleration"
+      ],
+      "applications": ["Variable flow pump stations", "Industrial ventilation blowers", "Conveyor speed synchronization", "Machine tool spindles"],
+      "source_references": [
+        {"source_filename": "newindiaelectricals.com", "page_number": 1, "section": "LV AC Drives"},
+        {"source_filename": "Company Intro - New India Electricals Limited.pdf", "page_number": 2, "section": "Motors & Drive Systems"}
+      ],
+      "unverified_fields": ["Enclosure IP ratings beyond IP21/IP54"]
+    },
+    {
+      "id": "drive-dc-thyristor",
+      "product_name": "Three-Phase Digital DC Drive Systems",
+      "category": "AC/DC Drives",
+      "description": "Fully digital four-quadrant thyristor converters for precise speed and torque regulation of large industrial DC motors in continuous mill lines.",
+      "specifications": {
+        "mains_input_voltage": "230V to 1000V AC, 3-Phase, 50 Hz",
+        "armature_output_current": "Up to 5000A DC",
+        "quadrants": "1-Quadrant (single directional) and 4-Quadrant (regenerative reverse/braking)",
+        "field_regulator": "Integrated digital field regulator with field-weakening capabilities"
+      },
+      "features": [
+        "Instantaneous torque response across wide speed range",
+        "Regenerative power feed back into the AC supply network during deceleration",
+        "Optical fiber isolation for trigger pulses preventing electrical noise interference"
+      ],
+      "applications": ["Steel re-rolling mill stands", "Wire drawing and rod rolling mills", "Rubber Banbury mixers", "Extruders and test dynos"],
+      "source_references": [
+        {"source_filename": "newindiaelectricals.com", "page_number": 1, "section": "DC Drive Systems"},
+        {"source_filename": "DC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "DC Motors and Drives"}
+      ],
+      "unverified_fields": ["Specific microprocessor controller board model numbers"]
+    }
+  ]
+}
+

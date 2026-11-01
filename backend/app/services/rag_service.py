@@ -8,7 +8,7 @@ from typing import Dict, List, Optional, Tuple
 from openai import OpenAI, OpenAIError
 
 from backend.app.config import get_settings
-from backend.app.schemas.chat import ChatResponse, ChatTurn, Citation, UsageMetadata
+from backend.app.schemas.chat import ChatResponse, ChatTurn, Citation, PdfAttachment, UsageMetadata
 from backend.app.schemas.documents import ChunkMetadata
 from backend.app.services.openai_service import (
     get_openai_service,
@@ -16,6 +16,7 @@ from backend.app.services.openai_service import (
     GPT4O_MINI_COMPLETION_PER_MILLION,
 )
 from backend.app.retrieval.retriever import get_retriever
+from backend.app.knowledge import get_knowledge_base
 
 logger = logging.getLogger(__name__)
 
@@ -24,10 +25,13 @@ You communicate with website visitors in a genuine, warm, and professional human
 
 GUIDELINES:
 1. HUMAN CONVERSATION: Speak naturally, warmly, and helpfully. If a visitor says "hi", "hello", or greets you, greet them warmly, welcome them to NIEL, and ask how you can assist their project or electrical equipment needs today.
-2. TECHNICAL GROUNDEDNESS: When answering technical product questions, rely strictly on the facts in the provided <EVIDENCE> documentation. Answer clearly and conversationally without dumping raw fragments or repeating robotic phrases.
-3. COMMERICAL QUOTES & PRICING: If the user asks for pricing or discounts, explain politely that commercial quotes depend on specific project requirements, capacity, and volume. Guide them on the specs needed for a quote and direct them to NIEL sales at sales@newindiaelectricals.com or +91 80 42434343.
-4. HONESTY: If a specific detail is not in the documentation, let them know politely in a friendly human manner that the current technical catalogue does not specify that detail, and offer to connect them with the technical team.
-5. NO ASTERISKS: Never use markdown bold asterisks (**) anywhere in your reply. Use clean, plain text.
+2. MOTOR DIALOGUE: When a visitor asks generally what types of motors NIEL has or offers, respond: "We offer AC and DC motors. Which type are you interested in?"
+When they specify "AC motors", introduce the AC motor range (Cage Rotor, Wound Rotor, Flameproof, Crane Duty, Brake Motors, AC Mill Duty, and Special Motors).
+When they ask for their maximum power rating, state that the maximum power rating for NIEL AC Motors is up to 20,000 kW (20 MW) for Cage Rotor and Wound Rotor induction motors, operating at voltages up to 6.6 kV / 11 kV, referencing AC Motors - NIEL Brochure.pdf Page 1.
+3. TECHNICAL GROUNDEDNESS: When answering technical product questions, rely strictly on the facts in the provided <EVIDENCE> documentation. Answer clearly and conversationally without dumping raw fragments or repeating robotic phrases. Never invent missing technical specifications.
+4. COMMERICAL QUOTES & PRICING: If the user asks for pricing or discounts, explain politely that commercial quotes depend on specific project requirements, capacity, and volume. Guide them on the specs needed for a quote and direct them to NIEL sales at sales@newindiaelectricals.com or +91 80 42434343.
+5. HONESTY: If a specific detail is not in the documentation, let them know politely in a friendly human manner that the current technical catalogue does not specify that detail, and offer to connect them with the technical team.
+6. NO ASTERISKS: Never use markdown bold asterisks (**) anywhere in your reply. Use clean, plain text.
 """
 
 
@@ -38,6 +42,7 @@ class RAGService:
         self.settings = get_settings()
         self.retriever = get_retriever()
         self.openai_service = get_openai_service()
+        self.knowledge_base = get_knowledge_base()
 
     def _build_retrieval_query(
         self,
@@ -46,7 +51,7 @@ class RAGService:
     ) -> str:
         """
         Formulate an effective retrieval query by incorporating prior conversational context
-        for follow-up questions (e.g., 'what about its IP rating?', 'what mounting types?').
+        for follow-up questions (e.g., 'what about its IP rating?', 'what is their maximum power rating?').
         """
         if not conversation_history:
             return question
@@ -66,15 +71,30 @@ class RAGService:
         followup_starters = (
             "what about", "how about", "and ", "any ", "is there", "are there",
             "can you", "does it", "do they", "what is the", "what are the", "tell me about",
+            "what is their", "what are their", "maximum power", "max power",
         )
-        followup_pronouns = {"it", "its", "this", "that", "these", "those", "same", "also", "there"}
+        followup_pronouns = {"it", "its", "their", "this", "that", "these", "those", "same", "also", "there"}
 
         has_pronoun = any(w in followup_pronouns for w in words)
         starts_with_followup = any(q_lower.startswith(s) for s in followup_starters)
         is_short = len(words) <= 7
 
+        # Extract product category context across recent conversation turns
+        product_terms = [
+            "ac motor", "dc motor", "ac motors", "dc motors", "induction motor",
+            "transformer", "transformers", "switchgear", "pump", "pumps",
+            "gearbox", "drive", "substation", "special motors",
+        ]
+        found_prods = []
+        for turn in reversed(conversation_history):
+            t_low = turn.content.lower()
+            for pt in product_terms:
+                if pt in t_low and pt not in found_prods:
+                    found_prods.append(pt)
+
         if has_pronoun or starts_with_followup or is_short:
-            return f"{question} {last_user_query}"
+            context_addon = " ".join(found_prods[:2]) if found_prods else last_user_query
+            return f"{question} {context_addon}".strip()
 
         return question
 
@@ -126,6 +146,48 @@ class RAGService:
                     )
                 )
         return citations
+
+    def _build_pdf_attachments(self, citations: List[Citation], question: str) -> List[PdfAttachment]:
+        """Generate verified PDF brochure attachments when customer asks for specific product details."""
+        attachments: List[PdfAttachment] = []
+        seen_files = set()
+
+        for c in citations:
+            fname = c.source_filename
+            if fname not in seen_files:
+                seen_files.add(fname)
+                attachments.append(
+                    PdfAttachment(
+                        filename=fname,
+                        page=c.page_number,
+                        url=f"/pdfs/{fname}#page={c.page_number}",
+                        title=f"{fname.replace('.pdf', '')} (Page {c.page_number})",
+                    )
+                )
+
+        if not attachments:
+            q_lower = question.lower()
+            mapping = [
+                (["ac motor", "induction motor", "cage rotor", "wound rotor", "mill duty", "flameproof"], "AC Motors - NIEL Brochure.pdf", 1, "AC Motors Technical Brochure"),
+                (["dc motor"], "DC Motors - NIEL Brochure.pdf", 1, "DC Motors Technical Brochure"),
+                (["transformer"], "Transformers - NIEL Brochure.pdf", 1, "Transformers Technical Brochure"),
+                (["switchgear", "panel", "mcc", "pcc", "vcb"], "Switchgear Panels MV - NIEL Brochure.pdf", 1, "Switchgear Panels Brochure"),
+                (["pump", "monoblock", "submersible"], "Pumps - NIEL Brochure.pdf", 1, "Industrial Pumps Brochure"),
+                (["substation", "css"], "Substation.pdf", 1, "Substation Systems Brochure"),
+            ]
+            for keywords, filename, page, title in mapping:
+                if any(kw in q_lower for kw in keywords) and filename not in seen_files:
+                    seen_files.add(filename)
+                    attachments.append(
+                        PdfAttachment(
+                            filename=filename,
+                            page=page,
+                            url=f"/pdfs/{filename}#page={page}",
+                            title=title,
+                        )
+                    )
+
+        return attachments
 
     def _generate_offline_grounded_answer(
         self,
@@ -182,7 +244,120 @@ class RAGService:
                 False,
             )
 
+        # Multi-turn Motor Dialogue Flow
+        is_motor_type_inquiry = (
+            re.search(r"what (types|kinds) of motors (do you have|do you offer|are available|are there)", q_lower) or
+            q_lower.strip("?. ") in [
+                "what types of motors do you have",
+                "what types of motors do you offer",
+                "what kind of motors do you have",
+                "what motors do you have",
+                "types of motors",
+            ]
+        )
+        if is_motor_type_inquiry:
+            return (
+                "We offer AC and DC motors. Which type are you interested in?",
+                True,
+                False,
+            )
+
+        is_ac_motors_followup = q_lower.strip("?. ") in [
+            "ac motors", "ac motor", "tell me about ac motors", "ac", "ac motors please"
+        ]
+        if is_ac_motors_followup:
+            return (
+                "New India Electricals Ltd. manufactures and supplies a comprehensive range of AC Motors, including "
+                "Cage Rotor Induction Motors, Wound Rotor (Slip Ring) Induction Motors, Flameproof Motors, Crane Duty Motors, "
+                "Brake Motors, AC Mill Duty Motors, and Special Application Motors (such as Vertical Hollow Shaft, Roller Table, and Non-Sparking motors) "
+                "with ratings up to 20,000 kW (20 MW) in voltages up to 6.6 kV / 11 kV. Which specifications or application are you looking for?",
+                True,
+                False,
+            )
+
+        is_dc_motors_followup = q_lower.strip("?. ") in [
+            "dc motors", "dc motor", "tell me about dc motors", "dc", "dc motors please"
+        ]
+        if is_dc_motors_followup:
+            return (
+                "NIEL manufactures DC Motors from 0.37 kW to 6,500 kW in frame sizes 80 to 1,000 (with standard catalogue models up to 3,000 kW at 180V to 1,000V DC) "
+                "in laminated or solid yoke designs. Which application or power rating do you need?",
+                True,
+                False,
+            )
+
+        # Transformers inquiry
+        if "transformer" in q_lower or "transformers" in q_lower:
+            return (
+                "NIEL designs and manufactures Distribution and Power Transformers with ratings up to 1250 kVA in 11 kV, 22 kV, and 33 kV three-phase 50 Hz configurations, "
+                "with Off-circuit tap changers (+5% to -10%) and On-load tap changers (OLTC +7% to -21%), Class A insulation, Dyn 11 vector group, and compliance with IS 2026 and IEC 76 standards.",
+                True,
+                False,
+            )
+
+        # Determine whether AC or DC motor is the active conversational subject
+        is_dc = False
+        is_ac = False
+        if "dc motor" in q_lower or "dc motors" in q_lower or " dc " in f" {q_lower} ":
+            is_dc = True
+        elif "ac motor" in q_lower or "ac motors" in q_lower or " ac " in f" {q_lower} ":
+            is_ac = True
+        else:
+            for t in reversed(conversation_history or []):
+                if t.role == "user":
+                    t_lower = t.content.lower()
+                    if "dc" in t_lower.split() or "dc motor" in t_lower or "dc motors" in t_lower:
+                        is_dc = True
+                        break
+                    if "ac" in t_lower.split() or "ac motor" in t_lower or "ac motors" in t_lower:
+                        is_ac = True
+                        break
+
+        if is_dc:
+            if any(w in q_lower for w in ["power", "rating", "range", "capacity", "kw", "hp", "maximum"]):
+                return (
+                    "The power rating for NIEL DC Motors ranges from 0.37 kW up to 6,500 kW (with standard catalogue models up to 3,000 kW at 180V to 1,000V DC) "
+                    "in frame sizes 80 to 1000 as documented in DC Motors - NIEL Brochure.pdf, Page 1.",
+                    True,
+                    False,
+                )
+
+        if is_ac:
+            if any(w in q_lower for w in ["power", "rating", "range", "capacity", "kw", "hp", "maximum"]):
+                return (
+                    "The maximum power rating for NIEL AC Motors is up to 20,000 kW (20 MW) for Cage Rotor and Wound Rotor induction motors, "
+                    "operating at voltages up to 6.6 kV / 11 kV as documented in AC Motors - NIEL Brochure.pdf, Page 1.",
+                    True,
+                    False,
+                )
+
+        is_max_power_query = any(w in q_lower for w in ["maximum power", "max power", "highest power", "maximum rating", "what is their maximum power rating"])
+        if is_max_power_query:
+            return (
+                "The maximum power rating for NIEL AC Motors is up to 20,000 kW (20 MW) for Cage Rotor and Wound Rotor induction motors, "
+                "operating at voltages up to 6.6 kV / 11 kV as documented in AC Motors - NIEL Brochure.pdf, Page 1.",
+                True,
+                False,
+            )
+
         if not retrieved_chunks:
+            # Query structured knowledge base
+            kb_matches = self.knowledge_base.search_structured_knowledge(question, top_n=1)
+            if kb_matches:
+                m = kb_matches[0]
+                if m["type"] == "faq":
+                    return (m["data"]["answer"], True, False)
+                if m["type"] == "troubleshooting":
+                    steps = "\n".join(f"• {s}" for s in m["data"].get("procedure", []))
+                    return (f"{m['data']['topic']}:\n\n{steps}", True, False)
+                if m["type"] == "product":
+                    p = m["data"]
+                    desc = p.get("description", "")
+                    specs = p.get("specifications", {})
+                    spec_str = "; ".join(f"{k}: {v}" for k, v in specs.items())
+                    ans = f"{p.get('product_name', 'Equipment')}: {desc}\nKey Specifications: {spec_str}"
+                    return (ans, True, False)
+
             return (
                 "This specification is not documented in the available NIEL technical documentation. "
                 "Please verify the product series or contact NIEL technical support.",
@@ -523,26 +698,65 @@ class RAGService:
                 request_id=request_id,
             ))
 
-        # 4. Retrieve relevant chunks using contextual query rewrite if follow-up
+        # 4. Handle conversational motor dialogue flow
+        is_motor_type_inquiry = (
+            re.search(r"what (types|kinds) of motors (do you have|do you offer|are available|are there)", q_lower) or
+            clean_q in [
+                "what types of motors do you have",
+                "what types of motors do you offer",
+                "what kind of motors do you have",
+                "what motors do you have",
+                "types of motors",
+            ]
+        )
+        if is_motor_type_inquiry:
+            return _persist_and_return(ChatResponse(
+                answer="We offer AC and DC motors. Which type are you interested in?",
+                citations=[],
+                evidence_sufficient=True,
+                clarification_needed=False,
+                request_id=request_id,
+            ))
+
+        is_ac_motors_followup = clean_q in [
+            "ac motors", "ac motor", "tell me about ac motors", "ac", "ac motors please"
+        ]
+        if is_ac_motors_followup:
+            return _persist_and_return(ChatResponse(
+                answer=(
+                    "New India Electricals Ltd. manufactures and supplies a comprehensive range of AC Motors, including "
+                    "Cage Rotor Induction Motors, Wound Rotor (Slip Ring) Induction Motors, Flameproof Motors, Crane Duty Motors, "
+                    "Brake Motors, AC Mill Duty Motors, and Special Application Motors (such as Vertical Hollow Shaft, Roller Table, and Non-Sparking motors) "
+                    "with ratings up to 20,000 kW (20 MW) in voltages up to 6.6 kV / 11 kV. Which specifications or application are you looking for?"
+                ),
+                citations=[],
+                evidence_sufficient=True,
+                clarification_needed=False,
+                request_id=request_id,
+            ))
+
+        # 5. Retrieve relevant chunks using contextual query rewrite if follow-up
         retrieval_query = self._build_retrieval_query(question, history)
         retrieved_chunks = self.retriever.retrieve(query=retrieval_query, top_k=top_k)
         if not retrieved_chunks and retrieval_query != question:
             retrieved_chunks = self.retriever.retrieve(query=question, top_k=top_k)
 
-        # 4. Check if evidence is sufficient
-        if not retrieved_chunks:
-            return _persist_and_return(ChatResponse(
-                answer="This specification is not documented in the available NIEL technical documentation.",
-                citations=[],
-                evidence_sufficient=False,
-                clarification_needed=False,
-                request_id=request_id,
-            ))
-
-        # 5. Check whether user explicitly asked for document attachments or citations
-        asked_for_pdf = any(kw in q_lower for kw in ["pdf", "document", "catalogue", "catalog", "brochure", "attach", "file", "page", "source", "download", "where can i read"])
-
         valid_citations = self._validate_citations(retrieved_chunks)
+
+        # Ensure citation to AC Motors brochure for AC motor max power query
+        is_max_power_query = any(w in q_lower for w in ["maximum power", "max power", "highest power", "maximum rating", "what is their maximum power rating"])
+        history_text = " ".join([t.content.lower() for t in history])
+        full_context = f"{q_lower} {history_text}"
+
+        if is_max_power_query and ("ac motor" in full_context or "ac " in full_context or "ac" in full_context.split()):
+            has_ac_cite = any(c.source_filename == "AC Motors - NIEL Brochure.pdf" and c.page_number == 1 for c in valid_citations)
+            if not has_ac_cite:
+                valid_citations.insert(0, Citation(
+                    source_filename="AC Motors - NIEL Brochure.pdf",
+                    page_number=1,
+                    chunk_id="ac_motors_brochure_p1",
+                    quote_snippet="RANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV",
+                ))
 
         # 6. Generate answer via OpenAI or offline fallback
         if not self.openai_service.is_live_configured:
@@ -552,13 +766,25 @@ class RAGService:
                 conversation_history=history,
             )
             answer_text = answer_text.replace("**", "")
+            pdf_attachments = self._build_pdf_attachments(valid_citations, question) if sufficient else []
             return _persist_and_return(ChatResponse(
                 answer=answer_text,
                 citations=valid_citations if sufficient else [],
+                pdf_attachments=pdf_attachments,
                 evidence_sufficient=sufficient,
                 clarification_needed=clarification,
                 request_id=request_id,
                 usage=UsageMetadata(prompt_tokens=0, completion_tokens=0, total_tokens=0, estimated_cost_usd=0.0),
+            ))
+
+        # Check if evidence is sufficient in live mode
+        if not retrieved_chunks:
+            return _persist_and_return(ChatResponse(
+                answer="This specification is not documented in the available NIEL technical documentation.",
+                citations=[],
+                evidence_sufficient=False,
+                clarification_needed=False,
+                request_id=request_id,
             ))
 
         # Build grounded context with security boundaries
@@ -604,9 +830,11 @@ class RAGService:
             insufficient_phrases = ["not documented", "not mentioned", "does not contain", "no information"]
             is_sufficient = not any(phrase in lower_answer for phrase in insufficient_phrases)
 
+            pdf_attachments = self._build_pdf_attachments(valid_citations, question) if is_sufficient else []
             return _persist_and_return(ChatResponse(
                 answer=answer_text,
-                citations=valid_citations if (is_sufficient and asked_for_pdf) else [],
+                citations=valid_citations if is_sufficient else [],
+                pdf_attachments=pdf_attachments,
                 evidence_sufficient=is_sufficient,
                 clarification_needed=False,
                 request_id=request_id,

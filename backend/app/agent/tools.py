@@ -31,6 +31,10 @@ AGENT_TOOLS_SCHEMA: List[Dict[str, Any]] = [
                         "description": "Number of document chunks to retrieve.",
                         "default": 4,
                     },
+                    "category": {
+                        "type": "string",
+                        "description": "Optional category filter (e.g. 'motors', 'transformers', 'pumps', 'switchgear').",
+                    },
                 },
                 "required": ["query"],
             },
@@ -195,9 +199,11 @@ class ToolDispatcher:
             if name == "search_product_knowledge":
                 query = arguments.get("query", "")
                 top_k = int(arguments.get("top_k", 4))
+                category = arguments.get("category")
                 chunks = self.rag_service.retriever.retrieve(
                     query=query,
                     top_k=top_k,
+                    category=category,
                 )
                 serialized_chunks = [
                     {
@@ -205,13 +211,19 @@ class ToolDispatcher:
                         "page": c.page_number,
                         "text": c.text,
                         "score": round(float(score), 4),
+                        "category": c.category,
+                        "heading": c.heading,
                     }
                     for c, score in chunks
                 ]
+                from backend.app.knowledge import get_knowledge_base
+                kb = get_knowledge_base()
+                structured = kb.search_structured_knowledge(query, top_n=2)
                 return {
                     "status": "success",
                     "retrieved_count": len(serialized_chunks),
                     "chunks": serialized_chunks,
+                    "structured_records": structured,
                 }
 
             elif name == "get_customer_profile":

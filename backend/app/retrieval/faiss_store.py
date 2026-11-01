@@ -97,9 +97,14 @@ class FAISSStore:
         self.documents[summary.doc_id] = summary
         self.save()
 
-    def search(self, query_vector: List[float], top_k: int = 5) -> List[Tuple[ChunkMetadata, float]]:
+    def search(
+        self,
+        query_vector: List[float],
+        top_k: int = 5,
+        category_filter: Optional[str] = None,
+    ) -> List[Tuple[ChunkMetadata, float]]:
         """
-        Search for top_k nearest chunks using cosine similarity.
+        Search for top_k nearest chunks using cosine similarity, with optional category filtering.
         Returns list of (ChunkMetadata, similarity_score).
         """
         if self.index.ntotal == 0 or len(self.chunks) == 0:
@@ -108,13 +113,24 @@ class FAISSStore:
         q_vec = np.array([query_vector], dtype=np.float32)
         faiss.normalize_L2(q_vec)
 
-        k = min(top_k, self.index.ntotal)
-        scores, indices = self.index.search(q_vec, k)
+        fetch_k = min(top_k * 4 if category_filter else top_k, self.index.ntotal)
+        scores, indices = self.index.search(q_vec, fetch_k)
 
         results: List[Tuple[ChunkMetadata, float]] = []
         for score, idx in zip(scores[0], indices[0]):
             if idx != -1 and idx < len(self.chunks):
-                results.append((self.chunks[idx], float(score)))
+                chunk = self.chunks[idx]
+                if category_filter:
+                    cat_match = (
+                        (chunk.category and chunk.category.lower() == category_filter.lower()) or
+                        (category_filter.lower() in chunk.source_filename.lower()) or
+                        (category_filter.lower() in chunk.text.lower())
+                    )
+                    if not cat_match:
+                        continue
+                results.append((chunk, float(score)))
+                if len(results) >= top_k:
+                    break
 
         return results
 

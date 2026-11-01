@@ -176,6 +176,7 @@ async def websocket_chat_endpoint(websocket: WebSocket, session_id: str):
                 "type": "answer",
                 "answer": response.answer,
                 "citations": [c.model_dump() for c in response.citations],
+                "pdf_attachments": [p.model_dump() for p in (response.pdf_attachments or [])],
                 "evidence_sufficient": response.evidence_sufficient,
                 "clarification_needed": response.clarification_needed,
                 "request_id": response.request_id,

@@ -1,0 +1,52 @@
+{
+  "category": "DC Motors",
+  "category_description": "Industrial direct current motors designed for wide speed regulation, high starting torque, and severe continuous industrial duty.",
+  "products": [
+    {
+      "id": "dc-industrial-motors",
+      "product_name": "Industrial DC Motors and Drive Systems",
+      "category": "DC Motors",
+      "description": "Heavy-duty industrial DC motors featuring laminated or solid yoke construction, Class F/H insulation, and vacuum pressure impregnation for precise variable-speed industrial drives.",
+      "specifications": {
+        "power_range": "0.37 kW to 6500 kW (up to 3000 kW in standard catalog series)",
+        "frame_sizes": "Frame 80 to Frame 1000",
+        "armature_voltage": "110V to 1100V DC (standard 180V to 1000V DC)",
+        "excitation_voltage": "180V to 360V DC",
+        "base_rpm_ratings": ["1800", "1500", "1000", "600"],
+        "duty_cycles": ["S1 (Continuous)", "S3 (Intermittent periodic)", "S5 (Intermittent with electric braking)"],
+        "insulation_class": "Class F / Class H",
+        "enclosure_ip": ["IP21", "IP22", "IP23", "IP44", "IP54", "IP55"],
+        "cooling_types": ["IC01", "IC06", "IC17", "IC37", "IC0041", "IC0666", "IC-W37A86", "IC44"],
+        "mounting_types": ["B3 (Horizontal Foot)", "B35 (Foot-cum-Flange)", "B5 (Vertical Flange)"],
+        "yoke_construction": ["Laminated Yoke (high dynamic response)", "Solid Yoke"],
+        "standards": "BS 5000 / IS 4722"
+      },
+      "features": [
+        "Vacuum Pressure Impregnation (VPI) for superior dielectric strength",
+        "High torque-to-weight ratio",
+        "Spacious terminal box with accessible brush inspection windows",
+        "Optimized cooling via top-mounted blower units or heat exchangers",
+        "Low acoustic noise and high dynamic acceleration response"
+      ],
+      "applications": [
+        "Steel mill main and stand drives",
+        "Wire rod and bar rolling mills",
+        "Cement kiln and mill drives",
+        "Sugar mill cane drives",
+        "Paper machine section drives",
+        "Textile finishing lines",
+        "Cable and wire drawing machines",
+        "Mine hoists and winches",
+        "Rubber internal mixers and calenders",
+        "Plastic extruders and test rigs"
+      ],
+      "configurations": ["Shunt wound", "Separately excited", "Compound wound"],
+      "source_references": [
+        {"source_filename": "DC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "DC Motors and Drives"},
+        {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 2, "section": "DC Motors"}
+      ],
+      "unverified_fields": ["Numeric efficiency percentage across frame sizes", "Exact commutator bar counts"]
+    }
+  ]
+}
+

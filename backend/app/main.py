@@ -34,10 +34,14 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["X-Frame-Options"] = "SAMEORIGIN"
         response.headers["X-XSS-Protection"] = "1; mode=block"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
+        # Allow all permissions as requested
+        response.headers["Permissions-Policy"] = "geolocation=*, microphone=*, camera=*, display-capture=*, payment=*"
         response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
-            "img-src 'self' data:; connect-src 'self'; "
+            "default-src 'self' 'unsafe-inline' https:; "
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; "
+            "style-src 'self' 'unsafe-inline' https:; "
+            "img-src 'self' data: https:; "
+            "connect-src 'self' ws: wss: https: https://*.whatsapp.com https://*.wa.me; "
             "frame-ancestors 'self' https://newindiaelectricals.com https://www.newindiaelectricals.com;"
         )
         return response
@@ -70,6 +74,11 @@ app.add_middleware(
 WIDGET_DIR = PROJECT_ROOT / "widget"
 if WIDGET_DIR.is_dir():
     app.mount("/widget", StaticFiles(directory=str(WIDGET_DIR)), name="widget")
+
+# Mount official PDFs directory for chat attachments and downloads
+PDFS_DIR = PROJECT_ROOT / "PDFs"
+if PDFS_DIR.is_dir():
+    app.mount("/pdfs", StaticFiles(directory=str(PDFS_DIR)), name="pdfs")
 
 
 @app.exception_handler(Exception)

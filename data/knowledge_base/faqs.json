@@ -1,0 +1,52 @@
+{
+  "category": "FAQs",
+  "category_description": "Frequently asked customer, commercial, and technical questions regarding New India Electricals Ltd.",
+  "faqs": [
+    {
+      "question": "What types of motors does NIEL supply?",
+      "answer": "NIEL manufactures and supplies both AC and DC motors. Our AC motor portfolio includes Cage Rotor (0.37 kW to 20,000 kW), Wound Rotor/Slipring (7.5 kW to 20,000 kW), Flameproof (0.37 kW to 350 kW), Crane Duty (0.37 kW to 1000 kW), Mill Duty (110 kW to 2000 kW), and Brake Motors. Our DC motor lineup covers 0.37 kW to 6500 kW in frames 80 to 1000.",
+      "related_categories": ["AC Motors", "DC Motors", "Gearboxes and Brake Motors"]
+    },
+    {
+      "question": "What is the maximum documented power rating for NIEL AC induction motors?",
+      "answer": "The maximum documented power rating for NIEL AC Induction Motors is 20,000 kW (20 MW) for both Cage Rotor and Wound Rotor motors, available in voltages up to 6.6 kV and 11 kV.",
+      "related_categories": ["AC Motors"]
+    },
+    {
+      "question": "What voltage ratings are available for NIEL distribution and power transformers?",
+      "answer": "NIEL supplies distribution transformers in 11 kV, 22 kV, and 33 kV ratings, and power transformers across 11 kV, 22 kV, 33 kV, 66 kV, and 111 kV three-phase 50 Hz configurations.",
+      "related_categories": ["Transformers"]
+    },
+    {
+      "question": "Does NIEL engineer turnkey substations?",
+      "answer": "Yes, NIEL delivers comprehensive Turnkey EPC Substation design, procurement, erection, testing, and commissioning services for high-voltage substations up to 400 kV.",
+      "related_categories": ["Substation Systems"]
+    },
+    {
+      "question": "Are NIEL switchgear panels certified and type-tested?",
+      "answer": "Yes, all NIEL Medium Voltage switchgear units (Power+ VCB and SF6 panels) are type-tested for BIL and short-circuit withstand at the Central Power Research Institute (CPRI), India, in compliance with IEC 62271-200 standards.",
+      "related_categories": ["Switchgear"]
+    },
+    {
+      "question": "Does NIEL manufacture residential consumer products like ceiling fans or home appliances?",
+      "answer": "No. New India Electricals Ltd. does not manufacture decorative residential ceiling fans or consumer appliances. NIEL specializes strictly in heavy industrial electrical power, transmission, and motor equipment.",
+      "related_categories": ["Company Information"]
+    },
+    {
+      "question": "How do I request a formal price quote or Request for Quotation (RFQ)?",
+      "answer": "To receive a commercial quotation, please email your technical operating parameters (equipment type, kW/kVA rating, operating voltage, mounting type, quantity, and delivery destination) to sales@newindiaelectricals.com or call +91 80 42434343. Our sales engineering team will prepare an authorized proposal.",
+      "related_categories": ["Company Information"]
+    },
+    {
+      "question": "What is NIEL's delivery footprint and international presence?",
+      "answer": "NIEL is a certified Star Export House exporting to over 45 countries across Africa, the Middle East, and Asia, maintaining a 50,000 sq ft motor warehouse with over 4,000 motors in active stock for rapid dispatch.",
+      "related_categories": ["Company Information"]
+    }
+  ],
+  "source_references": [
+    {"source_filename": "Company Intro - New India Electricals Limited.pdf", "page_number": 1, "section": "Company Overview"},
+    {"source_filename": "AC Motors - NIEL Brochure.pdf", "page_number": 1, "section": "Technical Ratings"},
+    {"source_filename": "Transformers - NIEL Brochure.pdf", "page_number": 1, "section": "Transformer Portfolio"}
+  ]
+}
+

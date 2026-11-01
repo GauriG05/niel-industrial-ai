@@ -1,0 +1,123 @@
+{
+  "registry_version": "1.0",
+  "organization": "New India Electricals Limited (NIEL)",
+  "verified_sources": [
+    {
+      "source_id": "SRC-PDF-01",
+      "filename": "AC Motors - NIEL Brochure.pdf",
+      "path": "PDFs/AC Motors - NIEL Brochure.pdf",
+      "document_type": "Product Catalogue / Technical Brochure",
+      "pages": 2,
+      "categories": ["AC Motors", "Gearboxes and Brake Motors"],
+      "description": "Technical ratings and specifications for AC cage rotor, wound rotor, flameproof, crane duty, mill duty, brake motors, and gearboxes."
+    },
+    {
+      "source_id": "SRC-PDF-02",
+      "filename": "DC Motors - NIEL Brochure.pdf",
+      "path": "PDFs/DC Motors - NIEL Brochure.pdf",
+      "document_type": "Technical Brochure",
+      "pages": 1,
+      "categories": ["DC Motors", "AC/DC Drives"],
+      "description": "Technical specifications for industrial DC motors from 0.37 to 6500 kW, frame sizes 80 to 1000, and DC drive applications."
+    },
+    {
+      "source_id": "SRC-PDF-03",
+      "filename": "NIEL Product Catalog.pdf",
+      "path": "PDFs/NIEL Product Catalog.pdf",
+      "document_type": "Comprehensive Product Catalogue",
+      "pages": 10,
+      "categories": ["AC Motors", "DC Motors", "Pumps and Valves", "Transformers", "Switchgear", "Company Information"],
+      "description": "Full product overview across induction motors, multistage pumps, distribution and power transformers, and switchgear panels."
+    },
+    {
+      "source_id": "SRC-PDF-04",
+      "filename": "Pumps - NIEL Brochure.pdf",
+      "path": "PDFs/Pumps - NIEL Brochure.pdf",
+      "document_type": "Technical Brochure",
+      "pages": 2,
+      "categories": ["Pumps and Valves"],
+      "description": "Industrial monoblock, submersible, self-priming, vacuum, and vertical in-line pump specifications."
+    },
+    {
+      "source_id": "SRC-PDF-05",
+      "filename": "Transformers - NIEL Brochure.pdf",
+      "path": "PDFs/Transformers - NIEL Brochure.pdf",
+      "document_type": "Technical Brochure",
+      "pages": 4,
+      "categories": ["Transformers", "Substation Systems"],
+      "description": "Specifications for distribution, power, furnace, cast resin dry-type transformers and containerised secondary substations (CSS)."
+    },
+    {
+      "source_id": "SRC-PDF-06",
+      "filename": "Switchgear Panels MV - NIEL Brochure.pdf",
+      "path": "PDFs/Switchgear Panels MV - NIEL Brochure.pdf",
+      "document_type": "Technical Brochure",
+      "pages": 4,
+      "categories": ["Switchgear"],
+      "description": "Medium-voltage Power+ indoor and outdoor vacuum (VCB) and SF6 circuit breaker panel specifications (3.3 kV to 36 kV)."
+    },
+    {
+      "source_id": "SRC-PDF-07",
+      "filename": "Substation.pdf",
+      "path": "PDFs/Substation.pdf",
+      "document_type": "Turnkey Engineering Brochure",
+      "pages": 4,
+      "categories": ["Substation Systems", "Switchgear"],
+      "description": "Turnkey substation design, engineering, procurement, and construction services up to 400 kV and indoor/outdoor switchgear."
+    },
+    {
+      "source_id": "SRC-PDF-08",
+      "filename": "Company Intro - New India Electricals Limited.pdf",
+      "path": "PDFs/Company Intro - New India Electricals Limited.pdf",
+      "document_type": "Corporate Profile & Credentials",
+      "pages": 6,
+      "categories": ["Company Information", "Industries and Applications"],
+      "description": "Corporate overview, infrastructure (50k sq ft motor warehouse, 30k sq ft panel unit), global export presence (45+ countries), and key clients."
+    },
+    {
+      "source_id": "SRC-PDF-09",
+      "filename": "Key Customer List.pdf",
+      "path": "PDFs/Key Customer List.pdf",
+      "document_type": "Customer Registry",
+      "pages": 3,
+      "categories": ["Industries and Applications"],
+      "description": "Verified client lists across steel, cement, power, mining, and utilities in India, Africa, Middle East, and South Asia."
+    },
+    {
+      "source_id": "SRC-PDF-10",
+      "filename": "NIEL - STEEL.pdf",
+      "path": "PDFs/NIEL - STEEL.pdf",
+      "document_type": "Industry Solution Profile",
+      "pages": 4,
+      "categories": ["Industries and Applications", "AC Motors", "DC Motors", "Switchgear"],
+      "description": "Steel plant electrical solutions: main drive motors, roller table motors, arc furnace transformers, and MV panels."
+    },
+    {
+      "source_id": "SRC-PDF-11",
+      "filename": "NIEL GROUP PROJECTS HIGHLIGHTS- FINAL.pdf",
+      "path": "PDFs/NIEL GROUP PROJECTS HIGHLIGHTS- FINAL.pdf",
+      "document_type": "Project Highlights",
+      "pages": 8,
+      "categories": ["Substation Systems", "Industries and Applications"],
+      "description": "Summary of executed turnkey substation projects, captive power distribution networks, and industrial electrical installations."
+    },
+    {
+      "source_id": "SRC-PDF-12",
+      "filename": "NIEL Recent Power Projects.pdf",
+      "path": "PDFs/NIEL Recent Power Projects.pdf",
+      "document_type": "Project Reference List",
+      "pages": 6,
+      "categories": ["Substation Systems", "Transformers"],
+      "description": "Recent project deliveries for transmission utilities, cement mills, and heavy engineering plants."
+    },
+    {
+      "source_id": "SRC-WEB-01",
+      "filename": "newindiaelectricals.com",
+      "url": "https://newindiaelectricals.com/",
+      "document_type": "Official Corporate Website",
+      "categories": ["Company Information", "AC/DC Drives", "Pumps and Valves", "FAQs", "Troubleshooting and Installation"],
+      "description": "Official company website detailing product lines, ABB partnership, contact channels, address, and operational facilities."
+    }
+  ]
+}
+

@@ -1,7 +1,7 @@
 """Independent retrieval service for query vector search and relevance filtering."""
 
 import logging
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 from backend.app.config import get_settings
 from backend.app.schemas.documents import ChunkMetadata
 from backend.app.services.openai_service import get_openai_service
@@ -27,9 +27,11 @@ class Retriever:
         query: str,
         top_k: int = 5,
         threshold: float = None,
+        category: Optional[str] = None,
     ) -> List[Tuple[ChunkMetadata, float]]:
         """
         Retrieve relevant document chunks with similarity score above threshold.
+        Supports optional metadata category filtering.
         Returns list of (ChunkMetadata, similarity_score).
         """
         normalized_q = self.normalize_query(query)
@@ -47,8 +49,12 @@ class Retriever:
         # Generate query vector
         query_vector = self.openai_service.get_embedding(normalized_q)
 
-        # Vector search in FAISS store
-        raw_results = self.faiss_store.search(query_vector=query_vector, top_k=top_k)
+        # Vector search in FAISS store with optional category filter
+        raw_results = self.faiss_store.search(
+            query_vector=query_vector,
+            top_k=top_k,
+            category_filter=category,
+        )
 
         # Relevance filtering
         filtered_results: List[Tuple[ChunkMetadata, float]] = []

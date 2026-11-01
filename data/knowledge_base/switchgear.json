@@ -1,0 +1,124 @@
+{
+  "category": "Switchgear",
+  "category_description": "Medium-voltage (MV) vacuum and SF6 circuit breaker panels, outdoor kiosks, and low-voltage (LV) motor control centers.",
+  "products": [
+    {
+      "id": "switchgear-power-plus-v",
+      "product_name": "Power+ V Indoor Vacuum Circuit Breaker (VCB) Panels",
+      "category": "Switchgear",
+      "description": "Metal-clad indoor vacuum circuit breaker panels engineered for medium-voltage primary distribution, with fully segregated compartments and type-tested arc resistance.",
+      "specifications": {
+        "rated_voltage": "3.3 kV to 12 kV",
+        "rated_frequency": "50 Hz",
+        "rated_busbar_current": "Up to 3000 A",
+        "short_time_withstand_current": "26.2 kA / 40 kA for 3 seconds",
+        "peak_withstand_current": "66 kA / 100 kAp",
+        "insulation_levels": "28 kVrms power frequency / 75 kVpeak impulse (BIL)",
+        "enclosure_protection": "Enclosure IP4X, between compartments IP2X",
+        "panel_dimensions_l_d_h": "600x1450x2350 mm (up to 1250A) and 800x1450x2350 mm (above 1250A)",
+        "approx_weight_with_breaker": "750 kg",
+        "type_testing": "Type-tested at Central Power Research Institute (CPRI), India per IEC 62271-200"
+      },
+      "features": [
+        "Fully compartmentalized metal-clad construction with separate breaker, busbar, cable, and instrument chambers",
+        "Independent arc exhaust vents for each HT compartment",
+        "Bolted structure with lipped-edge profile for enhanced mechanical rigidity",
+        "Rodent-proof design with interlocked safety shutters",
+        "Optional integral line-side earth switch with mechanical interlock"
+      ],
+      "applications": ["Industrial main power reception", "Steel mills and manufacturing plants", "Power plant balance-of-plant distribution", "Utility sub-stations"],
+      "source_references": [
+        {"source_filename": "Switchgear Panels MV - NIEL Brochure.pdf", "page_number": 1, "section": "Power+ V"}
+      ],
+      "unverified_fields": ["Internal arc classification (IAC) code duration (e.g. 1 sec or 0.1 sec)"]
+    },
+    {
+      "id": "switchgear-power-plus-f",
+      "product_name": "Power+ F Indoor SF6 Circuit Breaker Panels",
+      "category": "Switchgear",
+      "description": "Indoor metal-clad switchgear panels utilizing sulphur hexafluoride (SF6) gas-insulated circuit breakers for superior arc interruption in compact spaces.",
+      "specifications": {
+        "rated_voltage": "3.3 kV to 12 kV (extended range up to 36 kV)",
+        "rated_frequency": "50 Hz",
+        "rated_busbar_current": "3000 A",
+        "short_time_withstand_current": "40 kA",
+        "peak_withstand_current": "100 kAp",
+        "insulation_levels": "28 kVrms power frequency / 75 kVpeak impulse (BIL)",
+        "enclosure_protection": "Enclosure IP4X, between compartments IP2X",
+        "panel_dimensions_l_d_h": "800x1450x2350 mm",
+        "approx_weight_with_breaker": "850 kg",
+        "type_testing": "Type-tested at CPRI, India per IEC 62271-200"
+      },
+      "features": [
+        "SF6 gas interrupter with low operating energy mechanism",
+        "Independent overpressure relief vents",
+        "Modular construction for convenient future busbar extension"
+      ],
+      "applications": ["Cement, chemical, and fertilizer plants requiring sealed interruption media"],
+      "source_references": [
+        {"source_filename": "Switchgear Panels MV - NIEL Brochure.pdf", "page_number": 2, "section": "Power+ F"}
+      ],
+      "unverified_fields": ["SF6 gas pressure monitor gauge threshold"]
+    },
+    {
+      "id": "switchgear-power-plus-vo",
+      "product_name": "Power+ VO Outdoor Kiosk Type VCB Switchgear",
+      "category": "Switchgear",
+      "description": "Weatherproof outdoor kiosk-type vacuum circuit breaker switchgear designed for outdoor utility substations and remote industrial switchyards.",
+      "specifications": {
+        "rated_voltage": "3.3 kV to 12 kV",
+        "rated_frequency": "50 Hz",
+        "rated_busbar_current": "Up to 2000 A",
+        "short_time_withstand_current": "26.2 kA / 40 kA",
+        "peak_withstand_current": "66 kA / 100 kAp",
+        "insulation_levels": "28 kVrms / 75 kVpeak BIL",
+        "enclosure_protection": "Enclosure IP54 weatherproof",
+        "panel_dimensions_l_d_h": "700x1450x2350 mm",
+        "approx_weight_with_breaker": "900 kg",
+        "standards": "IEC 62271-200, CPRI tested"
+      },
+      "features": [
+        "Double front doors with weatherproof rubber gaskets and sloping canopy roof to drain rain and dust",
+        "Powder-coated sheet steel treated with seven-tank chemical pre-treatment",
+        "Available in cable-in / cable-out or direct overhead busduct arrangement",
+        "Side-extendable kiosk design with padlockable front doors"
+      ],
+      "applications": ["Outdoor industrial substations", "Rural and urban utility feeder switching", "Mining yard power distribution"],
+      "source_references": [
+        {"source_filename": "Switchgear Panels MV - NIEL Brochure.pdf", "page_number": 4, "section": "Power+ VO"}
+      ],
+      "unverified_fields": ["Sheet steel thickness (e.g. 2mm or 2.5mm)"]
+    },
+    {
+      "id": "switchgear-lv-panels",
+      "product_name": "Low Voltage Switchgear Panels (MCC, PCC, APFC)",
+      "category": "Switchgear",
+      "description": "Custom low voltage power distribution and motor control switchboards manufactured at NIEL's 30,000 sq ft ABB Licensed System House facility.",
+      "specifications": {
+        "operating_voltage": "415V, 3-Phase, 50 Hz",
+        "panel_types": [
+          "Power Control Center (PCC)",
+          "Motor Control Center (MCC - Drawout and Non-Drawout)",
+          "Variable Frequency Drive (VFD) Panels",
+          "Soft Starter Panels",
+          "Automatic Power Factor Correction (APFC) Panels",
+          "AC Distribution Boards (ACDB)",
+          "Control & Relay Panels",
+          "Neutral Grounding Resistor (NGR) Panels"
+        ],
+        "busbar_ratings": "Up to 6300A aluminium or electrolytic copper"
+      },
+      "features": [
+        "Manufactured under ABB licensing protocols",
+        "Modular Form 3b and Form 4b separation between functional units",
+        "Full type-testing compliance with IEC 61439-1/2"
+      ],
+      "applications": ["Industrial plant motor control", "Substation auxiliary AC/DC distribution", "Continuous process plants"],
+      "source_references": [
+        {"source_filename": "NIEL Product Catalog.pdf", "page_number": 10, "section": "Low Voltage Panels"}
+      ],
+      "unverified_fields": ["Short-circuit breaking capacity per feeder"]
+    }
+  ]
+}
+

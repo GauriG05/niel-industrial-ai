@@ -1,0 +1,65 @@
+{
+  "category": "Substation Systems",
+  "category_description": "Turnkey engineering, procurement, and construction (EPC) of electrical substations and modular secondary package substations.",
+  "products": [
+    {
+      "id": "substation-turnkey-epc",
+      "product_name": "Turnkey Substation Design & Construction Services",
+      "category": "Substation Systems",
+      "description": "Comprehensive turnkey EPC electrical substation solutions executed on a single-source responsibility basis from conceptual design up to 400 kV.",
+      "specifications": {
+        "execution_voltage_range": "Turnkey basis up to 400 kV (typical layouts for 33 kV, 66 kV, 132 kV, 220 kV, 400 kV)",
+        "scope_of_equipment": [
+          "Power Transformers and Auto Transformers",
+          "Outdoor Circuit Breakers (SF6 and Vacuum VCB)",
+          "Motorized and Manual Disconnector Isolators",
+          "Zinc Oxide Lightning and Surge Arrestors",
+          "Current Transformers (CT), Potential Transformers (PT), and CVTs",
+          "ACSR / AAAC Busbar Conductors, Hardware, and Clamps",
+          "Medium Voltage and Low Voltage Control Panels",
+          "Numerical Protective Relay Panels and SCADA Power Management Systems",
+          "Station Battery Banks, DC Float-cum-Boost Chargers",
+          "HT Capacitor Banks and Harmonic Filter Systems"
+        ]
+      },
+      "services_offered": [
+        "System study, load flow, and short-circuit fault analysis",
+        "Civil, structural, and electrical architectural design",
+        "Project scheduling, procurement, and site construction supervision",
+        "Testing, relay coordination, calibration, and statutory grid synchronization"
+      ],
+      "geographic_execution": [
+        "India", "Bangladesh", "Bhutan", "Ghana", "Indonesia", "Kuwait", "Malaysia", "Malta", "Myanmar", "Nepal", "Nigeria", "Sri Lanka", "Philippines", "UAE", "Zambia"
+      ],
+      "partner_ecosystem": ["ABB", "AREVA", "SIEMENS", "ALSTOM", "Crompton Greaves", "TRIL", "Power+"],
+      "source_references": [
+        {"source_filename": "Substation.pdf", "page_number": 1, "section": "Substation Solutions"}
+      ],
+      "unverified_fields": ["Specific warranty period for turnkey civil civil structures"]
+    },
+    {
+      "id": "substation-containerised-css",
+      "product_name": "Containerised Secondary Substations (CSS / Compact Substations)",
+      "category": "Substation Systems",
+      "description": "Prefabricated outdoor package substations integrating an MV switchgear compartment, an oil-immersed or cast resin transformer, and an LV switchboard into a compact weatherproof housing.",
+      "specifications": {
+        "capacity_range": "Houses distribution transformers up to 1250 kVA / 24 kV (standard packages: 110 kVA, 250 kVA, 500 kVA, 1 MVA, 1.25 MVA)",
+        "enclosure_protection": "Standard IP23D (meets IP53/IP23, optional IP54 doors with specialized perimeter gaskets)",
+        "cooling_method": "Natural thermal convection ventilation",
+        "mv_switchgear_unit": "ABB SafeRing / SafePlus SF6 Gas-Insulated Ring Main Unit (RMU) in sealed stainless steel tank",
+        "standards": "IEC 61330 / IEC 62271-202"
+      },
+      "features": [
+        "Fully segregated internal compartments prevent accidental touch of live parts",
+        "Compact footprint ideal for high-density urban zones and space-constrained industrial sites",
+        "Pre-wired, factory tested, and delivered ready for immediate site commissioning"
+      ],
+      "applications": ["Urban municipal distribution", "Shopping malls and hospital campuses", "Industrial estates and solar park collection points"],
+      "source_references": [
+        {"source_filename": "Transformers - NIEL Brochure.pdf", "page_number": 4, "section": "Containerised Secondary Substations (CSS)"}
+      ],
+      "unverified_fields": ["Baseframe galvanized coating thickness (microns)"]
+    }
+  ]
+}
+

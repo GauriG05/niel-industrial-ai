@@ -151,29 +151,40 @@ async def websocket_chat_endpoint(websocket: WebSocket, session_id: str):
                     session_id=session_id,
                     triggering_message=question,
                 )
+                from urllib.parse import quote
+                wa_summary = f"Hello NIEL Team, I would like to connect with your support team regarding: {question}"
+                wa_url = f"https://wa.me/919741307999?text={quote(wa_summary)}"
                 await manager.broadcast_to_session(session_id, {
                     "type": "escalated",
-                    "answer": "I am connecting you with a human support engineer from New India Electricals Ltd. An engineer will respond shortly.",
+                    "answer": (
+                        "I can connect you directly with our engineering support team at New India Electricals Ltd.\n\n"
+                        f"👉 Click here to chat with our team on WhatsApp (+91 97413 07999):\n{wa_url}\n\n"
+                        "Our engineers will assist you directly on WhatsApp. You can also continue asking any product or technical questions right here!"
+                    ),
                     "human_active": True,
                 })
                 continue
 
             # Check human agent active state
             if session_service.is_human_active(session_id):
-                # Record user message in DB
-                session_service.add_message(
-                    session_id=session_id,
-                    role="user",
-                    content=question,
-                )
-                # Broadcast user message to connected agents/sockets without LLM call
-                await manager.broadcast_to_session(session_id, {
-                    "type": "user_message",
-                    "role": "user",
-                    "content": question,
-                    "human_active": True,
-                })
-                continue
+                if question.strip().lower() in ["are you still there?", "are you there", "are you there?"]:
+                    # Record user message in DB
+                    session_service.add_message(
+                        session_id=session_id,
+                        role="user",
+                        content=question,
+                    )
+                    # Broadcast user message to connected agents/sockets without LLM call
+                    await manager.broadcast_to_session(session_id, {
+                        "type": "user_message",
+                        "role": "user",
+                        "content": question,
+                        "human_active": True,
+                    })
+                    continue
+                else:
+                    # User is continuing with product/technical inquiry or clicking pills
+                    session_service.resolve_human(session_id)
 
             # AI handles message via Agent Orchestrator
             orchestrator = get_agent_orchestrator()

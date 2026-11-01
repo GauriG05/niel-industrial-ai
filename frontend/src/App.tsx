@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, UserCheck, RotateCcw, Bot } from 'lucide-react';
+import { Send, X, UserCheck, RotateCcw } from 'lucide-react';
 import { Message, ChatTurn } from './types';
 import { askQuestion } from './services/api';
 import { ChatMessage } from './components/ChatMessage';
@@ -23,7 +23,6 @@ export const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
-  const [humanActive, setHumanActive] = useState(false);
   const [wsConnected, setWsConnected] = useState(false);
 
   const chatBottomRef = useRef<HTMLDivElement>(null);
@@ -53,10 +52,9 @@ export const App: React.FC = () => {
       try {
         const data = JSON.parse(event.data);
         if (data.type === 'session_init') {
-          setHumanActive(Boolean(data.human_active));
+          // Connected
         } else if (data.type === 'answer') {
           setLoading(false);
-          setHumanActive(Boolean(data.human_active));
           const assistantMessage: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'assistant',
@@ -69,18 +67,16 @@ export const App: React.FC = () => {
           setMessages((prev) => [...prev, assistantMessage]);
         } else if (data.type === 'escalated') {
           setLoading(false);
-          setHumanActive(true);
           const waUrl = generateWhatsAppUrl(messages, sessionId);
           const alertMessage: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'assistant',
-            text: `${data.answer || 'Your conversation has been routed to human support.'}\n\nYou can connect directly with our engineering team on WhatsApp (+91 97413 07999):\n${waUrl}`,
+            text: `${data.answer || 'Connecting you with human support on WhatsApp (+91 97413 07999).'}\n\n👉 Click here to connect directly on WhatsApp:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`,
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
           setMessages((prev) => [...prev, alertMessage]);
         } else if (data.type === 'agent_message') {
           setLoading(false);
-          setHumanActive(true);
           const agentMsg: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'agent',
@@ -90,25 +86,8 @@ export const App: React.FC = () => {
           setMessages((prev) => [...prev, agentMsg]);
         } else if (data.type === 'session_resolved') {
           setLoading(false);
-          setHumanActive(false);
-          const resMsg: Message = {
-            id: (Date.now() + 1).toString(),
-            sender: 'assistant',
-            text: data.answer || 'Human support session concluded. The AI assistant is active again.',
-            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          };
-          setMessages((prev) => [...prev, resMsg]);
         } else if (data.type === 'user_message') {
           setLoading(false);
-          setHumanActive(true);
-          const waUrl = generateWhatsAppUrl(messages, sessionId);
-          const noteMsg: Message = {
-            id: (Date.now() + 1).toString(),
-            sender: 'assistant',
-            text: `You are connected to human support. To chat directly with our team, please message us on WhatsApp (+91 97413 07999):\n${waUrl}\n\nOr click "Resume AI" above to continue chatting with the AI Assistant.`,
-            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          };
-          setMessages((prev) => [...prev, noteMsg]);
         } else if (data.type === 'error') {
           setLoading(false);
           const errMsg: Message = {
@@ -145,14 +124,10 @@ export const App: React.FC = () => {
     // Generate pre-filled WhatsApp link with contextual summary or fallback
     const waUrl = openWhatsAppChat(messages, sessionId);
 
-    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-      wsRef.current.send(JSON.stringify({ action: 'escalate' }));
-    }
-
     const hasHistory = messages.some((m) => m.sender === 'user' && m.text.trim());
     const infoText = hasHistory
-      ? `Connecting you with our support engineer on WhatsApp (+91 97413 07999) with your inquiry pre-filled.\n\nPlease tap "Send" in WhatsApp to start chatting. If WhatsApp did not open automatically, click here:\n${waUrl}`
-      : `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\nIf WhatsApp did not open automatically, click here to connect:\n${waUrl}`;
+      ? `Connecting you with our support engineer on WhatsApp (+91 97413 07999) with your inquiry pre-filled.\n\n👉 If WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`
+      : `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n👉 If WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`;
 
     const infoMsg: Message = {
       id: (Date.now() + 1).toString(),
@@ -161,21 +136,6 @@ export const App: React.FC = () => {
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
     setMessages((prev) => [...prev, infoMsg]);
-  };
-
-  const handleResumeAi = () => {
-    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-      wsRef.current.send(JSON.stringify({ action: 'resume_ai' }));
-    }
-    setHumanActive(false);
-    setLoading(false);
-    const resumeMsg: Message = {
-      id: (Date.now() + 1).toString(),
-      sender: 'assistant',
-      text: "You are back with NIEL AI Assistant. What questions do you have about our products or specifications?",
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    };
-    setMessages((prev) => [...prev, resumeMsg]);
   };
 
   const handleNewChat = () => {
@@ -270,40 +230,27 @@ export const App: React.FC = () => {
               </div>
               <div className="niel-header-status-row">
                 <span
-                  className={humanActive ? 'niel-amber-dot' : 'niel-green-dot'}
+                  className="niel-green-dot"
                   title={wsConnected ? 'Realtime Connected' : 'Connecting...'}
                 ></span>
                 <span className="niel-status-caption">
-                  {humanActive ? 'Connected to a human agent' : 'AI Assistant • Product & sales support'}
+                  AI Assistant • Product & sales support
                 </span>
               </div>
             </div>
 
-            {/* Header actions: Resume AI / Talk to human WhatsApp button + New Chat + close X */}
+            {/* Header actions: Talk to human WhatsApp button + New Chat + close X */}
             <div className="niel-header-actions-group">
-              {humanActive ? (
-                <button
-                  type="button"
-                  className="niel-escalate-btn"
-                  onClick={handleResumeAi}
-                  style={{ background: '#22c55e', color: '#ffffff', borderColor: '#16a34a' }}
-                  title="Switch back to AI Assistant"
-                >
-                  <Bot size={13} />
-                  <span>Resume AI</span>
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="niel-escalate-btn"
-                  onClick={handleEscalate}
-                  disabled={loading}
-                  title="Connect with human support on WhatsApp (+91 97413 07999)"
-                >
-                  <UserCheck size={12} />
-                  <span>Talk to a human</span>
-                </button>
-              )}
+              <button
+                type="button"
+                className="niel-escalate-btn"
+                onClick={handleEscalate}
+                disabled={loading}
+                title="Connect with human support on WhatsApp (+91 97413 07999)"
+              >
+                <UserCheck size={12} />
+                <span>Talk to a human</span>
+              </button>
               <button
                 type="button"
                 className="niel-action-icon-btn"
@@ -366,7 +313,7 @@ export const App: React.FC = () => {
               <input
                 type="text"
                 className="niel-gold-input"
-                placeholder={humanActive ? 'Message human support engineer...' : 'Type your question...'}
+                placeholder="Type your question..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 maxLength={500}

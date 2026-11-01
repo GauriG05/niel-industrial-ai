@@ -122,6 +122,16 @@ async def websocket_chat_endpoint(websocket: WebSocket, session_id: str):
                 })
                 continue
 
+            # Handle resuming AI assistant from frontend
+            if action in ("resolve", "resume_ai", "reset_session"):
+                session_service.resolve_human(session_id)
+                await manager.broadcast_to_session(session_id, {
+                    "type": "session_resolved",
+                    "answer": "Connected back with NIEL AI Assistant. How can I help you?",
+                    "human_active": False,
+                })
+                continue
+
             if not question:
                 continue
 

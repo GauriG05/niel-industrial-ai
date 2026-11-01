@@ -29,6 +29,8 @@ def ask_question(
     response = rag_service.answer_question(
         question=clean_question,
         top_k=request.top_k or settings.MAX_RETRIEVAL_CHUNKS,
+        conversation_history=request.conversation_history,
+        session_id=request.session_id,
     )
     return response
 

@@ -40,6 +40,10 @@ data/docs/*
 !data/docs/.gitkeep
 data/index/*
 !data/index/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
 logs/
 *.log
 

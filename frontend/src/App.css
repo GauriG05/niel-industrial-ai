@@ -167,6 +167,54 @@ body {
   display: inline-block;
 }
 
+.niel-amber-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f59e0b;
+  display: inline-block;
+}
+
+.niel-escalate-btn {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 4px 9px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.niel-escalate-btn:hover:not(:disabled) {
+  background: #fde68a;
+  color: #78350f;
+}
+
+.niel-escalate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.niel-agent-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #b45309;
+  background: #fef3c7;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  width: fit-content;
+}
+
 .niel-header-actions-group {
   display: flex;
   align-items: center;

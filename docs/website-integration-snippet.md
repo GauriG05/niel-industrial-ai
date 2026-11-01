@@ -1,24 +1,17 @@
 <!-- ========================================================================= -->
-<!-- NIEL INDUSTRIAL INTELLIGENCE AI - WEBSITE INTEGRATION SNIPPET            -->
-<!-- Add this code into an Elementor HTML Widget or directly before </body>    -->
+<!-- NIEL INDUSTRIAL INTELLIGENCE AI - ELEMENTOR / WORDPRESS EMBED SNIPPET     -->
+<!-- Paste this snippet into an Elementor HTML Widget or before </body>         -->
 <!-- ========================================================================= -->
 
+<!-- Optional: Custom branding override (only needed if changing default text or accent color)
 <script>
   window.NIEL_AI_CONFIG = {
-    // Replace with your production FastAPI backend URL
-    apiBase: 'https://api.assistant.newindiaelectricals.com',
-    title: 'NIEL Industrial Assistant',
-    subtitle: 'Grounded Technical Assistant',
-    primaryColor: '#003366',
-    accentColor: '#0284c7',
-    position: 'bottom-right'
+    tabText: 'Ask NIEL AI',
+    subTitle: 'Product & sales support',
+    brandColor: '#f59e0b'
   };
 </script>
+-->
 
-<!-- Load the self-contained Shadow-DOM encapsulated widget -->
-<script 
-  src="https://assistant.newindiaelectricals.com/widget/niel-widget.js" 
-  async 
-  defer>
-</script>
-
+<!-- Required: Single self-contained widget script (apiBase is automatically detected from script src) -->
+<script src="https://assistant.newindiaelectricals.com/widget/niel-widget.js" async defer></script>

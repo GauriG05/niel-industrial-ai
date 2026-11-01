@@ -4,10 +4,13 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from backend.app.config import get_settings
+from backend.app.config import PROJECT_ROOT, get_settings
 from backend.app.api.v1.router import api_v1_router
+from backend.app.api.v1.ws_chat import router as ws_router
+from backend.app.db.session import init_db
 
 
 @asynccontextmanager
@@ -18,6 +21,7 @@ async def lifespan(app: FastAPI):
     settings.DATA_DIR.mkdir(parents=True, exist_ok=True)
     settings.INDEX_DIR.mkdir(parents=True, exist_ok=True)
     settings.DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    init_db()
     yield
 
 
@@ -31,6 +35,11 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["X-XSS-Protection"] = "1; mode=block"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
         response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
+            "img-src 'self' data:; connect-src 'self'; "
+            "frame-ancestors 'self' https://newindiaelectricals.com https://www.newindiaelectricals.com;"
+        )
         return response
 
 
@@ -57,6 +66,11 @@ app.add_middleware(
     allow_headers=["Content-Type", "Authorization", "X-Admin-Key", "X-Request-ID"],
 )
 
+# Mount embeddable widget static files directory
+WIDGET_DIR = PROJECT_ROOT / "widget"
+if WIDGET_DIR.is_dir():
+    app.mount("/widget", StaticFiles(directory=str(WIDGET_DIR)), name="widget")
+
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
@@ -75,6 +89,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 # Mount versioned API routes
 app.include_router(api_v1_router)
+app.include_router(ws_router)
 
 
 @app.get("/")

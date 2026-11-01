@@ -1,0 +1,20 @@
+# One-command production deploy:
+#   docker compose up -d --build
+#
+# Inspect logs:
+#   docker compose logs -f backend
+#
+# Stop service:
+#   docker compose down
+
+services:
+  backend:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount data directory so FAISS index, uploaded PDFs, and SQLite session database persist across rebuilds
+      - ./data:/app/data
+

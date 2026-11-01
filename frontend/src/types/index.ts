@@ -1,3 +1,8 @@
+export interface ChatTurn {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 export interface Citation {
   source_filename: string;
   page_number: number;
@@ -23,7 +28,7 @@ export interface ChatResponse {
 
 export interface Message {
   id: string;
-  sender: 'user' | 'assistant';
+  sender: 'user' | 'assistant' | 'agent';
   text: string;
   citations?: Citation[];
   evidence_sufficient?: boolean;

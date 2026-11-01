@@ -1,7 +1,24 @@
 """Pydantic schemas for the RAG Chat API."""
 
-from typing import List, Optional
-from pydantic import BaseModel, Field
+from typing import List, Literal, Optional
+from pydantic import BaseModel, Field, field_validator
+
+MAX_CONVERSATION_TURNS: int = 8
+MAX_TOTAL_HISTORY_CHARS: int = 4000
+MAX_TURN_CONTENT_CHARS: int = 1000
+
+
+class ChatTurn(BaseModel):
+    """Single turn in the conversation history."""
+    role: Literal["user", "assistant", "agent"] = Field(
+        ...,
+        description="Role of the speaker: 'user', 'assistant', or 'agent'."
+    )
+    content: str = Field(
+        ...,
+        max_length=MAX_TURN_CONTENT_CHARS,
+        description="Text content of the conversation turn."
+    )
 
 
 class ChatRequest(BaseModel):
@@ -19,6 +36,43 @@ class ChatRequest(BaseModel):
         le=10,
         description="Maximum number of context chunks to retrieve."
     )
+    conversation_history: Optional[List[ChatTurn]] = Field(
+        default_factory=list,
+        description="Recent conversation turns for multi-turn context (capped server-side)."
+    )
+    session_id: Optional[str] = Field(
+        default=None,
+        description="Optional server-side session identifier for persistent conversation memory."
+    )
+
+    @field_validator("conversation_history", mode="before")
+    @classmethod
+    def sanitize_and_cap_history(cls, v):
+        if not v:
+            return []
+
+        # 1. Cap to last MAX_CONVERSATION_TURNS
+        turns = v[-MAX_CONVERSATION_TURNS:]
+
+        # 2. Normalize and truncate each turn's content
+        sanitized = []
+        for turn in turns:
+            if isinstance(turn, dict):
+                role = turn.get("role")
+                content = str(turn.get("content", ""))[:MAX_TURN_CONTENT_CHARS]
+                sanitized.append({"role": role, "content": content})
+            elif isinstance(turn, ChatTurn):
+                sanitized.append({"role": turn.role, "content": turn.content[:MAX_TURN_CONTENT_CHARS]})
+            else:
+                sanitized.append(turn)
+
+        # 3. Cap total character length across turns, keeping the most recent turns
+        total_chars = sum(len(t["content"] if isinstance(t, dict) else t.content) for t in sanitized)
+        while sanitized and total_chars > MAX_TOTAL_HISTORY_CHARS:
+            removed = sanitized.pop(0)
+            total_chars -= len(removed["content"] if isinstance(removed, dict) else removed.content)
+
+        return sanitized
 
 
 class Citation(BaseModel):

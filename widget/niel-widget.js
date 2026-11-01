@@ -10,8 +10,32 @@
   if (window.__NIEL_WIDGET_INITIALIZED__) return;
   window.__NIEL_WIDGET_INITIALIZED__ = true;
 
+  function detectApiBase() {
+    try {
+      let script = document.currentScript;
+      if (!script || !script.src) {
+        const scripts = document.getElementsByTagName('script');
+        for (let i = 0; i < scripts.length; i++) {
+          if (scripts[i].src && scripts[i].src.indexOf('niel-widget.js') !== -1) {
+            script = scripts[i];
+            break;
+          }
+        }
+      }
+      if (script && script.src) {
+        const url = new URL(script.src, window.location.href);
+        if (url.origin && url.origin !== 'null' && url.protocol.indexOf('http') === 0) {
+          return url.origin;
+        }
+      }
+    } catch (e) {
+      // Fallback if URL parsing fails
+    }
+    return 'http://127.0.0.1:8000';
+  }
+
   const DEFAULT_CONFIG = {
-    apiBase: 'http://127.0.0.1:8000',
+    apiBase: detectApiBase(),
     tabText: 'Ask NIEL AI',
     brandName: 'new india electricals',
     subTitle: 'Product & sales support',
@@ -415,6 +439,8 @@
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
+  const conversationHistory = [];
+
   async function handleSubmit(query) {
     const text = (query || chatInput.value).trim();
     if (!text) return;
@@ -424,10 +450,15 @@
     sendBtn.disabled = true;
 
     try {
+      const priorTurns = conversationHistory.slice(-8);
       const res = await fetch(`${config.apiBase}/api/v1/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: text, top_k: 5 }),
+        body: JSON.stringify({
+          question: text,
+          top_k: 5,
+          conversation_history: priorTurns,
+        }),
       });
 
       if (!res.ok) {
@@ -440,6 +471,8 @@
       if (!isPdfRequested && data.citations) {
         data.citations = [];
       }
+      conversationHistory.push({ role: 'user', content: text });
+      conversationHistory.push({ role: 'assistant', content: data.answer });
       appendMessage(data.answer, 'assistant', data);
     } catch (err) {
       appendMessage(`Error: ${err.message || 'Unable to connect to assistant.'}`, 'assistant', { evidence_sufficient: false });

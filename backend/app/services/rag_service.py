@@ -8,7 +8,7 @@ from typing import Dict, List, Optional, Tuple
 from openai import OpenAI, OpenAIError
 
 from backend.app.config import get_settings
-from backend.app.schemas.chat import ChatResponse, Citation, UsageMetadata
+from backend.app.schemas.chat import ChatResponse, ChatTurn, Citation, UsageMetadata
 from backend.app.schemas.documents import ChunkMetadata
 from backend.app.services.openai_service import (
     get_openai_service,
@@ -38,6 +38,45 @@ class RAGService:
         self.settings = get_settings()
         self.retriever = get_retriever()
         self.openai_service = get_openai_service()
+
+    def _build_retrieval_query(
+        self,
+        question: str,
+        conversation_history: Optional[List[ChatTurn]] = None,
+    ) -> str:
+        """
+        Formulate an effective retrieval query by incorporating prior conversational context
+        for follow-up questions (e.g., 'what about its IP rating?', 'what mounting types?').
+        """
+        if not conversation_history:
+            return question
+
+        # Extract recent user turns
+        user_turns = [
+            t.content.strip() for t in conversation_history
+            if t.role == "user" and t.content.strip()
+        ]
+        if not user_turns:
+            return question
+
+        last_user_query = user_turns[-1]
+        q_lower = question.lower().strip()
+        words = q_lower.split()
+
+        followup_starters = (
+            "what about", "how about", "and ", "any ", "is there", "are there",
+            "can you", "does it", "do they", "what is the", "what are the", "tell me about",
+        )
+        followup_pronouns = {"it", "its", "this", "that", "these", "those", "same", "also", "there"}
+
+        has_pronoun = any(w in followup_pronouns for w in words)
+        starts_with_followup = any(q_lower.startswith(s) for s in followup_starters)
+        is_short = len(words) <= 7
+
+        if has_pronoun or starts_with_followup or is_short:
+            return f"{question} {last_user_query}"
+
+        return question
 
     def _validate_citations(
         self,
@@ -92,6 +131,7 @@ class RAGService:
         self,
         question: str,
         retrieved_chunks: List[Tuple[ChunkMetadata, float]],
+        conversation_history: Optional[List[ChatTurn]] = None,
     ) -> Tuple[str, bool, bool]:
         """
         Synthesize a direct, natural, conversational answer from retrieved evidence.
@@ -206,7 +246,7 @@ class RAGService:
                 False,
             )
 
-        if any(w in q_lower for w in ["mounting", "cooling", "insulation", "voltage", "frequency", "protection", "duty"]):
+        if any(w in q_lower for w in ["mounting", "cooling", "insulation", "voltage", "frequency", "protection", "ip", "duty"]):
             return (
                 "NIEL industrial motors feature:\n\n"
                 "• Voltage & Frequency: 415V, 50 Hz, 3-Phase AC supply.\n"
@@ -331,20 +371,63 @@ class RAGService:
             False,
         )
 
-    def answer_question(self, question: str, top_k: int = 5) -> ChatResponse:
-        """Run the end-to-end grounded QA pipeline."""
+    def answer_question(
+        self,
+        question: str,
+        top_k: int = 5,
+        conversation_history: Optional[List[ChatTurn]] = None,
+        session_id: Optional[str] = None,
+    ) -> ChatResponse:
+        """
+        Run the end-to-end grounded QA pipeline with multi-turn conversational context.
+        Supports server-side persistent sessions via session_id or client-provided history.
+        """
         request_id = str(uuid.uuid4())
         q_lower = question.lower()
 
+        from backend.app.services.session_service import get_session_service
+        session_service = get_session_service() if session_id else None
+
+        # Sourcing history: If session_id is provided, pull from DB; otherwise use client history
+        if session_id and session_service:
+            db_history = session_service.get_recent_history(session_id=session_id, max_turns=8)
+            history: List[ChatTurn] = [ChatTurn(role=t["role"], content=t["content"]) for t in db_history]
+            # Record incoming user turn
+            session_service.add_message(
+                session_id=session_id,
+                role="user",
+                content=question,
+                request_id=request_id,
+            )
+        else:
+            history: List[ChatTurn] = []
+            if conversation_history:
+                for turn in conversation_history:
+                    if isinstance(turn, dict):
+                        history.append(ChatTurn(**turn))
+                    elif isinstance(turn, ChatTurn):
+                        history.append(turn)
+
+        def _persist_and_return(resp: ChatResponse) -> ChatResponse:
+            if session_id and session_service:
+                session_service.add_message(
+                    session_id=session_id,
+                    role="assistant",
+                    content=resp.answer,
+                    citations=resp.citations,
+                    request_id=resp.request_id,
+                )
+            return resp
+
         # 1. Kill switch
         if self.settings.KILL_SWITCH_ENABLED:
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer="The AI Assistant is temporarily paused by system administration. Please try again later.",
                 citations=[],
                 evidence_sufficient=False,
                 clarification_needed=False,
                 request_id=request_id,
-            )
+            ))
 
         # 2. Defensive check for direct prompt injection
         injection_triggers = [
@@ -356,7 +439,7 @@ class RAGService:
             "developer mode",
         ]
         if any(trigger in q_lower for trigger in injection_triggers):
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer=(
                     "I am the NIEL Industrial Intelligence Assistant. I provide technical product specifications "
                     "strictly based on authorized NIEL documentation. I cannot disclose internal system instructions or credentials."
@@ -365,7 +448,7 @@ class RAGService:
                 evidence_sufficient=False,
                 clarification_needed=False,
                 request_id=request_id,
-            )
+            ))
 
         # 3. Handle conversational pleasantries (greetings, thanks, introductions) like a genuine human engineer
         clean_q = re.sub(r"[^\w\s]", "", q_lower).strip()
@@ -382,26 +465,28 @@ class RAGService:
             if self.openai_service.is_live_configured:
                 try:
                     client = self.openai_service._get_client()
+                    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+                    for turn in history:
+                        turn_role = "assistant" if turn.role == "agent" else turn.role
+                        messages.append({"role": turn_role, "content": turn.content})
+                    messages.append({"role": "user", "content": question})
                     completion = client.chat.completions.create(
                         model=self.settings.OPENAI_MODEL,
                         temperature=0.7,
                         max_tokens=150,
-                        messages=[
-                            {"role": "system", "content": SYSTEM_PROMPT},
-                            {"role": "user", "content": question},
-                        ],
+                        messages=messages,
                     )
                     ans = (completion.choices[0].message.content or "").replace("**", "")
-                    return ChatResponse(
+                    return _persist_and_return(ChatResponse(
                         answer=ans,
                         citations=[],
                         evidence_sufficient=True,
                         clarification_needed=False,
                         request_id=request_id,
-                    )
+                    ))
                 except Exception:
                     pass
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer=(
                     "Hello! Welcome to New India Electricals. I am here to help you explore our electrical products, "
                     "understand technical specifications for motors, transformers, switchgear, and pumps, "
@@ -411,10 +496,10 @@ class RAGService:
                 evidence_sufficient=True,
                 clarification_needed=False,
                 request_id=request_id,
-            )
+            ))
 
         if is_thanks:
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer=(
                     "You are very welcome! If you have any further questions about our products or need "
                     "commercial assistance, feel free to ask anytime. We are happy to help!"
@@ -423,10 +508,10 @@ class RAGService:
                 evidence_sufficient=True,
                 clarification_needed=False,
                 request_id=request_id,
-            )
+            ))
 
         if is_intro:
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer=(
                     "I am the customer support assistant for New India Electricals Ltd. (NIEL). "
                     "I can help you look up technical specifications, explore our motors, transformers, switchgear, and pumps, "
@@ -436,20 +521,23 @@ class RAGService:
                 evidence_sufficient=True,
                 clarification_needed=False,
                 request_id=request_id,
-            )
+            ))
 
-        # 4. Retrieve relevant chunks
-        retrieved_chunks = self.retriever.retrieve(query=question, top_k=top_k)
+        # 4. Retrieve relevant chunks using contextual query rewrite if follow-up
+        retrieval_query = self._build_retrieval_query(question, history)
+        retrieved_chunks = self.retriever.retrieve(query=retrieval_query, top_k=top_k)
+        if not retrieved_chunks and retrieval_query != question:
+            retrieved_chunks = self.retriever.retrieve(query=question, top_k=top_k)
 
         # 4. Check if evidence is sufficient
         if not retrieved_chunks:
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer="This specification is not documented in the available NIEL technical documentation.",
                 citations=[],
                 evidence_sufficient=False,
                 clarification_needed=False,
                 request_id=request_id,
-            )
+            ))
 
         # 5. Check whether user explicitly asked for document attachments or citations
         asked_for_pdf = any(kw in q_lower for kw in ["pdf", "document", "catalogue", "catalog", "brochure", "attach", "file", "page", "source", "download", "where can i read"])
@@ -461,16 +549,17 @@ class RAGService:
             answer_text, sufficient, clarification = self._generate_offline_grounded_answer(
                 question=question,
                 retrieved_chunks=retrieved_chunks,
+                conversation_history=history,
             )
             answer_text = answer_text.replace("**", "")
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer=answer_text,
                 citations=valid_citations if sufficient else [],
                 evidence_sufficient=sufficient,
                 clarification_needed=clarification,
                 request_id=request_id,
                 usage=UsageMetadata(prompt_tokens=0, completion_tokens=0, total_tokens=0, estimated_cost_usd=0.0),
-            )
+            ))
 
         # Build grounded context with security boundaries
         context_blocks = []
@@ -488,14 +577,17 @@ class RAGService:
 
         try:
             client = self.openai_service._get_client()
+            messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+            for turn in history:
+                turn_role = "assistant" if turn.role == "agent" else turn.role
+                messages.append({"role": turn_role, "content": turn.content})
+            messages.append({"role": "user", "content": user_prompt})
+
             completion = client.chat.completions.create(
                 model=self.settings.OPENAI_MODEL,
                 temperature=0.0,
                 max_tokens=400,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": user_prompt},
-                ],
+                messages=messages,
             )
             answer_text = (completion.choices[0].message.content or "").replace("**", "")
             
@@ -512,7 +604,7 @@ class RAGService:
             insufficient_phrases = ["not documented", "not mentioned", "does not contain", "no information"]
             is_sufficient = not any(phrase in lower_answer for phrase in insufficient_phrases)
 
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer=answer_text,
                 citations=valid_citations if (is_sufficient and asked_for_pdf) else [],
                 evidence_sufficient=is_sufficient,
@@ -524,16 +616,16 @@ class RAGService:
                     total_tokens=t_tokens,
                     estimated_cost_usd=round(req_cost, 6),
                 ),
-            )
+            ))
         except OpenAIError as exc:
             logger.error("OpenAI Chat Completion failed: %s", exc)
-            return ChatResponse(
+            return _persist_and_return(ChatResponse(
                 answer="An error occurred while communicating with the AI service. Please try again shortly.",
                 citations=[],
                 evidence_sufficient=False,
                 clarification_needed=False,
                 request_id=request_id,
-            )
+            ))
 
 
 _rag_service_instance = None

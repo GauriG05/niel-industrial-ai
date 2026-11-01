@@ -6,6 +6,7 @@
 
 ## 2. Administrative Authentication
 - Privileged endpoints (`POST /api/v1/documents/upload` and `DELETE /api/v1/documents/{doc_id}`) require the `X-Admin-Key` HTTP header.
+- Privileged Human Escalation management endpoints (`GET /api/v1/escalations`, `GET /api/v1/escalations/{session_id}/messages`, `POST /api/v1/escalations/{session_id}/reply`, and `POST /api/v1/escalations/{session_id}/resolve`) share this exact administrative trust boundary and strictly require the `X-Admin-Key` header.
 - Unauthorized requests fail immediately with `401 Unauthorized` or `403 Forbidden`.
 
 ## 3. Protective HTTP Security Headers

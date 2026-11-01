@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     # Security & Admin Access
     ADMIN_API_KEY: str = Field(default="dev-admin-key", description="Secret token for document ingestion and management")
     KILL_SWITCH_ENABLED: bool = Field(default=False, description="Emergency stop switch for new LLM requests")
+    DISCORD_WEBHOOK_URL: str = Field(default="", description="Optional Discord webhook URL for human escalation alerts")
 
     # Rate Limiting & Usage Limits
     RATE_LIMIT_PER_MINUTE: int = Field(default=30, description="Max requests per client IP per minute")

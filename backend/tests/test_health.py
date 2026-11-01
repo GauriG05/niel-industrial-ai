@@ -41,4 +41,14 @@ def test_security_headers_present():
     assert response.headers.get("X-Content-Type-Options") == "nosniff"
     assert response.headers.get("X-Frame-Options") == "SAMEORIGIN"
     assert "strict-origin" in response.headers.get("Referrer-Policy", "")
+    assert "frame-ancestors" in response.headers.get("Content-Security-Policy", "")
+
+
+def test_widget_static_mounting():
+    """Verify embeddable widget static file is served directly at /widget/niel-widget.js."""
+    response = client.get("/widget/niel-widget.js")
+    assert response.status_code == 200
+    assert "text/javascript" in response.headers.get("content-type", "")
+    assert "NIEL Industrial Intelligence AI" in response.text
+
 

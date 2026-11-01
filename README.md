@@ -1,6 +1,8 @@
 # NIEL Industrial Intelligence AI & Agentic Customer Support System
-> Secure Enterprise Agentic AI & Retrieval-Augmented Generation (RAG) System for New India Electricals Ltd. (NIEL).
+> Production-Ready Enterprise Agentic AI & Retrieval-Augmented Generation (RAG) System for New India Electricals Ltd. (NIEL).
 
+[![Repo](https://img.shields.io/badge/GitHub-GauriG05%2Fniel--industrial--ai-blue.svg)](https://github.com/GauriG05/niel-industrial-ai)
+[![Branch](https://img.shields.io/badge/Branch-master-blue.svg)](https://github.com/GauriG05/niel-industrial-ai/tree/master)
 [![Tests](https://img.shields.io/badge/pytest-78%20passed-brightgreen.svg)]()
 [![RAG Benchmark](https://img.shields.io/badge/RAG%20Accuracy-100%25-blue.svg)]()
 [![Agent Benchmark](https://img.shields.io/badge/Agent%20Benchmark-100%25-brightgreen.svg)]()
@@ -11,24 +13,61 @@
 ---
 
 ## 1. Project Overview
-The **NIEL Industrial Intelligence AI** is a production-ready, **Agentic Customer Support & RAG System** built for New India Electricals Ltd. (NIEL).
 
-The system acts as an autonomous AI agent capable of understanding customer intent, retrieving technical equipment specifications, maintaining multi-turn conversational context, attaching verified PDF brochures directly into the chat, capturing qualified B2B sales leads, generating formal support tickets, and providing dynamic WhatsApp escalation to live human support engineers.
+The **NIEL Industrial Intelligence AI** is an end-to-end, enterprise-grade **Agentic Customer Support & Technical Intelligence Platform** engineered specifically for New India Electricals Ltd. (NIEL).
 
-Supported industrial equipment lines:
-- **AC Motors**: Cage Rotor (0.37–20,000 kW), Wound Rotor (7.5–20,000 kW), Flameproof (0.37–350 kW), Crane Duty (0.37–1,000 kW), Brake Motors (0.18–20 kW), AC Mill Duty (110–2,000 kW), Special Motors
-- **DC Motors**: Industrial DC Motors (0.37 kW to 6,500 kW, frame sizes 80 to 1,000, voltages 180V–1,000V DC)
-- **Transformers**: Distribution & Power Transformers (up to 1,250 kVA, 11 kV / 22 kV / 33 kV, Dyn 11, Class A, Off-circuit & OLTC)
-- **Switchgear & Panels**: Medium Voltage (MV) & Low Voltage (LV) Panels (3.3 kV to 33 kV, VCB, MCC, PCC, Drawout, IP4X/IP54)
-- **Pumps & Valves**: Monoblock (up to 260 m³/hr, 102 m head), Open Well Submersible, Process Pumps, Non-Clog Self-Priming, Vacuum Pumps, Borewell Submersible, Vertical Multistage
-- **Substations & Drives**: Compact Secondary Substations (CSS up to 1,250 kVA / 33 kV), Variable Frequency Drives (VFD up to 1,000 kW), Gearboxes (ratios up to 43,645:1)
+The system serves as an autonomous industrial co-pilot capable of understanding nuanced technical queries, retrieving exact equipment specifications from authentic company literature, maintaining multi-turn conversational context, directly serving official downloadable PDF brochures, qualifying B2B sales leads, generating formal support tickets, and providing dynamic WhatsApp escalation to live human engineering staff.
+
+### Supported Industrial Equipment Lines
+* **AC Motors**: Cage Rotor (0.37 kW to 20,000 kW), Wound Rotor (7.5 kW to 20,000 kW), Flameproof (0.37 kW to 350 kW), Crane Duty (0.37 kW to 1,000 kW), Brake Motors (0.18 kW to 20 kW), AC Mill Duty (110 kW to 2,000 kW), and custom engineered motors.
+* **DC Motors**: Industrial DC Motors (0.37 kW to 6,500 kW, frame sizes 80 to 1,000, voltages 180V–1,000V DC).
+* **Transformers**: Distribution & Power Transformers (up to 1,250 kVA, 11 kV / 22 kV / 33 kV, Dyn 11, Class A, Off-circuit & On-Load Tap Changers).
+* **Switchgear & Panels**: Medium Voltage (MV) & Low Voltage (LV) Panels (3.3 kV to 33 kV, Vacuum Circuit Breakers, Motor Control Centers, Power Control Centers, Drawout, IP4X/IP54).
+* **Pumps & Valves**: Monoblock (up to 260 m³/hr, 102 m head), Open Well Submersible, Process Pumps, Non-Clog Self-Priming, Vacuum Pumps, Borewell Submersible, Vertical Multistage.
+* **Substations & Drives**: Compact Secondary Substations (CSS up to 1,250 kVA / 33 kV), Variable Frequency Drives (VFD up to 1,000 kW), and Industrial Gearboxes (ratios up to 43,645:1).
 
 ---
 
-## 2. Key Architecture & Features
+## 2. System Architecture & Features
+
+```
++-----------------------------------------------------------------------------------------+
+|                                    Client Layer                                         |
+|  [React + Vite Desktop App]    [Shadow DOM Embeddable Widget]    [WhatsApp Handoff]     |
++-----------------------------------------------------------------------------------------+
+                                             |
+                                  HTTP REST / WebSocket
+                                             v
++-----------------------------------------------------------------------------------------+
+|                           FastAPI Enterprise Backend (:8000)                            |
+|  - Rate Limiter & Security Headers Middleware (Nosniff, CSP, Strict Referrer)           |
+|  - Router: /chat, /ws/chat, /leads, /tickets, /documents, /customers, /escalations      |
+|  - Multi-Turn Session Memory (SQLite + SessionService)                                  |
+|  - Electrical Safety Guardrails & Live Human Escalation Logic                           |
++-----------------------------------------------------------------------------------------+
+               |                                                         |
+               v                                                         v
++-----------------------------+                           +-------------------------------+
+|    Autonomous Agent Core    |                           |       RAG & Vector Store      |
+| - Intent Classification     |                           | - FAISS Local Vector Index    |
+|   (9 Structured Intents)    |                           | - OpenAI Embeddings           |
+| - Tool Orchestration Engine |                           |   (text-embedding-3-small)    |
+| - Automated Lead Scoring    |                           | - Verified Source Registry    |
+| - Support Ticket Generator  |                           | - Official PDF Mount (/pdfs)  |
++-----------------------------+                           +-------------------------------+
+               |                                                         |
+               +---------------------------+-----------------------------+
+                                           v
+                       +---------------------------------------+
+                       |    12-Category Structured Datastore   |
+                       | - 12 Verified JSON Knowledge Bases    |
+                       | - Zero-Hallucination Unverified Catalog|
+                       | - 11 Authentic NIEL PDF Catalogues    |
+                       +---------------------------------------+
+```
 
 ### 1. 12-Category Structured Knowledge Base (`data/knowledge_base/`)
-Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractions in `textpdfs/`, and the official website:
+Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractions in `textpdfs/`, and official engineering specifications:
 1. `ac_motors.json`
 2. `dc_motors.json`
 3. `pumps_and_valves.json`
@@ -42,18 +81,16 @@ Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractio
 11. `faqs.json`
 12. `troubleshooting_and_installation.json`
 
-- **Source Registry** (`source_registry.json`): Tracks all 12 PDFs, 8 text extractions, and the official website with SHA-256 hashes, page counts, and coverage.
-- **Unverified Fields Catalog**: Per zero-hallucination policy, missing technical parameters (e.g. frame-specific efficiency curves for large custom frames, transformer short-circuit duration in seconds) are explicitly cataloged in each product's `unverified_fields` array.
+* **Source Registry** (`source_registry.json`): Hashes and catalogs all 12 PDFs, 8 text extractions, page counts, and coverage.
+* **Unverified Fields Catalog**: Per zero-hallucination policy, missing technical parameters (e.g., custom frame efficiency curves, transformer short-circuit duration) are explicitly cataloged in each product's `unverified_fields` array.
 
 ### 2. Official PDF Brochure Chat Attachments
-- When customers ask for product details, specifications, or brochures, the chat directly attaches official **PDF Brochure Cards**.
-- The backend serves genuine brochures via `/pdfs/{filename}` mounted from `PDFs/`.
-- Customers can click **View PDF ↗** on any attachment to view or download the exact document in their browser (e.g. `AC Motors - NIEL Brochure.pdf`, `Transformers - NIEL Brochure.pdf`, `Pumps - NIEL Brochure.pdf`).
-- Clean user interface: replaces raw text snippets and OCR fragments with authentic PDF documents.
+* Direct attachments of official **PDF Brochure Cards** when customers inquire about products, specifications, or datasheets.
+* Backend serves genuine documents via `/pdfs/{filename}` mounted directly from `PDFs/`.
+* One-click **View PDF ↗** opens or downloads authentic brochures (e.g. `AC Motors - NIEL Brochure.pdf`, `Transformers - NIEL Brochure.pdf`, `Pumps - NIEL Brochure.pdf`).
 
 ### 3. WhatsApp Click-to-Chat Human Support (+91 97413 07999)
-- When a customer clicks **Talk to a human**, the assistant dynamically opens WhatsApp Web or the WhatsApp mobile app pre-filled with their inquiry.
-- **Scenario 1 (With conversation history)**: Formats a concise, contextual summary:
+* When a customer requests a human engineer or clicks **Talk to a human**, the assistant opens WhatsApp Web or the WhatsApp mobile app pre-filled with their context:
   ```text
   Hello NIEL Team,
 
@@ -67,11 +104,6 @@ Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractio
 
   Please connect me with a support engineer.
   ```
-- **Scenario 2 (Without conversation history)**: Uses fallback message:
-  ```text
-  Hello NIEL Team, I would like to connect with your support team. Please assist me.
-  ```
-- The user only needs to press **Send** in WhatsApp.
 
 ### 4. 9 Structured Customer Intents
 1. `PRODUCT_ENQUIRY` — Technical specs, frame sizes, power ratings
@@ -85,66 +117,169 @@ Structured JSON records compiled from authorized PDFs in `PDFs/`, text extractio
 9. `HUMAN_SUPPORT_REQUEST` — Explicit requests for human assistance
 
 ### 5. Reusable Agent Tools (`backend/app/agent/tools.py`)
-- `search_product_knowledge`: Vector search across official PDF datasheets and catalogues with category filtering and structured knowledge record matching
-- `get_customer_profile`: Access company profile, contact details, and equipment preferences
-- `get_customer_history`: Retrieve recent tickets, enquiries, and active leads
-- `save_customer_information`: Update profile details and consented preferences
-- `create_support_ticket`: Formal ticket creation (`TK-2026-XXXX`) with automated severity classification
-- `create_sales_lead`: Automatic lead qualification and priority scoring (URGENT, HIGH, MEDIUM, LOW)
-- `escalate_to_human`: Handoff to human support engineers
+* `search_product_knowledge`: Vector search across official PDF datasheets and catalogues with category filtering.
+* `get_customer_profile`: Access company profile, contact details, and equipment preferences.
+* `get_customer_history`: Retrieve recent tickets, enquiries, and active leads.
+* `save_customer_information`: Update profile details and consented preferences.
+* `create_support_ticket`: Formal ticket creation (`TK-2026-XXXX`) with automated severity classification.
+* `create_sales_lead`: Automatic lead qualification and priority scoring (`URGENT`, `HIGH`, `MEDIUM`, `LOW`).
+* `escalate_to_human`: Contextual handoff to live engineering team.
 
 ### 6. Electrical Safety Guardrails
 Strict guardrails immediately flag life-safety hazards (smoke, sparks, shocks, fire, live conductors), output critical safety advisories against uncertified DIY maintenance, create priority support tickets, and immediately alert human engineering staff.
 
 ---
 
-## 3. Verified Benchmark Results
+## 3. Repository Structure
 
-### Automated Test Suite
-- **Pytest**: `78 / 78 passed` (100% pass rate in ~8.5s)
-- **Baseline RAG Evaluation** (`evaluation/evaluate.py`): `100.0%` (10 / 10 passed, 80.09ms avg latency)
-- **Agentic AI Evaluation** (`evaluation/evaluate_agent.py`): `100.0%` (8 / 8 scenarios passed, 30.70ms avg latency)
-- **Frontend Build**: `tsc && vite build` builds cleanly with 0 TypeScript/bundling errors
+```
+niel-industrial-ai/
+├── backend/                  # FastAPI Enterprise Backend
+│   ├── app/
+│   │   ├── agent/            # Orchestrator & agent tools
+│   │   ├── api/v1/           # REST endpoints (chat, leads, tickets, docs, health)
+│   │   ├── db/               # SQLite models & database session
+│   │   ├── ingestion/        # PDF chunker, text extractor, SHA hasher
+│   │   ├── knowledge/        # 12-category knowledge base loader & search
+│   │   ├── retrieval/        # FAISS vector store & retriever
+│   │   ├── schemas/          # Pydantic models & request/response schemas
+│   │   ├── security/         # Rate limiting, auth & security middleware
+│   │   ├── services/         # Intent, RAG, Lead, Ticket & Session services
+│   │   ├── config.py         # App configuration & settings
+│   │   └── main.py           # FastAPI entrypoint
+│   ├── requirements.txt      # Python dependencies
+│   └── tests/                # Complete Pytest test suite (78 tests)
+├── frontend/                 # React 18 + Vite Web Application
+│   ├── src/
+│   │   ├── components/       # ChatMessage, ExamplePrompts, etc.
+│   │   ├── services/         # API integration
+│   │   ├── types/            # TypeScript definitions
+│   │   └── utils/            # WhatsApp link generator & helpers
+│   ├── package.json
+│   └── vite.config.ts
+├── widget/                   # Zero-dependency Shadow-DOM Embeddable Widget
+│   ├── niel-widget.js        # Self-contained widget script for WordPress/Elementor
+│   └── assets/               # Brand imagery
+├── data/
+│   ├── knowledge_base/       # 12 structured JSON equipment databases
+│   └── index/                # FAISS vector index files (.gitkeep)
+├── PDFs/                     # 11 Official NIEL Catalogues & Brochures (served via /pdfs)
+├── textpdfs/                 # Extracted raw text references
+├── evaluation/               # RAG & Agent evaluation scripts & test cases
+├── deploy/                   # Production Nginx reverse-proxy template
+├── docker-compose.yml        # Multi-container orchestration
+├── Dockerfile                # Production container definition
+└── README.md
+```
 
 ---
 
-## 4. Quickstart: Run Locally
+## 4. API Endpoints
 
-### 1. Setup Backend
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/` | Service discovery root & health status |
+| `GET` | `/api/v1/health` | Service health check |
+| `POST` | `/api/v1/chat` | Synchronous RAG & Agentic chat endpoint |
+| `POST` | `/api/v1/chat/message` | Session-aware chat with lead/ticket hooks |
+| `WS` | `/api/v1/chat/ws/{session_id}` | Real-time WebSocket streaming chat |
+| `POST` | `/api/v1/leads` | Create qualified sales lead |
+| `GET` | `/api/v1/leads` | List recent leads |
+| `POST` | `/api/v1/tickets` | Create customer support ticket |
+| `GET` | `/api/v1/tickets` | List support tickets |
+| `POST` | `/api/v1/escalations` | Record human escalation handoff |
+| `GET` | `/pdfs/{filename}` | Access verified official product brochures |
+| `GET` | `/widget/niel-widget.js` | Serve embeddable widget script |
+
+---
+
+## 5. Quickstart & Installation
+
+### Prerequisites
+* Python 3.10+
+* Node.js 18+ & npm
+* OpenAI API Key (optional for mock/offline testing, required for live LLM inference)
+
+### 1. Backend Setup
+
 ```powershell
-# Create and activate virtual environment
+# 1. Clone repository
+git clone https://github.com/GauriG05/niel-industrial-ai.git
+cd niel-industrial-ai
+
+# 2. Create and activate Python virtual environment
 python -m venv .venv
 .\.venv\Scripts\activate
 
-# Install dependencies
+# 3. Install backend dependencies
 pip install -r backend/requirements.txt
 
-# Run automated tests
+# 4. Configure environment variables
+cp .env.example .env
+# Edit .env and insert your OPENAI_API_KEY
+
+# 5. Run automated tests
 pytest backend/tests -v
 
-# Start FastAPI server
+# 6. Start the FastAPI server
 uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-### 2. Setup Frontend
+### 2. Frontend Setup
+
 ```powershell
+# Open a new terminal in the frontend directory
 cd frontend
+
+# Install Node dependencies
 npm install
-npm run build
+
+# Run the dev server
 npm run dev
 ```
-Visit the application at `http://127.0.0.1:5173/`.
+Open [http://127.0.0.1:5173/](http://127.0.0.1:5173/) to interact with the web app.
 
-### 3. Test WordPress Integration Sandbox
-Open `demo/integration-test.html` in your browser to experience the Shadow-DOM embedded widget inside a simulated NIEL website layout.
+### 3. Docker Deployment
+
+```powershell
+# Build and run with Docker Compose
+docker compose up -d --build
+
+# View logs
+docker compose logs -f backend
+
+# Tear down
+docker compose down
+```
 
 ---
 
-## 5. CV / Portfolio Ready Project Description
+## 6. Embeddable Widget Integration (WordPress / HTML)
 
-> **NIEL Industrial Intelligence AI | Enterprise RAG & Generative AI System**
-> - Architected an end-to-end RAG system answering technical inquiries across industrial catalogues for New India Electricals Ltd., achieving **100% citation accuracy** and **100% Recall@5** on verified benchmarks.
-> - Engineered a 12-category structured knowledge base and vector retrieval engine over official brochures for induction motors (up to 20 MW), transformers (up to 33 kV), switchgear, and pumps with zero hallucination.
-> - Built automatic PDF brochure attachment in chat, allowing customers to view and download verified technical datasheets.
-> - Integrated dynamic WhatsApp click-to-chat escalation (+91 97413 07999) with contextual inquiry summarization for instant human takeover.
-> - Developed an embeddable **Shadow DOM** chatbot widget for seamless integration into WordPress and Elementor with zero CSS/JS collisions, backend secret isolation, and sliding-window rate limiting.
+To embed the NIEL AI widget on any website (including WordPress, Elementor, Webflow, or static HTML), add this single script tag before the closing `</body>` tag:
+
+```html
+<script 
+  src="https://your-backend-domain.com/widget/niel-widget.js" 
+  data-api-base="https://your-backend-domain.com"
+  defer>
+</script>
+```
+
+To test the widget locally inside an authentic webpage layout, open `demo/integration-test.html` in your browser.
+
+---
+
+## 7. Verified Benchmark Results
+
+* **Pytest Test Suite**: `78 / 78 passed` (100% pass rate in ~8.5s)
+* **Baseline RAG Accuracy** (`evaluation/evaluate.py`): `100.0%` (10/10 passed, 80.09ms avg latency)
+* **Agentic AI Benchmark** (`evaluation/evaluate_agent.py`): `100.0%` (8/8 scenarios passed, 30.70ms avg latency)
+* **TypeScript Bundler**: `tsc && vite build` completes with 0 errors.
+
+---
+
+## 8. License
+
+Copyright © 2026 New India Electricals Ltd. All rights reserved.
+Developed for New India Electricals Ltd. (NIEL).

@@ -25,7 +25,8 @@ You communicate with website visitors in a genuine, warm, and professional human
 
 GUIDELINES:
 1. HUMAN CONVERSATION: Speak naturally, warmly, and helpfully. If a visitor says "hi", "hello", or greets you, greet them warmly, welcome them to NIEL, and ask how you can assist their project or electrical equipment needs today.
-2. MOTOR DIALOGUE: When a visitor asks generally what types of motors NIEL has or offers, respond: "We offer AC and DC motors. Which type are you interested in?"
+2. MOTOR DIALOGUE: When a visitor asks generally what types of motors NIEL has or offers (e.g. "I have to know about motors", "what types of motors do you have"), respond: "We offer AC and DC motors. Which type are you interested in?"
+When a company or visitor states they want to buy motors (e.g. "I'm a XYZ company and I want to buy motors"), respond warmly: "We would be glad to assist your company with your motor requirements! We offer two main types of industrial motors: AC Motors and DC Motors. What type of motor are you looking to buy, and what power rating (kW) or industrial application do you have in mind?"
 When they specify "AC motors", introduce the AC motor range (Cage Rotor, Wound Rotor, Flameproof, Crane Duty, Brake Motors, AC Mill Duty, and Special Motors).
 When they ask for their maximum power rating, state that the maximum power rating for NIEL AC Motors is up to 20,000 kW (20 MW) for Cage Rotor and Wound Rotor induction motors, operating at voltages up to 6.6 kV / 11 kV, referencing AC Motors - NIEL Brochure.pdf Page 1.
 3. TECHNICAL GROUNDEDNESS: When answering technical product questions, rely strictly on the facts in the provided <EVIDENCE> documentation. Answer clearly and conversationally without dumping raw fragments or repeating robotic phrases. Never invent missing technical specifications.
@@ -245,7 +246,16 @@ class RAGService:
             )
 
         # Multi-turn Motor Dialogue Flow
+        is_buying_motors = any(w in q_lower for w in ["want to buy a motor", "want to buy motors", "want to buy motor", "buy a motor", "buy motors", "purchase a motor", "purchase motors", "looking to buy"]) and any(m in q_lower for m in ["motor", "motors"])
+        if is_buying_motors:
+            return (
+                "We would be glad to assist your company with your motor requirements! We offer two main types of industrial motors: AC Motors and DC Motors. What type of motor are you looking to buy, and what power rating (kW) or industrial application do you have in mind?",
+                True,
+                False,
+            )
+
         is_motor_type_inquiry = (
+            any(w in q_lower for w in ["know about motors", "know about motor", "about motors", "what motors do you have", "types of motors", "what types of motors"]) or
             re.search(r"what (types|kinds) of motors (do you have|do you offer|are available|are there)", q_lower) or
             q_lower.strip("?. ") in [
                 "what types of motors do you have",
@@ -253,6 +263,9 @@ class RAGService:
                 "what kind of motors do you have",
                 "what motors do you have",
                 "types of motors",
+                "i have to know about motors",
+                "i want to know about motors",
+                "motors",
             ]
         )
         if is_motor_type_inquiry:
@@ -699,7 +712,18 @@ class RAGService:
             ))
 
         # 4. Handle conversational motor dialogue flow
+        is_buying_motors = any(w in q_lower for w in ["want to buy a motor", "want to buy motors", "want to buy motor", "buy a motor", "buy motors", "purchase a motor", "purchase motors", "looking to buy"]) and any(m in q_lower for m in ["motor", "motors"])
+        if is_buying_motors:
+            return _persist_and_return(ChatResponse(
+                answer="We would be glad to assist your company with your motor requirements! We offer two main types of industrial motors: AC Motors and DC Motors. What type of motor are you looking to buy, and what power rating (kW) or industrial application do you have in mind?",
+                citations=[],
+                evidence_sufficient=True,
+                clarification_needed=False,
+                request_id=request_id,
+            ))
+
         is_motor_type_inquiry = (
+            any(w in q_lower for w in ["know about motors", "know about motor", "about motors", "what motors do you have", "types of motors", "what types of motors"]) or
             re.search(r"what (types|kinds) of motors (do you have|do you offer|are available|are there)", q_lower) or
             clean_q in [
                 "what types of motors do you have",
@@ -707,6 +731,9 @@ class RAGService:
                 "what kind of motors do you have",
                 "what motors do you have",
                 "types of motors",
+                "i have to know about motors",
+                "i want to know about motors",
+                "motors",
             ]
         )
         if is_motor_type_inquiry:

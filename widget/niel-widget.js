@@ -415,40 +415,6 @@
     const cleanText = text.replace(/\*\*/g, '');
     let html = `<p>${cleanText.replace(/\n/g, '<br/>')}</p>`;
 
-    if (sender === 'assistant' && data) {
-      const rawPdfs = data.pdf_attachments || (data.citations || []).map(function(c) {
-        var fname = c.source_filename.replace(/\.txt$/i, '.pdf');
-        return {
-          filename: fname,
-          page: c.page_number,
-          url: config.apiBase + '/pdfs/' + encodeURIComponent(fname) + '#page=' + c.page_number
-        };
-      });
-
-      var seen = {};
-      var uniquePdfs = [];
-      rawPdfs.forEach(function(p) {
-        if (!seen[p.filename]) {
-          seen[p.filename] = true;
-          uniquePdfs.push(p);
-        }
-      });
-
-      if (uniquePdfs.length > 0) {
-        html += '<div style="margin-top:10px; padding-top:8px; border-top:1px dashed #e5e7eb;">';
-        html += '<div style="font-size:11px; font-weight:700; color:#6b7280; text-transform:uppercase; margin-bottom:6px;">Official Product Documentation</div>';
-        uniquePdfs.forEach(function(p) {
-          var pdfUrl = p.url.indexOf('http') === 0 ? p.url : (config.apiBase + p.url);
-          html += '<a href="' + pdfUrl + '" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:8px; background:#fdfaf3; border:1px solid #fde68a; border-radius:6px; padding:6px 10px; text-decoration:none; color:#1f2937; margin-bottom:4px; font-size:12px;">';
-          html += '<span style="font-size:15px;">📄</span>';
-          html += '<span style="flex:1; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + p.filename + '</span>';
-          html += '<span style="font-size:11px; color:#b45309; background:#fef3c7; padding:2px 6px; border-radius:4px; font-weight:600;">View PDF ↗</span>';
-          html += '</a>';
-        });
-        html += '</div>';
-      }
-    }
-
     msg.innerHTML = html;
     messagesContainer.appendChild(msg);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;

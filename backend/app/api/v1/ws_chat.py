@@ -152,7 +152,7 @@ async def websocket_chat_endpoint(websocket: WebSocket, session_id: str):
                     triggering_message=question,
                 )
                 from urllib.parse import quote
-                wa_summary = f"Hello NIEL Team, I would like to connect with your support team regarding: {question}"
+                wa_summary = "Hello NIEL Team, I would like human support assistance regarding an inquiry on your website"
                 wa_url = f"https://wa.me/919741307999?text={quote(wa_summary)}"
                 await manager.broadcast_to_session(session_id, {
                     "type": "escalated",

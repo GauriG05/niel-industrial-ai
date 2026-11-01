@@ -58,32 +58,8 @@ export function extractConversationSummary(messages: Message[]): WhatsAppContext
   };
 }
 
-export function generateWhatsAppMessage(messages: Message[], sessionId?: string): string {
-  const summary = extractConversationSummary(messages);
-
-  if (!summary) {
-    // Scenario 2: Fallback when no conversation history
-    return 'Hello NIEL Team, I would like to connect with your support team. Please assist me.';
-  }
-
-  // Scenario 1: Contextual summary with query, product, requirements & unresolved issue
-  const lines = [
-    'Hello NIEL Team,',
-    '',
-    'I would like human support assistance regarding an inquiry on your website:',
-    '',
-    `• Customer Query: ${summary.query}`,
-    `• Selected Product: ${summary.selectedProduct}`,
-    `• Requirements: ${summary.requirements}`,
-    `• Unresolved Issue / Request: ${summary.unresolvedIssue}`,
-  ];
-
-  if (sessionId) {
-    lines.push(`• Session Reference: ${sessionId}`);
-  }
-
-  lines.push('', 'Please connect me with a support engineer.');
-  return lines.join('\n');
+export function generateWhatsAppMessage(_messages?: Message[], _sessionId?: string): string {
+  return 'Hello NIEL Team, I would like human support assistance regarding an inquiry on your website';
 }
 
 export function generateWhatsAppUrl(messages: Message[], sessionId?: string): string {

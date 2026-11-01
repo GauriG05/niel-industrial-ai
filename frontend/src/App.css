@@ -362,102 +362,6 @@ body {
   font-weight: 600;
 }
 
-/* Clean PDF Brochure Attachments */
-.niel-pdf-attachments-container {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed #e5e7eb;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.niel-pdf-attachment-header {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.niel-pdf-attachments-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.niel-pdf-attachment-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #fdfaf3;
-  border: 1px solid #fde68a;
-  border-radius: 8px;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.15s ease-in-out;
-}
-
-.niel-pdf-attachment-card:hover {
-  background: #fef3c7;
-  border-color: #f59e0b;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.15);
-}
-
-.niel-pdf-attachment-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background: #fee2e2;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-.niel-pdf-attachment-meta {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-}
-
-.niel-pdf-attachment-title {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #1f2937;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.niel-pdf-attachment-sub {
-  font-size: 0.72rem;
-  color: #6b7280;
-}
-
-.niel-pdf-attachment-action {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #b45309;
-  background: #ffffff;
-  border: 1px solid #fde68a;
-  border-radius: 4px;
-  padding: 4px 8px;
-  flex-shrink: 0;
-}
-
-.niel-pdf-attachment-card:hover .niel-pdf-attachment-action {
-  background: #f59e0b;
-  color: #000000;
-  border-color: #f59e0b;
-}
-
 /* Input Bar (Yellow outline & yellow send button matching reference image) */
 .niel-dialog-footer {
   padding: 14px 24px 20px 24px;
@@ -560,4 +464,3 @@ body {
     max-width: 100%;
   }
 }
-

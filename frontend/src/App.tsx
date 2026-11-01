@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, UserCheck, RotateCcw } from 'lucide-react';
+import { Send, X, UserCheck } from 'lucide-react';
 import { Message, ChatTurn } from './types';
 import { askQuestion } from './services/api';
 import { ChatMessage } from './components/ChatMessage';
@@ -121,13 +121,10 @@ export const App: React.FC = () => {
   }, [sessionId]);
 
   const handleEscalate = () => {
-    // Generate pre-filled WhatsApp link with contextual summary or fallback
+    // Generate pre-filled WhatsApp link with the requested message
     const waUrl = openWhatsAppChat(messages, sessionId);
 
-    const hasHistory = messages.some((m) => m.sender === 'user' && m.text.trim());
-    const infoText = hasHistory
-      ? `Connecting you with our support engineer on WhatsApp (+91 97413 07999) with your inquiry pre-filled.\n\n👉 If WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`
-      : `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n👉 If WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`;
+    const infoText = `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n👉 If WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`;
 
     const infoMsg: Message = {
       id: (Date.now() + 1).toString(),
@@ -136,12 +133,6 @@ export const App: React.FC = () => {
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
     setMessages((prev) => [...prev, infoMsg]);
-  };
-
-  const handleNewChat = () => {
-    const newSid = 'sess_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now();
-    localStorage.setItem('niel_chat_session_id', newSid);
-    window.location.reload();
   };
 
   const handleSend = async (queryText?: string) => {
@@ -239,7 +230,7 @@ export const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Header actions: Talk to human WhatsApp button + New Chat + close X */}
+            {/* Header actions: Talk to human WhatsApp button + close X */}
             <div className="niel-header-actions-group">
               <button
                 type="button"
@@ -250,14 +241,6 @@ export const App: React.FC = () => {
               >
                 <UserCheck size={12} />
                 <span>Talk to a human</span>
-              </button>
-              <button
-                type="button"
-                className="niel-action-icon-btn"
-                onClick={handleNewChat}
-                title="Start a new chat conversation"
-              >
-                <RotateCcw size={15} />
               </button>
               <button
                 type="button"

@@ -69,6 +69,9 @@ export const App: React.FC = () => {
         } else if (data.type === 'escalated') {
           setLoading(false);
           const waUrl = data.whatsapp_url || generateWhatsAppUrl(messages, sessionId);
+          if (typeof window !== 'undefined') {
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
+          }
           const alertMessage: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'assistant',
@@ -168,6 +171,9 @@ export const App: React.FC = () => {
           }));
 
         const response = await askQuestion(textToSend, 5, priorTurns, sessionId);
+        if (response.whatsapp_url && typeof window !== 'undefined') {
+          window.open(response.whatsapp_url, '_blank', 'noopener,noreferrer');
+        }
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
           sender: 'assistant',
@@ -184,6 +190,9 @@ export const App: React.FC = () => {
         const isHumanReq = /\b(human|person|sales|agent|representative|talk|speak|connect)\b/i.test(textToSend);
         if (isHumanReq) {
           const waUrl = generateWhatsAppUrl([...messages, userMessage], sessionId);
+          if (typeof window !== 'undefined') {
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
+          }
           const fallbackMsg: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'assistant',

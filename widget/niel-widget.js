@@ -487,6 +487,9 @@
       }
 
       const data = await res.json();
+      if (data.whatsapp_url && typeof window !== 'undefined') {
+        window.open(data.whatsapp_url, '_blank', 'noopener,noreferrer');
+      }
       const isPdfRequested = /\b(pdf|brochure|catalogue|catalog|document|attach|file|download)\b/i.test(text);
       if (!isPdfRequested && data.citations) {
         data.citations = [];
@@ -495,7 +498,13 @@
       conversationHistory.push({ role: 'assistant', content: data.answer });
       appendMessage(data.answer, 'assistant', data);
     } catch (err) {
-      appendMessage(`Error: ${err.message || 'Unable to connect to assistant.'}`, 'assistant', { evidence_sufficient: false });
+      const isHumanReq = /\b(human|person|sales|agent|representative|talk|speak|connect)\b/i.test(text);
+      if (isHumanReq) {
+        var waUrl = openWhatsApp(conversationHistory.concat([{ role: 'user', content: text }]));
+        appendMessage('Connecting you directly with NIEL Support on WhatsApp (+91 97413 07999):\n\n' + waUrl, 'assistant', { whatsapp_url: waUrl });
+      } else {
+        appendMessage(`Error: ${err.message || 'Unable to connect to assistant.'}`, 'assistant', { evidence_sufficient: false });
+      }
     } finally {
       sendBtn.disabled = false;
     }

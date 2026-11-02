@@ -6,6 +6,7 @@ import pytest
 
 # Ensure tests run strictly in test environment to avoid modifying production data
 os.environ["ENVIRONMENT"] = "test"
+os.environ["OPENAI_API_KEY"] = "mock-test-key"
 
 from backend.app.config import get_settings
 

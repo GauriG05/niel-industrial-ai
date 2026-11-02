@@ -1,4 +1,4 @@
-import { ChatResponse, ChatTurn, DocumentListResponse } from '../types';
+import { ChatResponse, ChatTurn } from '../types';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
@@ -34,14 +34,6 @@ export async function askQuestion(
     throw new Error(errorData.detail || `Server error (${response.status})`);
   }
 
-  return response.json();
-}
-
-export async function listDocuments(): Promise<DocumentListResponse> {
-  const response = await fetch(`${API_BASE}/api/v1/documents`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch indexed documents list');
-  }
   return response.json();
 }
 

@@ -158,7 +158,7 @@ async def websocket_chat_endpoint(websocket: WebSocket, session_id: str):
                     "type": "escalated",
                     "answer": (
                         "I can connect you directly with our engineering support team at New India Electricals Ltd.\n\n"
-                        f"👉 Click here to chat with our team on WhatsApp (+91 97413 07999):\n{wa_url}\n\n"
+                        f"Click here to chat with our team on WhatsApp (+91 97413 07999):\n{wa_url}\n\n"
                         "Our engineers will assist you directly on WhatsApp. You can also continue asking any product or technical questions right here!"
                     ),
                     "human_active": True,

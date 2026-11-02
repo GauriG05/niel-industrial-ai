@@ -182,3 +182,20 @@ class SupportTicket(Base):
 
     customer: Mapped[Optional["Customer"]] = relationship("Customer", back_populates="tickets")
     session: Mapped[Optional["ChatSession"]] = relationship("ChatSession", back_populates="tickets")
+
+
+class FlaggedQuery(Base):
+    """Database model for logging questions touching unverified product specifications."""
+    __tablename__ = "flagged_queries"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    timestamp: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
+    )
+    user_question: Mapped[str] = mapped_column(Text)
+    product_category: Mapped[str] = mapped_column(String(100))
+    unverified_field: Mapped[str] = mapped_column(String(255))
+    session_id: Mapped[Optional[str]] = mapped_column(String(64), nullable=True, index=True)
+    resolved: Mapped[bool] = mapped_column(Boolean, default=False)
+

@@ -150,6 +150,80 @@ class NIELKnowledgeBase:
         """Return verified source registry mapping."""
         return self.source_registry
 
+    def detect_unverified_fields(
+        self,
+        query: str,
+        matched_products: Optional[List[Dict[str, Any]]] = None,
+    ) -> List[Dict[str, str]]:
+        """
+        Detect when a matched product record's unverified_fields array is non-empty
+        and the user's question touches one of those fields.
+        Returns a list of dicts: [{"product_category": cat, "unverified_field": field, "product_id": id}, ...]
+        """
+        q_lower = query.lower()
+        stopwords = {
+            "what", "which", "where", "how", "who", "when", "does", "niel", "the",
+            "for", "with", "and", "are", "have", "you", "tell", "about", "can",
+            "this", "that", "these", "those", "is", "a", "an", "do", "in", "of",
+            "per", "values", "details", "exact", "numeric", "specific", "give", "me",
+            "rotor", "motor", "motors", "frame", "rating", "ratings", "size", "sizes",
+            "type", "types", "code", "codes", "number", "numbers", "standard",
+        }
+        q_words = set(w for w in re.findall(r"\w+", q_lower) if len(w) > 2 and w not in stopwords)
+
+        candidates = []
+        if matched_products:
+            candidates = matched_products
+        else:
+            kb_results = self.search_structured_knowledge(query, top_n=3)
+            for res in kb_results:
+                if res.get("type") == "product":
+                    candidates.append({
+                        "category": res.get("category", ""),
+                        "data": res.get("data", {}),
+                    })
+
+        flagged: List[Dict[str, str]] = []
+        seen = set()
+
+        for cand in candidates:
+            prod_data = cand.get("data", cand)
+            cat = cand.get("category") or prod_data.get("category", "")
+            unverified = prod_data.get("unverified_fields", [])
+            if not unverified:
+                continue
+
+            for field in unverified:
+                f_lower = field.lower()
+                f_words = set(w for w in re.findall(r"\w+", f_lower) if len(w) > 2 and w not in stopwords)
+
+                overlap = q_words.intersection(f_words)
+
+                is_match = False
+                if len(overlap) >= 2:
+                    is_match = True
+                elif len(overlap) == 1:
+                    distinctive = {
+                        "efficiency", "dimensions", "impedance", "losses", "current",
+                        "voltage", "torque", "viscosity", "pressure", "thickness",
+                        "warranty", "temperatures", "temperature", "cable", "bearing",
+                        "withstand", "ratio", "ratios", "discharge", "breaker",
+                    }
+                    if overlap.intersection(distinctive):
+                        is_match = True
+
+                if is_match:
+                    key = (cat, field)
+                    if key not in seen:
+                        seen.add(key)
+                        flagged.append({
+                            "product_category": cat,
+                            "unverified_field": field,
+                            "product_id": prod_data.get("id", ""),
+                        })
+
+        return flagged
+
 
 _kb_instance: Optional[NIELKnowledgeBase] = None
 

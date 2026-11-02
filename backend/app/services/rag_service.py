@@ -17,6 +17,7 @@ from backend.app.services.openai_service import (
 )
 from backend.app.retrieval.retriever import get_retriever
 from backend.app.knowledge import get_knowledge_base
+from backend.app.knowledge.site_url_map import resolve_site_url
 
 logger = logging.getLogger(__name__)
 
@@ -189,6 +190,50 @@ class RAGService:
                     )
 
         return attachments
+
+    def _resolve_response_site_url(
+        self,
+        question: str,
+        citations: List[Citation],
+        structured_matches: Optional[List[dict]] = None,
+        is_sufficient: bool = True,
+    ) -> Optional[str]:
+        """Attach verified live product page URL when a category/product is confidently matched."""
+        if not is_sufficient:
+            return None
+
+        # 1. Check if structured product was matched
+        if structured_matches:
+            for m in structured_matches:
+                if m.get("type") == "product":
+                    p_id = m.get("data", {}).get("id")
+                    cat = m.get("category")
+                    url = resolve_site_url(product_id=p_id, category=cat, text=question)
+                    if url:
+                        return url
+
+        # 2. Check query text directly against subtypes & categories
+        url = resolve_site_url(text=question)
+        if url:
+            return url
+
+        # 3. Check citations for category mapping
+        for c in citations:
+            fname = c.source_filename.lower()
+            if "ac motors" in fname:
+                return resolve_site_url(category="ac_motors", text=question)
+            if "dc motors" in fname:
+                return resolve_site_url(category="dc_motors", text=question)
+            if "transformer" in fname:
+                return resolve_site_url(category="transformers", text=question)
+            if "switchgear" in fname:
+                return resolve_site_url(category="switchgear", text=question)
+            if "pump" in fname:
+                return resolve_site_url(category="pumps_and_valves", text=question)
+            if "substation" in fname:
+                return resolve_site_url(category="substations", text=question)
+
+        return None
 
     def _generate_offline_grounded_answer(
         self,
@@ -596,6 +641,22 @@ class RAGService:
                     elif isinstance(turn, ChatTurn):
                         history.append(turn)
 
+        # Passively detect if question touches any unverified spec fields for engineering review
+        try:
+            from backend.app.services.flag_service import get_flag_service
+            flagged = self.knowledge_base.detect_unverified_fields(question)
+            if flagged:
+                flag_svc = get_flag_service()
+                for item in flagged:
+                    flag_svc.log_flagged_query(
+                        user_question=question,
+                        product_category=item["product_category"],
+                        unverified_field=item["unverified_field"],
+                        session_id=session_id,
+                    )
+        except Exception as flag_exc:
+            logger.warning("Passive unverified field logging failed: %s", flag_exc)
+
         def _persist_and_return(resp: ChatResponse) -> ChatResponse:
             if session_id and session_service:
                 session_service.add_message(
@@ -757,6 +818,8 @@ class RAGService:
                     "with ratings up to 20,000 kW (20 MW) in voltages up to 6.6 kV / 11 kV. Which specifications or application are you looking for?"
                 ),
                 citations=[],
+                pdf_attachments=self._build_pdf_attachments([], "ac motors"),
+                site_url="https://newindiaelectricals.com/ac-motors/",
                 evidence_sufficient=True,
                 clarification_needed=False,
                 request_id=request_id,
@@ -786,6 +849,7 @@ class RAGService:
                 ))
 
         # 6. Generate answer via OpenAI or offline fallback
+        kb_matches = self.knowledge_base.search_structured_knowledge(question, top_n=2)
         if not self.openai_service.is_live_configured:
             answer_text, sufficient, clarification = self._generate_offline_grounded_answer(
                 question=question,
@@ -794,10 +858,17 @@ class RAGService:
             )
             answer_text = answer_text.replace("**", "")
             pdf_attachments = self._build_pdf_attachments(valid_citations, question) if sufficient else []
+            site_url = self._resolve_response_site_url(
+                question=question,
+                citations=valid_citations,
+                structured_matches=kb_matches,
+                is_sufficient=sufficient,
+            )
             return _persist_and_return(ChatResponse(
                 answer=answer_text,
                 citations=valid_citations if sufficient else [],
                 pdf_attachments=pdf_attachments,
+                site_url=site_url,
                 evidence_sufficient=sufficient,
                 clarification_needed=clarification,
                 request_id=request_id,
@@ -858,10 +929,17 @@ class RAGService:
             is_sufficient = not any(phrase in lower_answer for phrase in insufficient_phrases)
 
             pdf_attachments = self._build_pdf_attachments(valid_citations, question) if is_sufficient else []
+            site_url = self._resolve_response_site_url(
+                question=question,
+                citations=valid_citations,
+                structured_matches=kb_matches,
+                is_sufficient=is_sufficient,
+            )
             return _persist_and_return(ChatResponse(
                 answer=answer_text,
                 citations=valid_citations if is_sufficient else [],
                 pdf_attachments=pdf_attachments,
+                site_url=site_url,
                 evidence_sufficient=is_sufficient,
                 clarification_needed=False,
                 request_id=request_id,

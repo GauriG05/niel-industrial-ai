@@ -182,6 +182,7 @@
     .niel-messages {
       flex: 1;
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 20px 22px;
       display: flex;
       flex-direction: column;
@@ -231,6 +232,16 @@
       border-radius: 14px;
       font-size: 13.5px;
       line-height: 1.55;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      box-sizing: border-box;
+    }
+
+    .niel-msg a {
+      color: #2563eb;
+      text-decoration: underline;
+      overflow-wrap: anywhere;
+      word-break: break-all;
     }
 
     .niel-msg-user {
@@ -408,12 +419,36 @@
   sideTabBtn.addEventListener('click', () => togglePanel());
   closeBtn.addEventListener('click', () => togglePanel(false));
 
+  function linkifyText(str) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return str.replace(urlRegex, function(url) {
+      if (url.indexOf('wa.me') !== -1 || url.indexOf('whatsapp.com') !== -1) {
+        return '<span style="display:block; margin:8px 0;"><a href="' + url + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#22c55e; color:#ffffff; font-weight:600; font-size:13px; padding:8px 14px; border-radius:8px; text-decoration:none; box-shadow:0 2px 5px rgba(34,197,94,0.3); word-break:normal;">💬 Connect on WhatsApp ↗</a></span>';
+      }
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#2563eb; text-decoration:underline; word-break:break-all;">' + url + '</a>';
+    });
+  }
+
   function appendMessage(text, sender, data) {
     const msg = document.createElement('div');
     msg.className = `niel-msg niel-msg-${sender}`;
 
     const cleanText = text.replace(/\*\*/g, '');
-    let html = `<p>${cleanText.replace(/\n/g, '<br/>')}</p>`;
+    let html = `<p>${linkifyText(cleanText).replace(/\n/g, '<br/>')}</p>`;
+
+    if (data && ((data.pdf_attachments && data.pdf_attachments.length > 0) || data.site_url)) {
+      html += '<div class="niel-links-container" style="display:flex; flex-direction:column; gap:6px; margin-top:10px; padding-top:8px; border-top:1px solid #e5e7eb;">';
+      if (data.pdf_attachments && data.pdf_attachments.length > 0) {
+        data.pdf_attachments.forEach(function(att) {
+          var href = att.url.indexOf('http') === 0 ? att.url : (config.apiBase + att.url);
+          html += '<a href="' + href + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:#1f2937; text-decoration:none; background:#f9fafb; padding:6px 10px; border:1px solid #e5e7eb; border-radius:6px;">📄 ' + (att.title || att.filename) + ' <span style="margin-left:auto; color:#b45309;">View PDF ↗</span></a>';
+        });
+      }
+      if (data.site_url) {
+        html += '<a href="' + data.site_url + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:#1f2937; text-decoration:none; background:#f9fafb; padding:6px 10px; border:1px solid #e5e7eb; border-radius:6px;">🌐 Product Details <span style="margin-left:auto; color:#b45309;">View on website ↗</span></a>';
+      }
+      html += '</div>';
+    }
 
     msg.innerHTML = html;
     messagesContainer.appendChild(msg);

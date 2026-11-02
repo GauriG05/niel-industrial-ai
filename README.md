@@ -40,7 +40,7 @@ The system serves as an autonomous industrial co-pilot capable of understanding 
 +-----------------------------------------------------------------------------------------+
 |                           FastAPI Enterprise Backend (:8000)                            |
 |  - Rate Limiter & Security Headers Middleware (Nosniff, CSP, Strict Referrer)           |
-|  - Router: /chat, /ws/chat, /leads, /tickets, /documents, /customers, /escalations      |
+|  - Router: /chat, /ws/chat, /leads, /tickets, /customers, /escalations, /flagged-queries |
 |  - Multi-Turn Session Memory (SQLite + SessionService)                                  |
 |  - Electrical Safety Guardrails & Live Human Escalation Logic                           |
 +-----------------------------------------------------------------------------------------+
@@ -66,7 +66,7 @@ The system serves as an autonomous industrial co-pilot capable of understanding 
 ```
 
 ### 1. 12-Category Structured Knowledge Base (`data/knowledge_base/`)
-Structured JSON records compiled from technical datasheets, document extractions in `textpdfs/`, and official engineering specifications:
+Structured JSON records compiled from technical datasheets, official PDFs, and engineering specifications:
 1. `ac_motors.json`
 2. `dc_motors.json`
 3. `pumps_and_valves.json`
@@ -175,7 +175,6 @@ niel-industrial-ai/
 │   ├── knowledge_base/       # 12 structured JSON equipment databases
 │   └── index/                # FAISS vector index files (.gitkeep)
 ├── PDFs/                     # 11 Official Catalogues & Brochures (served via /pdfs)
-├── textpdfs/                 # Extracted text references
 ├── evaluation/               # RAG & Agent evaluation scripts & test cases
 ├── deploy/                   # Production Nginx reverse-proxy template
 ├── docker-compose.yml        # Multi-container orchestration

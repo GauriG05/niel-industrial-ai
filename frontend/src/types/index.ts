@@ -28,6 +28,7 @@ export interface ChatResponse {
   answer: string;
   citations: Citation[];
   pdf_attachments?: PdfAttachment[];
+  site_url?: string;
   evidence_sufficient: boolean;
   clarification_needed: boolean;
   request_id: string;
@@ -40,22 +41,8 @@ export interface Message {
   text: string;
   citations?: Citation[];
   pdf_attachments?: PdfAttachment[];
+  site_url?: string;
   evidence_sufficient?: boolean;
   timestamp: string;
   isError?: boolean;
-}
-
-export interface DocumentSummary {
-  doc_id: string;
-  filename: string;
-  page_count: number;
-  chunk_count: number;
-  created_at: string;
-  file_size_bytes: number;
-}
-
-export interface DocumentListResponse {
-  total_documents: number;
-  total_chunks: number;
-  documents: DocumentSummary[];
 }

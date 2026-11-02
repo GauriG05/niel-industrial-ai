@@ -61,6 +61,7 @@ export const App: React.FC = () => {
             text: data.answer,
             citations: data.citations || [],
             pdf_attachments: data.pdf_attachments || [],
+            site_url: data.site_url,
             evidence_sufficient: data.evidence_sufficient,
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
@@ -71,7 +72,7 @@ export const App: React.FC = () => {
           const alertMessage: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'assistant',
-            text: `${data.answer || 'Connecting you with human support on WhatsApp (+91 97413 07999).'}\n\n👉 Click here to connect directly on WhatsApp:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`,
+            text: `${data.answer || 'Connecting you with human support on WhatsApp (+91 97413 07999).'}\n\nIf WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`,
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
           setMessages((prev) => [...prev, alertMessage]);
@@ -124,7 +125,7 @@ export const App: React.FC = () => {
     // Generate pre-filled WhatsApp link with the requested message
     const waUrl = openWhatsAppChat(messages, sessionId);
 
-    const infoText = `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n👉 If WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`;
+    const infoText = `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\nIf WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`;
 
     const infoMsg: Message = {
       id: (Date.now() + 1).toString(),
@@ -171,6 +172,7 @@ export const App: React.FC = () => {
           text: response.answer,
           citations: response.citations || [],
           pdf_attachments: response.pdf_attachments || [],
+          site_url: response.site_url,
           evidence_sufficient: response.evidence_sufficient,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         };

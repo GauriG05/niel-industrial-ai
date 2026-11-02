@@ -39,7 +39,7 @@
     tabText: 'Ask NIEL AI',
     brandName: 'new india electricals',
     subTitle: 'Product & sales support',
-    brandColor: '#f59e0b',
+    brandColor: '#f8d500',
   };
 
   const config = Object.assign({}, DEFAULT_CONFIG, window.NIEL_AI_CONFIG || {});
@@ -53,7 +53,7 @@
   const styles = `
     :host {
       --brand-yellow: ${config.brandColor};
-      --brand-yellow-hover: #d97706;
+      --brand-yellow-hover: #e5c400;
       --status-green: #22c55e;
       --border-gray: #e5e7eb;
       --text-dark: #1f2937;
@@ -305,7 +305,7 @@
     }
 
     .niel-input-box:focus-within {
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+      box-shadow: 0 0 0 3px rgba(248, 213, 0, 0.35);
     }
 
     .niel-input {
@@ -323,7 +323,7 @@
       width: 38px;
       height: 38px;
       background: var(--brand-yellow);
-      color: #000000;
+      color: #0f172a;
       border: none;
       border-radius: 10px;
       cursor: pointer;
@@ -351,7 +351,7 @@
       <div class="niel-header">
         <div>
           <div class="niel-brand-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12C12 7.5 15.5 4 19 6C20.5 7.5 20.5 11 16 12M12 12C8 14 4.5 16.5 4 20C4.5 21.5 8 21.5 12 17M12 12C10 7.5 6.5 4.5 3 5C2 6.5 3.5 10 8 12" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2.5" fill="#f59e0b"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12C12 7.5 15.5 4 19 6C20.5 7.5 20.5 11 16 12M12 12C8 14 4.5 16.5 4 20C4.5 21.5 8 21.5 12 17M12 12C10 7.5 6.5 4.5 3 5C2 6.5 3.5 10 8 12" stroke="#f8d500" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2.5" fill="#f8d500"/></svg>
             <span><strong>new india</strong> electricals</span>
           </div>
           <div class="niel-status-line">

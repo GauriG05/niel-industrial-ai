@@ -1,8 +1,8 @@
 /* NIEL Industrial Intelligence AI - Exact Brand & UI Match with Website 'Enquire Now' Style Side-Tab */
 
 :root {
-  --niel-yellow: #f59e0b;
-  --niel-yellow-hover: #d97706;
+  --niel-yellow: #f8d500;
+  --niel-yellow-hover: #e5c400;
   --niel-green: #22c55e;
   --niel-bg: #4b5563;
   --niel-white: #ffffff;
@@ -52,10 +52,10 @@ body {
   top: 48%;
   transform: translateY(-50%);
   background-color: var(--niel-yellow);
-  color: #000000;
+  color: #0f172a;
   border: none;
   border-radius: 6px 0 0 6px;
-  padding: 16px 8px;
+  padding: 18px 8px;
   cursor: pointer;
   box-shadow: -3px 4px 14px rgba(0, 0, 0, 0.25);
   z-index: 99999;
@@ -71,7 +71,7 @@ body {
 }
 
 .niel-side-tab-launcher.active {
-  box-shadow: -4px 6px 18px rgba(245, 158, 11, 0.45);
+  box-shadow: -4px 6px 18px rgba(248, 213, 0, 0.45);
 }
 
 .niel-side-tab-text {
@@ -171,7 +171,7 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #f59e0b;
+  background: #f8d500;
   display: inline-block;
 }
 
@@ -439,7 +439,7 @@ body {
 }
 
 .niel-input-gold-container:focus-within {
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 0 3px rgba(248, 213, 0, 0.35);
 }
 
 .niel-gold-input {

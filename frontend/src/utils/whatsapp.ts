@@ -58,8 +58,30 @@ export function extractConversationSummary(messages: Message[]): WhatsAppContext
   };
 }
 
-export function generateWhatsAppMessage(_messages?: Message[], _sessionId?: string): string {
-  return 'Hello NIEL Team, I would like human support assistance regarding an inquiry on your website';
+export function generateWhatsAppMessage(messages?: Message[], _sessionId?: string): string {
+  if (messages && messages.length > 0) {
+    const summary = extractConversationSummary(messages);
+    if (summary) {
+      const parts = ['Hello NIEL Team, I would like to connect with a representative.'];
+      if (summary.selectedProduct && summary.selectedProduct !== 'Industrial Electrical Equipment') {
+        parts.push(`Product: ${summary.selectedProduct}`);
+      }
+      if (summary.requirements && summary.requirements !== 'As discussed in chat') {
+        parts.push(`Specs: ${summary.requirements}`);
+      }
+      if (
+        summary.unresolvedIssue &&
+        summary.unresolvedIssue.length > 3 &&
+        !/\b(connect|human|agent|person|representative|sales)\b/i.test(summary.unresolvedIssue)
+      ) {
+        parts.push(`Inquiry: ${summary.unresolvedIssue}`);
+      }
+      if (parts.length > 1) {
+        return parts.join('\n');
+      }
+    }
+  }
+  return 'Hello NIEL Team, I would like human support assistance regarding an inquiry on your website.';
 }
 
 export function generateWhatsAppUrl(messages: Message[], sessionId?: string): string {

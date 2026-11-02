@@ -68,11 +68,12 @@ export const App: React.FC = () => {
           setMessages((prev) => [...prev, assistantMessage]);
         } else if (data.type === 'escalated') {
           setLoading(false);
-          const waUrl = generateWhatsAppUrl(messages, sessionId);
+          const waUrl = data.whatsapp_url || generateWhatsAppUrl(messages, sessionId);
           const alertMessage: Message = {
             id: (Date.now() + 1).toString(),
             sender: 'assistant',
-            text: `${data.answer || 'Connecting you with human support on WhatsApp (+91 97413 07999).'}\n\nIf WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`,
+            text: data.answer || `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n${waUrl}`,
+            whatsapp_url: waUrl,
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
           setMessages((prev) => [...prev, alertMessage]);
@@ -125,12 +126,13 @@ export const App: React.FC = () => {
     // Generate pre-filled WhatsApp link with the requested message
     const waUrl = openWhatsAppChat(messages, sessionId);
 
-    const infoText = `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\nIf WhatsApp did not open automatically, click here to connect:\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`;
+    const infoText = `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n${waUrl}\n\nYou can also continue asking any product or technical questions right here!`;
 
     const infoMsg: Message = {
       id: (Date.now() + 1).toString(),
       sender: 'assistant',
       text: infoText,
+      whatsapp_url: waUrl,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
     setMessages((prev) => [...prev, infoMsg]);
@@ -173,19 +175,33 @@ export const App: React.FC = () => {
           citations: response.citations || [],
           pdf_attachments: response.pdf_attachments || [],
           site_url: response.site_url,
+          whatsapp_url: response.whatsapp_url,
           evidence_sufficient: response.evidence_sufficient,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         };
         setMessages((prev) => [...prev, assistantMessage]);
       } catch (err: any) {
-        const errorMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          sender: 'assistant',
-          text: `Error: ${err.message || 'Unable to connect to assistant service.'}`,
-          isError: true,
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        };
-        setMessages((prev) => [...prev, errorMessage]);
+        const isHumanReq = /\b(human|person|sales|agent|representative|talk|speak|connect)\b/i.test(textToSend);
+        if (isHumanReq) {
+          const waUrl = generateWhatsAppUrl([...messages, userMessage], sessionId);
+          const fallbackMsg: Message = {
+            id: (Date.now() + 1).toString(),
+            sender: 'assistant',
+            text: `Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n${waUrl}\n\nClick the button above to connect directly with our engineering team.`,
+            whatsapp_url: waUrl,
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          };
+          setMessages((prev) => [...prev, fallbackMsg]);
+        } else {
+          const errorMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            sender: 'assistant',
+            text: `Error: ${err.message || 'Unable to connect to assistant service.'}`,
+            isError: true,
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          };
+          setMessages((prev) => [...prev, errorMessage]);
+        }
       } finally {
         setLoading(false);
       }

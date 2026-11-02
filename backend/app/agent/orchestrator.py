@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 import uuid
 from typing import Any, Dict, List, Optional
 
@@ -110,6 +111,47 @@ class AgentOrchestrator:
             )
             executed_tools.append({"tool": "escalate_to_human", "output": esc_res})
 
+            # Build context summary from entities and conversation history
+            context_product = intent_result.detected_entities.get("product_category", "")
+            rating = intent_result.detected_entities.get("rating", "")
+            context_spec = f"{rating} {context_product}".strip() if rating and context_product else (context_product or rating)
+
+            if not context_spec and effective_history:
+                for turn in reversed(effective_history):
+                    role = turn.get("role") if isinstance(turn, dict) else getattr(turn, "role", "")
+                    content = turn.get("content") if isinstance(turn, dict) else getattr(turn, "content", "")
+                    if role == "user":
+                        c_clean = content.strip()
+                        if len(c_clean) > 3 and not re.search(r"\b(connect|human|agent|person|representative|sales)\b", c_clean, re.IGNORECASE):
+                            context_spec = c_clean[:100]
+                            break
+
+            is_sales = bool(re.search(r"\b(sales|quote|pricing|commercial|buy|purchase)\b", question, re.IGNORECASE))
+
+            if is_sales:
+                lead_res = self.tool_dispatcher.execute_tool(
+                    "create_sales_lead",
+                    {
+                        "product_interest": context_spec or "NIEL Equipment",
+                        "requirement_details": question,
+                    },
+                    session_id=session_id,
+                    customer_id=cid,
+                )
+                executed_tools.append({"tool": "create_sales_lead", "output": lead_res})
+                lead_id = lead_res.get("lead_id")
+
+            # Compose tailored WhatsApp pre-filled text
+            from urllib.parse import quote
+            if context_spec:
+                wa_summary = f"Hello NIEL Team, I would like to connect with a representative regarding {context_spec}."
+            elif is_sales:
+                wa_summary = "Hello NIEL Team, I would like to speak with your sales engineering team regarding product inquiries."
+            else:
+                wa_summary = "Hello NIEL Team, I would like human support assistance regarding an inquiry on your website."
+
+            wa_url = f"https://wa.me/919741307999?text={quote(wa_summary)}"
+
             if intent_result.detected_entities.get("safety_hazard_detected"):
                 # Automatically generate a critical support ticket
                 prod_cat = intent_result.detected_entities.get("product_category", "Electrical Equipment")
@@ -130,13 +172,29 @@ class AgentOrchestrator:
                     "CRITICAL SAFETY WARNING: Do not attempt uncertified DIY maintenance or live circuit adjustments "
                     "on high-voltage electrical equipment. Immediately isolate power at the main breaker/switchboard.\n\n"
                     f"A critical support ticket ({ticket_id}) has been created, and our engineering team is taking over "
-                    "this session immediately."
+                    "this session immediately.\n\n"
+                    f"Immediate emergency escalation on WhatsApp (+91 97413 07999):\n{wa_url}"
                 )
             else:
-                answer_text = (
-                    "I have connected this conversation with a live NIEL technical representative. "
-                    "An engineer will assist you shortly on this channel."
-                )
+                if context_spec:
+                    team_name = "Sales & Commercial Engineering Team" if is_sales else "Support & Engineering Team"
+                    answer_text = (
+                        f"Connecting you with the NIEL {team_name} on WhatsApp (+91 97413 07999) regarding **{context_spec}**.\n\n"
+                        f"{wa_url}\n\n"
+                        "Click the WhatsApp button to connect directly with our engineers. You can also continue asking any technical questions right here!"
+                    )
+                elif is_sales:
+                    answer_text = (
+                        "Connecting you with the NIEL Sales & Commercial Engineering Team on WhatsApp (+91 97413 07999).\n\n"
+                        f"{wa_url}\n\n"
+                        "Click the WhatsApp button to connect directly with our sales engineers for pricing, lead times, and quotations. You can also continue asking right here!"
+                    )
+                else:
+                    answer_text = (
+                        "Connecting you to NIEL Support on WhatsApp (+91 97413 07999).\n\n"
+                        f"{wa_url}\n\n"
+                        "Click the WhatsApp button to connect directly with an engineering representative. You can also continue asking any technical questions right here!"
+                    )
 
             return ChatResponse(
                 answer=answer_text,
@@ -149,6 +207,7 @@ class AgentOrchestrator:
                 ticket_id=ticket_id,
                 lead_id=lead_id,
                 escalated=is_escalated,
+                whatsapp_url=wa_url,
             )
 
         # 4. Path: Complaint / Fault Report -> Create Support Ticket

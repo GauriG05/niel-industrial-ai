@@ -29,6 +29,7 @@ export interface ChatResponse {
   citations: Citation[];
   pdf_attachments?: PdfAttachment[];
   site_url?: string;
+  whatsapp_url?: string;
   evidence_sufficient: boolean;
   clarification_needed: boolean;
   request_id: string;
@@ -42,6 +43,7 @@ export interface Message {
   citations?: Citation[];
   pdf_attachments?: PdfAttachment[];
   site_url?: string;
+  whatsapp_url?: string;
   evidence_sufficient?: boolean;
   timestamp: string;
   isError?: boolean;

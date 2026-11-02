@@ -109,6 +109,7 @@ class ChatResponse(BaseModel):
     citations: List[Citation] = Field(default_factory=list, description="Verified source citations")
     pdf_attachments: Optional[List[PdfAttachment]] = Field(default_factory=list, description="Official PDF brochure attachments")
     site_url: Optional[str] = Field(default=None, description="Matching live product page URL on newindiaelectricals.com")
+    whatsapp_url: Optional[str] = Field(default=None, description="Direct WhatsApp chat URL for human escalation")
     evidence_sufficient: bool = Field(..., description="True if answer is backed by indexed evidence")
     clarification_needed: bool = Field(default=False, description="True if query is ambiguous")
     request_id: str = Field(..., description="Unique identifier for traceability")

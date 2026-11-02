@@ -88,7 +88,9 @@ class EscalationService:
     def check_escalation_trigger(self, text: str) -> bool:
         """Check if message explicitly asks for a human agent."""
         clean = text.lower().strip()
-        return any(phrase in clean for phrase in ESCALATION_PHRASES)
+        if any(phrase in clean for phrase in ESCALATION_PHRASES):
+            return True
+        return bool(re.search(r"\b(talk|speak|connect|transfer|chat with)\b.*?\b(human|person|people|representative|agent|engineer|operator|sales|salesperson|sales\s*person|someone|executive)\b", clean))
 
     async def escalate_session(self, session_id: str, triggering_message: str = "") -> bool:
         """Lock session for human handoff and dispatch agent notification."""

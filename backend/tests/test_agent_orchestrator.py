@@ -128,3 +128,44 @@ def test_orchestrator_handles_quotation_and_lead(agent_system):
     assert response.intent in ("QUOTATION_REQUEST", "SALES_ENQUIRY")
     assert "Sales Lead #" in response.answer
 
+
+def test_orchestrator_handles_connect_to_human_with_context(agent_system):
+    orchestrator, _, session_svc, _, _ = agent_system
+    session_id = session_svc.create_session()
+
+    # Step 1: User asks about a 11kV distribution transformer
+    session_svc.add_message(session_id, "user", "What are the specs of your 11kV distribution transformers?")
+    session_svc.add_message(session_id, "assistant", "NIEL offers 11kV distribution transformers up to 2500 kVA.")
+
+    # Step 2: User requests human connection
+    query = "please connect me to human"
+    response = orchestrator.handle_request(
+        question=query,
+        session_id=session_id,
+    )
+
+    assert response.escalated is True
+    assert response.whatsapp_url is not None
+    assert "wa.me/919741307999" in response.whatsapp_url
+    assert "wa.me/919741307999" in response.answer
+    # Context should be included in WhatsApp url
+    assert "transformer" in response.whatsapp_url.lower() or "11kv" in response.whatsapp_url.lower()
+
+
+def test_orchestrator_handles_connect_to_sales_person(agent_system):
+    orchestrator, _, session_svc, _, _ = agent_system
+    session_id = session_svc.create_session()
+
+    query = "please connect me to sales person"
+    response = orchestrator.handle_request(
+        question=query,
+        session_id=session_id,
+    )
+
+    assert response.escalated is True
+    assert response.lead_id is not None
+    assert response.whatsapp_url is not None
+    assert "wa.me/919741307999" in response.whatsapp_url
+    assert "sales" in response.answer.lower()
+
+

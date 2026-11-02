@@ -436,6 +436,10 @@
     const cleanText = text.replace(/\*\*/g, '');
     let html = `<p>${linkifyText(cleanText).replace(/\n/g, '<br/>')}</p>`;
 
+    if (data && data.whatsapp_url && cleanText.indexOf('wa.me') === -1) {
+      html += '<span style="display:block; margin:8px 0;"><a href="' + data.whatsapp_url + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#22c55e; color:#ffffff; font-weight:600; font-size:13px; padding:8px 14px; border-radius:8px; text-decoration:none; box-shadow:0 2px 5px rgba(34,197,94,0.3); word-break:normal;">💬 Connect on WhatsApp ↗</a></span>';
+    }
+
     if (data && ((data.pdf_attachments && data.pdf_attachments.length > 0) || data.site_url)) {
       html += '<div class="niel-links-container" style="display:flex; flex-direction:column; gap:6px; margin-top:10px; padding-top:8px; border-top:1px solid #e5e7eb;">';
       if (data.pdf_attachments && data.pdf_attachments.length > 0) {

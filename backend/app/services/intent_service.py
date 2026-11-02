@@ -20,7 +20,10 @@ HAZARD_KEYWORDS = [
 HUMAN_ESCALATION_PHRASES = [
     "talk to a human", "speak to a human", "talk to human", "human agent",
     "real person", "speak to representative", "connect to agent", "representative please",
-    "talk to an engineer", "human support", "operator", "customer care agent"
+    "talk to an engineer", "human support", "operator", "customer care agent",
+    "connect to human", "connect me to human", "connect me to sales", "connect to sales",
+    "connect me to sales person", "talk to sales", "speak to sales", "sales person",
+    "speak with a human", "talk to someone", "speak to someone", "connect with human"
 ]
 
 # Quotation / RFQ patterns
@@ -130,7 +133,7 @@ class IntentService:
         # 2. Explicit Human Request
         human_trigger = (
             any(phrase in lower for phrase in HUMAN_ESCALATION_PHRASES) or
-            bool(re.search(r"\b(talk|speak|connect|transfer)\b.*?\b(human|person|representative|agent|engineer|operator)\b", lower))
+            bool(re.search(r"\b(talk|speak|connect|transfer|chat with)\b.*?\b(human|person|people|representative|agent|engineer|operator|sales|salesperson|sales\s*person|someone|executive)\b", lower))
         )
         if human_trigger:
             return IntentClassificationResult(

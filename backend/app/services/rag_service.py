@@ -933,7 +933,25 @@ class RAGService:
             req_cost = (p_tokens / 1_000_000.0) * GPT4O_MINI_PROMPT_PER_MILLION + (c_tokens / 1_000_000.0) * GPT4O_MINI_COMPLETION_PER_MILLION
 
             lower_answer = answer_text.lower()
-            insufficient_phrases = ["not documented", "not mentioned", "does not contain", "no information"]
+            insufficient_phrases = [
+                "not documented",
+                "not mentioned",
+                "does not contain",
+                "no information",
+                "does not specify",
+                "does not state",
+                "cannot provide",
+                "can't provide",
+                "not available",
+                "not published",
+                "not listed",
+                "not provided",
+                "no specific details",
+                "unable to provide",
+                "does not indicate",
+                "no details",
+                "quotes depend on specific project requirements",
+            ]
             is_sufficient = not any(phrase in lower_answer for phrase in insufficient_phrases)
 
             pdf_attachments = self._build_pdf_attachments(valid_citations, question) if is_sufficient else []

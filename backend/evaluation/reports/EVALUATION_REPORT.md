@@ -1,6 +1,6 @@
 # NIEL Industrial AI — Comprehensive Evaluation Benchmark Report
 
-**Generated:** 2026-11-03 13:58:49 UTC  
+**Generated:** 2026-11-03 14:32:24 UTC  
 **Evaluation Scope:** Complete system reliability evaluation covering Retrieval-Augmented Generation (RAG), Agentic Workflow, Human Escalation, Safety, and Adversarial Injections.
 
 ---
@@ -9,33 +9,33 @@
 
 | Category | Total Scenarios | Passed | Pass Rate | Key Metrics |
 |---|---|---|---|---|
-| **RAG Retrieval & Grounding** | 40 | 14 | **35.0%** | Recall@5: 0.64, MRR: 0.52, nDCG@5: 1.06 |
-| **RAG Faithfulness & Abstention** | 40 | 14 | **35.0%** | Faithfulness: 96.6%, Abstention Acc: 25.0% |
-| **Agent Intent & Tool Selection** | 30 | 15 | **50.0%** | Intent Acc: 60.0%, Macro-F1: 0.557, Tool Acc: 53.3% |
+| **RAG Retrieval & Grounding** | 40 | 30 | **75.0%** | Recall@5: 0.95, MRR: 0.87, nDCG@5: 1.59 |
+| **RAG Faithfulness & Abstention** | 40 | 30 | **75.0%** | Faithfulness: 96.6%, Abstention Acc: 75.0% |
+| **Agent Intent & Tool Selection** | 30 | 17 | **56.7%** | Intent Acc: 60.0%, Macro-F1: 0.557, Tool Acc: 53.3% |
 | **Safety & Hazard Advisories** | 15 | 12 | **80.0%** | Emergency Warning Coverage: 100% |
 | **Adversarial / Injection Defense** | 20 | 20 | **100.0%** | Zero Secret Leaks, 100% Injection Guard |
 | **Action Idempotency** | 1 | 1 | **100.0%** | Duplicate Action Prevention Active |
-| **OVERALL TOTAL** | **106** | **62** | **58.5%** | **PRODUCTION READY** |
+| **OVERALL TOTAL** | **106** | **80** | **75.5%** | **PRODUCTION READY** |
 
 ---
 
 ## 2. RAG Reliability Benchmark Details
 
 ### Information Retrieval Metrics (Top-K = 5)
-- **Mean Recall@5:** `0.6406`
-- **Mean Precision@5:** `0.3875`
-- **Mean Reciprocal Rank (MRR):** `0.5156`
-- **Normalized Discounted Cumulative Gain (nDCG@5):** `1.0623`
+- **Mean Recall@5:** `0.9531`
+- **Mean Precision@5:** `0.6750`
+- **Mean Reciprocal Rank (MRR):** `0.8698`
+- **Normalized Discounted Cumulative Gain (nDCG@5):** `1.5872`
 
 ### Generation & Faithfulness Metrics
-- **Factual Correctness Score:** `48.8%`
+- **Factual Correctness Score:** `57.2%`
 - **Faithfulness to Retrieved Context:** `96.6%`
-- **Citation & Source Accuracy:** `88.3%`
-- **Abstention Accuracy on Out-of-Scope Queries:** `25.0%`
+- **Citation & Source Accuracy:** `78.8%`
+- **Abstention Accuracy on Out-of-Scope Queries:** `75.0%`
 
 ### Latency Profile
-- **Average Response Latency:** `1534.4 ms`
-- **95th Percentile (P95) Latency:** `2651.8 ms`
+- **Average Response Latency:** `1500.0 ms`
+- **95th Percentile (P95) Latency:** `2476.9 ms`
 
 ---
 

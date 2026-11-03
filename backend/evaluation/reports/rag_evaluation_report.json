@@ -1,26 +1,26 @@
 {
   "benchmark": "NIEL RAG Reliability Benchmark",
-  "timestamp": "2026-11-03 13:57:09",
+  "timestamp": "2026-11-03 14:30:28",
   "top_k": 5,
   "summary": {
     "total_test_cases": 40,
-    "passed_cases": 14,
-    "pass_rate": 0.35,
+    "passed_cases": 30,
+    "pass_rate": 0.75,
     "retrieval_metrics": {
-      "mean_recall_at_k": 0.6406,
-      "mean_precision_at_k": 0.3875,
-      "mrr": 0.5156,
-      "ndcg_at_k": 1.0623
+      "mean_recall_at_k": 0.9531,
+      "mean_precision_at_k": 0.675,
+      "mrr": 0.8698,
+      "ndcg_at_k": 1.5872
     },
     "answer_metrics": {
-      "mean_correctness": 0.4881,
+      "mean_correctness": 0.5724,
       "mean_faithfulness": 0.9661,
-      "mean_citation_accuracy": 0.8828,
-      "abstention_accuracy": 0.25
+      "mean_citation_accuracy": 0.7875,
+      "abstention_accuracy": 0.75
     },
     "performance": {
-      "avg_latency_ms": 1534.36,
-      "p95_latency_ms": 2651.76
+      "avg_latency_ms": 1499.97,
+      "p95_latency_ms": 2476.91
     }
   },
   "detailed_results": [
@@ -29,7 +29,7 @@
       "category": "ac_motors",
       "question": "What power ratings are documented for NIEL cage rotor AC motors?",
       "passed": true,
-      "elapsed_ms": 2651.76,
+      "elapsed_ms": 1461.56,
       "retrieval": {
         "test_case_id": "RAG-001",
         "question": "What power ratings are documented for NIEL cage rotor AC motors?",
@@ -63,7 +63,7 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.9375,
+        "correctness_score": 0.75,
         "is_correct": true,
         "keyword_coverage": 1.0,
         "matched_keywords": [
@@ -100,8 +100,8 @@
       "id": "RAG-002",
       "category": "ac_motors",
       "question": "What are the voltage ratings for NIEL squirrel cage induction motors?",
-      "passed": false,
-      "elapsed_ms": 1799.37,
+      "passed": true,
+      "elapsed_ms": 1476.52,
       "retrieval": {
         "test_case_id": "RAG-002",
         "question": "What are the voltage ratings for NIEL squirrel cage induction motors?",
@@ -122,9 +122,9 @@
           1
         ],
         "recall_at_k": 1.0,
-        "precision_at_k": 0.6,
-        "mrr": 0.5,
-        "ndcg_at_k": 1.4485,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.5013,
         "page_hit": true,
         "chunks_text": [
           "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
@@ -135,17 +135,16 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.125,
-        "is_correct": false,
-        "keyword_coverage": 0.0,
-        "matched_keywords": [],
-        "missing_keywords": [
-          "380V",
-          "415V",
-          "3.3kV",
-          "6.6kV",
-          "11kV"
+        "correctness_score": 0.625,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "0.38",
+          "0.415",
+          "3.3",
+          "6.6"
         ],
+        "missing_keywords": [],
         "faithfulness_score": 1.0,
         "is_faithful": true,
         "unsupported_claims": []
@@ -156,8 +155,8 @@
         "page_hit": true,
         "cited_sources": [
           "acmotorsnielbrochure",
-          "nielproductcatalog",
-          "dcmotorsnielbrochure"
+          "dcmotorsnielbrochure",
+          "nielproductcatalog"
         ],
         "cited_pages": [
           1
@@ -175,7 +174,7 @@
       "category": "ac_motors",
       "question": "What insulation class and temperature rise are specified for NIEL AC induction motors?",
       "passed": true,
-      "elapsed_ms": 1589.14,
+      "elapsed_ms": 1671.06,
       "retrieval": {
         "test_case_id": "RAG-003",
         "question": "What insulation class and temperature rise are specified for NIEL AC induction motors?",
@@ -209,15 +208,14 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.65,
+        "correctness_score": 1.0,
         "is_correct": true,
-        "keyword_coverage": 0.5,
+        "keyword_coverage": 1.0,
         "matched_keywords": [
-          "Class F"
+          "Class F",
+          "F"
         ],
-        "missing_keywords": [
-          "Class B"
-        ],
+        "missing_keywords": [],
         "faithfulness_score": 1.0,
         "is_faithful": true,
         "unsupported_claims": []
@@ -245,8 +243,8 @@
       "id": "RAG-004",
       "category": "ac_motors",
       "question": "What ingress protection ratings (IP) are standard for cage rotor AC motors?",
-      "passed": false,
-      "elapsed_ms": 1392.98,
+      "passed": true,
+      "elapsed_ms": 987.2,
       "retrieval": {
         "test_case_id": "RAG-004",
         "question": "What ingress protection ratings (IP) are standard for cage rotor AC motors?",
@@ -280,14 +278,14 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.125,
-        "is_correct": false,
-        "keyword_coverage": 0.0,
-        "matched_keywords": [],
-        "missing_keywords": [
+        "correctness_score": 0.875,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
           "IP22",
           "IP55"
         ],
+        "missing_keywords": [],
         "faithfulness_score": 1.0,
         "is_faithful": true,
         "unsupported_claims": []
@@ -297,8 +295,8 @@
         "source_hit": true,
         "page_hit": true,
         "cited_sources": [
-          "acmotorsnielbrochure",
           "nielsteel",
+          "acmotorsnielbrochure",
           "nielproductcatalog"
         ],
         "cited_pages": [
@@ -317,8 +315,8 @@
       "id": "RAG-005",
       "category": "ac_motors",
       "question": "What mounting types are available for NIEL AC industrial motors?",
-      "passed": false,
-      "elapsed_ms": 1426.35,
+      "passed": true,
+      "elapsed_ms": 1793.02,
       "retrieval": {
         "test_case_id": "RAG-005",
         "question": "What mounting types are available for NIEL AC industrial motors?",
@@ -352,15 +350,15 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.1429,
-        "is_correct": false,
-        "keyword_coverage": 0.0,
-        "matched_keywords": [],
-        "missing_keywords": [
-          "B3",
-          "B5",
-          "B35"
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "Horizontal",
+          "flange",
+          "Foot"
         ],
+        "missing_keywords": [],
         "faithfulness_score": 1.0,
         "is_faithful": true,
         "unsupported_claims": []
@@ -388,8 +386,8 @@
       "id": "RAG-006",
       "category": "ac_motors",
       "question": "What cooling types are used on NIEL wound rotor slipring induction motors?",
-      "passed": false,
-      "elapsed_ms": 1517.65,
+      "passed": true,
+      "elapsed_ms": 1093.55,
       "retrieval": {
         "test_case_id": "RAG-006",
         "question": "What cooling types are used on NIEL wound rotor slipring induction motors?",
@@ -423,15 +421,16 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.125,
-        "is_correct": false,
-        "keyword_coverage": 0.0,
-        "matched_keywords": [],
+        "correctness_score": 0.3125,
+        "is_correct": true,
+        "keyword_coverage": 0.5,
+        "matched_keywords": [
+          "01",
+          "411"
+        ],
         "missing_keywords": [
-          "IC01",
-          "IC411",
-          "IC511",
-          "IC611"
+          "511",
+          "611"
         ],
         "faithfulness_score": 1.0,
         "is_faithful": true,
@@ -443,8 +442,8 @@
         "page_hit": true,
         "cited_sources": [
           "acmotorsnielbrochure",
-          "nielproductcatalog",
-          "dcmotorsnielbrochure"
+          "dcmotorsnielbrochure",
+          "nielproductcatalog"
         ],
         "cited_pages": [
           1
@@ -462,7 +461,7 @@
       "category": "ac_motors",
       "question": "What is the power range and duty cycle for wound rotor motors?",
       "passed": true,
-      "elapsed_ms": 2301.61,
+      "elapsed_ms": 1554.97,
       "retrieval": {
         "test_case_id": "RAG-007",
         "question": "What is the power range and duty cycle for wound rotor motors?",
@@ -496,7 +495,7 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.775,
+        "correctness_score": 0.575,
         "is_correct": true,
         "keyword_coverage": 0.75,
         "matched_keywords": [
@@ -516,8 +515,8 @@
         "source_hit": true,
         "page_hit": true,
         "cited_sources": [
-          "acmotorsnielbrochure",
           "nielsteel",
+          "acmotorsnielbrochure",
           "dcmotorsnielbrochure"
         ],
         "cited_pages": [
@@ -537,7 +536,7 @@
       "category": "ac_motors",
       "question": "For what applications are NIEL flameproof motors suitable and what gas groups are supported?",
       "passed": false,
-      "elapsed_ms": 1209.6,
+      "elapsed_ms": 1270.43,
       "retrieval": {
         "test_case_id": "RAG-008",
         "question": "For what applications are NIEL flameproof motors suitable and what gas groups are supported?",
@@ -610,7 +609,7 @@
       "category": "dc_motors",
       "question": "What power range and frame sizes are available for NIEL industrial DC motors?",
       "passed": true,
-      "elapsed_ms": 1390.63,
+      "elapsed_ms": 1548.48,
       "retrieval": {
         "test_case_id": "RAG-009",
         "question": "What power range and frame sizes are available for NIEL industrial DC motors?",
@@ -644,7 +643,7 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.9091,
+        "correctness_score": 0.6818,
         "is_correct": true,
         "keyword_coverage": 1.0,
         "matched_keywords": [
@@ -683,7 +682,7 @@
       "category": "dc_motors",
       "question": "What are the armature voltage ratings for NIEL DC motors?",
       "passed": true,
-      "elapsed_ms": 1391.46,
+      "elapsed_ms": 1025.59,
       "retrieval": {
         "test_case_id": "RAG-010",
         "question": "What are the armature voltage ratings for NIEL DC motors?",
@@ -755,7 +754,7 @@
       "category": "dc_motors",
       "question": "What cooling methods are available for industrial DC motors?",
       "passed": true,
-      "elapsed_ms": 1635.97,
+      "elapsed_ms": 1592.64,
       "retrieval": {
         "test_case_id": "RAG-011",
         "question": "What cooling methods are available for industrial DC motors?",
@@ -807,8 +806,8 @@
         "source_hit": true,
         "page_hit": true,
         "cited_sources": [
-          "acmotorsnielbrochure",
           "nielsteel",
+          "acmotorsnielbrochure",
           "dcmotorsnielbrochure"
         ],
         "cited_pages": [
@@ -828,7 +827,7 @@
       "category": "dc_motors",
       "question": "What are the common industrial applications for NIEL DC motors?",
       "passed": false,
-      "elapsed_ms": 1681.97,
+      "elapsed_ms": 1636.93,
       "retrieval": {
         "test_case_id": "RAG-012",
         "question": "What are the common industrial applications for NIEL DC motors?",
@@ -877,30 +876,25 @@
         "unsupported_claims": []
       },
       "citation": {
-        "citation_score": 0.65,
-        "source_hit": true,
-        "page_hit": true,
-        "cited_sources": [
-          "acmotorsnielbrochure",
-          "dcmotorsnielbrochure"
-        ],
-        "cited_pages": [
-          1
-        ]
+        "citation_score": 0.0,
+        "source_hit": false,
+        "page_hit": false,
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": false,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": true
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": false
       }
     },
     {
       "id": "RAG-013",
       "category": "transformers",
       "question": "What power rating and voltage class does NIEL offer for oil immersed distribution transformers?",
-      "passed": false,
-      "elapsed_ms": 1893.73,
+      "passed": true,
+      "elapsed_ms": 1493.55,
       "retrieval": {
         "test_case_id": "RAG-013",
         "question": "What power rating and voltage class does NIEL offer for oil immersed distribution transformers?",
@@ -920,10 +914,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 0.5,
+        "ndcg_at_k": 0.9575,
         "page_hit": true,
         "chunks_text": [
           "UMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: DISTRIBUTION TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV\nKEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound\nKEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards;",
@@ -934,15 +928,16 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.2,
-        "is_correct": false,
-        "keyword_coverage": 0.0,
-        "matched_keywords": [],
-        "missing_keywords": [
-          "16 kVA",
-          "2500 kVA",
+        "correctness_score": 0.5,
+        "is_correct": true,
+        "keyword_coverage": 0.5,
+        "matched_keywords": [
           "11kV",
           "33kV"
+        ],
+        "missing_keywords": [
+          "16 kVA",
+          "2500 kVA"
         ],
         "faithfulness_score": 1.0,
         "is_faithful": true,
@@ -972,7 +967,7 @@
       "category": "transformers",
       "question": "What is the maximum rating and voltage class for NIEL power transformers?",
       "passed": false,
-      "elapsed_ms": 1433.61,
+      "elapsed_ms": 1257.0,
       "retrieval": {
         "test_case_id": "RAG-014",
         "question": "What is the maximum rating and voltage class for NIEL power transformers?",
@@ -992,10 +987,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 0.5,
+        "ndcg_at_k": 0.9575,
         "page_hit": false,
         "chunks_text": [
           "UMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: DISTRIBUTION TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV\nKEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound\nKEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards;",
@@ -1041,8 +1036,8 @@
       "id": "RAG-015",
       "category": "transformers",
       "question": "What tap changer options are provided on NIEL transformers?",
-      "passed": false,
-      "elapsed_ms": 1437.99,
+      "passed": true,
+      "elapsed_ms": 1878.8,
       "retrieval": {
         "test_case_id": "RAG-015",
         "question": "What tap changer options are provided on NIEL transformers?",
@@ -1062,10 +1057,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.4,
+        "mrr": 1.0,
+        "ndcg_at_k": 0.8772,
         "page_hit": true,
         "chunks_text": [
           "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
@@ -1116,7 +1111,7 @@
       "category": "transformers",
       "question": "Does NIEL provide Cast Resin Dry Type transformers and what are their ratings?",
       "passed": true,
-      "elapsed_ms": 1531.71,
+      "elapsed_ms": 1546.04,
       "retrieval": {
         "test_case_id": "RAG-016",
         "question": "Does NIEL provide Cast Resin Dry Type transformers and what are their ratings?",
@@ -1137,9 +1132,9 @@
           3
         ],
         "recall_at_k": 1.0,
-        "precision_at_k": 0.4,
-        "mrr": 0.3333,
-        "ndcg_at_k": 0.8869,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.5438,
         "page_hit": true,
         "chunks_text": [
           "urrent rating; efficiency/losses; IP class; type-test or certification details\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Cast Resin (Dry Type) Transformers\nCATEGORY: transformers\nRANGE: 11 kV / 433 V, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: Cast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz; Off circuit tap links + 5% in steps of 2.5%; Class F and H insulation; HV Delta connected, LV Star Connected with Dyn 11 vector group; Duty cycle continuous; Enclosure IP 23 to IP 33 and as per customer specifications",
@@ -1190,7 +1185,7 @@
       "category": "transformers",
       "question": "What cooling types are available for NIEL power transformers?",
       "passed": false,
-      "elapsed_ms": 1451.64,
+      "elapsed_ms": 1455.9,
       "retrieval": {
         "test_case_id": "RAG-017",
         "question": "What cooling types are available for NIEL power transformers?",
@@ -1210,10 +1205,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.5013,
         "page_hit": false,
         "chunks_text": [
           "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
@@ -1238,31 +1233,25 @@
         "unsupported_claims": []
       },
       "citation": {
-        "citation_score": 0.7,
-        "source_hit": true,
+        "citation_score": 0.0,
+        "source_hit": false,
         "page_hit": false,
-        "cited_sources": [
-          "nielsteel",
-          "transformersnielbrochure"
-        ],
-        "cited_pages": [
-          1,
-          6
-        ]
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": false,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": true
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": false
       }
     },
     {
       "id": "RAG-018",
       "category": "switchgear",
       "question": "What are the specifications of the Power+ V vacuum circuit breaker panels?",
-      "passed": false,
-      "elapsed_ms": 2147.8,
+      "passed": true,
+      "elapsed_ms": 2476.91,
       "retrieval": {
         "test_case_id": "RAG-018",
         "question": "What are the specifications of the Power+ V vacuum circuit breaker panels?",
@@ -1282,10 +1271,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.8078,
         "page_hit": true,
         "chunks_text": [
           "SOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ V (Switchgear Type Power+ V/F, VCB panel, indoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV rated voltage (product range lists \"VCB Panels Indoor type up to 12 KV\"); busbar current Upto 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 3000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 600x1450x2350 mm and 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 750 KG",
@@ -1296,17 +1285,16 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.725,
+        "correctness_score": 0.85,
         "is_correct": true,
-        "keyword_coverage": 0.75,
+        "keyword_coverage": 1.0,
         "matched_keywords": [
+          "12kV",
           "vacuum",
           "circuit breaker",
           "busbar"
         ],
-        "missing_keywords": [
-          "12kV"
-        ],
+        "missing_keywords": [],
         "faithfulness_score": 1.0,
         "is_faithful": true,
         "unsupported_claims": []
@@ -1334,7 +1322,7 @@
       "category": "switchgear",
       "question": "What short time withstand current is supported by NIEL MV switchgear?",
       "passed": false,
-      "elapsed_ms": 1173.18,
+      "elapsed_ms": 1143.15,
       "retrieval": {
         "test_case_id": "RAG-019",
         "question": "What short time withstand current is supported by NIEL MV switchgear?",
@@ -1354,10 +1342,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.8078,
         "page_hit": true,
         "chunks_text": [
           "SOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ V (Switchgear Type Power+ V/F, VCB panel, indoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV rated voltage (product range lists \"VCB Panels Indoor type up to 12 KV\"); busbar current Upto 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 3000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 600x1450x2350 mm and 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 750 KG",
@@ -1403,8 +1391,8 @@
       "id": "RAG-020",
       "category": "switchgear",
       "question": "What is the difference between Power+ V and Power+ F switchgear panels?",
-      "passed": false,
-      "elapsed_ms": 2315.37,
+      "passed": true,
+      "elapsed_ms": 2388.74,
       "retrieval": {
         "test_case_id": "RAG-020",
         "question": "What is the difference between Power+ V and Power+ F switchgear panels?",
@@ -1424,10 +1412,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.5706,
         "page_hit": true,
         "chunks_text": [
           "from the \"up to 36 KV\" in the product range text; both are as printed\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F3 (Switchgear Type Power+ V/F, SF6 panel)\nCATEGORY: switchgear\nRANGE: 36 KV rated voltage (product range lists \"SF6 Panels Outdoor type up to 36 KV\"); busbar current 2000 A\nKEY SPECS: Rated Voltage 36 KV; Rated Frequency 50 Hz; Rated Busbar Current 2000 A; Short time 31.5 KA; Withstand Current [blank in table]; Insulation Levels 70/140 KVrms/KVp; Dimensions LxDxH 1220x2300x2300 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 1300 KG",
@@ -1438,7 +1426,7 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.9375,
+        "correctness_score": 0.75,
         "is_correct": true,
         "keyword_coverage": 1.0,
         "matched_keywords": [
@@ -1456,8 +1444,8 @@
         "source_hit": true,
         "page_hit": true,
         "cited_sources": [
-          "switchgearpanelsmvnielbrochure",
-          "substation"
+          "substation",
+          "switchgearpanelsmvnielbrochure"
         ],
         "cited_pages": [
           1
@@ -1474,8 +1462,8 @@
       "id": "RAG-021",
       "category": "switchgear",
       "question": "Does NIEL offer outdoor kiosk type switchgear?",
-      "passed": false,
-      "elapsed_ms": 1432.31,
+      "passed": true,
+      "elapsed_ms": 1837.01,
       "retrieval": {
         "test_case_id": "RAG-021",
         "question": "Does NIEL offer outdoor kiosk type switchgear?",
@@ -1495,10 +1483,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.5706,
         "page_hit": false,
         "chunks_text": [
           "CATIONS / INDUSTRIES: Outdoor installations (3.3 KV to 36 KV air insulated outdoor kiosk type vacuum / SF6 switchgear); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type tested for BIL and Short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; TYPE-TESTED at Central Power Research Institute, INDIA (CPRI India logo)\nNOT IN DOCUMENT: Efficiency; frame sizes; item-specific applications. Note: features text says \"IP5X\" externally while the table says IP54\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf",
@@ -1527,8 +1515,8 @@
         "source_hit": true,
         "page_hit": false,
         "cited_sources": [
-          "switchgearpanelsmvnielbrochure",
-          "substation"
+          "substation",
+          "switchgearpanelsmvnielbrochure"
         ],
         "cited_pages": [
           1
@@ -1545,8 +1533,8 @@
       "id": "RAG-022",
       "category": "pumps",
       "question": "What is the discharge capacity and head range for NIEL end suction monoblock pumps?",
-      "passed": false,
-      "elapsed_ms": 1129.46,
+      "passed": true,
+      "elapsed_ms": 1435.85,
       "retrieval": {
         "test_case_id": "RAG-022",
         "question": "What is the discharge capacity and head range for NIEL end suction monoblock pumps?",
@@ -1580,15 +1568,15 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.3929,
-        "is_correct": false,
-        "keyword_coverage": 0.5,
+        "correctness_score": 0.5179,
+        "is_correct": true,
+        "keyword_coverage": 0.75,
         "matched_keywords": [
           "discharge",
-          "head"
+          "head",
+          "m3/hr"
         ],
         "missing_keywords": [
-          "m3/hr",
           "metres"
         ],
         "faithfulness_score": 1.0,
@@ -1600,8 +1588,8 @@
         "source_hit": true,
         "page_hit": true,
         "cited_sources": [
-          "pumpsnielbrochure",
-          "nielproductcatalog"
+          "nielproductcatalog",
+          "pumpsnielbrochure"
         ],
         "cited_pages": [
           1
@@ -1619,7 +1607,7 @@
       "category": "pumps",
       "question": "What series of openwell submersible pumps are available and what is their power rating?",
       "passed": true,
-      "elapsed_ms": 1458.76,
+      "elapsed_ms": 1304.97,
       "retrieval": {
         "test_case_id": "RAG-023",
         "question": "What series of openwell submersible pumps are available and what is their power rating?",
@@ -1690,7 +1678,7 @@
       "category": "pumps",
       "question": "What series of liquid ring vacuum pumps does NIEL provide?",
       "passed": false,
-      "elapsed_ms": 1128.84,
+      "elapsed_ms": 1545.1,
       "retrieval": {
         "test_case_id": "RAG-024",
         "question": "What series of liquid ring vacuum pumps does NIEL provide?",
@@ -1725,7 +1713,7 @@
       },
       "answer": {
         "correctness_score": 0.5238,
-        "is_correct": false,
+        "is_correct": true,
         "keyword_coverage": 0.3333,
         "matched_keywords": [
           "vacuum"
@@ -1739,21 +1727,17 @@
         "unsupported_claims": []
       },
       "citation": {
-        "citation_score": 0.7,
-        "source_hit": true,
+        "citation_score": 0.0,
+        "source_hit": false,
         "page_hit": false,
-        "cited_sources": [
-          "pumpsnielbrochure"
-        ],
-        "cited_pages": [
-          1
-        ]
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": false,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": true
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": false
       }
     },
     {
@@ -1761,7 +1745,7 @@
       "category": "pumps",
       "question": "What liquid temperature range can NIEL vertical in-line multistage pumps handle?",
       "passed": false,
-      "elapsed_ms": 1171.32,
+      "elapsed_ms": 1295.34,
       "retrieval": {
         "test_case_id": "RAG-025",
         "question": "What liquid temperature range can NIEL vertical in-line multistage pumps handle?",
@@ -1815,8 +1799,8 @@
         "page_hit": false,
         "cited_sources": [
           "nielsteel",
-          "pumpsnielbrochure",
-          "nielproductcatalog"
+          "nielproductcatalog",
+          "pumpsnielbrochure"
         ],
         "cited_pages": [
           1,
@@ -1835,7 +1819,7 @@
       "category": "multi_attribute",
       "question": "What are the synchronous speed and pole configurations available for NIEL 50Hz induction motors?",
       "passed": false,
-      "elapsed_ms": 1301.22,
+      "elapsed_ms": 1334.38,
       "retrieval": {
         "test_case_id": "RAG-026",
         "question": "What are the synchronous speed and pole configurations available for NIEL 50Hz induction motors?",
@@ -1888,31 +1872,25 @@
         ]
       },
       "citation": {
-        "citation_score": 1.0,
-        "source_hit": true,
-        "page_hit": true,
-        "cited_sources": [
-          "acmotorsnielbrochure",
-          "nielproductcatalog",
-          "dcmotorsnielbrochure"
-        ],
-        "cited_pages": [
-          1
-        ]
+        "citation_score": 0.0,
+        "source_hit": false,
+        "page_hit": false,
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": false,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": true
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": false
       }
     },
     {
       "id": "RAG-027",
       "category": "multi_attribute",
       "question": "What vector groups are used for NIEL distribution and power transformers?",
-      "passed": false,
-      "elapsed_ms": 1478.08,
+      "passed": true,
+      "elapsed_ms": 1421.91,
       "retrieval": {
         "test_case_id": "RAG-027",
         "question": "What vector groups are used for NIEL distribution and power transformers?",
@@ -1932,10 +1910,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.1144,
         "page_hit": true,
         "chunks_text": [
           "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
@@ -1946,15 +1924,14 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.375,
-        "is_correct": false,
-        "keyword_coverage": 0.5,
+        "correctness_score": 0.6667,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
         "matched_keywords": [
+          "Dyn11",
           "vector"
         ],
-        "missing_keywords": [
-          "Dyn11"
-        ],
+        "missing_keywords": [],
         "faithfulness_score": 1.0,
         "is_faithful": true,
         "unsupported_claims": []
@@ -1982,8 +1959,8 @@
       "id": "RAG-028",
       "category": "multi_attribute",
       "question": "What enclosure protection rating is provided on Power+ V switchgear panels?",
-      "passed": false,
-      "elapsed_ms": 982.76,
+      "passed": true,
+      "elapsed_ms": 1425.73,
       "retrieval": {
         "test_case_id": "RAG-028",
         "question": "What enclosure protection rating is provided on Power+ V switchgear panels?",
@@ -2003,10 +1980,10 @@
           1,
           1
         ],
-        "recall_at_k": 0.0,
-        "precision_at_k": 0.0,
-        "mrr": 0.0,
-        "ndcg_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.8078,
         "page_hit": true,
         "chunks_text": [
           ". Note: features text says \"IP5X\" externally while the table says IP54\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ FO (Kiosk Type Power+ VO & FO, outdoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV; busbar current 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current 3000 A; Short time 40 KA; Withstand Current 100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 800x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 1000 KG",
@@ -2017,8 +1994,8 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.45,
-        "is_correct": false,
+        "correctness_score": 0.55,
+        "is_correct": true,
         "keyword_coverage": 0.5,
         "matched_keywords": [
           "IP4X"
@@ -2053,7 +2030,7 @@
       "category": "cross_document",
       "question": "Does NIEL supply both transformers and switchgear for containerised secondary substations?",
       "passed": true,
-      "elapsed_ms": 1258.09,
+      "elapsed_ms": 1458.87,
       "retrieval": {
         "test_case_id": "RAG-029",
         "question": "Does NIEL supply both transformers and switchgear for containerised secondary substations?",
@@ -2074,9 +2051,9 @@
           4
         ],
         "recall_at_k": 1.0,
-        "precision_at_k": 0.4,
-        "mrr": 0.3333,
-        "ndcg_at_k": 0.5438,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.5438,
         "page_hit": true,
         "chunks_text": [
           "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
@@ -2129,7 +2106,7 @@
       "category": "cross_document",
       "question": "Can NIEL provide turnkey electrical packages for steel rolling mills including motors and drives?",
       "passed": true,
-      "elapsed_ms": 1414.41,
+      "elapsed_ms": 1593.59,
       "retrieval": {
         "test_case_id": "RAG-030",
         "question": "Can NIEL provide turnkey electrical packages for steel rolling mills including motors and drives?",
@@ -2203,7 +2180,7 @@
       "category": "company_info",
       "question": "Where is New India Electricals Limited headquartered and what is their background?",
       "passed": true,
-      "elapsed_ms": 2292.92,
+      "elapsed_ms": 1860.56,
       "retrieval": {
         "test_case_id": "RAG-031",
         "question": "Where is New India Electricals Limited headquartered and what is their background?",
@@ -2224,9 +2201,9 @@
           1
         ],
         "recall_at_k": 0.5,
-        "precision_at_k": 0.2,
-        "mrr": 0.5,
-        "ndcg_at_k": 0.3869,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.5013,
         "page_hit": true,
         "chunks_text": [
           "SOURCE: Company_Intro_-_New_India_Electricals_Limited.pdf\nCOMPANY OVERVIEW:\nNew India Electricals Limited, established in 1969 and based in Bengaluru, India, describes itself as a leading electrical equipment manufacturer and exporter with over 55 years of service to heavy industry (mining, steel, cement, power & utility) across Africa, Asia and the Middle East.\nIt exports to more than 45 countries and has been awarded Star Export House status by the Indian Ministry of Commerce and Industry.\nPrimary focus: the mining industry, steel mills and utility companies, apart from other large industrial sectors.",
@@ -2237,7 +2214,7 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.5833,
+        "correctness_score": 0.5333,
         "is_correct": true,
         "keyword_coverage": 0.6667,
         "matched_keywords": [
@@ -2277,7 +2254,7 @@
       "category": "ambiguous",
       "question": "Tell me about your 415V motors.",
       "passed": true,
-      "elapsed_ms": 3539.85,
+      "elapsed_ms": 3843.5,
       "retrieval": {
         "test_case_id": "RAG-032",
         "question": "Tell me about your 415V motors.",
@@ -2311,7 +2288,7 @@
         ]
       },
       "answer": {
-        "correctness_score": 0.5429,
+        "correctness_score": 0.5071,
         "is_correct": true,
         "keyword_coverage": 0.8,
         "matched_keywords": [
@@ -2334,10 +2311,10 @@
         "source_hit": true,
         "page_hit": true,
         "cited_sources": [
-          "acmotorsnielbrochure",
           "nielsteel",
-          "nielproductcatalog",
-          "dcmotorsnielbrochure"
+          "acmotorsnielbrochure",
+          "dcmotorsnielbrochure",
+          "nielproductcatalog"
         ],
         "cited_pages": [
           1,
@@ -2356,7 +2333,7 @@
       "category": "unsupported_abstain",
       "question": "What is the price of the 250 kW AC motor in US Dollars?",
       "passed": false,
-      "elapsed_ms": 1739.87,
+      "elapsed_ms": 1554.09,
       "retrieval": {
         "test_case_id": "RAG-033",
         "question": "What is the price of the 250 kW AC motor in US Dollars?",
@@ -2398,8 +2375,8 @@
         "faithfulness_score": 0.0,
         "is_faithful": false,
         "unsupported_claims": [
-          "However, I can't provide specific pricing for the 250 kW AC motor, as commercial quotes depend on various factors such as project requirements, capacity, and volume",
-          "com or by calling +91 80 42434343 for a detailed quote tailored to your needs"
+          "However, I must inform you that pricing for motors, including the 250 kW AC motor, depends on specific project requirements, capacity, and volume",
+          "com or by calling +91 80 42434343"
         ]
       },
       "citation": {
@@ -2407,8 +2384,8 @@
         "source_hit": true,
         "page_hit": true,
         "cited_sources": [
-          "acmotorsnielbrochure",
           "nielsteel",
+          "acmotorsnielbrochure",
           "dcmotorsnielbrochure"
         ],
         "cited_pages": [
@@ -2427,8 +2404,8 @@
       "id": "RAG-034",
       "category": "unsupported_abstain",
       "question": "Do you manufacture lithium-ion battery cells for electric passenger vehicles?",
-      "passed": false,
-      "elapsed_ms": 1200.98,
+      "passed": true,
+      "elapsed_ms": 1227.66,
       "retrieval": {
         "test_case_id": "RAG-034",
         "question": "Do you manufacture lithium-ion battery cells for electric passenger vehicles?",
@@ -2469,21 +2446,14 @@
         "citation_score": 1.0,
         "source_hit": true,
         "page_hit": true,
-        "cited_sources": [
-          "switchgearpanelsmvnielbrochure",
-          "transformersnielbrochure",
-          "substation"
-        ],
-        "cited_pages": [
-          1,
-          2
-        ]
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": true,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": false
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": true
       }
     },
     {
@@ -2491,7 +2461,7 @@
       "category": "unsupported_abstain",
       "question": "What is the warranty period for domestic home kitchen blenders?",
       "passed": true,
-      "elapsed_ms": 10.64,
+      "elapsed_ms": 5.24,
       "retrieval": {
         "test_case_id": "RAG-035",
         "question": "What is the warranty period for domestic home kitchen blenders?",
@@ -2534,8 +2504,8 @@
       "id": "RAG-036",
       "category": "unsupported_abstain",
       "question": "What is the exact stock quantity of frame 315M motors in your warehouse today?",
-      "passed": false,
-      "elapsed_ms": 1541.05,
+      "passed": true,
+      "elapsed_ms": 1430.81,
       "retrieval": {
         "test_case_id": "RAG-036",
         "question": "What is the exact stock quantity of frame 315M motors in your warehouse today?",
@@ -2584,31 +2554,22 @@
         "citation_score": 1.0,
         "source_hit": true,
         "page_hit": true,
-        "cited_sources": [
-          "acmotorsnielbrochure",
-          "nielsteel",
-          "companyintronewindiaelectricalslimited"
-        ],
-        "cited_pages": [
-          1,
-          2,
-          4,
-          5
-        ]
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": true,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": false
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": true
       }
     },
     {
       "id": "RAG-037",
       "category": "unsupported_abstain",
       "question": "Does NIEL manufacture rocket turbopumps for space launch vehicles?",
-      "passed": false,
-      "elapsed_ms": 1370.3,
+      "passed": true,
+      "elapsed_ms": 1306.56,
       "retrieval": {
         "test_case_id": "RAG-037",
         "question": "Does NIEL manufacture rocket turbopumps for space launch vehicles?",
@@ -2655,27 +2616,22 @@
         "citation_score": 1.0,
         "source_hit": true,
         "page_hit": true,
-        "cited_sources": [
-          "nielproductcatalog",
-          "pumpsnielbrochure"
-        ],
-        "cited_pages": [
-          1
-        ]
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": true,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": false
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": true
       }
     },
     {
       "id": "RAG-038",
       "category": "unsupported_abstain",
       "question": "What is the discount rate if I purchase 50 units of 11kV switchgear next Monday?",
-      "passed": false,
-      "elapsed_ms": 1789.25,
+      "passed": true,
+      "elapsed_ms": 1755.96,
       "retrieval": {
         "test_case_id": "RAG-038",
         "question": "What is the discount rate if I purchase 50 units of 11kV switchgear next Monday?",
@@ -2717,29 +2673,21 @@
         "faithfulness_score": 0.5,
         "is_faithful": false,
         "unsupported_claims": [
-          "com or +91 80 42434343 for a detailed quote tailored to your needs"
+          "com or by calling +91 80 42434343"
         ]
       },
       "citation": {
         "citation_score": 1.0,
         "source_hit": true,
         "page_hit": true,
-        "cited_sources": [
-          "nielsteel",
-          "transformersnielbrochure"
-        ],
-        "cited_pages": [
-          1,
-          2,
-          3,
-          6
-        ]
+        "cited_sources": [],
+        "cited_pages": []
       },
       "abstention": {
         "should_abstain": true,
-        "detected_abstention": false,
-        "evidence_sufficient": true,
-        "is_abstention_correct": false
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": true
       }
     },
     {
@@ -2747,7 +2695,7 @@
       "category": "unsupported_abstain",
       "question": "Do you sell consumer household microwave ovens?",
       "passed": true,
-      "elapsed_ms": 13.94,
+      "elapsed_ms": 5.2,
       "retrieval": {
         "test_case_id": "RAG-039",
         "question": "Do you sell consumer household microwave ovens?",
@@ -2791,7 +2739,7 @@
       "category": "unsupported_abstain",
       "question": "What are the specifications of Siemens brand S7-1500 PLC modules?",
       "passed": false,
-      "elapsed_ms": 1746.71,
+      "elapsed_ms": 1604.47,
       "retrieval": {
         "test_case_id": "RAG-040",
         "question": "What are the specifications of Siemens brand S7-1500 PLC modules?",

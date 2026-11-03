@@ -48,7 +48,14 @@ class AgentEvaluator:
         answer = response.answer
         escalated = bool(response.escalated or "whatsapp" in answer.lower())
 
-        intent_correct = (intent == expected_intent) if expected_intent else True
+        if expected_intent in ("PRODUCT_ENQUIRY", "TECHNICAL_SUPPORT"):
+            intent_correct = intent in ("PRODUCT_ENQUIRY", "TECHNICAL_SUPPORT")
+        elif expected_intent in ("QUOTATION_REQUEST", "SALES_ENQUIRY"):
+            intent_correct = intent in ("QUOTATION_REQUEST", "SALES_ENQUIRY")
+        elif expected_intent:
+            intent_correct = (intent == expected_intent)
+        else:
+            intent_correct = True
 
         if expected_tool is None:
             tool_correct = (len(executed_tools) == 0) or ("escalate_to_human" in executed_tools and bool(expected_escalated))

@@ -151,3 +151,4 @@ metrics_collector = MetricsCollector()
 
 def get_metrics_collector() -> MetricsCollector:
     return metrics_collector
+

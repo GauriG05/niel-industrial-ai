@@ -122,3 +122,4 @@ def compute_safety_action_metrics(
             "escalation_correct": correct_escalations,
         },
     }
+

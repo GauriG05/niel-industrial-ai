@@ -167,3 +167,4 @@ def run_rag_evaluation(top_k: int = 5) -> Dict[str, Any]:
 
 if __name__ == "__main__":
     run_rag_evaluation()
+

@@ -178,3 +178,4 @@ def test_tool_lead_and_ticket_creation_idempotency():
     assert ticket2["status"] == "success"
     assert ticket2["idempotent"] is True
     assert ticket2["ticket_id"] == first_ticket_id
+

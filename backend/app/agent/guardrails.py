@@ -80,3 +80,4 @@ def sanitize_untrusted_text(text: str) -> str:
     # Neutralize fake system/admin XML tags
     cleaned = re.sub(r"(?i)<\s*/?\s*(system|admin|developer|instruction)\s*>", r"[\1]", cleaned)
     return cleaned.strip()
+

@@ -59,3 +59,4 @@ def get_session_token(request: SessionTokenRequest):
         expires_at=expires_at,
         token_type="Bearer",
     )
+

@@ -90,3 +90,4 @@ def setup_logging(log_level: str = "INFO", json_format: bool = True):
     # Silence overly verbose external loggers
     logging.getLogger("uvicorn.access").setLevel(logging.WARNING)
     logging.getLogger("passlib").setLevel(logging.ERROR)
+

@@ -65,3 +65,4 @@ class ObservabilityMiddleware(BaseHTTPMiddleware):
                 )
 
             current_request_id.reset(token)
+

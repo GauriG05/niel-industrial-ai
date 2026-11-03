@@ -226,3 +226,4 @@ def test_websocket_rejects_unauthorized_privileged_action():
         err = ws.receive_json()
         assert err["type"] == "error"
         assert "Administrative key required" in err["detail"]
+

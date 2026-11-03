@@ -161,3 +161,4 @@ def test_tracing_span_records_duration():
     assert span["duration_sec"] > 0
     # Prometheus metrics collector recorded retrieval
     assert len(metrics._rag_retrieval_durations) > 0
+

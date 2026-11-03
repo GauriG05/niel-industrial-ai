@@ -1,0 +1,2859 @@
+{
+  "benchmark": "NIEL RAG Reliability Benchmark",
+  "timestamp": "2026-11-03 13:57:09",
+  "top_k": 5,
+  "summary": {
+    "total_test_cases": 40,
+    "passed_cases": 14,
+    "pass_rate": 0.35,
+    "retrieval_metrics": {
+      "mean_recall_at_k": 0.6406,
+      "mean_precision_at_k": 0.3875,
+      "mrr": 0.5156,
+      "ndcg_at_k": 1.0623
+    },
+    "answer_metrics": {
+      "mean_correctness": 0.4881,
+      "mean_faithfulness": 0.9661,
+      "mean_citation_accuracy": 0.8828,
+      "abstention_accuracy": 0.25
+    },
+    "performance": {
+      "avg_latency_ms": 1534.36,
+      "p95_latency_ms": 2651.76
+    }
+  },
+  "detailed_results": [
+    {
+      "id": "RAG-001",
+      "category": "ac_motors",
+      "question": "What power ratings are documented for NIEL cage rotor AC motors?",
+      "passed": true,
+      "elapsed_ms": 2651.76,
+      "retrieval": {
+        "test_case_id": "RAG-001",
+        "question": "What power ratings are documented for NIEL cage rotor AC motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL Product Catalog.txt",
+          "NIEL Product Catalog.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.8078,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "atalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: ROLLER TABLE MOTORS\nCATEGORY: motors\nRANGE: Range 0.37 to 37 kW; Voltage 380 & 415 Volts",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB",
+          "T: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Mill Duty Motors\nCATEGORY: motors\nRANGE: 110 to 2000kW; 0.415/3.3/6.6kV\nKEY SPECS: RPM 1000/750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP 23; Cooling IC 01\nAPPLICATIONS / INDUSTRIES: Steel Mills, Rolling Mills, Sugar Mills, Paper Mills, Cement, Fertilizer\nNOT IN DOCUMENT: key features, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.9375,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "0.37",
+          "kW",
+          "20,000",
+          "kW"
+        ],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielproductcatalog"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-002",
+      "category": "ac_motors",
+      "question": "What are the voltage ratings for NIEL squirrel cage induction motors?",
+      "passed": false,
+      "elapsed_ms": 1799.37,
+      "retrieval": {
+        "test_case_id": "RAG-002",
+        "question": "What are the voltage ratings for NIEL squirrel cage induction motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL Product Catalog.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 0.5,
+        "ndcg_at_k": 1.4485,
+        "page_hit": true,
+        "chunks_text": [
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "0; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB\nKEY FEATURES: Gas Groups I, IIA & IIB\nNOT IN DOCUMENT: applications / industries, standards & certifications (no named standard or certificate), efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Crane Duty Motors\nCATEGORY: motors\nRANGE: 0.37 to 1000kW\nKEY SPECS: Duty S3, S4, S5; Starts/Hour 6/150/300; CDF 25%, 40%, 60%,100%; Type Cage/ Slipring; Insulation Class \"F\"; Enclosure IP 55; Cooling IC 411\nKEY FEATURES: Cage or Slipring type; multiple duty classes (S3, S4, S5); CDF options 25%, 40%, 60%,100%",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.125,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "380V",
+          "415V",
+          "3.3kV",
+          "6.6kV",
+          "11kV"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielproductcatalog",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-003",
+      "category": "ac_motors",
+      "question": "What insulation class and temperature rise are specified for NIEL AC induction motors?",
+      "passed": true,
+      "elapsed_ms": 1589.14,
+      "retrieval": {
+        "test_case_id": "RAG-003",
+        "question": "What insulation class and temperature rise are specified for NIEL AC induction motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL Product Catalog.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.8,
+        "mrr": 0.5,
+        "ndcg_at_k": 1.9485,
+        "page_hit": true,
+        "chunks_text": [
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "0; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB\nKEY FEATURES: Gas Groups I, IIA & IIB\nNOT IN DOCUMENT: applications / industries, standards & certifications (no named standard or certificate), efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Crane Duty Motors\nCATEGORY: motors\nRANGE: 0.37 to 1000kW\nKEY SPECS: Duty S3, S4, S5; Starts/Hour 6/150/300; CDF 25%, 40%, 60%,100%; Type Cage/ Slipring; Insulation Class \"F\"; Enclosure IP 55; Cooling IC 411\nKEY FEATURES: Cage or Slipring type; multiple duty classes (S3, S4, S5); CDF options 25%, 40%, 60%,100%",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "T: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Mill Duty Motors\nCATEGORY: motors\nRANGE: 110 to 2000kW; 0.415/3.3/6.6kV\nKEY SPECS: RPM 1000/750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP 23; Cooling IC 01\nAPPLICATIONS / INDUSTRIES: Steel Mills, Rolling Mills, Sugar Mills, Paper Mills, Cement, Fertilizer\nNOT IN DOCUMENT: key features, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.65,
+        "is_correct": true,
+        "keyword_coverage": 0.5,
+        "matched_keywords": [
+          "Class F"
+        ],
+        "missing_keywords": [
+          "Class B"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielproductcatalog"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": true,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-004",
+      "category": "ac_motors",
+      "question": "What ingress protection ratings (IP) are standard for cage rotor AC motors?",
+      "passed": false,
+      "elapsed_ms": 1392.98,
+      "retrieval": {
+        "test_case_id": "RAG-004",
+        "question": "What ingress protection ratings (IP) are standard for cage rotor AC motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL Product Catalog.txt",
+          "NIEL Product Catalog.txt",
+          "NIEL - STEEL.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.4,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.6309,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "0; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB\nKEY FEATURES: Gas Groups I, IIA & IIB\nNOT IN DOCUMENT: applications / industries, standards & certifications (no named standard or certificate), efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Crane Duty Motors\nCATEGORY: motors\nRANGE: 0.37 to 1000kW\nKEY SPECS: Duty S3, S4, S5; Starts/Hour 6/150/300; CDF 25%, 40%, 60%,100%; Type Cage/ Slipring; Insulation Class \"F\"; Enclosure IP 55; Cooling IC 411\nKEY FEATURES: Cage or Slipring type; multiple duty classes (S3, S4, S5); CDF options 25%, 40%, 60%,100%",
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "atalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: ROLLER TABLE MOTORS\nCATEGORY: motors\nRANGE: Range 0.37 to 37 kW; Voltage 380 & 415 Volts",
+          "00V RPM : 3000/1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 22 / IP 55 Cooling : IC 01/411/511/611 AC MOTORS - CAGE ROTOR Range : 0.37 to 2500 kW Voltage : 0.38, 0.415/3.3/6.6kV RPM : 3000/1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 22 / IP 55 Cooling : IC 01/411/511/611 ROLLER TABLE MOTORS Range : 0.37 to 37 kW Voltage : 380 & 415 Volts RPM : 1500/1000/750 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange Enclosure : IP 55 Cooling : IC 01/411/511/611 BRAKE MOTORS Range : 0.18 to 20 kW Voltage : 380 & 415 Volts RPM : 1500/1000/750 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.125,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "IP22",
+          "IP55"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielsteel",
+          "nielproductcatalog"
+        ],
+        "cited_pages": [
+          1,
+          2
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-005",
+      "category": "ac_motors",
+      "question": "What mounting types are available for NIEL AC industrial motors?",
+      "passed": false,
+      "elapsed_ms": 1426.35,
+      "retrieval": {
+        "test_case_id": "RAG-005",
+        "question": "What mounting types are available for NIEL AC industrial motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL Product Catalog.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 2.4485,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "T: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Mill Duty Motors\nCATEGORY: motors\nRANGE: 110 to 2000kW; 0.415/3.3/6.6kV\nKEY SPECS: RPM 1000/750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP 23; Cooling IC 01\nAPPLICATIONS / INDUSTRIES: Steel Mills, Rolling Mills, Sugar Mills, Paper Mills, Cement, Fertilizer\nNOT IN DOCUMENT: key features, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors",
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors\nKEY FEATURES: Vertical Hollow Shaft Motors; Roller Table Motors; Increased Safety Motors; Non-Sparking Motors; Textile and Loom Motors; 60Hz Motors\nAPPLICATIONS / INDUSTRIES: Textile and Loom Motors and Roller Table Motors are named as types; no other applications stated\nNOT IN DOCUMENT: range, key specs, applications / industries, standards & certifications\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.1429,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "B3",
+          "B5",
+          "B35"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielproductcatalog"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-006",
+      "category": "ac_motors",
+      "question": "What cooling types are used on NIEL wound rotor slipring induction motors?",
+      "passed": false,
+      "elapsed_ms": 1517.65,
+      "retrieval": {
+        "test_case_id": "RAG-006",
+        "question": "What cooling types are used on NIEL wound rotor slipring induction motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL Product Catalog.txt",
+          "DC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 1.0,
+        "ndcg_at_k": 2.1309,
+        "page_hit": true,
+        "chunks_text": [
+          "Cooling IC 411\nKEY FEATURES: Cage or Slipring type; multiple duty classes (S3, S4, S5); CDF options 25%, 40%, 60%,100%\nNOT IN DOCUMENT: voltage, RPM, mounting, applications / industries, standards & certifications, efficiency\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Brake Motors\nCATEGORY: motors\nRANGE: 0.18 to 20kW; 380 & 415Volts\nKEY SPECS: RPM 1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 55; Cooling IC 411\nKEY FEATURES: AC/DC Brakes\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB",
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.125,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "IC01",
+          "IC411",
+          "IC511",
+          "IC611"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielproductcatalog",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-007",
+      "category": "ac_motors",
+      "question": "What is the power range and duty cycle for wound rotor motors?",
+      "passed": true,
+      "elapsed_ms": 2301.61,
+      "retrieval": {
+        "test_case_id": "RAG-007",
+        "question": "What is the power range and duty cycle for wound rotor motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL - STEEL.pdf",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 0.5,
+        "ndcg_at_k": 1.5178,
+        "page_hit": true,
+        "chunks_text": [
+          "1 BRAKE MOTORS Range : 0.18 to 20 kW Voltage : 380 & 415 Volts RPM : 1500/1000/750 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 55 Cooling : IC 411 AC/DC Brakes AC MILL DUTY MOTORS Range : 110 to 2000kW Voltage : 0.415/3.3/6.6kV RPM : 1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 23 Cooling : IC 01 Applications: Steel Mills, Rolling Mills, SugarMills, Paper Mills, Cement, Fertilizer AC MOTORS - WOUND ROTOR Range : 7.5 to 20000 kW Voltage : 0.38/0.415/3.3/6.6kV RPM : 1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 22 / IP 55 Cooling : IC 01/411/511/611 Duty : SI DC MOTORS Range : Up to 3000 kW Voltage : 180 to 1000V RPM : 1800/1000/600",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1",
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.775,
+        "is_correct": true,
+        "keyword_coverage": 0.75,
+        "matched_keywords": [
+          "7.5",
+          "20,000",
+          "kW"
+        ],
+        "missing_keywords": [
+          "S1"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielsteel",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          2
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-008",
+      "category": "ac_motors",
+      "question": "For what applications are NIEL flameproof motors suitable and what gas groups are supported?",
+      "passed": false,
+      "elapsed_ms": 1209.6,
+      "retrieval": {
+        "test_case_id": "RAG-008",
+        "question": "For what applications are NIEL flameproof motors suitable and what gas groups are supported?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL Product Catalog.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 2.4485,
+        "page_hit": true,
+        "chunks_text": [
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB",
+          "0; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB\nKEY FEATURES: Gas Groups I, IIA & IIB\nNOT IN DOCUMENT: applications / industries, standards & certifications (no named standard or certificate), efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Crane Duty Motors\nCATEGORY: motors\nRANGE: 0.37 to 1000kW\nKEY SPECS: Duty S3, S4, S5; Starts/Hour 6/150/300; CDF 25%, 40%, 60%,100%; Type Cage/ Slipring; Insulation Class \"F\"; Enclosure IP 55; Cooling IC 411\nKEY FEATURES: Cage or Slipring type; multiple duty classes (S3, S4, S5); CDF options 25%, 40%, 60%,100%",
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors\nKEY FEATURES: Vertical Hollow Shaft Motors; Roller Table Motors; Increased Safety Motors; Non-Sparking Motors; Textile and Loom Motors; 60Hz Motors\nAPPLICATIONS / INDUSTRIES: Textile and Loom Motors and Roller Table Motors are named as types; no other applications stated\nNOT IN DOCUMENT: range, key specs, applications / industries, standards & certifications\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V",
+          "ed Motors\nCATEGORY: gearboxes\nRANGE: 0.4 to 50kW; Speed 0.25 to 280 RPM\nKEY SPECS: Helical Gears; Agma Class I, II, III\nKEY FEATURES: Helical Gears; Permanently Lubricated; Available with AC or DC motors, Flame proof and Brake Motors\nSTANDARDS & CERTIFICATIONS: Agma Class I, II, III (as printed); no other standards stated\nNOT IN DOCUMENT: applications / industries, efficiency, reduction ratios, IP class\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Helical Shaft Mounted Drives\nCATEGORY: gearboxes\nRANGE: Seven sizes; Reduction ratios 5:1, 13:1 & 20:1\nKEY SPECS: 98% efficiency per stage; Seven sizes; Reduction ratios 5:1, 13:1 & 20:1"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.375,
+        "is_correct": false,
+        "keyword_coverage": 0.25,
+        "matched_keywords": [
+          "flameproof"
+        ],
+        "missing_keywords": [
+          "hazardous",
+          "Zone 1",
+          "Zone 2"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielproductcatalog"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-009",
+      "category": "dc_motors",
+      "question": "What power range and frame sizes are available for NIEL industrial DC motors?",
+      "passed": true,
+      "elapsed_ms": 1390.63,
+      "retrieval": {
+        "test_case_id": "RAG-009",
+        "question": "What power range and frame sizes are available for NIEL industrial DC motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors\nKEY FEATURES: Vertical Hollow Shaft Motors; Roller Table Motors; Increased Safety Motors; Non-Sparking Motors; Textile and Loom Motors; 60Hz Motors\nAPPLICATIONS / INDUSTRIES: Textile and Loom Motors and Roller Table Motors are named as types; no other applications stated\nNOT IN DOCUMENT: range, key specs, applications / industries, standards & certifications\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1",
+          "T: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Mill Duty Motors\nCATEGORY: motors\nRANGE: 110 to 2000kW; 0.415/3.3/6.6kV\nKEY SPECS: RPM 1000/750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP 23; Cooling IC 01\nAPPLICATIONS / INDUSTRIES: Steel Mills, Rolling Mills, Sugar Mills, Paper Mills, Cement, Fertilizer\nNOT IN DOCUMENT: key features, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.9091,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "0.37",
+          "6500",
+          "kW",
+          "80",
+          "1000"
+        ],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-010",
+      "category": "dc_motors",
+      "question": "What are the armature voltage ratings for NIEL DC motors?",
+      "passed": true,
+      "elapsed_ms": 1391.46,
+      "retrieval": {
+        "test_case_id": "RAG-010",
+        "question": "What are the armature voltage ratings for NIEL DC motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors\nKEY FEATURES: Vertical Hollow Shaft Motors; Roller Table Motors; Increased Safety Motors; Non-Sparking Motors; Textile and Loom Motors; 60Hz Motors\nAPPLICATIONS / INDUSTRIES: Textile and Loom Motors and Roller Table Motors are named as types; no other applications stated\nNOT IN DOCUMENT: range, key specs, applications / industries, standards & certifications\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.5833,
+        "is_correct": true,
+        "keyword_coverage": 0.6667,
+        "matched_keywords": [
+          "armature",
+          "voltage"
+        ],
+        "missing_keywords": [
+          "1000V"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-011",
+      "category": "dc_motors",
+      "question": "What cooling methods are available for industrial DC motors?",
+      "passed": true,
+      "elapsed_ms": 1635.97,
+      "retrieval": {
+        "test_case_id": "RAG-011",
+        "question": "What cooling methods are available for industrial DC motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "AC Motors - NIEL Brochure.txt",
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL - STEEL.pdf",
+          "NIEL - STEEL.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "mrr": 0.5,
+        "ndcg_at_k": 0.6309,
+        "page_hit": true,
+        "chunks_text": [
+          "Cooling IC 411\nKEY FEATURES: Cage or Slipring type; multiple duty classes (S3, S4, S5); CDF options 25%, 40%, 60%,100%\nNOT IN DOCUMENT: voltage, RPM, mounting, applications / industries, standards & certifications, efficiency\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Brake Motors\nCATEGORY: motors\nRANGE: 0.18 to 20kW; 380 & 415Volts\nKEY SPECS: RPM 1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 55; Cooling IC 411\nKEY FEATURES: AC/DC Brakes\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf",
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1",
+          "1 BRAKE MOTORS Range : 0.18 to 20 kW Voltage : 380 & 415 Volts RPM : 1500/1000/750 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 55 Cooling : IC 411 AC/DC Brakes AC MILL DUTY MOTORS Range : 110 to 2000kW Voltage : 0.415/3.3/6.6kV RPM : 1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 23 Cooling : IC 01 Applications: Steel Mills, Rolling Mills, SugarMills, Paper Mills, Cement, Fertilizer AC MOTORS - WOUND ROTOR Range : 7.5 to 20000 kW Voltage : 0.38/0.415/3.3/6.6kV RPM : 1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 22 / IP 55 Cooling : IC 01/411/511/611 Duty : SI DC MOTORS Range : Up to 3000 kW Voltage : 180 to 1000V RPM : 1800/1000/600",
+          "of the equipment. Our Equipments are manufactured under most stringent quality processes with a clear focus on performance reliability and longevity. Motors: We can offer the full complement of Motors for all STEEL and Power plant applications. Right from a High Voltage 10MW Mill Main Drive motor to 1MW DC Mill Stand motor to the Sophisticated and robust Shear Motors to Fan Drive - Squirrel Cage TEFC motors to Roller table motors and right upto the Pump drive / Water complex SPDP motors. We have it all. THREE PHASE INDUCTION MOTORS Range : Upto 8000KW Voltage : 415/660/3300/6600/11000V RPM : 3000/1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 22 / IP 55 Cooling : IC"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.8125,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "IC06",
+          "IC17",
+          "IC37"
+        ],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielsteel",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          2
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-012",
+      "category": "dc_motors",
+      "question": "What are the common industrial applications for NIEL DC motors?",
+      "passed": false,
+      "elapsed_ms": 1681.97,
+      "retrieval": {
+        "test_case_id": "RAG-012",
+        "question": "What are the common industrial applications for NIEL DC motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.5,
+        "precision_at_k": 0.2,
+        "mrr": 1.0,
+        "ndcg_at_k": 0.6131,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors\nKEY FEATURES: Vertical Hollow Shaft Motors; Roller Table Motors; Increased Safety Motors; Non-Sparking Motors; Textile and Loom Motors; 60Hz Motors\nAPPLICATIONS / INDUSTRIES: Textile and Loom Motors and Roller Table Motors are named as types; no other applications stated\nNOT IN DOCUMENT: range, key specs, applications / industries, standards & certifications\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V",
+          "T: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Mill Duty Motors\nCATEGORY: motors\nRANGE: 110 to 2000kW; 0.415/3.3/6.6kV\nKEY SPECS: RPM 1000/750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP 23; Cooling IC 01\nAPPLICATIONS / INDUSTRIES: Steel Mills, Rolling Mills, Sugar Mills, Paper Mills, Cement, Fertilizer\nNOT IN DOCUMENT: key features, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.0,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "steel",
+          "rolling",
+          "wire drawing",
+          "extruders"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.65,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-013",
+      "category": "transformers",
+      "question": "What power rating and voltage class does NIEL offer for oil immersed distribution transformers?",
+      "passed": false,
+      "elapsed_ms": 1893.73,
+      "retrieval": {
+        "test_case_id": "RAG-013",
+        "question": "What power rating and voltage class does NIEL offer for oil immersed distribution transformers?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL Product Catalog.txt",
+          "Transformers.txt",
+          "Transformers.txt",
+          "Transformers.txt",
+          "NIEL Product Catalog.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": true,
+        "chunks_text": [
+          "UMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: DISTRIBUTION TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV\nKEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound\nKEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards;",
+          "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
+          "urrent rating; efficiency/losses; IP class; type-test or certification details\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Cast Resin (Dry Type) Transformers\nCATEGORY: transformers\nRANGE: 11 kV / 433 V, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: Cast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz; Off circuit tap links + 5% in steps of 2.5%; Class F and H insulation; HV Delta connected, LV Star Connected with Dyn 11 vector group; Duty cycle continuous; Enclosure IP 23 to IP 33 and as per customer specifications",
+          "as per IS 2026 / IEC 76; specifications conform to relevant IS / BS & IEC Standards; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA rating; efficiency/losses; cooling type; IP class; type-test or certification details; item-specific applications\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Power Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 66kV & 111kV, 3 Phase, 50 Hz (MVA not stated; \"111kV\" as printed)\nKEY SPECS: 3Phase, 50 Hz; Off-circuit tap changer \u00b1 5% to - \u00b1 7.5% & \u00b1 5% to - 10% taps in steps of 2.5% [plus/minus symbols as printed, partly unclear];",
+          "t and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards; Standard fittings as per IS 2026 / IEC 76\nSTANDARDS & CERTIFICATIONS: Standard fittings as per IS 2026 / IEC 76; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA / MVA rating; efficiency figures (\"High Efficiency\" is stated without numbers); impedance; certifications / type tests; applications / industries\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: POWER TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.2,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "16 kVA",
+          "2500 kVA",
+          "11kV",
+          "33kV"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielproductcatalog",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-014",
+      "category": "transformers",
+      "question": "What is the maximum rating and voltage class for NIEL power transformers?",
+      "passed": false,
+      "elapsed_ms": 1433.61,
+      "retrieval": {
+        "test_case_id": "RAG-014",
+        "question": "What is the maximum rating and voltage class for NIEL power transformers?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL Product Catalog.txt",
+          "Transformers.txt",
+          "Transformers.txt",
+          "Transformers.txt",
+          "NIEL Product Catalog.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": false,
+        "chunks_text": [
+          "UMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: DISTRIBUTION TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV\nKEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound\nKEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards;",
+          "urrent rating; efficiency/losses; IP class; type-test or certification details\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Cast Resin (Dry Type) Transformers\nCATEGORY: transformers\nRANGE: 11 kV / 433 V, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: Cast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz; Off circuit tap links + 5% in steps of 2.5%; Class F and H insulation; HV Delta connected, LV Star Connected with Dyn 11 vector group; Duty cycle continuous; Enclosure IP 23 to IP 33 and as per customer specifications",
+          "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
+          "as per IS 2026 / IEC 76; specifications conform to relevant IS / BS & IEC Standards; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA rating; efficiency/losses; cooling type; IP class; type-test or certification details; item-specific applications\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Power Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 66kV & 111kV, 3 Phase, 50 Hz (MVA not stated; \"111kV\" as printed)\nKEY SPECS: 3Phase, 50 Hz; Off-circuit tap changer \u00b1 5% to - \u00b1 7.5% & \u00b1 5% to - 10% taps in steps of 2.5% [plus/minus symbols as printed, partly unclear];",
+          "t and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards; Standard fittings as per IS 2026 / IEC 76\nSTANDARDS & CERTIFICATIONS: Standard fittings as per IS 2026 / IEC 76; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA / MVA rating; efficiency figures (\"High Efficiency\" is stated without numbers); impedance; certifications / type tests; applications / industries\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: POWER TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.25,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "100 MVA",
+          "220kV"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.7,
+        "source_hit": true,
+        "page_hit": false,
+        "cited_sources": [
+          "nielproductcatalog",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-015",
+      "category": "transformers",
+      "question": "What tap changer options are provided on NIEL transformers?",
+      "passed": false,
+      "elapsed_ms": 1437.99,
+      "retrieval": {
+        "test_case_id": "RAG-015",
+        "question": "What tap changer options are provided on NIEL transformers?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Transformers.txt",
+          "NIEL - STEEL.pdf",
+          "NIEL Product Catalog.txt",
+          "Transformers.txt",
+          "NIEL Product Catalog.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          6,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
+          "Transformers Specification 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV Off-circuit tap changer to provide+5% to - 10% On-load tap changer to provide +7% to - 21% taps in steps of 1.75% Class A insulated Vector group Dyn 11 Continuos duty Copper wound / Aluminium wound Painting as per IS / IEC standards HV side cable box LV side cable box / bus duct Standard fittings as per IS 2026 / IEC 76 Specification 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV Off-circuit tap changer to provide + 5% to - + 7.5% & + 5% to - 10% taps in steps of 2.5% On-load tap changer to provide + 5% to - 15% taps in steps of 1.25% Class A, uniform / non-uniform insulated Vector group Dyn 11, YNd 11, YNyn 0 Continuous duty,",
+          "t and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards; Standard fittings as per IS 2026 / IEC 76\nSTANDARDS & CERTIFICATIONS: Standard fittings as per IS 2026 / IEC 76; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA / MVA rating; efficiency figures (\"High Efficiency\" is stated without numbers); impedance; certifications / type tests; applications / industries\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: POWER TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV",
+          "uit tap changer \u00b1 5% to - \u00b1 7.5% & \u00b1 5% to - 10% taps in steps of 2.5% [plus/minus symbols as printed, partly unclear]; On-load tap changer + 5% to - 15% taps in steps of 1.25%; Class A, uniform / non-uniform insulated; Vector group Dyn 11, YNd 11, YNyn 0; Continuous duty, double copper wound\nKEY FEATURES: Both HV & LV side outdoor bushings or cable boxes; cooling radiators / fans; Buchholz relay with alarm and trip contact with shut off valves; oil temperature indicator with alarm and trip contact; magnetic oil level gauge with alarm contact;",
+          "UMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: DISTRIBUTION TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV\nKEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound\nKEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards;"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.619,
+        "is_correct": true,
+        "keyword_coverage": 0.6667,
+        "matched_keywords": [
+          "off-circuit",
+          "on load tap changer"
+        ],
+        "missing_keywords": [
+          "oltc"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielsteel",
+          "nielproductcatalog",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          6
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-016",
+      "category": "transformers",
+      "question": "Does NIEL provide Cast Resin Dry Type transformers and what are their ratings?",
+      "passed": true,
+      "elapsed_ms": 1531.71,
+      "retrieval": {
+        "test_case_id": "RAG-016",
+        "question": "Does NIEL provide Cast Resin Dry Type transformers and what are their ratings?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Transformers.txt",
+          "Transformers.txt",
+          "Transformers - NIEL Brochure.pdf",
+          "NIEL Product Catalog.txt",
+          "Transformers - NIEL Brochure.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          3,
+          1,
+          3
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.4,
+        "mrr": 0.3333,
+        "ndcg_at_k": 0.8869,
+        "page_hit": true,
+        "chunks_text": [
+          "urrent rating; efficiency/losses; IP class; type-test or certification details\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Cast Resin (Dry Type) Transformers\nCATEGORY: transformers\nRANGE: 11 kV / 433 V, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: Cast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz; Off circuit tap links + 5% in steps of 2.5%; Class F and H insulation; HV Delta connected, LV Star Connected with Dyn 11 vector group; Duty cycle continuous; Enclosure IP 23 to IP 33 and as per customer specifications",
+          "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
+          "ast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz Off circuit tap links + 5% in steps of 2.5% Class F and H insulation HV Delta connected, LV Star Connected with Dyn 11 vector group Natural air cooling and forced air cooling Duty cycle - continuous Winding - copper duly resin casted Enclosure - IP 23 to IP 33 and as per customer specifications Cable boxes on HV and LV Painting shades as per IS and IEC standards \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7",
+          "UMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: DISTRIBUTION TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV\nKEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound\nKEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards;",
+          "35 years of existence in the market, laced with long-lasting partnerships with business partners are the best proofs of performance, reliability and credibility. Some of our prestigious product partners are: Our Transformers come fitted with all standard accessories to make it a ready to install unit, additional accessories can be supplied on request G FURNACE TRANSFORMERS CAST RESIN (DRY TYPE) TRANSFORMERS SPECIFICATIONS 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV Off-circuit tap changer to provide + 5% to - + 7.5% & + 5% to - 10% taps in steps of 2.5% On-load tap changer to provide +5% to - 15% taps in steps of 1.25% Class A, uniform / non-uniform insulated Vector group Dyn 11, YNd 11, Dd0y11 Continuous duty,"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.6,
+        "is_correct": true,
+        "keyword_coverage": 0.5,
+        "matched_keywords": [
+          "cast resin",
+          "dry type"
+        ],
+        "missing_keywords": [
+          "10 MVA",
+          "33kV"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielproductcatalog",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          3
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-017",
+      "category": "transformers",
+      "question": "What cooling types are available for NIEL power transformers?",
+      "passed": false,
+      "elapsed_ms": 1451.64,
+      "retrieval": {
+        "test_case_id": "RAG-017",
+        "question": "What cooling types are available for NIEL power transformers?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Transformers.txt",
+          "Transformers.txt",
+          "NIEL - STEEL.pdf",
+          "Transformers.txt",
+          "Transformers.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          6,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": false,
+        "chunks_text": [
+          "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
+          "dielectric of electric grade press paper, boards and mineral oil; cooling ducts radially & axially for smooth oil flow; radiator cooling banks for ONAN; both HV & LV side outdoor bushings / cable box / bus ducts / bus bar risers\nAPPLICATIONS / INDUSTRIES: Induction furnace, arc furnace and submerged arc furnace applications\nSTANDARDS & CERTIFICATIONS: Painting as per IS / IEC standards; standard fittings as per IS / IEC standards; specifications conform to relevant IS / BS & IEC Standards\nNOT IN DOCUMENT: MVA/current rating; efficiency/losses; IP class; type-test or certification details\nSOURCE: Transformers_-_NIEL_Brochure.pdf",
+          "and short circuits. DISTRIBUTION TRANSFORMERS POWER TRANSFORMERS FURNACE TRANSFORMERS Main Features Transformers are designed for induction furnace, arc furnace & submerged arc furnace application Magnetic circuit - lamination CRGO M3 to M5 type Electric circuit - electrolytic grade 99.9% pure copper with transposition in LV coil for current sharing in parallel conductors Dielectric circuits - Electric grade press paper, boards and mineral oil Thermal circuit - adequate cooling ducts are provided radially & axially for the smooth flow of oil internally. Radiator cooling banks are provided for natural air cooling ONAN & additional fans for ONAF cooling.",
+          "as per IS 2026 / IEC 76; specifications conform to relevant IS / BS & IEC Standards; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA rating; efficiency/losses; cooling type; IP class; type-test or certification details; item-specific applications\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Power Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 66kV & 111kV, 3 Phase, 50 Hz (MVA not stated; \"111kV\" as printed)\nKEY SPECS: 3Phase, 50 Hz; Off-circuit tap changer \u00b1 5% to - \u00b1 7.5% & \u00b1 5% to - 10% taps in steps of 2.5% [plus/minus symbols as printed, partly unclear];",
+          "urrent rating; efficiency/losses; IP class; type-test or certification details\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Cast Resin (Dry Type) Transformers\nCATEGORY: transformers\nRANGE: 11 kV / 433 V, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: Cast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz; Off circuit tap links + 5% in steps of 2.5%; Class F and H insulation; HV Delta connected, LV Star Connected with Dyn 11 vector group; Duty cycle continuous; Enclosure IP 23 to IP 33 and as per customer specifications"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.1429,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "ONAN",
+          "ONAF",
+          "OFAF"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.7,
+        "source_hit": true,
+        "page_hit": false,
+        "cited_sources": [
+          "nielsteel",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          6
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-018",
+      "category": "switchgear",
+      "question": "What are the specifications of the Power+ V vacuum circuit breaker panels?",
+      "passed": false,
+      "elapsed_ms": 2147.8,
+      "retrieval": {
+        "test_case_id": "RAG-018",
+        "question": "What are the specifications of the Power+ V vacuum circuit breaker panels?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ V (Switchgear Type Power+ V/F, VCB panel, indoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV rated voltage (product range lists \"VCB Panels Indoor type up to 12 KV\"); busbar current Upto 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 3000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 600x1450x2350 mm and 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 750 KG",
+          "itchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ VO (Kiosk Type Power+ VO & FO, outdoor VCB)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV (product range: \"VCB Panels Outdoor type up to 12 KV\"); busbar current Upto 2000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 2000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 700x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 900 KG",
+          "chgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F3O (Kiosk Type Power+ VO & FO, outdoor, SF6)\nCATEGORY: switchgear\nRANGE: 36 KV (product range lists this family as \"Power+ F3 SF6 Panels Outdoor type up to 36 KV\"); busbar current 2000 A\nKEY SPECS: Rated Voltage 36 KV; Rated Frequency 50 Hz; Rated Busbar Current 2000 A; Short time 31.5 KA; Withstand Current [blank in table]; Insulation Levels 70/140 KVrms/KVp; Dimensions LxDxH 1220x2300x2300 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 1500 KG",
+          "ar_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ M (VCB HT Motor Starter Panels)\nCATEGORY: switchgear\nRANGE: Not stated\nKEY SPECS: Not stated\nKEY FEATURES: VCB HT motor starter panels (name only, from product range list)\nAPPLICATIONS / INDUSTRIES: Motor starting (implied by name only)\nSTANDARDS & CERTIFICATIONS: Not stated for this product (general: IS / BS & IEC; type-tested at CPRI India)\nNOT IN DOCUMENT: Range; all specs; features beyond name; applications; product-specific standards\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ R (Relay and Control Panel)\nCATEGORY: switchgear\nRANGE: For voltage up to 132 KV",
+          ". Note: features text says \"IP5X\" externally while the table says IP54\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ FO (Kiosk Type Power+ VO & FO, outdoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV; busbar current 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current 3000 A; Short time 40 KA; Withstand Current 100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 800x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 1000 KG"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.725,
+        "is_correct": true,
+        "keyword_coverage": 0.75,
+        "matched_keywords": [
+          "vacuum",
+          "circuit breaker",
+          "busbar"
+        ],
+        "missing_keywords": [
+          "12kV"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "switchgearpanelsmvnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-019",
+      "category": "switchgear",
+      "question": "What short time withstand current is supported by NIEL MV switchgear?",
+      "passed": false,
+      "elapsed_ms": 1173.18,
+      "retrieval": {
+        "test_case_id": "RAG-019",
+        "question": "What short time withstand current is supported by NIEL MV switchgear?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ V (Switchgear Type Power+ V/F, VCB panel, indoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV rated voltage (product range lists \"VCB Panels Indoor type up to 12 KV\"); busbar current Upto 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 3000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 600x1450x2350 mm and 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 750 KG",
+          "itchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ VO (Kiosk Type Power+ VO & FO, outdoor VCB)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV (product range: \"VCB Panels Outdoor type up to 12 KV\"); busbar current Upto 2000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 2000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 700x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 900 KG",
+          "me sizes; rated current of feeders/breaker; item-specific applications\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F (Switchgear Type Power+ V/F, SF6 panel, indoor)\nCATEGORY: switchgear\nRANGE: Table: 3.3 to 12 KV. Product range text: \"SF6 Panels Indoor type up to 36 KV\" (page heading: 3.3 KV to 36 KV). Busbar current 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current 3000 A; Short time 40 KA; Withstand Current 100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X;",
+          "xt); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type Tested for BIL and short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; all units TYPE-TESTED at Central Power Research Institute, INDIA\nNOT IN DOCUMENT: Withstand Current (blank in table); efficiency; frame sizes; item-specific applications. Note: the product range calls F3 \"Outdoor\" while the table (indoor/V-F page) gives IP4X\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf",
+          "xt); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type Tested for BIL and short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; all units TYPE-TESTED at Central Power Research Institute, INDIA; cover logos: UKAS Quality Management 062, UL Registered Firm ISO 9001 2008 (NIE Power & Engineering (P) Ltd.)\nNOT IN DOCUMENT: Efficiency; frame sizes; rated current of feeders/breaker; item-specific applications\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.2222,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "26.3kA",
+          "40kA",
+          "3 sec"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "switchgearpanelsmvnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-020",
+      "category": "switchgear",
+      "question": "What is the difference between Power+ V and Power+ F switchgear panels?",
+      "passed": false,
+      "elapsed_ms": 2315.37,
+      "retrieval": {
+        "test_case_id": "RAG-020",
+        "question": "What is the difference between Power+ V and Power+ F switchgear panels?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Substation.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": true,
+        "chunks_text": [
+          "from the \"up to 36 KV\" in the product range text; both are as printed\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F3 (Switchgear Type Power+ V/F, SF6 panel)\nCATEGORY: switchgear\nRANGE: 36 KV rated voltage (product range lists \"SF6 Panels Outdoor type up to 36 KV\"); busbar current 2000 A\nKEY SPECS: Rated Voltage 36 KV; Rated Frequency 50 Hz; Rated Busbar Current 2000 A; Short time 31.5 KA; Withstand Current [blank in table]; Insulation Levels 70/140 KVrms/KVp; Dimensions LxDxH 1220x2300x2300 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 1300 KG",
+          "chgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F3O (Kiosk Type Power+ VO & FO, outdoor, SF6)\nCATEGORY: switchgear\nRANGE: 36 KV (product range lists this family as \"Power+ F3 SF6 Panels Outdoor type up to 36 KV\"); busbar current 2000 A\nKEY SPECS: Rated Voltage 36 KV; Rated Frequency 50 Hz; Rated Busbar Current 2000 A; Short time 31.5 KA; Withstand Current [blank in table]; Insulation Levels 70/140 KVrms/KVp; Dimensions LxDxH 1220x2300x2300 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 1500 KG",
+          "SOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ V (Switchgear Type Power+ V/F, VCB panel, indoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV rated voltage (product range lists \"VCB Panels Indoor type up to 12 KV\"); busbar current Upto 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 3000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 600x1450x2350 mm and 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 750 KG",
+          ". Note: features text says \"IP5X\" externally while the table says IP54\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ FO (Kiosk Type Power+ VO & FO, outdoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV; busbar current 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current 3000 A; Short time 40 KA; Withstand Current 100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 800x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 1000 KG",
+          "CE: Substation.pdf\nPRODUCT: Power+ V (VCB Panels Indoor Type upto 12 KV)\nCATEGORY: switchgear\nRANGE: Voltage upto 12 KV\nKEY SPECS: VCB Panels Indoor Type upto 12 KV\nKEY FEATURES: Manufactured in-house at New India Group's Medium Voltage panel manufacturing facility, described as \"state-of-art\" and \"as an ABB System House\"\nNOT IN DOCUMENT: current rating, short-circuit rating, IP class, standards & certifications, applications / industries\nSOURCE: Substation.pdf\nPRODUCT: Power+ F (SF6 Panels Indoor type upto 12KV)\nCATEGORY: switchgear\nRANGE: Voltage upto 12KV\nKEY SPECS: SF6 Panels Indoor type upto 12KV"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.9375,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "vacuum",
+          "sf6",
+          "circuit breaker"
+        ],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "switchgearpanelsmvnielbrochure",
+          "substation"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-021",
+      "category": "switchgear",
+      "question": "Does NIEL offer outdoor kiosk type switchgear?",
+      "passed": false,
+      "elapsed_ms": 1432.31,
+      "retrieval": {
+        "test_case_id": "RAG-021",
+        "question": "Does NIEL offer outdoor kiosk type switchgear?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Substation.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": false,
+        "chunks_text": [
+          "CATIONS / INDUSTRIES: Outdoor installations (3.3 KV to 36 KV air insulated outdoor kiosk type vacuum / SF6 switchgear); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type tested for BIL and Short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; TYPE-TESTED at Central Power Research Institute, INDIA (CPRI India logo)\nNOT IN DOCUMENT: Efficiency; frame sizes; item-specific applications. Note: features text says \"IP5X\" externally while the table says IP54\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf",
+          "outdoor kiosk type vacuum / SF6 switchgear); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type tested for BIL and Short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; TYPE-TESTED at Central Power Research Institute, INDIA\nNOT IN DOCUMENT: Efficiency; frame sizes; item-specific applications; FO is not in the product range list\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F3O (Kiosk Type Power+ VO & FO, outdoor, SF6)\nCATEGORY: switchgear",
+          "itchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ VO (Kiosk Type Power+ VO & FO, outdoor VCB)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV (product range: \"VCB Panels Outdoor type up to 12 KV\"); busbar current Upto 2000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 2000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 700x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 900 KG",
+          ". Note: features text says \"IP5X\" externally while the table says IP54\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ FO (Kiosk Type Power+ VO & FO, outdoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV; busbar current 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current 3000 A; Short time 40 KA; Withstand Current 100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 800x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 1000 KG",
+          "nels Outdoor type upto 12KV)\nCATEGORY: switchgear\nRANGE: Voltage upto 12KV\nKEY SPECS: VCB Panels Outdoor type upto 12KV\nKEY FEATURES: Manufactured in-house at New India Group's Medium Voltage panel manufacturing facility, described as \"state-of-art\" and \"as an ABB System House\"\nNOT IN DOCUMENT: current rating, short-circuit rating, IP class, standards & certifications, applications / industries\nSOURCE: Substation.pdf\nPRODUCT: Power+ F3 (SF6 Panels Indoor type upto 36KV)\nCATEGORY: switchgear\nRANGE: Voltage upto 36KV\nKEY SPECS: SF6 Panels Indoor type upto 36KV"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.9375,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "Power+ VO",
+          "outdoor",
+          "kiosk"
+        ],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.7,
+        "source_hit": true,
+        "page_hit": false,
+        "cited_sources": [
+          "switchgearpanelsmvnielbrochure",
+          "substation"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-022",
+      "category": "pumps",
+      "question": "What is the discharge capacity and head range for NIEL end suction monoblock pumps?",
+      "passed": false,
+      "elapsed_ms": 1129.46,
+      "retrieval": {
+        "test_case_id": "RAG-022",
+        "question": "What is the discharge capacity and head range for NIEL end suction monoblock pumps?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "NIEL Product Catalog.txt",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.8,
+        "mrr": 1.0,
+        "ndcg_at_k": 2.4485,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: End Suction Monoblock Pump, SERIES : GMCT/KDS+ /KDT + /KS +\nCATEGORY: pumps\nRANGE: Delivery Size up to 150 mm; Capacity up to 260 m\u00b3/hr; Head up to 102 meters; Power rating 0.37 kW to 22 kW\nKEY SPECS: Delivery Size up to 150 mm; Capacity up to 260 m\u00b3/hr; Head up to 102 meters; Power rating 0.37 kW to 22 kW\nKEY FEATURES: Gland packed or Mechanical seal; Suitable for wide voltage fluctuation; Supplied with bronze impellers as optional; Top flat efficiency curve to enhance minimum variation in efficiency in entire operating range",
+          "ery Size up to 300 mm; Capacity up to 1900 m\u00b3/hr; Head up to 100 mtrs.; Temperature (-) 10\u00b0C to 100\u00b0C; 3500 to 1500 rpm\nKEY FEATURES: Back pull-out design; End Suction; Gland packed / Mechanical seal; 3500 to 1500 rpm; Available in various material combinations\nAPPLICATIONS / INDUSTRIES: Air conditioning; Fire Fighting; Booster service; Water; Brine, Oils etc.\nSTANDARDS & CERTIFICATIONS: Conforming to DIN 24255\nNOT IN DOCUMENT: power rating; voltage; efficiency figures; IP class; certifications / type tests\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: End Suction Pump, SERIES : CE\nCATEGORY: pumps",
+          "umps\nRANGE: Delivery Size up to 200 mm; Capacity up to 850 m\u00b3 /hr; Head up to 850 metres; Temperature (-) 40\u00b0C to 140\u00b0C\nKEY SPECS: Delivery Size up to 200 mm; Capacity up to 850 m\u00b3 /hr; Head up to 850 metres; Temperature (-) 40\u00b0C to 140\u00b0C\nKEY FEATURES: Gland packed/Mechanical Seal; Suction flange can be directed left or right; Enclosed impellers; Also available in Vertical Execution\nAPPLICATIONS / INDUSTRIES: Fire-fighting; Booster Service; Mine Dewatering; Boiler feed; Sprinkler Irrigation\nNOT IN DOCUMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf",
+          "s; certifications / type tests\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: End Suction Pump, SERIES : CE\nCATEGORY: pumps\nRANGE: Delivery Size upto 125 mm; Capacity up to 660 m\u00b3/hr; Head up to 100 meters; Temperature (-) 10\u00b0C to 140\u00b0C\nKEY SPECS: Delivery Size upto 125 mm; Capacity up to 660 m\u00b3/hr; Head up to 100 meters; Temperature (-) 10\u00b0C to 140\u00b0C; Suitable for 3500 / 1500 rpm\nKEY FEATURES: Back Pullout Design; Single stage with back pull-out type design; Suitable for 3500 / 1500 rpm; Gland packed / Mechanical Seal",
+          "& certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Solid Handling Non-Clog Pump, SERIES : SHL\nCATEGORY: pumps\nRANGE: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY SPECS: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY FEATURES: Back pullout design; Integral foot with bearing frame for higher strength; Rugged and sturdy; Heavy duty roller bearing; Inspection hole cover in casing provided"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.3929,
+        "is_correct": false,
+        "keyword_coverage": 0.5,
+        "matched_keywords": [
+          "discharge",
+          "head"
+        ],
+        "missing_keywords": [
+          "m3/hr",
+          "metres"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "pumpsnielbrochure",
+          "nielproductcatalog"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-023",
+      "category": "pumps",
+      "question": "What series of openwell submersible pumps are available and what is their power rating?",
+      "passed": true,
+      "elapsed_ms": 1458.76,
+      "retrieval": {
+        "test_case_id": "RAG-023",
+        "question": "What series of openwell submersible pumps are available and what is their power rating?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 2.9485,
+        "page_hit": true,
+        "chunks_text": [
+          "RY: pumps\nRANGE: Delivery Size upto 100 mm; Head up to 64 meters; Discharge up to 115m3/hr; Power rating 0.37kW - 11 kW\nKEY SPECS: Voltage range 200 - 440v; Delivery Size upto 100 mm; Head up to 64 meters; Discharge up to 115m3/hr; Power rating 0.37kW - 11 kW\nKEY FEATURES: Submerged in the water; Flatter efficiency curve for efficient operation; Can also be used for out of water applications; Replaceable wearing parts and hence longer life\nAPPLICATIONS / INDUSTRIES: Irrigation - conventional & sprinkles; Gardening; Fountains; Wells; Sumps and water tanks etc.\nNOT IN DOCUMENT: efficiency figures; IP class; standards & certifications",
+          "e impellers as optional; Top flat efficiency curve to enhance minimum variation in efficiency in entire operating range\nAPPLICATIONS / INDUSTRIES: Irrigation; Agriculture; Water supply; Utility; Cooling Tower; Industrial Uses etc.\nNOT IN DOCUMENT: voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Open well Submersible Pump, SERIES : KOS+\nCATEGORY: pumps\nRANGE: Delivery Size upto 100 mm; Head up to 64 meters; Discharge up to 115m3/hr; Power rating 0.37kW - 11 kW",
+          "Suitable for Borewell dia 100 mm / 150 mm; Capacity up to 72 m\u00b3/hr; Head upto 249 metres; Power rating 0.37 kW to 15 kW\nKEY SPECS: Borewell dia 100 mm / 150 mm; Capacity up to 72 m\u00b3/hr; Head upto 249 metres; Power rating 0.37 kW to 15 kW\nKEY FEATURES: Light Weight and compact; Multistage; High speed; Radial flow / Mixed flow; Low power consumption per stage; Can be installed Horizontally also\nAPPLICATIONS / INDUSTRIES: Agriculture; Irrigation - Conventional and Sprinkler; Booster application; Water Supply schemes for industries; Construction\nNOT IN DOCUMENT: voltage; efficiency figures; IP class; standards & certifications",
+          "ot, suction and delivery nozzles; Grease lubricated deep groove ball bearings; Easy maintenance and spares availability\nAPPLICATIONS / INDUSTRIES: Drying & Evaporation; Distillation & Filtration; Sterilsation; Evacuation of air from suction pipes and chambers; Priming of large pumps\nNOT IN DOCUMENT: voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Submersible Pump, SERIES : Champion\nCATEGORY: pumps\nRANGE: Suitable for Borewell dia 100 mm / 150 mm; Capacity up to 72 m\u00b3/hr; Head upto 249 metres; Power rating 0.37 kW to 15 kW",
+          "table for belt drive; Electric motor / Engine drive; Suction lift upto 7.5 mtrs.; Single / Two Stage end suction design\nAPPLICATIONS / INDUSTRIES: Irrigation; Water supply; Agriculture; Utility; cooling tower\nNOT IN DOCUMENT: voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Self Priming Pump, SERIES : SP/SPM\nCATEGORY: pumps\nRANGE: Delivery Size up to 150 mm; Capacity up to 275 m\u00b3/hr; Head up to 34 metres; Power Rating 0.75 kW to 19.5 kW\nKEY SPECS: Delivery Size up to 150 mm; Capacity up to 275 m\u00b3/hr; Head up to 34 metres; Power Rating 0.75 kW to 19.5 kW"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.5208,
+        "is_correct": true,
+        "keyword_coverage": 0.6667,
+        "matched_keywords": [
+          "KOS+",
+          "submersible"
+        ],
+        "missing_keywords": [
+          "openwell"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "pumpsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-024",
+      "category": "pumps",
+      "question": "What series of liquid ring vacuum pumps does NIEL provide?",
+      "passed": false,
+      "elapsed_ms": 1128.84,
+      "retrieval": {
+        "test_case_id": "RAG-024",
+        "question": "What series of liquid ring vacuum pumps does NIEL provide?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 2.9485,
+        "page_hit": false,
+        "chunks_text": [
+          "ss; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Vacuum Pump, SERIES : KV / DV\nCATEGORY: pumps\nRANGE: Vacuum up to 650 mm of Mercury; Air flow rate up to 162 m\u00b3/hr; Power rating 0.75 kW to 7.5 kW\nKEY SPECS: Vacuum up to 650 mm of Mercury; Air flow rate up to 162 m\u00b3/hr; Power rating 0.75 kW to 7.5 kW; 1 to 2 HP in mono block design\nKEY FEATURES: 1 to 2 HP in mono block Design; Sturdy casing, provided with foot, suction and delivery nozzles; Grease lubricated deep groove ball bearings; Easy maintenance and spares availability",
+          "& certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Solid Handling Non-Clog Pump, SERIES : SHL\nCATEGORY: pumps\nRANGE: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY SPECS: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY FEATURES: Back pullout design; Integral foot with bearing frame for higher strength; Rugged and sturdy; Heavy duty roller bearing; Inspection hole cover in casing provided",
+          "KEY SPECS: Delivery Size up to 150 mm; Capacity up to 275 m\u00b3/hr; Head up to 34 metres; Power Rating 0.75 kW to 19.5 kW\nKEY FEATURES: Back pull-out design; Self - priming; Available in monoblock version also; Non - Clogging impeller to handle suspended solids; Suitable for coupling with motor or engine\nAPPLICATIONS / INDUSTRIES: Sewage / Muddy water; Rain and Storm Water; Petroleum Products; Liquids with Solids in suspension; Light Slurries\nNOT IN DOCUMENT: voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Vacuum Pump, SERIES : KV / DV\nCATEGORY: pumps",
+          "ot, suction and delivery nozzles; Grease lubricated deep groove ball bearings; Easy maintenance and spares availability\nAPPLICATIONS / INDUSTRIES: Drying & Evaporation; Distillation & Filtration; Sterilsation; Evacuation of air from suction pipes and chambers; Priming of large pumps\nNOT IN DOCUMENT: voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Submersible Pump, SERIES : Champion\nCATEGORY: pumps\nRANGE: Suitable for Borewell dia 100 mm / 150 mm; Capacity up to 72 m\u00b3/hr; Head upto 249 metres; Power rating 0.37 kW to 15 kW",
+          "LICATIONS / INDUSTRIES: Effluents; Sewage; Viscous and contaminated liquids containing solids in suspension; Paper Pulp\nNOT IN DOCUMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Submersible Sewage Pump, SERIES : NS\nCATEGORY: pumps\nRANGE: Delivery Size up to 200 mm; Capacity up to 750 m\u00b3/hr; Head up to 48 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY SPECS: Delivery Size up to 200 mm; Capacity up to 750 m\u00b3/hr; Head up to 48 metres; Temperature (-) 10\u00b0C to 90\u00b0C; Permissible solid size up to 105 mm; 50 HZ / 60 HZ availability"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.5238,
+        "is_correct": false,
+        "keyword_coverage": 0.3333,
+        "matched_keywords": [
+          "vacuum"
+        ],
+        "missing_keywords": [
+          "KV",
+          "DV"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.7,
+        "source_hit": true,
+        "page_hit": false,
+        "cited_sources": [
+          "pumpsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-025",
+      "category": "pumps",
+      "question": "What liquid temperature range can NIEL vertical in-line multistage pumps handle?",
+      "passed": false,
+      "elapsed_ms": 1171.32,
+      "retrieval": {
+        "test_case_id": "RAG-025",
+        "question": "What liquid temperature range can NIEL vertical in-line multistage pumps handle?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "NIEL - STEEL.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "NIEL Product Catalog.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          3,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 1.0,
+        "ndcg_at_k": 2.0616,
+        "page_hit": false,
+        "chunks_text": [
+          "hr; Head up to 48 metres; Temperature (-) 10\u00b0C to 90\u00b0C; Permissible solid size up to 105 mm; 50 HZ / 60 HZ availability\nKEY FEATURES: Permissible solid size up to 105 mm; Gland packed/Mechanical Seal; Multiple impeller options depending on application; Rugged and sturdy; Portable or stationery installations; 50 HZ / 60 HZ availability\nAPPLICATIONS / INDUSTRIES: Effluents; Waste water; Storm water; Raw sewage\nNOT IN DOCUMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Horizontal Multistage Pump, SERIES : RKB\nCATEGORY: pumps",
+          "& certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Solid Handling Non-Clog Pump, SERIES : SHL\nCATEGORY: pumps\nRANGE: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY SPECS: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY FEATURES: Back pullout design; Integral foot with bearing frame for higher strength; Rugged and sturdy; Heavy duty roller bearing; Inspection hole cover in casing provided",
+          "mtrs. Temperature : (-) 10 o C to 100 o C Back pull - out design Conforming to DIN 24255 End Suction Gland packed / Mechanical seal 3500 to 1500 rpm Available in various material combinations Air conditioning Fire Fighting Booster service Water Brine, Oils etc. Horizontal Axially Split Casing Pump SERIES : UP/UPL/UPH/UP (T) Delivery Size : up to 1100 mm Capacity : up to 20,000 m\u00b3/hr Head range : up to 160 metres Temperature : (-) 10 o C to 90 o C Gland packed/Mechanical Seal Easy maintenance Rugged and sturdy Bottom Suction branch Low NPSH Water supply Irrigation Air-conditioning Power plants APPLICATION FEATURES RANGEAPPLICATION FEATURES RANGE Pumps & Valves",
+          "ds & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Horizontal Multistage Pump, SERIES : RKB\nCATEGORY: pumps\nRANGE: Delivery Size upto 250 mm; Capacity up to 850 m\u00b3/hr; Heads up to 850 metres; Temperature (-) 40\u00b0C to 140\u00b0C\nKEY SPECS: Delivery Size upto 250 mm; Capacity up to 850 m\u00b3/hr; Heads up to 850 metres; Temperature (-) 40\u00b0C to 140\u00b0C\nKEY FEATURES: Gland packed/Mechanical Seal; Suction flange can be directed left or right; Enclosed impellers; Also available in Vertical execution\nAPPLICATIONS / INDUSTRIES: Fire-fighting; Booster Service; Mine Dewatering; Boiler feed; Sprinkler Irrigation",
+          "umps\nRANGE: Delivery Size up to 200 mm; Capacity up to 850 m\u00b3 /hr; Head up to 850 metres; Temperature (-) 40\u00b0C to 140\u00b0C\nKEY SPECS: Delivery Size up to 200 mm; Capacity up to 850 m\u00b3 /hr; Head up to 850 metres; Temperature (-) 40\u00b0C to 140\u00b0C\nKEY FEATURES: Gland packed/Mechanical Seal; Suction flange can be directed left or right; Enclosed impellers; Also available in Vertical Execution\nAPPLICATIONS / INDUSTRIES: Fire-fighting; Booster Service; Mine Dewatering; Boiler feed; Sprinkler Irrigation\nNOT IN DOCUMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.3333,
+        "is_correct": false,
+        "keyword_coverage": 0.3333,
+        "matched_keywords": [
+          "temperature"
+        ],
+        "missing_keywords": [
+          "-15",
+          "120"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.7,
+        "source_hit": true,
+        "page_hit": false,
+        "cited_sources": [
+          "nielsteel",
+          "pumpsnielbrochure",
+          "nielproductcatalog"
+        ],
+        "cited_pages": [
+          1,
+          3
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-026",
+      "category": "multi_attribute",
+      "question": "What are the synchronous speed and pole configurations available for NIEL 50Hz induction motors?",
+      "passed": false,
+      "elapsed_ms": 1301.22,
+      "retrieval": {
+        "test_case_id": "RAG-026",
+        "question": "What are the synchronous speed and pole configurations available for NIEL 50Hz induction motors?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL Product Catalog.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.6,
+        "mrr": 0.5,
+        "ndcg_at_k": 1.4485,
+        "page_hit": true,
+        "chunks_text": [
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV",
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "otors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV\nKEY SPECS: RPM 1500/1000/ 750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP22/IP55; Cooling IC 01/411/511/611; Duty SI (as printed)\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Flame Proof Motors\nCATEGORY: motors\nRANGE: 0.37 to 350 kW; 380 & 415Volts\nKEY SPECS: RPM 3000/1500/1000/750; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB",
+          "certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors\nKEY FEATURES: Vertical Hollow Shaft Motors; Roller Table Motors; Increased Safety Motors; Non-Sparking Motors; Textile and Loom Motors; 60Hz Motors\nAPPLICATIONS / INDUSTRIES: Textile and Loom Motors and Roller Table Motors are named as types; no other applications stated\nNOT IN DOCUMENT: range, key specs, applications / industries, standards & certifications\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.1,
+        "is_correct": false,
+        "keyword_coverage": 0.0,
+        "matched_keywords": [],
+        "missing_keywords": [
+          "3000",
+          "1500",
+          "1000",
+          "750",
+          "600",
+          "rpm"
+        ],
+        "faithfulness_score": 0.0,
+        "is_faithful": false,
+        "unsupported_claims": [
+          "I'm sorry, but the current technical catalog does not specify the synchronous speed and pole configurations for NIEL 50Hz induction motors"
+        ]
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielproductcatalog",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-027",
+      "category": "multi_attribute",
+      "question": "What vector groups are used for NIEL distribution and power transformers?",
+      "passed": false,
+      "elapsed_ms": 1478.08,
+      "retrieval": {
+        "test_case_id": "RAG-027",
+        "question": "What vector groups are used for NIEL distribution and power transformers?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Transformers.txt",
+          "NIEL Product Catalog.txt",
+          "NIEL Product Catalog.txt",
+          "Transformers.txt",
+          "Transformers.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
+          "UMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: DISTRIBUTION TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV\nKEY SPECS: Off-circuit tap changer to provide+5% to - 10%; On-load tap changer to provide +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuos duty (as printed); Copper wound / Aluminium wound\nKEY FEATURES: Copper wound / Aluminium wound; Off-circuit and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards;",
+          "t and on-load tap changer options; HV side cable box; LV side cable box / bus duct; Painting as per IS / IEC standards; Standard fittings as per IS 2026 / IEC 76\nSTANDARDS & CERTIFICATIONS: Standard fittings as per IS 2026 / IEC 76; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA / MVA rating; efficiency figures (\"High Efficiency\" is stated without numbers); impedance; certifications / type tests; applications / industries\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: POWER TRANSFORMERS\nCATEGORY: transformers\nRANGE: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV",
+          "as per IS 2026 / IEC 76; specifications conform to relevant IS / BS & IEC Standards; painting as per IS / IEC standards\nNOT IN DOCUMENT: kVA rating; efficiency/losses; cooling type; IP class; type-test or certification details; item-specific applications\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Power Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 66kV & 111kV, 3 Phase, 50 Hz (MVA not stated; \"111kV\" as printed)\nKEY SPECS: 3Phase, 50 Hz; Off-circuit tap changer \u00b1 5% to - \u00b1 7.5% & \u00b1 5% to - 10% taps in steps of 2.5% [plus/minus symbols as printed, partly unclear];",
+          "urrent rating; efficiency/losses; IP class; type-test or certification details\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Cast Resin (Dry Type) Transformers\nCATEGORY: transformers\nRANGE: 11 kV / 433 V, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: Cast resin dry type transformer 11 kV / 433 V, 3 Phase, 50 Hz; Off circuit tap links + 5% in steps of 2.5%; Class F and H insulation; HV Delta connected, LV Star Connected with Dyn 11 vector group; Duty cycle continuous; Enclosure IP 23 to IP 33 and as per customer specifications"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.375,
+        "is_correct": false,
+        "keyword_coverage": 0.5,
+        "matched_keywords": [
+          "vector"
+        ],
+        "missing_keywords": [
+          "Dyn11"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.85,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielproductcatalog",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-028",
+      "category": "multi_attribute",
+      "question": "What enclosure protection rating is provided on Power+ V switchgear panels?",
+      "passed": false,
+      "elapsed_ms": 982.76,
+      "retrieval": {
+        "test_case_id": "RAG-028",
+        "question": "What enclosure protection rating is provided on Power+ V switchgear panels?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "page_hit": true,
+        "chunks_text": [
+          ". Note: features text says \"IP5X\" externally while the table says IP54\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ FO (Kiosk Type Power+ VO & FO, outdoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV; busbar current 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current 3000 A; Short time 40 KA; Withstand Current 100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 800x1450x2350 mm; Degree of Protection: Enclosure IP54, Between Compartments IP2X; Weight with Breaker (App) 1000 KG",
+          "SOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ V (Switchgear Type Power+ V/F, VCB panel, indoor)\nCATEGORY: switchgear\nRANGE: 3.3 to 12 KV rated voltage (product range lists \"VCB Panels Indoor type up to 12 KV\"); busbar current Upto 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current Upto 3000 A; Short time 26.2/40 KA; Withstand Current 66/100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 600x1450x2350 mm and 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 750 KG",
+          "IES: Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type Tested for BIL and short circuit as per IEC 62271/200/2003 (stated for the series); specifications conform to relevant IS / BS & IEC Standards\nNOT IN DOCUMENT: Withstand Current; efficiency; frame sizes; V3 is not in the product range list; item-specific applications\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ VO (Kiosk Type Power+ VO & FO, outdoor VCB)\nCATEGORY: switchgear",
+          "from the \"up to 36 KV\" in the product range text; both are as printed\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F3 (Switchgear Type Power+ V/F, SF6 panel)\nCATEGORY: switchgear\nRANGE: 36 KV rated voltage (product range lists \"SF6 Panels Outdoor type up to 36 KV\"); busbar current 2000 A\nKEY SPECS: Rated Voltage 36 KV; Rated Frequency 50 Hz; Rated Busbar Current 2000 A; Short time 31.5 KA; Withstand Current [blank in table]; Insulation Levels 70/140 KVrms/KVp; Dimensions LxDxH 1220x2300x2300 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X; Weight with Breaker (App) 1300 KG",
+          "me sizes; rated current of feeders/breaker; item-specific applications\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ F (Switchgear Type Power+ V/F, SF6 panel, indoor)\nCATEGORY: switchgear\nRANGE: Table: 3.3 to 12 KV. Product range text: \"SF6 Panels Indoor type up to 36 KV\" (page heading: 3.3 KV to 36 KV). Busbar current 3000 A\nKEY SPECS: Rated Voltage 3.3 to 12 KV; Rated Frequency 50 Hz; Rated Busbar Current 3000 A; Short time 40 KA; Withstand Current 100 KAb; Insulation Levels 28/75 KVrms/KVp; Dimensions LxDxH 800x1450x2350 mm; Degree of Protection: Enclosure IP4X, Between Compartments IP2X;"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.45,
+        "is_correct": false,
+        "keyword_coverage": 0.5,
+        "matched_keywords": [
+          "IP4X"
+        ],
+        "missing_keywords": [
+          "IP54"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "switchgearpanelsmvnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-029",
+      "category": "cross_document",
+      "question": "Does NIEL supply both transformers and switchgear for containerised secondary substations?",
+      "passed": true,
+      "elapsed_ms": 1258.09,
+      "retrieval": {
+        "test_case_id": "RAG-029",
+        "question": "Does NIEL supply both transformers and switchgear for containerised secondary substations?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Transformers.txt",
+          "Transformers.txt",
+          "Substation.pdf",
+          "NIEL - STEEL.pdf",
+          "Transformers - NIEL Brochure.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          2,
+          7,
+          4
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.4,
+        "mrr": 0.3333,
+        "ndcg_at_k": 0.5438,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Distribution Transformers\nCATEGORY: transformers\nRANGE: 11 kV, 22kV and 33kV, 3 Phase, 50 Hz (kVA not stated)\nKEY SPECS: 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV; Off-circuit tap changer +5% to - 10%; On-load tap changer +7% to - 21% taps in steps of 1.75%; Class A insulated; Vector group Dyn 11; Continuous duty; Copper wound / Aluminium wound\nKEY FEATURES: HV side cable box; LV side cable box / bus duct; painting as per IS / IEC standards; standard fittings as per IS 2026 / IEC 76; copper or aluminium winding option;",
+          "CERTIFICATIONS: Painting shades as per IS and IEC standards; specifications conform to relevant IS / BS & IEC Standards\nNOT IN DOCUMENT: kVA rating; efficiency/losses; type-test or certification details; item-specific applications\nSOURCE: Transformers_-_NIEL_Brochure.pdf\nPRODUCT: Containerised Secondary Substations (CSS)\nCATEGORY: substation\nRANGE: Houses distribution transformers up to 1250 KVA / 24 KV\nKEY SPECS: Degree of protection standard IP23D per IEC 60529; also stated \"Meets IP53 / IP23\"; optional IP54 door by including gaskets and excluding door ventilation openings; natural ventilation cooling;",
+          "oupled with highly experienced team will deliver a high technology solution considering practical utility interface and plant operation requirements. With over 30+ years of experience in projects & electrical industry, NIEL designs projects to minimize project cycle time and optimize life cycle cost our team is trained to incorporate the latest standards and equipment, while ensuring all technical needs are met. With extensive network of field engineering offices and service centers of all our Partner suppliers we can assure a high level of after-sales & service reliability. Power transformers, Breakers, Isolators, Lighting Arrestors, CVT, CT, PT, ACSR Conductors, Connectors, Medium Voltage panels, Control panels,",
+          "Substations A platform for total Substation Design & Construction services on TURNKEY basis upto 400 kv As smaller units are becoming uneconomical investors are now setting up larger capacities and integrated plants. This calls for plants to manage larger power infrastructures. We at NIEL have stepped up our capabilities to enable our customers to do this. Our customers have put their faith in us and today we can claim to have erected and completed over 40 Substations upto 230KV Class all over the world. Be it a Generating Substation, Transmission line or a Distribution Station \u2013 we have done them all.",
+          "ormer. The possibility of lifting the substation with the transformer depends on the type of station, the relevant solution and the transformer size. \u00b7 \u00b7 LOW-VOLTAGE SWITCHBOARD Our CSS is designed to house various low voltage solutions in accordance with standard norms and regulations. We use ABB T products to put together a robust and reliable switchboard. CONTAINERISED SECONDARY SUBSTATIONS (CSS) EQUIPMENT IN OUR CSS MEDIUM VOLTAGE SWITCHGEAR TRANSFORMER COMPARTMENT LV COMPARTMENTHV COMPARTMENT SECTION Y-Y SIDE VIEW 2950 Y Y FRONT VIEW 2000 2850 2100 2100 ALL DIMENSIONS ARE IN mm Power House, # 18, J.C. Road, Bangalore - 560 002."
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.7692,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "substation",
+          "transformer",
+          "switchgear",
+          "CSS"
+        ],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielsteel",
+          "substation",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          2,
+          4,
+          7
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-030",
+      "category": "cross_document",
+      "question": "Can NIEL provide turnkey electrical packages for steel rolling mills including motors and drives?",
+      "passed": true,
+      "elapsed_ms": 1414.41,
+      "retrieval": {
+        "test_case_id": "RAG-030",
+        "question": "Can NIEL provide turnkey electrical packages for steel rolling mills including motors and drives?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Substation.pdf",
+          "NIEL - STEEL.pdf",
+          "NIEL - STEEL.pdf",
+          "NIEL - STEEL.pdf",
+          "NIEL - STEEL.pdf"
+        ],
+        "retrieved_pages": [
+          2,
+          2,
+          1,
+          7,
+          2
+        ],
+        "recall_at_k": 0.5,
+        "precision_at_k": 0.8,
+        "mrr": 0.5,
+        "ndcg_at_k": 1.1947,
+        "page_hit": true,
+        "chunks_text": [
+          "oupled with highly experienced team will deliver a high technology solution considering practical utility interface and plant operation requirements. With over 30+ years of experience in projects & electrical industry, NIEL designs projects to minimize project cycle time and optimize life cycle cost our team is trained to incorporate the latest standards and equipment, while ensuring all technical needs are met. With extensive network of field engineering offices and service centers of all our Partner suppliers we can assure a high level of after-sales & service reliability. Power transformers, Breakers, Isolators, Lighting Arrestors, CVT, CT, PT, ACSR Conductors, Connectors, Medium Voltage panels, Control panels,",
+          "of the equipment. Our Equipments are manufactured under most stringent quality processes with a clear focus on performance reliability and longevity. Motors: We can offer the full complement of Motors for all STEEL and Power plant applications. Right from a High Voltage 10MW Mill Main Drive motor to 1MW DC Mill Stand motor to the Sophisticated and robust Shear Motors to Fan Drive - Squirrel Cage TEFC motors to Roller table motors and right upto the Pump drive / Water complex SPDP motors. We have it all. THREE PHASE INDUCTION MOTORS Range : Upto 8000KW Voltage : 415/660/3300/6600/11000V RPM : 3000/1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 22 / IP 55 Cooling : IC",
+          "END-TO-END ELECTRICALS FOR STEEL & POWER PROJECTS MOTORS INTEGRATED STEEL PLANTS PUMPS SPONGE IRON PLANTS PANELS STEEL MELT SHOPS SWITCHGEARS ROLLING MILLS TRANSFORMERS PALLETISATION SUBSTATIONS DRI SINCE 1969",
+          ", construction management and site supervision Engineer, procure, construct (EPC) package & utility coordination. Packaged electrical control houses. Field engineering and repair services Accepting single-source design/build responsibility In a service industry where deadlines are often missed and budgets are overrun, NIEL has a proven record of on time completion, while consistently finishing at or below original project budgets. Maintaining technology leadership Provides optimal solutions to customer\u2019s application needs. Our system integration capability coupled with highly experienced teams will deliver a high technology solution considering practical utility interface and plant operation requirements.",
+          "STEEL & POWER are two sides of a coin. INSEPARABLE. We have been associated with the development of the STEEL Industry over the last 45 years. Since our inception in 1969, NIEL has been involved very closely with developing equipments and import substitutes for STEEL producers of the country. The philosophy of using India\u2019s engineering to develop larger and larger motors was something old timers will remember about us. We were in the forefront to help develop higher capacity Mill Duty Motors and Controls. The tradition is still on and even today we are always pursuing to bring newer technologies and friendlier solutions to STEEL makers in India and abroad."
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.8333,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [
+          "steel",
+          "rolling",
+          "motor",
+          "drive"
+        ],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.65,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielsteel",
+          "substation"
+        ],
+        "cited_pages": [
+          1,
+          2,
+          7
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-031",
+      "category": "company_info",
+      "question": "Where is New India Electricals Limited headquartered and what is their background?",
+      "passed": true,
+      "elapsed_ms": 2292.92,
+      "retrieval": {
+        "test_case_id": "RAG-031",
+        "question": "Where is New India Electricals Limited headquartered and what is their background?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Company Intro.txt",
+          "Company Intro - New India Electricals Limited.pdf",
+          "NIEL - STEEL.pdf",
+          "Company Intro.txt",
+          "Company Intro.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          2,
+          8,
+          1,
+          1
+        ],
+        "recall_at_k": 0.5,
+        "precision_at_k": 0.2,
+        "mrr": 0.5,
+        "ndcg_at_k": 0.3869,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: Company_Intro_-_New_India_Electricals_Limited.pdf\nCOMPANY OVERVIEW:\nNew India Electricals Limited, established in 1969 and based in Bengaluru, India, describes itself as a leading electrical equipment manufacturer and exporter with over 55 years of service to heavy industry (mining, steel, cement, power & utility) across Africa, Asia and the Middle East.\nIt exports to more than 45 countries and has been awarded Star Export House status by the Indian Ministry of Commerce and Industry.\nPrimary focus: the mining industry, steel mills and utility companies, apart from other large industrial sectors.",
+          "New India Electricals Limited, established in 1969 and based in Bengaluru, India, is a leading electrical equipment manufacturer and exporter with over 55 years of trusted service to heavy industry including mining, steel, cement, and power & utility sectors across Africa, Asia, and the Middle East. We understand the demanding operational requirements of continuous-process, high-load environments, from mineral extraction to steel rolling mills to grid-scale power distribution. New India Electricals Limited exports to more than 45 countries across Africa, Asia, and the Middle East - including Malawi, Zambia, Mozambique, Tanzania, Uganda, Nigeria, South Africa, Egypt, U.A.E., Oman, Bangladesh, Nepal, Myanmar, Sri Lanka, Ghana, etc.",
+          "New India Electricals Ltd. Power House, # 18, J.C. Road, Bangalore - 560 002. INDIA Tel : +91 80 42434343, 22235434 Fax : +91 80 22226666 Mail : National : sales@newindiaelectricals.com International : export@newindiaelectricals.com Site : www.nielgroup.com / www.newindiaelectricals.com Accent Steels (India) Pvt. Ltd. A.C.Steels AKS Alloys (P) Ltd. Anand Electricals & Engineering Co. Anil Steel & Alloys Associated Steel Industries Avtar Foundry & Workshop Balajee Loha Pvt. Limited Bhagyalakshmi Rolling Mill Pvt. Ltd. Bhuwalka Steel Industries (UAE) FZE Bhuwalka Steel Industries Limited BMA Stainlees Ltd. Bunty International Choudhry Rolls Corporartion CRM Steel Dhanalakshmi Re-Rolling Mill Dhanalaxmi Iron Industries Ltd.",
+          "ineers and administrators\n- Geographic reach: exports to more than 45 countries across Africa, Asia and the Middle East\n- Contact: Shreyansh Desai, Director - International Business; +91 9741307999; sdesai@newindiaelectricals.com; website newindiaelectricals.com\nCERTIFICATIONS & TESTING:\n- ISO Certified (standard and certificate details not given)\n- ABB Licensed & Certified; Licensed ABB System House (ABB has certified the factory and directs customers to it)\n- Star Export House status, Indian Ministry of Commerce and Industry\n- Comprehensive type-testing, over-voltage testing and other certifications maintained (per Manufacturing page)",
+          "stry.\nPrimary focus: the mining industry, steel mills and utility companies, apart from other large industrial sectors.\nStated competitive advantages: cost optimization (experience competing with Chinese manufacturers while maintaining superior quality), immediate availability (over 4,000 motors in stock), established brand partnerships, and one-stop electrical solutions (consolidated procurement; for priority customers, purchasing partner for ancillary accessories and non-electrical items).\nCompany details on every page: Tel +91 80 42434343, 22235434; Fax +91 80 22226666; Site www.newindiaelectricals.com; CIN U85110KA1994PLC015512;"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.5833,
+        "is_correct": true,
+        "keyword_coverage": 0.6667,
+        "matched_keywords": [
+          "Bengaluru",
+          "New India Electricals"
+        ],
+        "missing_keywords": [
+          "Bangalore"
+        ],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 0.65,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielsteel",
+          "companyintronewindiaelectricalslimited"
+        ],
+        "cited_pages": [
+          8,
+          1,
+          2
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-032",
+      "category": "ambiguous",
+      "question": "Tell me about your 415V motors.",
+      "passed": true,
+      "elapsed_ms": 3539.85,
+      "retrieval": {
+        "test_case_id": "RAG-032",
+        "question": "Tell me about your 415V motors.",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL - STEEL.pdf",
+          "DC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL - STEEL.pdf",
+          "NIEL Product Catalog.txt"
+        ],
+        "retrieved_pages": [
+          2,
+          1,
+          1,
+          2,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "mrr": 0.3333,
+        "ndcg_at_k": 0.5,
+        "page_hit": true,
+        "chunks_text": [
+          "1 BRAKE MOTORS Range : 0.18 to 20 kW Voltage : 380 & 415 Volts RPM : 1500/1000/750 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 55 Cooling : IC 411 AC/DC Brakes AC MILL DUTY MOTORS Range : 110 to 2000kW Voltage : 0.415/3.3/6.6kV RPM : 1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 23 Cooling : IC 01 Applications: Steel Mills, Rolling Mills, SugarMills, Paper Mills, Cement, Fertilizer AC MOTORS - WOUND ROTOR Range : 7.5 to 20000 kW Voltage : 0.38/0.415/3.3/6.6kV RPM : 1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 22 / IP 55 Cooling : IC 01/411/511/611 Duty : SI DC MOTORS Range : Up to 3000 kW Voltage : 180 to 1000V RPM : 1800/1000/600",
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1",
+          "of the equipment. Our Equipments are manufactured under most stringent quality processes with a clear focus on performance reliability and longevity. Motors: We can offer the full complement of Motors for all STEEL and Power plant applications. Right from a High Voltage 10MW Mill Main Drive motor to 1MW DC Mill Stand motor to the Sophisticated and robust Shear Motors to Fan Drive - Squirrel Cage TEFC motors to Roller table motors and right upto the Pump drive / Water complex SPDP motors. We have it all. THREE PHASE INDUCTION MOTORS Range : Upto 8000KW Voltage : 415/660/3300/6600/11000V RPM : 3000/1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 22 / IP 55 Cooling : IC",
+          "(see panel blocks); applications; certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: THREE PHASE INDUCTION MOTORS\nCATEGORY: motors\nRANGE: Range Upto 8000KW; Voltage 415/660/3300/6600/11000V\nKEY SPECS: RPM 3000/1500/1000/750/600; Insulation Class \"F\"; Mounting Horizontal/Vertical Flange/ Foot cum Flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: efficiency figures; frame sizes; standards & certifications; applications / industries; key features beyond the specs listed\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: AC MOTORS - CAGE ROTOR\nCATEGORY: motors\nRANGE: Range 0.37 to 2500 kW; Voltage 0.38, 0.415/3.3/6.6kV"
+        ]
+      },
+      "answer": {
+        "correctness_score": 0.5429,
+        "is_correct": true,
+        "keyword_coverage": 0.8,
+        "matched_keywords": [
+          "induction",
+          "kW",
+          "foot",
+          "flange"
+        ],
+        "missing_keywords": [
+          "cage"
+        ],
+        "faithfulness_score": 0.9167,
+        "is_faithful": true,
+        "unsupported_claims": [
+          "(NIEL), we offer a range of motors that operate at 415V"
+        ]
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielsteel",
+          "nielproductcatalog",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          2
+        ]
+      },
+      "abstention": {
+        "should_abstain": false,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-033",
+      "category": "unsupported_abstain",
+      "question": "What is the price of the 250 kW AC motor in US Dollars?",
+      "passed": false,
+      "elapsed_ms": 1739.87,
+      "retrieval": {
+        "test_case_id": "RAG-033",
+        "question": "What is the price of the 250 kW AC motor in US Dollars?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "AC Motors - NIEL Brochure.txt",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL - STEEL.pdf",
+          "AC Motors - NIEL Brochure.txt",
+          "DC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "SOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Cage Rotor\nCATEGORY: motors\nRANGE: 0.37 to 20000kw; 0.38, 0.415/3.3/ 6.6kV\nKEY SPECS: RPM 3000/1500/1000/ 750 / 600; Insulation Class \"F\"; Mounting Horizontal/Vertical flange/ Foot cum flange; Enclosure IP 22 / IP 55; Cooling IC 01/411/511/611\nNOT IN DOCUMENT: key features, applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Motors - Wound Rotor\nCATEGORY: motors\nRANGE: 7.5 to 20000kW; 0.38/0.415/3.3/6.6kV",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1",
+          "1 BRAKE MOTORS Range : 0.18 to 20 kW Voltage : 380 & 415 Volts RPM : 1500/1000/750 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 55 Cooling : IC 411 AC/DC Brakes AC MILL DUTY MOTORS Range : 110 to 2000kW Voltage : 0.415/3.3/6.6kV RPM : 1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 23 Cooling : IC 01 Applications: Steel Mills, Rolling Mills, SugarMills, Paper Mills, Cement, Fertilizer AC MOTORS - WOUND ROTOR Range : 7.5 to 20000 kW Voltage : 0.38/0.415/3.3/6.6kV RPM : 1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal Enclosure : IP 22 / IP 55 Cooling : IC 01/411/511/611 Duty : SI DC MOTORS Range : Up to 3000 kW Voltage : 180 to 1000V RPM : 1800/1000/600",
+          "T: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: AC Mill Duty Motors\nCATEGORY: motors\nRANGE: 110 to 2000kW; 0.415/3.3/6.6kV\nKEY SPECS: RPM 1000/750/600; Insulation Class \"F\"; Mounting Horizontal; Enclosure IP 23; Cooling IC 01\nAPPLICATIONS / INDUSTRIES: Steel Mills, Rolling Mills, Sugar Mills, Paper Mills, Cement, Fertilizer\nNOT IN DOCUMENT: key features, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Special Motors\nCATEGORY: motors",
+          "SOURCE: DC Motors - NIEL Brochure.pdf\nPRODUCT: DC Motors and Drives\nCATEGORY: motors\nRANGE: KW 0.37 to 6500; Frame 80 to 1000; Armature Voltage 110 to 1100V; Excitation Voltage 180 to 360V\nKEY SPECS: Duty S1/S3/S5; Insulation F/H; Enclosure IP23/44/54/55; Cooling IC01/06/17/37/0041/066/W37A86/44; Mounting B3 (Foot)/B35 (Foot Cum Flange)/B5 (Flange)\nKEY FEATURES: Rugged and Reliable; High Efficiency; Improved Cooling Systems; High Torque to Weight Ratio; Spacious Terminal Box; Custom Built Designs, Low Noise, Vacuum Pressure Impregnation, High Dynamic Response"
+        ]
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 0.0,
+        "is_faithful": false,
+        "unsupported_claims": [
+          "However, I can't provide specific pricing for the 250 kW AC motor, as commercial quotes depend on various factors such as project requirements, capacity, and volume",
+          "com or by calling +91 80 42434343 for a detailed quote tailored to your needs"
+        ]
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielsteel",
+          "dcmotorsnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          2
+        ]
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": false
+      }
+    },
+    {
+      "id": "RAG-034",
+      "category": "unsupported_abstain",
+      "question": "Do you manufacture lithium-ion battery cells for electric passenger vehicles?",
+      "passed": false,
+      "elapsed_ms": 1200.98,
+      "retrieval": {
+        "test_case_id": "RAG-034",
+        "question": "Do you manufacture lithium-ion battery cells for electric passenger vehicles?",
+        "top_k": 5,
+        "retrieved_count": 3,
+        "retrieved_sources": [
+          "Switchgear Panels MV - NIEL Brochure.pdf",
+          "Substation.txt",
+          "Transformers - NIEL Brochure.pdf"
+        ],
+        "retrieved_pages": [
+          2,
+          1,
+          2
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "We shall help you make decisions regarding your needs right from the early design stage, to the actual delivery phase and throughout its life cycle. Our field of expertise covers the entire END-toEND solution for POWER DISTRIBUTION & TRANSMISSION upto 400KV. Design, Manufacture, Source, Supply, Erect, Test, Commission, Handover & Maintain. Our equipments are manufactured under the most stringent quality processes with a clear focus on performance and longevity. This is why we source sub components from global leaders like ABB, AREV A, SIEMENS, ALSTHOM and the like. We design and manufacture Metal Clad Medium Voltage Panels with a simple philosophy of: Longevity & Reliability. Our Specifications conform to relevant IS / BS & lEC Standards.",
+          "ltage panels, Control panels, Protective Relay & Power Management systems, Battery & Chargers, Capacitor Systems & etc.\nKEY FEATURES: Full Engineering Design and project implementation services; Application engineering and detailed electrical system design; Project management, scheduling, tracking, construction management and site supervision; Engineer, procure, construct (EPC) package & utility coordination; Packaged electrical control houses; Field engineering and repair services\nAPPLICATIONS / INDUSTRIES: Diagram labels: Generation, Transmission, Distribution, Utilization, Residential, Industrial; plants and factories.",
+          "We shall help you make decisions regarding your needs right from the early design stage, to the actual delivery phase and throughout its life cycle. Our field of expertise covers the entire END-toEND solution for POWER DISTRIBUTION & TRANSMISSION upto '400KV. Design, Manufacture, Source, Supply, Erect, Test, Commission, Handover & Maintain. Our equipments are manufactured under the most stringent quality processes with a clear focus on performance and longevity. This is why we source sub components from global leaders like ABB, AREV A, SIEMENS, ALSTHOM and the like. We design and manufacture transformer with a simple philosophy of: Longevity & Reliability. Our Specifications conform to relevant IS / BS & lEC Standards."
+        ]
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "switchgearpanelsmvnielbrochure",
+          "transformersnielbrochure",
+          "substation"
+        ],
+        "cited_pages": [
+          1,
+          2
+        ]
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": false
+      }
+    },
+    {
+      "id": "RAG-035",
+      "category": "unsupported_abstain",
+      "question": "What is the warranty period for domestic home kitchen blenders?",
+      "passed": true,
+      "elapsed_ms": 10.64,
+      "retrieval": {
+        "test_case_id": "RAG-035",
+        "question": "What is the warranty period for domestic home kitchen blenders?",
+        "top_k": 5,
+        "retrieved_count": 0,
+        "retrieved_sources": [],
+        "retrieved_pages": [],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": []
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [],
+        "cited_pages": []
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-036",
+      "category": "unsupported_abstain",
+      "question": "What is the exact stock quantity of frame 315M motors in your warehouse today?",
+      "passed": false,
+      "elapsed_ms": 1541.05,
+      "retrieval": {
+        "test_case_id": "RAG-036",
+        "question": "What is the exact stock quantity of frame 315M motors in your warehouse today?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Company Intro - New India Electricals Limited.pdf",
+          "AC Motors - NIEL Brochure.pdf",
+          "Company Intro - New India Electricals Limited.pdf",
+          "AC Motors - NIEL Brochure.txt",
+          "NIEL - STEEL.pdf"
+        ],
+        "retrieved_pages": [
+          4,
+          2,
+          5,
+          1,
+          2
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "Our Competitive Advantages 1. Cost Optimization Having served price-sensitive markets across Africa, Asia, and the Middle East for decades, we understand the optimization pressures facing heavy industrial and utility operations as the need to manage cost structures increases. Our experience competing with Chinese manufacturers while maintaining superior quality positions us ideally for an increasingly cost-conscious industry. 2. Immediate Availability Our extensive inventory includes over 4,000 motors of various sizes ready for immediate shipment from our three warehouses in Bangalore. This inventory approach minimizes downtime - critical in operations where every hour of lost production represents signi\ufb01cant revenue loss. 3.",
+          "NIE/EXP/M&G/0908 BRAKE MOTORS HELICAL SHAFT MOUNTED DRIVES DC MOTORS GEARED MOTORS AC MILL DUTY MOTORS SPECIAL MOTORS AC MOTORS - WOUND ROTOR FLAME PROOF MOTORS WORM GEAR BOX CRANE DUTY MOTORS CYCLOIDAL DRIVES AC MOTORS - CAGE ROTOR Power House, # 18, J.C. Road, Bangalore - 560 002. INDIA Tel : +91 80 42434343, 22235434 Fax : +91 80 22226666 Mail : National : sales@newindiaelectricals.com International : export@newindiaelectricals.com Site : www.nielgroup.com / www.newindiaelectricals.com",
+          "arehouse Network : Three stocking warehouses around Bangalore storing extensive ready inventory \u25cf Corporate O\ufb03ces \u25cb Company Headquarters - Bangalore, India \u25cb Other Locations in India - Mumbai, Raipur \u25cb Africa Headquarters - Malawi Contact Information: \u25cf Shreyansh Desai - Director - International Business: +91 9741307999 sdesai@newindiaelectricals.com \u25cf Website: newindiaelectricals.com Product Portfolio (individual PDF catalogs) AC Motors & DC Motors Pumps Transformers Panels & Switchgear Substations Other content:",
+          "PRODUCT: DC Motors (summary in Motors & Gears brochure)\nCATEGORY: motors\nRANGE: Up to 3000 kW; DC Voltage 180 to 1000V\nKEY SPECS: RPM 1800/1000/600; Insulation Class \"F\" / \"H\"; Mounting Horizontal Foot / Vertical flange; Enclosure IP 21/22/23/44; Cooling IC 01/06/0041/ 0141/0666; Types Laminated / Solid yoke; Duty S1/ S4\nKEY FEATURES: Laminated or Solid yoke types\nNOT IN DOCUMENT: applications / industries, standards & certifications, efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Worm Gear Box\nCATEGORY: gearboxes\nRANGE: Power 0.25 to 140kW; Reduction Ratios 5:1 to 4900:1",
+          "of the equipment. Our Equipments are manufactured under most stringent quality processes with a clear focus on performance reliability and longevity. Motors: We can offer the full complement of Motors for all STEEL and Power plant applications. Right from a High Voltage 10MW Mill Main Drive motor to 1MW DC Mill Stand motor to the Sophisticated and robust Shear Motors to Fan Drive - Squirrel Cage TEFC motors to Roller table motors and right upto the Pump drive / Water complex SPDP motors. We have it all. THREE PHASE INDUCTION MOTORS Range : Upto 8000KW Voltage : 415/660/3300/6600/11000V RPM : 3000/1500/1000/750/600 Insulation : Class \u201cF\u201d Mounting : Horizontal/Vertical Flange/ Foot cum Flange Enclosure : IP 22 / IP 55 Cooling : IC"
+        ]
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 0.0,
+        "is_faithful": false,
+        "unsupported_claims": [
+          "I'm sorry, but the current technical catalogue does not specify the exact stock quantity of frame 315M motors in our warehouse"
+        ]
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "nielsteel",
+          "companyintronewindiaelectricalslimited"
+        ],
+        "cited_pages": [
+          1,
+          2,
+          4,
+          5
+        ]
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": false
+      }
+    },
+    {
+      "id": "RAG-037",
+      "category": "unsupported_abstain",
+      "question": "Does NIEL manufacture rocket turbopumps for space launch vehicles?",
+      "passed": false,
+      "elapsed_ms": 1370.3,
+      "retrieval": {
+        "test_case_id": "RAG-037",
+        "question": "Does NIEL manufacture rocket turbopumps for space launch vehicles?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL Product Catalog.txt",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf",
+          "Pumps - NIEL Brochure.pdf"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "ications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: Pumps (overview: Centrifugal | Gear | Fire Fighting)\nCATEGORY: pumps\nKEY SPECS: Centrifugal; Gear; Fire Fighting\nKEY FEATURES: In house fully equipped Pump assembly unit\nAPPLICATIONS / INDUSTRIES: Fire Fighting\nNOT IN DOCUMENT: ratings (see individual blocks); standards & certifications\nSOURCE: NIEL Product Catalog.pdf\nPRODUCT: Transformers (overview)\nCATEGORY: transformers\nKEY SPECS: Official Partner: Transformers & Rectifiers (India) Ltd\nKEY FEATURES: Manufactured with specific Low- Loss & High Efficiency designs; alliances made with mature manufacturers to ensure the right quality",
+          "ics; Low NPSW (as printed)\nAPPLICATIONS / INDUSTRIES: Water supply; Irrigation schemas; Air-conditioning; Fire fighting\nNOT IN DOCUMENT: power rating; voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Vertical Turbine Pump, SERIES : BHR / BHQ / BHM / BHMa / BHA\nCATEGORY: pumps\nRANGE: Delivery Size up to 2200 mm; Capacity up to 40,000 m\u00b3/hr; Head range up to 240 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY SPECS: Delivery Size up to 2200 mm; Capacity up to 40,000 m\u00b3/hr; Head range up to 240 metres; Temperature (-) 10\u00b0C to 90\u00b0C",
+          "& certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Solid Handling Non-Clog Pump, SERIES : SHL\nCATEGORY: pumps\nRANGE: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY SPECS: Delivery Size upto 900 mm; Capacity up to 13000 m\u00b3/hr; Head up to 82 metres; Temperature (-) 10\u00b0C to 90\u00b0C\nKEY FEATURES: Back pullout design; Integral foot with bearing frame for higher strength; Rugged and sturdy; Heavy duty roller bearing; Inspection hole cover in casing provided",
+          "- NIEL Brochure.pdf\nPRODUCT: Sluice Valve\nCATEGORY: other (valve)\nRANGE: Size 50 to 1300 mm; Pressure PN 1.0 and PN 1.6\nKEY SPECS: Size 50 to 1300 mm; Pressure PN 1.0 and PN 1.6; Rating PN 16\nKEY FEATURES: Rigid and sturdy design; Low pressure loss; Available in Non Rising as well as in Rising Spindle type; Long service life; Resilient Seated valves available\nAPPLICATIONS / INDUSTRIES: Water; Effluent\nSTANDARDS & CERTIFICATIONS: IS : 780 & IS 2906; PN 16 rating conforming to BS 5163\nNOT IN DOCUMENT: materials of construction, certifications / type tests, temperature rating\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Butterfly Valve",
+          "ot, suction and delivery nozzles; Grease lubricated deep groove ball bearings; Easy maintenance and spares availability\nAPPLICATIONS / INDUSTRIES: Drying & Evaporation; Distillation & Filtration; Sterilsation; Evacuation of air from suction pipes and chambers; Priming of large pumps\nNOT IN DOCUMENT: voltage; efficiency figures; IP class; standards & certifications\nSOURCE: Pumps - NIEL Brochure.pdf\nPRODUCT: Submersible Pump, SERIES : Champion\nCATEGORY: pumps\nRANGE: Suitable for Borewell dia 100 mm / 150 mm; Capacity up to 72 m\u00b3/hr; Head upto 249 metres; Power rating 0.37 kW to 15 kW"
+        ]
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielproductcatalog",
+          "pumpsnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": false
+      }
+    },
+    {
+      "id": "RAG-038",
+      "category": "unsupported_abstain",
+      "question": "What is the discount rate if I purchase 50 units of 11kV switchgear next Monday?",
+      "passed": false,
+      "elapsed_ms": 1789.25,
+      "retrieval": {
+        "test_case_id": "RAG-038",
+        "question": "What is the discount rate if I purchase 50 units of 11kV switchgear next Monday?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "NIEL - STEEL.pdf",
+          "Transformers - NIEL Brochure.pdf",
+          "Transformers - NIEL Brochure.pdf",
+          "Transformers.txt",
+          "NIEL - STEEL.pdf"
+        ],
+        "retrieved_pages": [
+          6,
+          2,
+          3,
+          1,
+          6
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "changer to provide + 5% to - 15% taps in steps of 1.25% Class A, uniform / non-uniform insulated Vector group Dyn 11, YNd 11, YNyn 0 Continuous duty, double copper wound Painting as per IS/IEC standards Both HV & LV side outdoor bushings or cable boxes Cooling radiators / fans. Standard fittings as per IS / IEC standard df Buchholz relay with alarm and trip contact with shut off valves Oil temperature indicator with alarm and trip contact Magnetic oil level gauge with alarm contact Mashalling box to house oil temperature indicator and winding temperature indicator Cooler control unit Neutral current transformer Specification 3Phase, 50 Hz in voltages of 11 kV,",
+          "ormance during surges & frequent short circuits. By Standardising manufacturing techniques we ensure cost effectiveness & reliability in performance. SPECIFICATIONS 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV Off-circuit tap changer to provide + 5% to - 7.5% & 5% to - 10% taps in steps of 2.5% On-load tap changer to provide + 5% to - 15% taps in steps of 1.25% Class A, uniform / non-uniform insulated Vector group Dyn 11, YNd 11, YNyn 0 Continuous duty, double copper wound Painting as per IS/IEC standards Both HV & LV side outdoor bushings or cable boxes Cooling radiators / fans.",
+          "changer to provide +5% to - 15% taps in steps of 1.25% Class A, uniform / non-uniform insulated Vector group Dyn 11, YNd 11, Dd0y11 Continuous duty, double copper wound Painting as per IS / IEC standards Both HV & LV side outdoor bushings / cable box / bus ducts / bus bar risers Standard fittings as per IS / IEC standards \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 \u00b7 MAIN FEATURES Transformers are designed for induction furnace, arc furnace & submerged arc furnace application Magnetic circuit - lamination CRGO M3 to M5 type Electric circuit - electrolytic grade 99.9% pure copper with transposition in LV coil for current sharing in parallel conductors Dielectric circuits - Electric grade press paper,",
+          ", delivery ready for commissioning\nAPPLICATIONS / INDUSTRIES: High density, urban centres (stated as typical locations)\nSTANDARDS & CERTIFICATIONS: Designed in accordance with IEC 61330; design conforms to IEC 62271 - 202; IP degrees per IEC 60529; type-tested equipment used for personal safety\nNOT IN DOCUMENT: Exact enclosure dimensions per model; efficiency/loss figures; MV switchgear ratings (kV/kA); LV switchboard ratings; weight; item-specific certification details\nPAGES READ: 4",
+          "Transformers Specification 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV Off-circuit tap changer to provide+5% to - 10% On-load tap changer to provide +7% to - 21% taps in steps of 1.75% Class A insulated Vector group Dyn 11 Continuos duty Copper wound / Aluminium wound Painting as per IS / IEC standards HV side cable box LV side cable box / bus duct Standard fittings as per IS 2026 / IEC 76 Specification 3Phase, 50 Hz in voltages of 11 kV, 22kV and 33kV, 66kV & 111kV Off-circuit tap changer to provide + 5% to - + 7.5% & + 5% to - 10% taps in steps of 2.5% On-load tap changer to provide + 5% to - 15% taps in steps of 1.25% Class A, uniform / non-uniform insulated Vector group Dyn 11, YNd 11, YNyn 0 Continuous duty,"
+        ]
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 0.5,
+        "is_faithful": false,
+        "unsupported_claims": [
+          "com or +91 80 42434343 for a detailed quote tailored to your needs"
+        ]
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "nielsteel",
+          "transformersnielbrochure"
+        ],
+        "cited_pages": [
+          1,
+          2,
+          3,
+          6
+        ]
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": false
+      }
+    },
+    {
+      "id": "RAG-039",
+      "category": "unsupported_abstain",
+      "question": "Do you sell consumer household microwave ovens?",
+      "passed": true,
+      "elapsed_ms": 13.94,
+      "retrieval": {
+        "test_case_id": "RAG-039",
+        "question": "Do you sell consumer household microwave ovens?",
+        "top_k": 5,
+        "retrieved_count": 0,
+        "retrieved_sources": [],
+        "retrieved_pages": [],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": []
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 1.0,
+        "is_faithful": true,
+        "unsupported_claims": []
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [],
+        "cited_pages": []
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": true,
+        "evidence_sufficient": false,
+        "is_abstention_correct": true
+      }
+    },
+    {
+      "id": "RAG-040",
+      "category": "unsupported_abstain",
+      "question": "What are the specifications of Siemens brand S7-1500 PLC modules?",
+      "passed": false,
+      "elapsed_ms": 1746.71,
+      "retrieval": {
+        "test_case_id": "RAG-040",
+        "question": "What are the specifications of Siemens brand S7-1500 PLC modules?",
+        "top_k": 5,
+        "retrieved_count": 5,
+        "retrieved_sources": [
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "Switchgear Panels MV.txt",
+          "AC Motors - NIEL Brochure.txt"
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "recall_at_k": 1.0,
+        "precision_at_k": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_k": 1.0,
+        "page_hit": true,
+        "chunks_text": [
+          "xt); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type Tested for BIL and short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; all units TYPE-TESTED at Central Power Research Institute, INDIA; cover logos: UKAS Quality Management 062, UL Registered Firm ISO 9001 2008\nNOT IN DOCUMENT: Efficiency; frame sizes; item-specific applications. Note: the table voltage (3.3 to 12 KV) differs from the \"up to 36 KV\" in the product range text; both are as printed\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf",
+          "ons; Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type tested for BIL and Short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; TYPE-TESTED at Central Power Research Institute, INDIA\nNOT IN DOCUMENT: Withstand Current (blank); efficiency; frame sizes; item-specific applications. Note: printed as \"F30\" in the table heading and \"F3O\" in the photo caption\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf\nPRODUCT: Power+ M (VCB HT Motor Starter Panels)\nCATEGORY: switchgear\nRANGE: Not stated",
+          "xt); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type Tested for BIL and short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; all units TYPE-TESTED at Central Power Research Institute, INDIA; cover logos: UKAS Quality Management 062, UL Registered Firm ISO 9001 2008 (NIE Power & Engineering (P) Ltd.)\nNOT IN DOCUMENT: Efficiency; frame sizes; rated current of feeders/breaker; item-specific applications\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf",
+          "xt); Utilities, Contractors, Industry users, OEMs and Projects (introduction). Product-specific applications not stated\nSTANDARDS & CERTIFICATIONS: Type Tested for BIL and short circuit as per IEC 62271/200/2003; specifications conform to relevant IS / BS & IEC Standards; all units TYPE-TESTED at Central Power Research Institute, INDIA\nNOT IN DOCUMENT: Withstand Current (blank in table); efficiency; frame sizes; item-specific applications. Note: the product range calls F3 \"Outdoor\" while the table (indoor/V-F page) gives IP4X\nSOURCE: Switchgear_Panels_MV_-_NIEL_Brochure.pdf",
+          "0; Insulation Class \"F\"; Mounting Horizontal/ Vertical flange; Enclosure IP 55; Cooling IC 411; Gas Groups I, IIA & IIB\nKEY FEATURES: Gas Groups I, IIA & IIB\nNOT IN DOCUMENT: applications / industries, standards & certifications (no named standard or certificate), efficiency, frame sizes\nSOURCE: AC Motors - NIEL Brochure.pdf\nPRODUCT: Crane Duty Motors\nCATEGORY: motors\nRANGE: 0.37 to 1000kW\nKEY SPECS: Duty S3, S4, S5; Starts/Hour 6/150/300; CDF 25%, 40%, 60%,100%; Type Cage/ Slipring; Insulation Class \"F\"; Enclosure IP 55; Cooling IC 411\nKEY FEATURES: Cage or Slipring type; multiple duty classes (S3, S4, S5); CDF options 25%, 40%, 60%,100%"
+        ]
+      },
+      "answer": {
+        "correctness_score": 1.0,
+        "is_correct": true,
+        "keyword_coverage": 1.0,
+        "matched_keywords": [],
+        "missing_keywords": [],
+        "faithfulness_score": 0.0,
+        "is_faithful": false,
+        "unsupported_claims": [
+          "I'm sorry, but I don't have specific information about Siemens brand S7-1500 PLC modules in the documentation I have access to"
+        ]
+      },
+      "citation": {
+        "citation_score": 1.0,
+        "source_hit": true,
+        "page_hit": true,
+        "cited_sources": [
+          "acmotorsnielbrochure",
+          "switchgearpanelsmvnielbrochure"
+        ],
+        "cited_pages": [
+          1
+        ]
+      },
+      "abstention": {
+        "should_abstain": true,
+        "detected_abstention": false,
+        "evidence_sufficient": true,
+        "is_abstention_correct": false
+      }
+    }
+  ]
+}

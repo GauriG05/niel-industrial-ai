@@ -1,21 +1,73 @@
-"""SQLAlchemy engine and session factory for SQLite persistence."""
+"""SQLAlchemy engine and session factory supporting PostgreSQL and SQLite persistence."""
 
+from contextlib import contextmanager
+import logging
 from pathlib import Path
+from typing import Generator, Optional
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import sessionmaker, Session
 from backend.app.config import get_settings
 from backend.app.db.models import Base
 
+logger = logging.getLogger("niel.db")
 settings = get_settings()
-DB_FILE = settings.DATA_DIR / "niel_sessions.db"
-DATABASE_URL = f"sqlite:///{DB_FILE}"
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},
-)
+DATABASE_URL = settings.DATABASE_URL
+if not DATABASE_URL:
+    DB_FILE = settings.DATA_DIR / "niel_sessions.db"
+    DATABASE_URL = f"sqlite:///{DB_FILE}"
+
+# Normalize postgres:// to postgresql:// for SQLAlchemy compatibility
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+is_sqlite = DATABASE_URL.startswith("sqlite")
+
+if is_sqlite:
+    engine = create_engine(
+        DATABASE_URL,
+        connect_args={"check_same_thread": False},
+    )
+else:
+    # Production PostgreSQL connection pool configuration
+    engine = create_engine(
+        DATABASE_URL,
+        pool_size=10,
+        max_overflow=20,
+        pool_pre_ping=True,
+        pool_recycle=1800,
+    )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+def check_db_health(db_session: Optional[Session] = None) -> bool:
+    """Check connectivity to the database by executing a lightweight query."""
+    try:
+        if db_session:
+            db_session.execute(text("SELECT 1"))
+        else:
+            with engine.connect() as conn:
+                conn.execute(text("SELECT 1"))
+        return True
+    except Exception as e:
+        logger.error("Database health check failed: %s", e)
+        return False
+
+
+@contextmanager
+def transaction_scope(db_session: Optional[Session] = None) -> Generator[Session, None, None]:
+    """Provide a transactional scope around a series of database operations."""
+    session = db_session or SessionLocal()
+    try:
+        yield session
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        if db_session is None:
+            session.close()
 
 
 def run_migrations(target_engine):
@@ -31,7 +83,6 @@ def run_migrations(target_engine):
                     )
                     conn.commit()
     except Exception:
-        # If in-memory or transient DB during testing without existing tables, create_all handles it
         pass
 
 
@@ -43,7 +94,7 @@ def init_db(engine_override=None):
     run_migrations(target_engine)
 
 
-# Auto-initialize SQLite database tables on startup
+# Auto-initialize database tables on startup
 init_db()
 
 

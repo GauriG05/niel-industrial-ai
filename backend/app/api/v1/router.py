@@ -8,11 +8,13 @@ from backend.app.api.v1.customers import router as customers_router
 from backend.app.api.v1.leads import router as leads_router
 from backend.app.api.v1.tickets import router as tickets_router
 from backend.app.api.v1.flagged_queries import router as flagged_queries_router
+from backend.app.api.v1.session_auth import router as session_auth_router
 
 api_v1_router = APIRouter(prefix="/api/v1")
 
 # Include sub-routers
 api_v1_router.include_router(health_router)
+api_v1_router.include_router(session_auth_router)
 api_v1_router.include_router(chat_router)
 api_v1_router.include_router(escalations_router)
 api_v1_router.include_router(customers_router)

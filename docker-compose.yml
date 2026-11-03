@@ -1,20 +1,75 @@
-# One-command production deploy:
+# Hardened Production Compose Configuration for NIEL Industrial AI
+#
+# Deploy stack:
 #   docker compose up -d --build
 #
 # Inspect logs:
 #   docker compose logs -f backend
 #
-# Stop service:
+# Stop stack:
 #   docker compose down
 
 services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-niel_db}
+      POSTGRES_USER: ${POSTGRES_USER:-niel_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_in_production}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - niel_internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-niel_user} -d ${POSTGRES_DB:-niel_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Ports not bound externally to prevent public database exposure
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD:-redis_secure_pass}"]
+    volumes:
+      - redis_data:/data
+    networks:
+      - niel_internal
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-redis_secure_pass}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Ports not bound externally to prevent public cache exposure
+
   backend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     env_file: .env
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-niel_user}:${POSTGRES_PASSWORD:-change_in_production}@postgres:5432/${POSTGRES_DB:-niel_db}
+      - REDIS_URL=redis://:${REDIS_PASSWORD:-redis_secure_pass}@redis:6379/0
+      - ENVIRONMENT=production
     ports:
       - "8000:8000"
     volumes:
-      # Mount data directory so FAISS index, uploaded PDFs, and SQLite session database persist across rebuilds
+      # Persistent volume for FAISS index, documents, and static uploads
       - ./data:/app/data
+    networks:
+      - niel_internal
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  niel_internal:
+    driver: bridge

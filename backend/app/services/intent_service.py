@@ -13,7 +13,10 @@ logger = logging.getLogger(__name__)
 # Hazardous electrical keywords that demand immediate safety escalation
 HAZARD_KEYWORDS = [
     "smoke", "smoking", "fire", "spark", "sparking", "shock", "electric shock",
-    "burning smell", "burned out", "burn", "explosion", "exploded", "flame", "blast"
+    "burning smell", "burned out", "burn", "explosion", "exploded", "flame", "blast",
+    "spraying", "dielectric oil", "flashover", "buchholz", "flooded", "flooding",
+    "varnish", "phase-to-earth", "fire alarm", "electrocution", "overheating",
+    "acrid smell", "critical hazard", "danger", "fatal", "hazard"
 ]
 
 # Explicit human escalation phrases

@@ -1,0 +1,394 @@
+[
+  {
+    "id": "AGT-001",
+    "category": "technical_query",
+    "query": "What are the power ratings and mounting options for your squirrel cage induction motors?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "0.37",
+      "kW",
+      "B3",
+      "B5"
+    ]
+  },
+  {
+    "id": "AGT-002",
+    "category": "technical_query",
+    "query": "Can you provide the technical specs for Power+ V vacuum circuit breaker panels?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "12kV",
+      "vacuum",
+      "busbar"
+    ]
+  },
+  {
+    "id": "AGT-003",
+    "category": "technical_query",
+    "query": "What is the maximum rating and cooling types for NIEL power transformers?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "100 MVA",
+      "220kV",
+      "ONAN"
+    ]
+  },
+  {
+    "id": "AGT-004",
+    "category": "quote_request",
+    "query": "I need a formal quotation for five 45kW 415V IE3 foot mounted motors for our water treatment plant. My email is ramesh@chemtech.com and phone is +91 9845012345.",
+    "expected_intent": "QUOTATION_REQUEST",
+    "expected_tool": "create_sales_lead",
+    "expected_escalated": false,
+    "expected_lead": true,
+    "expected_keywords": [
+      "quote",
+      "lead",
+      "sales"
+    ]
+  },
+  {
+    "id": "AGT-005",
+    "category": "quote_request",
+    "query": "Please provide pricing and lead time for two 1600 kVA 11kV/433V distribution transformers. Contact me at procurement@steelworks.in.",
+    "expected_intent": "QUOTATION_REQUEST",
+    "expected_tool": "create_sales_lead",
+    "expected_escalated": false,
+    "expected_lead": true,
+    "expected_keywords": [
+      "quote",
+      "transformer"
+    ]
+  },
+  {
+    "id": "AGT-006",
+    "category": "talk_to_sales",
+    "query": "Can I speak directly with your sales manager for the Karnataka region regarding our new cement plant project?",
+    "expected_intent": "SALES_ENQUIRY",
+    "expected_tool": "create_sales_lead",
+    "expected_escalated": true,
+    "expected_keywords": [
+      "sales",
+      "WhatsApp",
+      "+91 97413 07999"
+    ]
+  },
+  {
+    "id": "AGT-007",
+    "category": "talk_to_sales",
+    "query": "Please connect me to sales person",
+    "expected_intent": "SALES_ENQUIRY",
+    "expected_tool": "create_sales_lead",
+    "expected_escalated": true,
+    "expected_keywords": [
+      "sales",
+      "WhatsApp"
+    ]
+  },
+  {
+    "id": "AGT-008",
+    "category": "human_escalation",
+    "query": "I want to talk to a real human engineer right now.",
+    "expected_intent": "HUMAN_SUPPORT_REQUEST",
+    "expected_tool": null,
+    "expected_escalated": true,
+    "expected_keywords": [
+      "support",
+      "WhatsApp",
+      "+91 97413 07999"
+    ]
+  },
+  {
+    "id": "AGT-009",
+    "category": "human_escalation",
+    "query": "please connect me to human",
+    "expected_intent": "HUMAN_SUPPORT_REQUEST",
+    "expected_tool": null,
+    "expected_escalated": true,
+    "expected_keywords": [
+      "WhatsApp",
+      "+91 97413 07999"
+    ]
+  },
+  {
+    "id": "AGT-010",
+    "category": "fault_report",
+    "query": "Our 110kW induction motor bearing temperature reached 98C and is vibrating severely. Asset ID MOT-8842. We need urgent support.",
+    "expected_intent": "COMPLAINT",
+    "expected_tool": "create_support_ticket",
+    "expected_ticket": true,
+    "expected_escalated": false,
+    "expected_keywords": [
+      "ticket",
+      "bearing",
+      "support"
+    ]
+  },
+  {
+    "id": "AGT-011",
+    "category": "fault_report",
+    "query": "The 11kV VCB panel in our substation tripped on overcurrent and will not reset. Please log a service ticket.",
+    "expected_intent": "COMPLAINT",
+    "expected_tool": "create_support_ticket",
+    "expected_ticket": true,
+    "expected_escalated": false,
+    "expected_keywords": [
+      "ticket",
+      "tripped",
+      "switchgear"
+    ]
+  },
+  {
+    "id": "AGT-012",
+    "category": "complaint",
+    "query": "I am extremely unsatisfied with the delay on order PO-4491. Your service response has been unacceptable.",
+    "expected_intent": "COMPLAINT",
+    "expected_tool": "create_support_ticket",
+    "expected_escalated": true,
+    "expected_keywords": [
+      "apologize",
+      "ticket",
+      "escalat"
+    ]
+  },
+  {
+    "id": "AGT-013",
+    "category": "technical_query",
+    "query": "What are the temperature limits and lubrication intervals for motor ball bearings?",
+    "expected_intent": "TECHNICAL_SUPPORT",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "bearing",
+      "grease",
+      "temperature"
+    ]
+  },
+  {
+    "id": "AGT-014",
+    "category": "technical_query",
+    "query": "What is the recommended megaohm insulation resistance value before commissioning an 11kV transformer?",
+    "expected_intent": "TECHNICAL_SUPPORT",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "insulation",
+      "resistance",
+      "megger"
+    ]
+  },
+  {
+    "id": "AGT-015",
+    "category": "quote_request",
+    "query": "We require a price estimate for 10 units of 15 HP monoblock centrifugal pumps.",
+    "expected_intent": "QUOTATION_REQUEST",
+    "expected_tool": "create_sales_lead",
+    "expected_lead": true,
+    "expected_escalated": false,
+    "expected_keywords": [
+      "quote",
+      "lead",
+      "pump"
+    ]
+  },
+  {
+    "id": "AGT-016",
+    "category": "talk_to_sales",
+    "query": "Can your commercial team send us tender documents for the 33kV substation project?",
+    "expected_intent": "SALES_ENQUIRY",
+    "expected_tool": "create_sales_lead",
+    "expected_escalated": true,
+    "expected_keywords": [
+      "sales",
+      "team",
+      "tender"
+    ]
+  },
+  {
+    "id": "AGT-017",
+    "category": "fault_report",
+    "query": "Transformer oil level sight glass is below the minimum mark and temperature gauge reads 75C.",
+    "expected_intent": "COMPLAINT",
+    "expected_tool": "create_support_ticket",
+    "expected_ticket": true,
+    "expected_escalated": false,
+    "expected_keywords": [
+      "ticket",
+      "oil",
+      "transformer"
+    ]
+  },
+  {
+    "id": "AGT-018",
+    "category": "general_inquiry",
+    "query": "Where are NIEL manufacturing facilities located in India?",
+    "expected_intent": "GENERAL_INFORMATION",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "Bengaluru",
+      "Bangalore",
+      "Karnataka"
+    ]
+  },
+  {
+    "id": "AGT-019",
+    "category": "general_inquiry",
+    "query": "What industrial sectors does New India Electricals primarily serve?",
+    "expected_intent": "GENERAL_INFORMATION",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "steel",
+      "cement",
+      "power",
+      "mining"
+    ]
+  },
+  {
+    "id": "AGT-020",
+    "category": "technical_query",
+    "query": "What are the frame dimensions and shaft extensions for 315kW 4-pole foot mounted motors?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "frame",
+      "motor"
+    ]
+  },
+  {
+    "id": "AGT-021",
+    "category": "quote_request",
+    "query": "RFQ: Request for quote on 2 MVA dry type transformer with enclosure IP31.",
+    "expected_intent": "QUOTATION_REQUEST",
+    "expected_tool": "create_sales_lead",
+    "expected_lead": true,
+    "expected_escalated": false,
+    "expected_keywords": [
+      "quote",
+      "lead"
+    ]
+  },
+  {
+    "id": "AGT-022",
+    "category": "technical_query",
+    "query": "Can NIEL supply flameproof motors certified for Zone 1 hazardous environments?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "flameproof",
+      "Zone 1",
+      "hazardous"
+    ]
+  },
+  {
+    "id": "AGT-023",
+    "category": "human_escalation",
+    "query": "Live human agent please",
+    "expected_intent": "HUMAN_SUPPORT_REQUEST",
+    "expected_tool": null,
+    "expected_escalated": true,
+    "expected_keywords": [
+      "WhatsApp",
+      "+91 97413 07999"
+    ]
+  },
+  {
+    "id": "AGT-024",
+    "category": "complaint",
+    "query": "This is the third time our pump failed within 2 weeks of commissioning. We need immediate supervisor intervention.",
+    "expected_intent": "COMPLAINT",
+    "expected_tool": "create_support_ticket",
+    "expected_escalated": true,
+    "expected_keywords": [
+      "ticket",
+      "escalat"
+    ]
+  },
+  {
+    "id": "AGT-025",
+    "category": "technical_query",
+    "query": "What protection class is standard on your outdoor kiosk switchgear panels?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "IP",
+      "Power+ VO"
+    ]
+  },
+  {
+    "id": "AGT-026",
+    "category": "quote_request",
+    "query": "Looking for commercial proposal for replacement DC motor 500kW 600V 1000 RPM. Contact anil@baroda-steel.com.",
+    "expected_intent": "QUOTATION_REQUEST",
+    "expected_tool": "create_sales_lead",
+    "expected_lead": true,
+    "expected_escalated": false,
+    "expected_keywords": [
+      "lead",
+      "quote"
+    ]
+  },
+  {
+    "id": "AGT-027",
+    "category": "technical_query",
+    "query": "What types of industrial valves do you provide?",
+    "expected_intent": "PRODUCT_ENQUIRY",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "gate",
+      "globe",
+      "check",
+      "valve"
+    ]
+  },
+  {
+    "id": "AGT-028",
+    "category": "fault_report",
+    "query": "Brake motor fails to release when energized on crane hoist 2.",
+    "expected_intent": "COMPLAINT",
+    "expected_tool": "create_support_ticket",
+    "expected_ticket": true,
+    "expected_escalated": false,
+    "expected_keywords": [
+      "ticket",
+      "brake",
+      "motor"
+    ]
+  },
+  {
+    "id": "AGT-029",
+    "category": "general_inquiry",
+    "query": "Does NIEL offer erection, testing, and commissioning services for substations?",
+    "expected_intent": "GENERAL_INFORMATION",
+    "expected_tool": "search_product_knowledge",
+    "expected_escalated": false,
+    "expected_keywords": [
+      "turnkey",
+      "commissioning",
+      "substation"
+    ]
+  },
+  {
+    "id": "AGT-030",
+    "category": "talk_to_sales",
+    "query": "Connect me with commercial sales representative.",
+    "expected_intent": "SALES_ENQUIRY",
+    "expected_tool": "create_sales_lead",
+    "expected_escalated": true,
+    "expected_keywords": [
+      "sales",
+      "WhatsApp"
+    ]
+  }
+]

@@ -1,0 +1,791 @@
+[
+  {
+    "id": "RAG-001",
+    "category": "ac_motors",
+    "question": "What power ratings are documented for NIEL cage rotor AC motors?",
+    "expected_answer_keywords": [
+      "0.37",
+      "kW",
+      "20,000",
+      "kW"
+    ],
+    "reference_facts": [
+      "Power ratings range from 0.37 kW up to 20,000 kW (up to 20 MW)"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf",
+      "NIEL Product Catalog.pdf"
+    ],
+    "expected_pages": [
+      1,
+      3
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-002",
+    "category": "ac_motors",
+    "question": "What are the voltage ratings for NIEL squirrel cage induction motors?",
+    "expected_answer_keywords": [
+      "380V",
+      "415V",
+      "3.3kV",
+      "6.6kV",
+      "11kV"
+    ],
+    "reference_facts": [
+      "Voltage ratings include 380V, 415V, 3.3kV, 6.6kV, and 11kV"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-003",
+    "category": "ac_motors",
+    "question": "What insulation class and temperature rise are specified for NIEL AC induction motors?",
+    "expected_answer_keywords": [
+      "Class F",
+      "Class B"
+    ],
+    "reference_facts": [
+      "Class F insulation with Class B temperature rise limit"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-004",
+    "category": "ac_motors",
+    "question": "What ingress protection ratings (IP) are standard for cage rotor AC motors?",
+    "expected_answer_keywords": [
+      "IP22",
+      "IP55"
+    ],
+    "reference_facts": [
+      "Standard enclosures are IP22 or IP55"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-005",
+    "category": "ac_motors",
+    "question": "What mounting types are available for NIEL AC industrial motors?",
+    "expected_answer_keywords": [
+      "B3",
+      "B5",
+      "B35"
+    ],
+    "reference_facts": [
+      "Foot mounted B3, Flange mounted B5, Foot-cum-Flange B35"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-006",
+    "category": "ac_motors",
+    "question": "What cooling types are used on NIEL wound rotor slipring induction motors?",
+    "expected_answer_keywords": [
+      "IC01",
+      "IC411",
+      "IC511",
+      "IC611"
+    ],
+    "reference_facts": [
+      "Cooling types include IC01, IC411 (TEFC), IC511, and IC611"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-007",
+    "category": "ac_motors",
+    "question": "What is the power range and duty cycle for wound rotor motors?",
+    "expected_answer_keywords": [
+      "7.5",
+      "20,000",
+      "kW",
+      "S1"
+    ],
+    "reference_facts": [
+      "Power range from 7.5 kW to 20,000 kW and continuous S1 duty cycle"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-008",
+    "category": "ac_motors",
+    "question": "For what applications are NIEL flameproof motors suitable and what gas groups are supported?",
+    "expected_answer_keywords": [
+      "hazardous",
+      "flameproof",
+      "Zone 1",
+      "Zone 2"
+    ],
+    "reference_facts": [
+      "Flameproof motors are certified for hazardous environments Zone 1 and Zone 2"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1,
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-009",
+    "category": "dc_motors",
+    "question": "What power range and frame sizes are available for NIEL industrial DC motors?",
+    "expected_answer_keywords": [
+      "0.37",
+      "6500",
+      "kW",
+      "80",
+      "1000"
+    ],
+    "reference_facts": [
+      "DC motor power ranges from 0.37 kW to 6500 kW with frame sizes from 80 to 1000"
+    ],
+    "expected_sources": [
+      "DC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-010",
+    "category": "dc_motors",
+    "question": "What are the armature voltage ratings for NIEL DC motors?",
+    "expected_answer_keywords": [
+      "armature",
+      "voltage",
+      "1000V"
+    ],
+    "reference_facts": [
+      "Armature voltages range up to 1000V"
+    ],
+    "expected_sources": [
+      "DC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-011",
+    "category": "dc_motors",
+    "question": "What cooling methods are available for industrial DC motors?",
+    "expected_answer_keywords": [
+      "IC06",
+      "IC17",
+      "IC37"
+    ],
+    "reference_facts": [
+      "Cooling options include IC06, IC17, IC37, IC410, IC666"
+    ],
+    "expected_sources": [
+      "DC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-012",
+    "category": "dc_motors",
+    "question": "What are the common industrial applications for NIEL DC motors?",
+    "expected_answer_keywords": [
+      "steel",
+      "rolling",
+      "wire drawing",
+      "extruders"
+    ],
+    "reference_facts": [
+      "Used in steel rolling mills, paper machines, wire drawing, and extruders"
+    ],
+    "expected_sources": [
+      "DC Motors - NIEL Brochure.pdf",
+      "NIEL - STEEL.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-013",
+    "category": "transformers",
+    "question": "What power rating and voltage class does NIEL offer for oil immersed distribution transformers?",
+    "expected_answer_keywords": [
+      "16 kVA",
+      "2500 kVA",
+      "11kV",
+      "33kV"
+    ],
+    "reference_facts": [
+      "Distribution transformers are 16 kVA to 2500 kVA, primary voltage 11kV, 22kV, or 33kV"
+    ],
+    "expected_sources": [
+      "Transformers - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1,
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-014",
+    "category": "transformers",
+    "question": "What is the maximum rating and voltage class for NIEL power transformers?",
+    "expected_answer_keywords": [
+      "100 MVA",
+      "220kV"
+    ],
+    "reference_facts": [
+      "Power transformers reach up to 100 MVA with voltage classes up to 220kV"
+    ],
+    "expected_sources": [
+      "Transformers - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-015",
+    "category": "transformers",
+    "question": "What tap changer options are provided on NIEL transformers?",
+    "expected_answer_keywords": [
+      "off-circuit",
+      "oltc",
+      "on load tap changer"
+    ],
+    "reference_facts": [
+      "Equipped with off-circuit tap changer (OCTC) and on-load tap changer (OLTC)"
+    ],
+    "expected_sources": [
+      "Transformers - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1,
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-016",
+    "category": "transformers",
+    "question": "Does NIEL provide Cast Resin Dry Type transformers and what are their ratings?",
+    "expected_answer_keywords": [
+      "cast resin",
+      "dry type",
+      "10 MVA",
+      "33kV"
+    ],
+    "reference_facts": [
+      "Cast Resin dry type transformers available up to 10 MVA and 33kV class"
+    ],
+    "expected_sources": [
+      "Transformers - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      3
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-017",
+    "category": "transformers",
+    "question": "What cooling types are available for NIEL power transformers?",
+    "expected_answer_keywords": [
+      "ONAN",
+      "ONAF",
+      "OFAF"
+    ],
+    "reference_facts": [
+      "Cooling types include ONAN, ONAF, OFAF, and OFWF"
+    ],
+    "expected_sources": [
+      "Transformers - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-018",
+    "category": "switchgear",
+    "question": "What are the specifications of the Power+ V vacuum circuit breaker panels?",
+    "expected_answer_keywords": [
+      "12kV",
+      "vacuum",
+      "circuit breaker",
+      "busbar"
+    ],
+    "reference_facts": [
+      "Power+ V is rated 12kV with vacuum circuit breaker technology and busbar current up to 3150A"
+    ],
+    "expected_sources": [
+      "Switchgear Panels MV - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1,
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-019",
+    "category": "switchgear",
+    "question": "What short time withstand current is supported by NIEL MV switchgear?",
+    "expected_answer_keywords": [
+      "26.3kA",
+      "40kA",
+      "3 sec"
+    ],
+    "reference_facts": [
+      "Short time withstand current ratings include 26.3kA and 40kA for 3 seconds"
+    ],
+    "expected_sources": [
+      "Switchgear Panels MV - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1,
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-020",
+    "category": "switchgear",
+    "question": "What is the difference between Power+ V and Power+ F switchgear panels?",
+    "expected_answer_keywords": [
+      "vacuum",
+      "sf6",
+      "circuit breaker"
+    ],
+    "reference_facts": [
+      "Power+ V uses vacuum circuit breakers while Power+ F uses SF6 gas circuit breakers"
+    ],
+    "expected_sources": [
+      "Switchgear Panels MV - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1,
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-021",
+    "category": "switchgear",
+    "question": "Does NIEL offer outdoor kiosk type switchgear?",
+    "expected_answer_keywords": [
+      "Power+ VO",
+      "outdoor",
+      "kiosk"
+    ],
+    "reference_facts": [
+      "Yes, Power+ VO is designed specifically for outdoor kiosk installations"
+    ],
+    "expected_sources": [
+      "Switchgear Panels MV - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-022",
+    "category": "pumps",
+    "question": "What is the discharge capacity and head range for NIEL end suction monoblock pumps?",
+    "expected_answer_keywords": [
+      "discharge",
+      "head",
+      "m3/hr",
+      "metres"
+    ],
+    "reference_facts": [
+      "Discharge capacities reach up to 1000 m3/hr and head up to 150m"
+    ],
+    "expected_sources": [
+      "Pumps - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-023",
+    "category": "pumps",
+    "question": "What series of openwell submersible pumps are available and what is their power rating?",
+    "expected_answer_keywords": [
+      "KOS+",
+      "submersible",
+      "openwell"
+    ],
+    "reference_facts": [
+      "KOS+ series openwell submersibles are available in single and three-phase variants"
+    ],
+    "expected_sources": [
+      "Pumps - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-024",
+    "category": "pumps",
+    "question": "What series of liquid ring vacuum pumps does NIEL provide?",
+    "expected_answer_keywords": [
+      "KV",
+      "DV",
+      "vacuum"
+    ],
+    "reference_facts": [
+      "KV and DV series liquid ring vacuum pumps"
+    ],
+    "expected_sources": [
+      "Pumps - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-025",
+    "category": "pumps",
+    "question": "What liquid temperature range can NIEL vertical in-line multistage pumps handle?",
+    "expected_answer_keywords": [
+      "temperature",
+      "-15",
+      "120"
+    ],
+    "reference_facts": [
+      "IL series vertical multistage pumps operate from -15 deg C to 120 deg C"
+    ],
+    "expected_sources": [
+      "Pumps - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-026",
+    "category": "multi_attribute",
+    "question": "What are the synchronous speed and pole configurations available for NIEL 50Hz induction motors?",
+    "expected_answer_keywords": [
+      "3000",
+      "1500",
+      "1000",
+      "750",
+      "600",
+      "rpm"
+    ],
+    "reference_facts": [
+      "Synchronous speeds are 3000 rpm (2 pole), 1500 rpm (4 pole), 1000 rpm (6 pole), 750 rpm (8 pole), and 600 rpm (10 pole)"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-027",
+    "category": "multi_attribute",
+    "question": "What vector groups are used for NIEL distribution and power transformers?",
+    "expected_answer_keywords": [
+      "Dyn11",
+      "vector"
+    ],
+    "reference_facts": [
+      "Standard vector group is Dyn11 (other configurations like YNd11 available upon customer specification)"
+    ],
+    "expected_sources": [
+      "Transformers - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1,
+      2
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-028",
+    "category": "multi_attribute",
+    "question": "What enclosure protection rating is provided on Power+ V switchgear panels?",
+    "expected_answer_keywords": [
+      "IP4X",
+      "IP54"
+    ],
+    "reference_facts": [
+      "IP4X for enclosure and up to IP54 for specific compartments"
+    ],
+    "expected_sources": [
+      "Switchgear Panels MV - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-029",
+    "category": "cross_document",
+    "question": "Does NIEL supply both transformers and switchgear for containerised secondary substations?",
+    "expected_answer_keywords": [
+      "substation",
+      "transformer",
+      "switchgear",
+      "CSS"
+    ],
+    "reference_facts": [
+      "NIEL provides complete containerised secondary substations (CSS) integrating MV switchgear, transformer, and LV panels"
+    ],
+    "expected_sources": [
+      "Transformers - NIEL Brochure.pdf",
+      "Substation.pdf"
+    ],
+    "expected_pages": [
+      4,
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-030",
+    "category": "cross_document",
+    "question": "Can NIEL provide turnkey electrical packages for steel rolling mills including motors and drives?",
+    "expected_answer_keywords": [
+      "steel",
+      "rolling",
+      "motor",
+      "drive"
+    ],
+    "reference_facts": [
+      "NIEL has extensive turnkey experience in steel rolling mills supplying AC/DC motors and drive systems"
+    ],
+    "expected_sources": [
+      "NIEL - STEEL.pdf",
+      "DC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-031",
+    "category": "company_info",
+    "question": "Where is New India Electricals Limited headquartered and what is their background?",
+    "expected_answer_keywords": [
+      "Bangalore",
+      "Bengaluru",
+      "New India Electricals"
+    ],
+    "reference_facts": [
+      "Headquartered in Bengaluru (Bangalore), Karnataka, India, with decades of heavy industrial manufacturing experience"
+    ],
+    "expected_sources": [
+      "Company Intro - New India Electricals Limited.pdf",
+      "NIEL Product Catalog.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-032",
+    "category": "ambiguous",
+    "question": "Tell me about your 415V motors.",
+    "expected_answer_keywords": [
+      "induction",
+      "kW",
+      "cage",
+      "foot",
+      "flange"
+    ],
+    "reference_facts": [
+      "NIEL provides 415V three-phase squirrel cage and wound rotor induction motors across standard frame sizes"
+    ],
+    "expected_sources": [
+      "AC Motors - NIEL Brochure.pdf"
+    ],
+    "expected_pages": [
+      1
+    ],
+    "should_abstain": false,
+    "expected_sufficient": true
+  },
+  {
+    "id": "RAG-033",
+    "category": "unsupported_abstain",
+    "question": "What is the price of the 250 kW AC motor in US Dollars?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  },
+  {
+    "id": "RAG-034",
+    "category": "unsupported_abstain",
+    "question": "Do you manufacture lithium-ion battery cells for electric passenger vehicles?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  },
+  {
+    "id": "RAG-035",
+    "category": "unsupported_abstain",
+    "question": "What is the warranty period for domestic home kitchen blenders?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  },
+  {
+    "id": "RAG-036",
+    "category": "unsupported_abstain",
+    "question": "What is the exact stock quantity of frame 315M motors in your warehouse today?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  },
+  {
+    "id": "RAG-037",
+    "category": "unsupported_abstain",
+    "question": "Does NIEL manufacture rocket turbopumps for space launch vehicles?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  },
+  {
+    "id": "RAG-038",
+    "category": "unsupported_abstain",
+    "question": "What is the discount rate if I purchase 50 units of 11kV switchgear next Monday?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  },
+  {
+    "id": "RAG-039",
+    "category": "unsupported_abstain",
+    "question": "Do you sell consumer household microwave ovens?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  },
+  {
+    "id": "RAG-040",
+    "category": "unsupported_abstain",
+    "question": "What are the specifications of Siemens brand S7-1500 PLC modules?",
+    "expected_answer_keywords": [],
+    "reference_facts": [],
+    "expected_sources": [],
+    "expected_pages": [],
+    "should_abstain": true,
+    "expected_sufficient": false
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "benchmark_suite": "NIEL Industrial AI Complete Benchmark",
+  "timestamp": "2026-11-03 13:58:49",
+  "rag_summary": {
+    "total_test_cases": 40,
+    "passed_cases": 14,
+    "pass_rate": 0.35,
+    "retrieval_metrics": {
+      "mean_recall_at_k": 0.6406,
+      "mean_precision_at_k": 0.3875,
+      "mrr": 0.5156,
+      "ndcg_at_k": 1.0623
+    },
+    "answer_metrics": {
+      "mean_correctness": 0.4881,
+      "mean_faithfulness": 0.9661,
+      "mean_citation_accuracy": 0.8828,
+      "abstention_accuracy": 0.25
+    },
+    "performance": {
+      "avg_latency_ms": 1534.36,
+      "p95_latency_ms": 2651.76
+    }
+  },
+  "agent_summary": {
+    "total_scenarios": 66,
+    "total_passed": 48,
+    "overall_pass_rate": 0.7273,
+    "agent_performance": {
+      "total_cases": 30,
+      "passed_cases": 15,
+      "intent_accuracy": 0.6,
+      "macro_f1": 0.5566,
+      "tool_selection_accuracy": 0.5333,
+      "class_metrics": {
+        "COMPLAINT": {
+          "precision": 1.0,
+          "recall": 0.3333,
+          "f1": 0.5,
+          "support": 6
+        },
+        "GENERAL_INFORMATION": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571,
+          "support": 3
+        },
+        "HUMAN_SUPPORT_REQUEST": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "support": 3
+        },
+        "PRODUCT_ENQUIRY": {
+          "precision": 1.0,
+          "recall": 0.4286,
+          "f1": 0.6,
+          "support": 7
+        },
+        "QUOTATION_REQUEST": {
+          "precision": 0.8333,
+          "recall": 1.0,
+          "f1": 0.9091,
+          "support": 5
+        },
+        "SALES_ENQUIRY": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4
+        },
+        "TECHNICAL_SUPPORT": {
+          "precision": 0.2222,
+          "recall": 1.0,
+          "f1": 0.3636,
+          "support": 2
+        }
+      }
+    },
+    "safety_performance": {
+      "total_cases": 15,
+      "passed_cases": 12,
+      "pass_rate": 0.8
+    },
+    "adversarial_robustness": {
+      "total_cases": 20,
+      "passed_cases": 20,
+      "block_rate": 1.0
+    },
+    "idempotency_enforced": true
+  }
+}

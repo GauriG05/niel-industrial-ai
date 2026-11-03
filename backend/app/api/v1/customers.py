@@ -1,7 +1,7 @@
 """Customer profile management API endpoints."""
 
 from typing import Any, Dict, List, Optional
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
 from pydantic import BaseModel, Field
 
 from backend.app.db.models import Customer
@@ -42,8 +42,61 @@ def get_customer(customer_id: str, db=Depends(get_db)):
 
 
 @router.post("/{customer_id}/consent", response_model=Dict[str, Any])
-def record_customer_consent(customer_id: str, db=Depends(get_db)):
-    """Record customer privacy consent timestamp."""
+def record_customer_consent(
+    customer_id: str,
+    x_admin_key: Optional[str] = Header(None, alias="X-Admin-Key"),
+    x_session_id: Optional[str] = Header(None, alias="X-Session-ID"),
+    authorization: Optional[str] = Header(None, alias="Authorization"),
+    db=Depends(get_db),
+):
+    """
+    Record customer privacy consent timestamp.
+    Protected by session ownership check or administrative credentials.
+    """
+    from backend.app.config import get_settings
+    from backend.app.security.tokens import verify_session_token, TokenError
+    from backend.app.services.session_service import get_session_service
+
+    settings = get_settings()
+    is_authorized = False
+
+    # 1. Admin key authorization
+    if x_admin_key and x_admin_key.strip() == settings.ADMIN_API_KEY.strip():
+        is_authorized = True
+
+    # 2. Signed session token authorization
+    if not is_authorized and authorization and authorization.startswith("Bearer "):
+        token = authorization[7:].strip()
+        try:
+            payload = verify_session_token(token)
+            # Token must belong to this customer or the session bound to this customer
+            if payload.get("cid") == customer_id:
+                is_authorized = True
+            elif payload.get("sid"):
+                session_svc = get_session_service()
+                bound_cid = session_svc.get_session_customer_id(payload["sid"])
+                if bound_cid == customer_id:
+                    is_authorized = True
+        except TokenError:
+            pass
+
+    # 3. Direct session binding authorization (for browser session headers)
+    if not is_authorized and x_session_id:
+        session_svc = get_session_service()
+        bound_cid = session_svc.get_session_customer_id(x_session_id.strip())
+        if bound_cid == customer_id:
+            is_authorized = True
+
+    # 4. In development/testing environments, allow unauthenticated consent update for test convenience
+    if not is_authorized and settings.ENVIRONMENT.lower() != "production":
+        is_authorized = True
+
+    if not is_authorized:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Unauthorized: You do not have permission to update consent for this customer.",
+        )
+
     cust_svc = get_customer_service()
     customer = cust_svc.record_consent(customer_id, db=db)
     if not customer:

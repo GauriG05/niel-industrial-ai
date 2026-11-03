@@ -126,7 +126,7 @@ def test_passive_logging_in_rag_service():
     rag = get_rag_service()
     flag_svc = get_flag_service()
 
-    before_count = len(flag_svc.list_flagged_queries())
+    before_count = len(flag_svc.list_flagged_queries(limit=1000))
 
     # Customer asks about an unverified spec
     query = "What is the efficiency percentage per frame size for cage rotor motors?"
@@ -137,7 +137,7 @@ def test_passive_logging_in_rag_service():
     assert len(resp.answer) > 0
 
     # Passive log recorded
-    after_entries = flag_svc.list_flagged_queries()
+    after_entries = flag_svc.list_flagged_queries(limit=1000)
     assert len(after_entries) >= before_count + 1
     recent_entry = after_entries[0]
     assert recent_entry.user_question == query

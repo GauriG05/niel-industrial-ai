@@ -38,11 +38,34 @@ class AgentOrchestrator:
         self.openai_service = openai_service or OpenAIService()
 
     def _resolve_customer_id(self, session_id: Optional[str], customer_id: Optional[str]) -> Optional[str]:
-        """Resolve active customer ID from parameter or session store."""
+        """
+        Securely resolve active customer ID. Never blindly trust client-supplied customer_id.
+        Enforces session binding to prevent customer impersonation across sessions.
+        """
+        if not session_id:
+            # Without session tracking, no verified customer identity can be established
+            return None
+
+        # Check DB session binding
+        bound_cid = self.session_service.get_session_customer_id(session_id)
+        if bound_cid:
+            if customer_id and customer_id != bound_cid:
+                logger.warning(
+                    "SECURITY: Customer ID mismatch in session %s. Client passed '%s', but session is bound to '%s'. Enforcing bound customer.",
+                    session_id, customer_id, bound_cid
+                )
+            return bound_cid
+
+        # If session is not yet bound but client supplies a customer_id, verify existence before binding
         if customer_id:
-            return customer_id
-        if session_id:
-            return self.session_service.get_session_customer_id(session_id)
+            customer_exists = self.customer_service.get_customer_context(customer_id) is not None
+            if customer_exists:
+                self.session_service.link_customer_to_session(session_id, customer_id)
+                return customer_id
+            else:
+                logger.warning("SECURITY: Untrusted non-existent customer_id '%s' rejected for session %s", customer_id, session_id)
+                return None
+
         return None
 
     def handle_request(
@@ -59,31 +82,57 @@ class AgentOrchestrator:
 
         # 0. Check emergency kill switch & prompt injection defenses
         if self.rag_service.settings.KILL_SWITCH_ENABLED:
-            return self.rag_service.answer_question(
-                question=question,
-                top_k=top_k,
-                conversation_history=conversation_history,
-                session_id=session_id,
+            logger.warning("KILL SWITCH ACTIVE: AI processing completely disabled. Returning human support fallback.")
+            from urllib.parse import quote
+            wa_text = "Hello NIEL Team, I would like direct human support assistance regarding an inquiry on your website."
+            wa_url = f"https://wa.me/919741307999?text={quote(wa_text)}"
+            return ChatResponse(
+                answer=(
+                    "The automated AI assistant is temporarily paused for scheduled engineering maintenance. "
+                    "Our human engineering and sales support team is standing by to assist you directly.\n\n"
+                    f"{wa_url}\n\n"
+                    "You can also reach our main office directly at sales@newindiaelectricals.com or call +91 80 42434343."
+                ),
+                citations=[],
+                pdf_attachments=[],
+                site_url="https://newindiaelectricals.com",
+                whatsapp_url=wa_url,
+                evidence_sufficient=False,
+                clarification_needed=False,
+                request_id=request_id,
+                intent="KILL_SWITCH_FALLBACK",
+                tool_calls=[],
+                escalated=True,
             )
 
-        q_lower = question.lower()
-        injection_triggers = [
-            "ignore previous instructions",
-            "system prompt",
-            "developer prompt",
-            "reveal instructions",
-            "api key",
-            "api_key",
-            "bypass guardrails",
-            "jailbreak",
-        ]
-        if any(trigger in q_lower for trigger in injection_triggers):
-            return self.rag_service.answer_question(
-                question=question,
-                top_k=top_k,
-                conversation_history=conversation_history,
-                session_id=session_id,
+        from backend.app.agent.guardrails import detect_prompt_injection, sanitize_untrusted_text
+
+        is_injection, injection_reason = detect_prompt_injection(question)
+        if is_injection:
+            logger.warning("SECURITY: Prompt injection attempt blocked for session %s: %s", session_id, injection_reason)
+            from urllib.parse import quote
+            wa_text = "Hello NIEL Team, I would like assistance regarding an inquiry on your website."
+            wa_url = f"https://wa.me/919741307999?text={quote(wa_text)}"
+            return ChatResponse(
+                answer=(
+                    "I am the NIEL Industrial Intelligence Assistant, dedicated strictly to providing verified specifications "
+                    "and engineering documentation for New India Electricals Ltd. equipment (motors, transformers, "
+                    "pumps, switchgear). I cannot alter system instructions, execute arbitrary commands, or disclose "
+                    "internal prompts. How can I assist with your industrial equipment needs today?"
+                ),
+                citations=[],
+                pdf_attachments=[],
+                site_url="https://newindiaelectricals.com",
+                whatsapp_url=wa_url,
+                evidence_sufficient=False,
+                clarification_needed=False,
+                request_id=request_id,
+                intent="SECURITY_DEFENSE_TRIGGERED",
+                tool_calls=[],
+                escalated=False,
             )
+
+        clean_question = sanitize_untrusted_text(question)
 
         # 1. Server-side session history resolution
         effective_history = conversation_history or []

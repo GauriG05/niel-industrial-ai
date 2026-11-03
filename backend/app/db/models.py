@@ -30,6 +30,7 @@ class Customer(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
+        index=True,
     )
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
@@ -67,6 +68,7 @@ class ChatSession(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
+        index=True,
     )
     human_active: Mapped[bool] = mapped_column(Boolean, default=False)
     escalated_at: Mapped[Optional[datetime]] = mapped_column(
@@ -110,6 +112,7 @@ class ChatMessage(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
+        index=True,
     )
     citations_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     request_id: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
@@ -138,11 +141,12 @@ class SalesLead(Base):
     requirement_details: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     required_quantity: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     location: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
-    status: Mapped[str] = mapped_column(String(50), default="NEW")  # NEW, QUALIFIED, CONTACTED, CLOSED
-    priority: Mapped[str] = mapped_column(String(20), default="MEDIUM")  # LOW, MEDIUM, HIGH, URGENT
+    status: Mapped[str] = mapped_column(String(50), default="NEW", index=True)  # NEW, QUALIFIED, CONTACTED, CLOSED
+    priority: Mapped[str] = mapped_column(String(20), default="MEDIUM", index=True)  # LOW, MEDIUM, HIGH, URGENT
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
+        index=True,
     )
 
     customer: Mapped[Optional["Customer"]] = relationship("Customer", back_populates="leads")
@@ -168,11 +172,12 @@ class SupportTicket(Base):
     )
     product_category: Mapped[str] = mapped_column(String(100))  # Motors, Pumps, Transformers, Switchgear Panels
     issue_description: Mapped[str] = mapped_column(Text)
-    severity: Mapped[str] = mapped_column(String(20), default="MEDIUM")  # LOW, MEDIUM, HIGH, CRITICAL
-    status: Mapped[str] = mapped_column(String(50), default="OPEN")  # OPEN, IN_PROGRESS, RESOLVED, CLOSED
+    severity: Mapped[str] = mapped_column(String(20), default="MEDIUM", index=True)  # LOW, MEDIUM, HIGH, CRITICAL
+    status: Mapped[str] = mapped_column(String(50), default="OPEN", index=True)  # OPEN, IN_PROGRESS, RESOLVED, CLOSED
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
+        index=True,
     )
     resolved_at: Mapped[Optional[datetime]] = mapped_column(
         DateTime(timezone=True),

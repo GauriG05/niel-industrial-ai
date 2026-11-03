@@ -10,7 +10,14 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from backend.app.config import PROJECT_ROOT, get_settings
 from backend.app.api.v1.router import api_v1_router
 from backend.app.api.v1.ws_chat import router as ws_router
-from backend.app.db.session import init_db
+from backend.app.db.session import init_db, check_db_health
+from backend.app.observability.logging_config import setup_logging
+from backend.app.observability.metrics import get_metrics_collector
+from backend.app.observability.middleware import ObservabilityMiddleware
+from backend.app.security.rate_limiter import get_rate_limiter
+
+# Initialize structured logging
+setup_logging()
 
 
 @asynccontextmanager
@@ -32,13 +39,13 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response = await call_next(request)
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "SAMEORIGIN"
-        response.headers["X-XSS-Protection"] = "1; mode=block"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        # Allow all permissions as requested
-        response.headers["Permissions-Policy"] = "geolocation=*, microphone=*, camera=*, display-capture=*, payment=*"
+        # Restrict all sensitive hardware, location, and payment device permissions
+        response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=(), display-capture=()"
+        # Tightened Content Security Policy without unsafe-eval
         response.headers["Content-Security-Policy"] = (
-            "default-src 'self' 'unsafe-inline' https:; "
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; "
+            "default-src 'self'; "
+            "script-src 'self' 'unsafe-inline' https:; "
             "style-src 'self' 'unsafe-inline' https:; "
             "img-src 'self' data: https:; "
             "connect-src 'self' ws: wss: https: https://*.whatsapp.com https://*.wa.me; "
@@ -57,6 +64,9 @@ app = FastAPI(
     redoc_url="/redoc" if settings.DEBUG else None,
     lifespan=lifespan,
 )
+
+# Apply Observability Middleware (Request IDs, JSON Access Logs, Prometheus telemetry)
+app.add_middleware(ObservabilityMiddleware)
 
 # Apply Security Headers
 app.add_middleware(SecurityHeadersMiddleware)
@@ -110,3 +120,31 @@ def root():
         "status": "operational",
         "api_docs": "/docs" if settings.DEBUG else "disabled",
     }
+
+
+@app.get("/health")
+def health():
+    """Comprehensive health check endpoint inspecting DB, cache, and service status."""
+    db_ok = check_db_health()
+    rl = get_rate_limiter()
+    redis_conn = rl._get_redis()
+    redis_ok = redis_conn is not None
+
+    status_str = "healthy" if db_ok else "degraded"
+    return {
+        "status": status_str,
+        "database": "connected" if db_ok else "unreachable",
+        "redis_cache": "connected" if redis_ok else "in-memory-fallback",
+        "environment": settings.ENVIRONMENT,
+    }
+
+
+@app.get("/metrics")
+def metrics():
+    """Prometheus-compatible metrics exposition endpoint."""
+    collector = get_metrics_collector()
+    from starlette.responses import Response
+    return Response(
+        content=collector.render_prometheus_text(),
+        media_type="text/plain; version=0.0.4; charset=utf-8",
+    )

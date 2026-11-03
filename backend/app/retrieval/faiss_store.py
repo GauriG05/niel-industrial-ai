@@ -3,6 +3,7 @@
 import json
 import logging
 from pathlib import Path
+import threading
 from typing import Dict, List, Optional, Tuple
 import faiss
 import numpy as np
@@ -27,13 +28,15 @@ class FAISSStore:
             self.index_dir = self.settings.INDEX_DIR
         self.index_file = self.index_dir / "faiss.index"
         self.meta_file = self.index_dir / "metadata.json"
+        self._lock = threading.RLock()
 
         # In-memory structures
         self.index: faiss.IndexFlatIP = faiss.IndexFlatIP(self.dimension)
         self.chunks: List[ChunkMetadata] = []
         self.documents: Dict[str, DocumentSummary] = {}
 
-        self._load()
+        with self._lock:
+            self._load()
 
     def _load(self):
         """Load persisted FAISS index and metadata if present."""
@@ -57,26 +60,27 @@ class FAISSStore:
             self.documents = {}
 
     def save(self):
-        """Atomically persist FAISS index and metadata."""
-        self.index_dir.mkdir(parents=True, exist_ok=True)
-        # Write index to temporary file then replace
-        temp_index = self.index_dir / "faiss.index.tmp"
-        temp_meta = self.index_dir / "metadata.json.tmp"
+        """Atomically persist FAISS index and metadata under concurrency lock."""
+        with self._lock:
+            self.index_dir.mkdir(parents=True, exist_ok=True)
+            temp_index = self.index_dir / "faiss.index.tmp"
+            temp_meta = self.index_dir / "metadata.json.tmp"
 
-        faiss.write_index(self.index, str(temp_index))
-        meta_payload = {
-            "chunks": [chunk.model_dump() for chunk in self.chunks],
-            "documents": {doc_id: summary.model_dump() for doc_id, summary in self.documents.items()},
-        }
-        with open(temp_meta, "w", encoding="utf-8") as f:
-            json.dump(meta_payload, f, indent=2)
+            faiss.write_index(self.index, str(temp_index))
+            meta_payload = {
+                "chunks": [chunk.model_dump() for chunk in self.chunks],
+                "documents": {doc_id: summary.model_dump() for doc_id, summary in self.documents.items()},
+            }
+            with open(temp_meta, "w", encoding="utf-8") as f:
+                json.dump(meta_payload, f, indent=2)
 
-        temp_index.replace(self.index_file)
-        temp_meta.replace(self.meta_file)
+            temp_index.replace(self.index_file)
+            temp_meta.replace(self.meta_file)
 
     def is_document_indexed(self, doc_id: str) -> bool:
         """Check if document hash is already registered."""
-        return doc_id in self.documents
+        with self._lock:
+            return doc_id in self.documents
 
     def add_document_chunks(
         self,
@@ -84,18 +88,29 @@ class FAISSStore:
         chunks: List[ChunkMetadata],
         embeddings: List[List[float]],
     ):
-        """Add new chunks and vectors to the index and persist."""
+        """Add new validated chunks and vectors to the index and persist."""
         if len(chunks) == 0:
             return
 
-        vectors = np.array(embeddings, dtype=np.float32)
-        # Ensure vectors are normalized for cosine similarity (Inner Product on L2-normalized vectors)
-        faiss.normalize_L2(vectors)
+        # Validate chunks before indexing
+        valid_chunks: List[ChunkMetadata] = []
+        valid_embs: List[List[float]] = []
+        for ch, emb in zip(chunks, embeddings):
+            if ch.text and len(ch.text.strip()) > 0 and ch.chunk_id:
+                valid_chunks.append(ch)
+                valid_embs.append(emb)
 
-        self.index.add(vectors)
-        self.chunks.extend(chunks)
-        self.documents[summary.doc_id] = summary
-        self.save()
+        if not valid_chunks:
+            return
+
+        with self._lock:
+            vectors = np.array(valid_embs, dtype=np.float32)
+            faiss.normalize_L2(vectors)
+
+            self.index.add(vectors)
+            self.chunks.extend(valid_chunks)
+            self.documents[summary.doc_id] = summary
+            self.save()
 
     def search(
         self,
